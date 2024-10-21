@@ -1,0 +1,58 @@
+@import 'variables.css';
+@import 'header.css';
+@import 'footer.css';
+@import 'components/buttons.css';
+@import 'components/products.css';
+@import 'components/advantages.css';
+@import 'components/hero.css';
+@import 'fonts.css';
+@import 'components/scroll-effects.css';
+@import 'components/applications.css';
+@import 'components/testimonials.css';
+@import 'components/support.css';
+@import 'components/news-section.css';
+@import 'components/faq.css';
+@import 'components/about.css';
+
+* {
+    margin: 0;
+    padding: 0;
+    box-sizing: border-box;
+
+    /* Запрет выделения */
+    user-select: none;
+    -webkit-user-select: none;
+    -moz-user-select: none;
+    -ms-user-select: none;
+}
+
+html, body {
+    max-width: 100%;
+    overflow-x: hidden;
+}
+
+html {
+    scroll-behavior: smooth;
+}
+
+body {
+    font-family: var(--font-family-main);
+    font-size: var(--font-size-base);
+    line-height: 1.6;
+    color: var(--color-text);
+    background-color: var(--color-background);
+}
+
+.content {
+    min-height: calc(100vh - 314px);
+}
+
+.container {
+    max-width: var(--max-width);
+    margin: 0 auto;
+    padding: 0 var(--spacing-medium);
+}
+
+main {
+    padding: var(--spacing-large) 0;
+}
