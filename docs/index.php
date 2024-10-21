@@ -1,21 +1,9 @@
-<!DOCTYPE html>
-<html lang="ru">
-<head>
-    <meta charset="UTF-8">
-    <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Коптра - Производство и продажа дронов</title>
-    <link rel="stylesheet" href="../styles/main.css">
-    <link rel="stylesheet" href="../styles/components/navbar.css">
-</head>
-<body>
-    <div id="header"></div>
-
+<?php include __DIR__ . '/../modules/header.php'; ?>
 
     <main class="content">
         <div class="container">
             <div class="main-container">
-                <div id="sidebar"></div>
-
+            <?php include __DIR__ . '/../modules/sidebar.php'; ?>
 
                 <div class="documentation-content">
                     <section id="documentation" class="documentation">
@@ -45,32 +33,6 @@
         </div>
     </main>
 
-    <div id="footer"></div>
-
-
-    <script src="scripts/main.js"></script>
-    <script>
-
-    // Load the header, footer, and sidebar dynamically using fetch
-    fetch('header.html')
-        .then(response => response.text())
-        .then(data => {
-            document.getElementById("header").innerHTML = data;
-        });
-
-    fetch('footer.html')
-        .then(response => response.text())
-        .then(data => {
-            document.getElementById("footer").innerHTML = data;
-        });
-
-    fetch('sidebar.html')
-        .then(response => response.text())
-        .then(data => {
-            document.getElementById("sidebar").innerHTML = data;
-        });
-</script>
+   
   
-
-</body>
-</html>
+    <?php include __DIR__ . '/../modules/footer.php'; ?>
