@@ -270,10 +270,13 @@ const observer = new IntersectionObserver((entries) => {
             entry.target.classList.add('visible');
             const el = entry.target.querySelector('.fact-number');
             const endValue = parseInt(entry.target.dataset.count, 10);
+
+            // Проверяем, если endValue не является числом, выводим предупреждение
             if (!isNaN(endValue)) {
                 animateCounter(el, 0, endValue, 2000);
             } else {
-                console.error('Invalid data-count value:', entry.target.dataset.count);
+                console.warn('Invalid data-count value:', entry.target.dataset.count);
+                el.textContent = '0';  // Можно установить 0 или другое значение по умолчанию
             }
             observer.unobserve(entry.target);
         }
