@@ -384,3 +384,104 @@ body {
 .sub-menu a:hover {
 	color: var(--color-primary);
 }
+.sidebar {
+    width: 250px;
+    padding: var(--spacing-medium);
+    background-color: var(--color-background-light);
+    border-right: 1px solid var(--color-border);
+    box-shadow: 2px 0 10px rgba(0, 0, 0, 0.1);
+}
+
+.sidebar-nav {
+    position: sticky;
+    top: calc(var(--header-height) + var(--spacing-medium));
+}
+
+.sidebar-heading {
+    font-size: var(--font-size-h3);
+    color: var(--color-primary);
+    margin-bottom: var(--spacing-medium);
+    text-align: center;
+    padding-bottom: var(--spacing-small);
+    border-bottom: 2px solid var(--color-primary);
+}
+
+.sidebar-item {
+    margin-bottom: var(--spacing-small);
+}
+
+.sidebar-link {
+    color: var(--color-text);
+    text-decoration: none;
+    font-size: var(--font-size-base);
+    display: inline-block;
+    padding: var(--spacing-small) 0;
+    position: relative;
+    transition: color var(--transition-speed);
+}
+
+.sidebar-link:hover {
+    color: var(--color-primary);
+}
+
+.sidebar-expandable {
+    position: relative;
+    padding-right: 15px;
+}
+
+.sidebar-expandable:after {
+    content: '';
+    position: absolute;
+    top: 8px;
+    right: 0px;
+    box-sizing: border-box;
+    width: 8px;
+    height: 8px;
+    background-color: #ffffff;
+    border-top: 2px solid #2C2D34;
+    border-right: 2px solid #2C2D34;
+    transform: rotate(135deg);
+    transition: transform 0.3s ease, top 0.3s ease;
+}
+
+
+.sidebar-submenu {
+    display: none;
+    padding-left: 15px;
+    list-style-type: none;
+    margin: 0;
+}
+
+
+
+.sidebar-submenu li {
+    margin-top: 5px;
+    display: block;
+}
+
+.sidebar-submenu a {
+    font-size: 13px;
+    color: #6c757d;
+    display: block;
+    padding: 3px 0;
+    white-space: normal;
+    word-wrap: break-word;
+}
+
+.sidebar-submenu a:hover {
+    color: var(--color-primary);
+}
+.sidebar-expandable.active:after {
+    transform: rotate(-45deg);
+    top: 12px;
+    border-top: 2px solid var(--color-primary);
+    border-right: 2px solid var(--color-primary);
+}
+
+.sidebar-submenu {
+    display: none;
+}
+
+.sidebar-expandable.active .sidebar-submenu {
+    display: block;
+}

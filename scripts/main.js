@@ -328,3 +328,27 @@ function initTestimonials() {
 }
 
 document.addEventListener('DOMContentLoaded', initTestimonials);
+document.addEventListener('DOMContentLoaded', function() {
+    const expandableItems = document.querySelectorAll('.sidebar-expandable');
+    
+    expandableItems.forEach(item => {
+        const mainLink = item.querySelector('.sidebar-link');
+        const submenu = item.querySelector('.sidebar-submenu');
+        
+        mainLink.addEventListener('click', function(e) {
+            e.preventDefault();
+            item.classList.toggle('active');
+            
+            if (submenu) {
+                submenu.style.display = submenu.style.display === 'block' ? 'none' : 'block';
+            }
+        });
+        
+        // Prevent submenu from closing when clicking on submenu items
+        if (submenu) {
+            submenu.addEventListener('click', function(e) {
+                e.stopPropagation();
+            });
+        }
+    });
+});
