@@ -18,7 +18,7 @@
 <body>
     <header>
         <div class="container header-container">
-            <a href="#" class="logo">
+            <a href="../index.php" class="logo">
             <img src="<?php echo dirname($_SERVER['PHP_SELF']) === '/' ? '' : '/'; ?>assets/images/header-logo.png" alt="Коптра лого" />                <span>КОПТРА</span>
             </a>
             <nav>
