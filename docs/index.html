@@ -4,8 +4,8 @@
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>Коптра - Производство и продажа дронов</title>
-    <link rel="stylesheet" href="styles/main.css">
-    <link rel="stylesheet" href="styles/components/navbar.css">
+    <link rel="stylesheet" href="../styles/main.css">
+    <link rel="stylesheet" href="../styles/components/navbar.css">
 </head>
 <body>
     <div id="header"></div>
@@ -50,11 +50,27 @@
 
     <script src="scripts/main.js"></script>
     <script>
-        // Load the header, footer, and sidebar dynamically
-        document.getElementById("header").innerHTML = fetch('header.html').then(response => response.text());
-        document.getElementById("footer").innerHTML = fetch('footer.html').then(response => response.text());
-        document.getElementById("sidebar").innerHTML = fetch('sidebar.html').then(response => response.text());
-    </script>
+
+    // Load the header, footer, and sidebar dynamically using fetch
+    fetch('header.html')
+        .then(response => response.text())
+        .then(data => {
+            document.getElementById("header").innerHTML = data;
+        });
+
+    fetch('footer.html')
+        .then(response => response.text())
+        .then(data => {
+            document.getElementById("footer").innerHTML = data;
+        });
+
+    fetch('sidebar.html')
+        .then(response => response.text())
+        .then(data => {
+            document.getElementById("sidebar").innerHTML = data;
+        });
+</script>
+  
 
 </body>
 </html>
