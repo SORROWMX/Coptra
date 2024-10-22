@@ -1,9 +1,9 @@
 <aside class="sidebar">
     <nav class="sidebar-nav">
         <div class="sidebar-section">
-            <h3 class="sidebar-heading">Добро пожаловать!</h3>
+            <h3 class="sidebar-heading">РУКОВОДСТВА:</h3>
             <div class="sidebar-item">
-                <a href="#introduction" class="sidebar-link">I. Введение</a>
+                <a href="#introduction" class="sidebar-link">Введение</a>
             </div>
             <div class="sidebar-item sidebar-expandable">
                 <a href="#getting-started" class="sidebar-link">Приступая к работе</a>
