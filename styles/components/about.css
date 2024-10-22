@@ -115,57 +115,53 @@
 }
 
 .key-facts {
-    display: grid;
-    grid-template-columns: repeat(auto-fit, minmax(200px, 1fr));
-    gap: 20px;
-    margin: 40px 0;
+    display: flex;
+    justify-content: space-around;
+    flex-wrap: wrap;
+    gap: 2rem;
+    margin: 3rem 0;
 }
 
 .fact-card {
-    background-color: var(--color-background-light);
-    border-radius: 10px;
-    padding: 20px;
+    flex: 1;
+    min-width: 200px;
     text-align: center;
-    box-shadow: 0 4px 6px rgba(0, 0, 0, 0.1);
-    transition: transform 0.3s ease, box-shadow 0.3s ease, opacity 0.5s ease;
-    opacity: 0;
-    transform: translateY(20px);
-}
-
-.fact-card.visible {
-    opacity: 1;
-    transform: translateY(0);
-}
-
-.fact-card:hover {
-    transform: translateY(-5px);
-    box-shadow: 0 6px 12px rgba(0, 0, 0, 0.15);
+    padding: 1.5rem;
+    background: var(--color-background-secondary);
+    border-radius: var(--border-radius);
+    box-shadow: var(--box-shadow);
 }
 
 .fact-icon {
-    font-size: 2.5rem;
-    color: var(--color-primary);
-    margin-bottom: 15px;
+    margin-bottom: 1rem;
 }
 
-.fact-icon .custom-icon {
-    margin-bottom: -5px;
-    width: 48px;
-    height: 48px;
-    object-fit: contain;
+.fact-icon i {
+    font-size: 2.5rem;
+    color: var(--color-primary);
+}
+
+.fact-icon img {
+    width: 2.5rem;
+    height: 2.5rem;
+}
+
+.fact-content {
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    gap: 0.5rem;
 }
 
 .fact-number {
     font-size: 2.5rem;
     font-weight: bold;
     color: var(--color-secondary);
-    display: block;
-    margin-bottom: 5px;
 }
 
 .fact-text {
     font-size: 1rem;
-    color: var(--color-text);
+    color: var(--color-text-secondary);
 }
 
 .team-section {
