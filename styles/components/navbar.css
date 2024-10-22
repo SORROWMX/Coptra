@@ -8,7 +8,7 @@ body {
 }
 
 .content {
-	padding-top: 60px; /* Измените это значение в соответствии с высотой вашего хедера */
+	padding-top: 40px; /* Измените это значение в соответствии с высотой вашего хедера */
 }
 
 .main-container {
@@ -23,11 +23,12 @@ body {
 }
 
 .navbar {
-	width: 250px; /* Увеличиваем ширину навигационной панели */
+	width: 270px; /* Увеличиваем ширину навигационной панели */
 	padding: var(--spacing-medium);
 	background-color: var(--color-background-light);
 	border-right: 1px solid var(--color-border);
 	box-shadow: 2px 0 10px rgba(0, 0, 0, 0.1);
+	margin-top: 45px; /* Добавьте этот отступ сверху */
 }
 
 .navbar-nav {
@@ -55,7 +56,7 @@ body {
 	display: inline-block;
 	padding: var(--spacing-small) 0;
 	position: relative;
-	transition: transform var(--transition-speed) ease;
+	transition: color var(--transition-speed) ease;
 }
 
 .nav-link::after {
@@ -71,11 +72,6 @@ body {
 	transition: transform var(--transition-speed) ease;
 }
 
-.nav-link:hover,
-.nav-link:focus {
-	transform: scale(1.05);
-}
-
 .nav-link:hover::after,
 .nav-link:focus::after {
 	transform: scaleX(1);
@@ -84,32 +80,50 @@ body {
 
 .nav-item.expandable {
 	position: relative;
-	padding-right: 15px;
+	padding-right: 20px;
 }
 
-.nav-item.expandable::after {
-	content: '▼';
+.nav-item.expandable .nav-link {
+	display: flex;
+	align-items: center;
+	justify-content: space-between;
+}
+
+.nav-item.expandable .arrow {
+	width: 8px;
+	height: 8px;
+	border-top: 2px solid #2C2D34;
+	border-right: 2px solid #2C2D34;
+	transform: rotate(135deg);
+	transition: transform 0.3s ease, border-color 0.3s ease;
 	position: absolute;
 	right: 0;
 	top: 50%;
-	transform: translateY(-50%);
-	font-size: 0.8em;
-	color: var(--color-text);
-	transition: transform var(--transition-speed) ease;
+	margin-top: -6px;
 }
 
-.nav-item.expandable:hover::after {
-	transform: translateY(-50%) rotate(180deg);
+.nav-item.expandable:hover .arrow {
+	border-color: var(--color-primary);
+}
+
+.nav-item.expandable.active .arrow {
+	transform: rotate(-45deg);
+	margin-top: -2px;
+}
+
+.nav-item.expandable:hover .sub-menu {
+	display: none; /* Убираем отображение подменю при наведении */
 }
 
 .sub-menu {
 	display: none;
-	padding-left: var(--spacing-medium);
+	padding-left: 15px;
 	list-style-type: none;
-	margin-top: var(--spacing-small);
+	margin-top: 5px;
+	width: 100%;
 }
 
-.nav-item.expandable:hover .sub-menu {
+.nav-item.expandable.active .sub-menu {
 	display: block;
 }
 
@@ -121,8 +135,8 @@ body {
 	flex: 1;
 	padding-left: 50px; /* Увеличиваем отступ слева */
 	padding-right: 50px; /* Увеличиваем отступ справа */
-	max-width: 1400px; /* Немного увеличиваем максимальную ширину контента */
-	margin-bottom: 190px; /* Добавляем отступ снизу */
+	max-width: 1400px; /* Немного увеличиваем максимальную ирину контента */
+	margin-bottom: 90px;
 }
 
 .documentation-title {
@@ -206,28 +220,40 @@ body {
 .documentation-content h1:first-child {
 	font-size: var(--font-size-h1);
 	text-align: center;
-	margin-bottom: 40px;
+	margin-bottom: 15px; /* Уменьшаем отступ снизу */
 	width: 100%;
 	padding-top: 20px;
 	color: var(--color-primary);
 	border-bottom: 2px solid var(--color-primary);
-	padding-bottom: 20px;
+	padding-bottom: 15px; /* Уменьшаем нижний отступ */
 }
 
 .documentation-content h2 {
 	font-size: var(--font-size-h2);
 	color: var(--color-secondary);
-	margin-top: 40px;
-	margin-bottom: 20px;
-	padding-bottom: 10px;
+	margin-top: 20px; /* Уменьшаем верхний отступ */
+	margin-bottom: 10px; /* Уменьшаем нижний отступ */
+	padding-bottom: 5px; /* Уменьшаем отступ от нижней границы */
 	border-bottom: 1px solid var(--color-border);
 }
 
 .documentation-content h3 {
 	font-size: var(--font-size-h3);
 	color: var(--color-text);
-	margin-top: 30px;
-	margin-bottom: 15px;
+	margin-top: 15px; /* Уменьшаем верхний отступ */
+	margin-bottom: 10px; /* Уменьшаем нижний отступ */
+}
+
+/* Уменьшаем отступ между заголовками */
+.documentation-content h2 + h3 {
+	margin-top: 10px;
+}
+
+/* Уменьшаем отступ перед первым параграфом после заголовка */
+.documentation-content h1 + p,
+.documentation-content h2 + p,
+.documentation-content h3 + p {
+	margin-top: 5px;
 }
 
 .documentation-content p {
@@ -334,154 +360,122 @@ body {
 	padding-right: 15px;
 }
 
-.nav-item.expandable:after {
-	content: '';
-	position: absolute;
-	top: 8px;
-	right: 0px;
-	box-sizing: border-box;
+.nav-item.expandable .nav-link {
+	display: flex;
+	align-items: center;
+	justify-content: space-between;
+	padding-right: 20px; /* Место для стрелочки */
+}
+
+.nav-item.expandable .arrow {
 	width: 8px;
 	height: 8px;
-	background-color: #ffffff;
 	border-top: 2px solid #2C2D34;
 	border-right: 2px solid #2C2D34;
 	transform: rotate(135deg);
-	transition: transform 0.3s ease, top 0.3s ease;
+	transition: transform 0.3s ease;
 }
 
-.nav-item.expandable:hover:after {
-	transform: rotate(-45deg);
-	top: 12px;
+.nav-item.expandable:hover .arrow {
 	border-top: 2px solid var(--color-primary);
 	border-right: 2px solid var(--color-primary);
 }
 
+.nav-item.expandable.active .arrow {
+	transform: rotate(-45deg);
+}
+
+/* Удаляем старые стили для псевдоэлемента :after */
+.nav-item.expandable:after,
+.nav-item.expandable:hover:after {
+	content: none;
+}
+
 .sub-menu {
 	display: none;
-	padding-left: 15px;
+	padding-left: 5px; /* Уменьшаем отступ слева */
 	list-style-type: none;
 	margin: 0;
+	width: 100%; /* Занимает всю ширину родительского элемента */
 }
 
 .nav-item.expandable:hover .sub-menu {
-	display: block;
+	display: none;  /* Убираем отображение подменю при наведении */
 }
 
 .sub-menu li {
-	margin-top: 5px;
-	display: block; /* Обеспечивает вертикальное расположение */
+	width: 100%; /* Занимает всю ширину .sub-menu */
 }
 
 .sub-menu a {
 	font-size: 13px;
 	color: #6c757d;
-	display: block;
+	display: inline-block;
 	padding: 3px 0;
-	white-space: normal; /* Разрешает перенос текста */
-	word-wrap: break-word; /* Переносит длинные слова */
+	position: relative;
 }
 
-.sub-menu a:hover {
-	color: var(--color-primary);
-}
-.sidebar {
-    width: 250px;
-    padding: var(--spacing-medium);
-    background-color: var(--color-background-light);
-    border-right: 1px solid var(--color-border);
-    box-shadow: 2px 0 10px rgba(0, 0, 0, 0.1);
-}
-
-.sidebar-nav {
-    position: sticky;
-    top: calc(var(--header-height) + var(--spacing-medium));
+.sub-menu a::after {
+	content: '';
+	position: absolute;
+	width: 100%;
+	height: 1px;
+	bottom: 0;
+	left: 0;
+	background-color: var(--color-primary);
+	transform: scaleX(0);
+	transform-origin: bottom right;
+	transition: transform var(--transition-speed) ease;
 }
 
-.sidebar-heading {
-    font-size: var(--font-size-h3);
-    color: var(--color-primary);
-    margin-bottom: var(--spacing-medium);
-    text-align: center;
-    padding-bottom: var(--spacing-small);
-    border-bottom: 2px solid var(--color-primary);
+.sub-menu a:hover::after,
+.sub-menu a:focus::after {
+	transform: scaleX(1);
+	transform-origin: bottom left;
 }
 
-.sidebar-item {
-    margin-bottom: var(--spacing-small);
+.nav-item.expandable .nav-link {
+	display: flex;
+	align-items: center;
+	justify-content: space-between;
+	padding-right: 20px; /* Место для стрелочки */
 }
 
-.sidebar-link {
-    color: var(--color-text);
-    text-decoration: none;
-    font-size: var(--font-size-base);
-    display: inline-block;
-    padding: var(--spacing-small) 0;
-    position: relative;
-    transition: color var(--transition-speed);
+.nav-item.expandable .arrow {
+	position: absolute;
+	right: 0;
+	top: 50%;
+	width: 8px;
+	height: 8px;
+	border-top: 2px solid #2C2D34;
+	border-right: 2px solid #2C2D34;
+	transform: translateY(-50%) rotate(135deg);
+	transition: transform 0.3s ease;
 }
 
-.sidebar-link:hover {
-    color: var(--color-primary);
+.nav-item.expandable.active .arrow {
+	transform: translateY(-50%) rotate(-45deg);
 }
 
-.sidebar-expandable {
-    position: relative;
-    padding-right: 15px;
+.extended-submenu {
+    padding-left: 20px; /* Увеличиваем отступ слева */
+    margin-top: 10px; /* Увеличиваем отступ сверху */
+    margin-bottom: 15px; /* Увеличиваем отступ снизу */
 }
 
-.sidebar-expandable:after {
-    content: '';
-    position: absolute;
-    top: 8px;
-    right: 0px;
-    box-sizing: border-box;
-    width: 8px;
-    height: 8px;
-    background-color: #ffffff;
-    border-top: 2px solid #2C2D34;
-    border-right: 2px solid #2C2D34;
-    transform: rotate(135deg);
-    transition: transform 0.3s ease, top 0.3s ease;
+.extended-submenu li {
+    margin-bottom: 12px; /* Увеличиваем отступ между элементами */
 }
 
-
-.sidebar-submenu {
-    display: none;
-    padding-left: 15px;
-    list-style-type: none;
-    margin: 0;
+.extended-submenu a {
+    font-size: 15px; /* Увеличиваем размер шрифта */
+    padding: 6px 0; /* Увеличиваем вертикальные отступы */
+    line-height: 1.4; /* Увеличиваем межстрочный интервал */
 }
 
-
-
-.sidebar-submenu li {
-    margin-top: 5px;
-    display: block;
+/* Если нужно увеличить ширину этого конкретного подменю */
+.nav-item.expandable .extended-submenu {
+    width: 110%; /* Делаем немного шире, чем родительский элемент */
+    max-width: none; /* Убираем ограничение максимальной ширины, если оно было */
 }
 
-.sidebar-submenu a {
-    font-size: 13px;
-    color: #6c757d;
-    display: block;
-    padding: 3px 0;
-    white-space: normal;
-    word-wrap: break-word;
-}
-
-.sidebar-submenu a:hover {
-    color: var(--color-primary);
-}
-.sidebar-expandable.active:after {
-    transform: rotate(-45deg);
-    top: 12px;
-    border-top: 2px solid var(--color-primary);
-    border-right: 2px solid var(--color-primary);
-}
-
-.sidebar-submenu {
-    display: none;
-}
-
-.sidebar-expandable.active .sidebar-submenu {
-    display: block;
-}
