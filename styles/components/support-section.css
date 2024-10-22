@@ -2,7 +2,7 @@
     padding: var(--spacing-xxlarge) 0;
     padding-top: 30px;
     /* background-color: var(--color-background-light); */
-    margin-bottom: 120px!important;
+    margin-bottom: var(--spacing-medium);
 }
 
 .telegram-community {

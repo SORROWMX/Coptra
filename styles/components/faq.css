@@ -1,6 +1,7 @@
 .faq {
     padding: var(--spacing-xxlarge) 0;
     /* background-color: var(--color-background-light); */
+    margin-bottom: var(--spacing-xlarge);
 }
 
 .faq h2 {
