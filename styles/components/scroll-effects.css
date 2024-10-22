@@ -39,3 +39,9 @@
 .scroll-to-top:hover {
     background-color: var(--color-secondary);
 }
+
+@media screen and (max-width: 768px) {
+    .scroll-to-top {
+        display: none;
+    }
+}
