@@ -509,6 +509,7 @@
 							</div>
 						</div>
 					</div>
+				</section>
 				<!-- Новости и события -->
 				<section id="news" class="news">
 					<div class="container">
