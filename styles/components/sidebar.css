@@ -390,7 +390,7 @@ body {
 }
 
 /* Разрешаем выделение текста в документации и боковой панели */
-.documentation-content,
+.documentation,
 .sidebar {
     user-select: text;
     -webkit-user-select: text;
@@ -398,7 +398,7 @@ body {
     -ms-user-select: text;
 }
 
-.documentation-content *,
+.documentation *,
 .sidebar * {
     user-select: text;
     -webkit-user-select: text;
