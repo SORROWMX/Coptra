@@ -133,13 +133,6 @@ body {
 	padding-top: 20px; /* Добавляем отступ сверху */
 }
 
-.documentation-content h1:first-child {
-	font-size: 36px; /* Увеличиваем размер шрифта */
-	text-align: center; /* Центрируем текст */
-	margin-bottom: 5px; /* Уменьшаем с 10px до 5px */
-	width: 100%; /* Занимаем всю ширину */
-	padding-top: 20px; /* Добавляем отступ сверху */
-}
 
 @media (max-width: 1600px) {
 	.main-container {
@@ -212,39 +205,32 @@ body {
 	}
 }
 
-/* Обновляем стили для документации */
-.documentation-content {
-	flex: 1;
-	padding-left: 50px;
-	padding-right: 50px;
-	max-width: 1400px;
-}
 
 .documentation-content h1:first-child {
 	font-size: var(--font-size-h1);
 	text-align: center;
-	margin-bottom: 40px;
+	margin-bottom: 10px;
 	width: 100%;
-	padding-top: 20px;
+	padding-top: 0px;
 	color: var(--color-primary);
 	border-bottom: 2px solid var(--color-primary);
-	padding-bottom: 20px;
+	padding-bottom: 0px;
 }
 
 .documentation-content h2 {
 	font-size: var(--font-size-h2);
 	color: var(--color-secondary);
-	margin-top: 40px;
-	margin-bottom: 20px;
-	padding-bottom: 10px;
+	margin-top: 0px;
+	margin-bottom: 0px;
+	padding-bottom: 0px;
 	border-bottom: 1px solid var(--color-border);
 }
 
 .documentation-content h3 {
 	font-size: var(--font-size-h3);
 	color: var(--color-text);
-	margin-top: 50px;
-	margin-bottom: 15px;
+	margin-top: 0px;
+	margin-bottom: 0px;
 }
 
 .documentation-content p {
@@ -258,98 +244,26 @@ body {
 	margin-top: 30px;
 }
 
-/* Улучшения для навигации */
-.navbar {
-	background-color: var(--color-background-light);
-	border-right: 1px solid var(--color-border);
-	padding: 20px;
-}
 
-.nav-section h3 {
-	color: var(--color-primary);
-	font-size: 20px;
-	margin-bottom: 15px;
-	border-bottom: 2px solid var(--color-primary);
-	padding-bottom: 5px;
-}
 
-.nav-link {
-	transition: color var(--transition-speed);
-}
 
 .nav-link:hover {
 	color: var(--color-primary);
 }
 
-.documentation-content h1:first-child {
-	margin-bottom: 20px; /* Уменьшаем отступ снизу */
-}
 
-.documentation-content h2 {
-	margin-top: 20px; /* Уменьшаем отступ сверху */
-	margin-bottom: 10px; /* Уменьшаем отступ снизу */
-}
 
-.documentation-content h3 {
-	margin-top: 15px; /* Уменьшаем отступ сверху */
-	margin-bottom: 8px; /* Уменьшаем отступ снизу */
-}
 
-/* Добавляем отступ между параграфами и следующим заголовком */
-.documentation-content p + h2,
-.documentation-content p + h3 {
-	margin-top: 25px;
-}
 
-.documentation-content h1:first-child {
-	margin-bottom: 15px; /* Уменьшаем с 20px до 15px */
-}
 
-.documentation-content h2 {
-	margin-top: 15px; /* Уменьшаем с 20px до 15px */
-	margin-bottom: 8px; /* Уменьшаем с 10px до 8px */
-}
 
-.documentation-content h3 {
-	margin-top: 12px; /* Уменьшаем с 15px до 12px */
-	margin-bottom: 6px; /* ��еньшаем с 8px до 6px */
-}
 
-/* Уменьшаем отступ между параграфами и следующим заголовком */
-.documentation-content p + h2,
-.documentation-content p + h3 {
-	margin-top: 20px; /* Уменьшаем с 25px до 20px */
-}
 
-.documentation-content h1:first-child {
-	margin-bottom: 5px; /* Уменьшаем с 10px до 5px */
-}
 
-.documentation-content h2 {
-	margin-top: 5px; /* Уменьшаем с 10px до 5px */
-	margin-bottom: 2px; /* Уменьшаем с 5px до 2px */
-}
 
-.documentation-content h3 {
-	margin-top: 4px; /* Уменьшаем с 8px до 4px */
-	margin-bottom: 2px; /* Умньшаем с 4px до 2px */
-}
 
-/* Уменьшаем отступ между параграфами и следующим заголовком */
-.documentation-content p + h2,
-.documentation-content p + h3 {
-	margin-top: 8px; /* Уменьшаем с 15px до 8px */
-}
 
-/* Минимальный отступ для параграфов */
-.documentation-content p {
-	margin-bottom: 4px; /* Уменьшаем с 8px до 4px */
-}
 
-.nav-item.expandable {
-	position: relative;
-	padding-right: 15px;
-}
 
 .nav-item.expandable:after {
 	content: '';
@@ -373,16 +287,7 @@ body {
 	border-right: 2px solid var(--color-primary);
 }
 
-.sub-menu {
-	display: none;
-	padding-left: 15px;
-	list-style-type: none;
-	margin: 0;
-}
 
-.nav-item.expandable:hover .sub-menu {
-	display: block;
-}
 
 .sub-menu li {
 	margin-top: 5px;
@@ -502,9 +407,6 @@ body {
     border-right: 2px solid var(--color-primary);
 }
 
-.sidebar-submenu {
-    display: none;
-}
 
 .sidebar-expandable.active .sidebar-submenu {
     display: flex;
