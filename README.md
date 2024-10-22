@@ -1,7 +1,8 @@
 # Coptra Drone Documentation Website
 
-![Coptra Logo](https://ltdfoto.ru/images/2024/10/22/photo_2024-10-22_00-29-01.jpg)
-
+<p align="center">
+  <img src="https://ltdfoto.ru/images/2024/10/22/photo_2024-10-22_00-29-01.jpg" alt="Coptra Logo" width="200"/>
+</p>
 ## About
 
 Coptra is a comprehensive documentation website for drone enthusiasts and professionals. This repository contains the source code for the Coptra website, which provides detailed information about drone technology, applications, and best practices.
