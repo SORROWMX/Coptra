@@ -459,37 +459,56 @@
 						</div>
 					</div>
 				</section>
-
-				<!-- Поддержка и обучение -->
-				<section id="support" class="support">
+<!-- Telegram блок -->
+<section id="telegram-community" class="telegram-community">
 					<div class="container">
-						<h2>Поддержка и обучение</h2>
-						<div class="support-content">
-							<div class="support-item">
-								<h3>Техническая поддержка</h3>
-								<p>
-									Наша команда экспертов готова помочь вам 24/7 с любыми
-									вопросами по эксплуатации дронов.
-								</p>
+						<div class="telegram-block">
+							<div class="telegram-icon">
+								<img src="assets/icons/telegram.png" alt="Telegram">
 							</div>
-							<div class="support-item">
-								<h3>Обучаюие курсы</h3>
-								<p>
-									Мы предлагаем комплексные курсы по упралению дроми и их
-									применению в различных сферах.
-								</p>
+							<div class="telegram-text">
+								<h3>Присоединяйтесь к сообществу пилотов дронов!</h3>
+								<p>Получайте эксклюзивные новости, советы по пилотированию и техподдержку.</p>
 							</div>
-							<div class="support-item">
-								<h3>Онлайн-ресурсы</h3>
-								<p>
-									Доступ к обширной базе знаний, видеоурокам и форуму
-									пользователей.
-								</p>
-							</div>
+							<a href="https://t.me/KoptraSupport_bot" class="telegram-button" target="_blank">
+									Присоединиться
+							</a>
 						</div>
 					</div>
 				</section>
 
+				<!-- Поддержка и обучение -->
+				<section id="support" class="support">
+					<div class="container">
+					<h2>Связаться с нами</h2>
+					<div class="support-content">
+					<div class="support-form">
+								<form id="support-form">
+									<input type="text" id="name" name="name" placeholder="Ваше имя" required>
+									<input type="email" id="email" name="email" placeholder="Email" required>
+									<input type="tel" id="phone" name="phone" placeholder="Номер телефона" required>
+									<select id="topic" name="topic" required>
+										<option value="" disabled selected>Выберите тему сообщения</option>
+										<option value="general">Общий вопрос</option>
+										<option value="support">Техническая поддержка</option>
+										<option value="order">Заказ продукции</option>
+										<option value="partnership">Партнерство</option>
+									</select>
+									<textarea id="message" name="message" placeholder="Ваше сообщение" required></textarea>
+									<div class="form-footer">
+										<label class="checkbox-container">
+											<input type="checkbox" required>
+											<span>Согласен с <a href="#">политикой конфиденциальности</a></span>
+										</label>
+										<button type="submit" class="submit-button">Отправить</button>
+									</div>
+								</form>
+								</div>
+								<div class="support-image">
+								<img src="https://placehold.co/600x400?text=Картинка+для+поддержки" alt="Поддержка клиентов">
+							</div>
+						</div>
+					</div>
 				<!-- Новости и события -->
 				<section id="news" class="news">
 					<div class="container">
