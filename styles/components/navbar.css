@@ -312,7 +312,7 @@ body {
 
 .documentation-content h3 {
 	margin-top: 12px; /* Уменьшаем с 15px до 12px */
-	margin-bottom: 6px; /* Уменьшаем с 8px до 6px */
+	margin-bottom: 6px; /* ��еньшаем с 8px до 6px */
 }
 
 /* Уменьшаем отступ между параграфами и следующим заголовком */
@@ -512,7 +512,19 @@ body {
     justify-content: space-between; /* Распределяем элементы равномерно */
 }
 
+/* Разрешаем выделение текста в документации и боковой панели */
+.documentation-content,
+.sidebar {
+    user-select: text;
+    -webkit-user-select: text;
+    -moz-user-select: text;
+    -ms-user-select: text;
+}
 
-
-
-
+.documentation-content *,
+.sidebar * {
+    user-select: text;
+    -webkit-user-select: text;
+    -moz-user-select: text;
+    -ms-user-select: text;
+}
