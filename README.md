@@ -1,7 +1,7 @@
 # Coptra Drone Documentation Website
 
 <p align="center">
-  <img src="https://ltdfoto.ru/images/2024/10/22/photo_2024-10-22_00-29-01.jpg" alt="Coptra Logo" width="200"/>
+  <img src="https://ltdfoto.ru/images/2024/10/22/photo_2024-10-22_00-29-01.jpg" alt="Coptra Logo"/>
 </p>
 ## About
 
