@@ -1,5 +1,5 @@
 # Coptra - Инновационные Дроны для Профессионалов
-
+1
 <p align="center">
   <img src="https://ltdfoto.ru/images/2024/10/22/photo_2024-10-22_00-29-01.jpg" alt="Coptra Logo"/>
 </p>
