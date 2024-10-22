@@ -1,4 +1,5 @@
 <aside class="sidebar">
+    <button class="mobile-menu-toggle">☰</button>
     <nav class="sidebar-nav">
         <div class="sidebar-section">
             <h3 class="sidebar-heading">РУКОВОДСТВА:</h3>

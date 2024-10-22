@@ -374,6 +374,22 @@ function initSupportSection() {
         });
     });
 }
+document.addEventListener('DOMContentLoaded', function() {
+    const mobileMenuToggle = document.querySelector('.mobile-menu-toggle');
+    const sidebar = document.querySelector('.sidebar');
 
+    if (mobileMenuToggle && sidebar) {
+        mobileMenuToggle.addEventListener('click', function() {
+            sidebar.classList.toggle('active');
+        });
+    }
+
+    // Закрывать сайдбар при клике вне его на мобильных устройствах
+    document.addEventListener('click', function(event) {
+        if (window.innerWidth <= 768 && !sidebar.contains(event.target) && !mobileMenuToggle.contains(event.target)) {
+            sidebar.classList.remove('active');
+        }
+    });
+});
 // Вызываем функцию инициализации секции поддержки
 initSupportSection();
