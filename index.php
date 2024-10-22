@@ -112,7 +112,7 @@
 									<img
 										src="https://placehold.co/600x400?text=Сотрудник+1"
 										alt="Имя Фамилия"
-										loading="lazy"
+										
 									/>
 									<div class="member-info">
 										<h4>Имя Фамилия</h4>
@@ -128,8 +128,8 @@
 								<div class="team-member">
 									<img
 										src="https://placehold.co/600x400?text=Сотрудник+2"
-										alt="Имя Ф��милия"
-										loading="lazy"
+										alt="Имя Фамилия"
+										
 									/>
 									<div class="member-info">
 										<h4>Имя Фамилия</h4>
@@ -146,7 +146,7 @@
 									<img
 										src="https://placehold.co/600x400?text=Сотрудник+3"
 										alt="Имя Фамилия"
-										loading="lazy"
+										
 									/>
 									<div class="member-info">
 										<h4>Имя Фамилия</h4>
@@ -320,7 +320,7 @@
 										<div class="rotate-hint">↻</div>
 									</div>
 									<div class="advantage-card-back">
-										<h3>Простота управления</h3>
+										<h3>Прстота управления</h3>
 										<p>
 											Интуитивный интерфейс и продвинутые системы автопилота
 											делают управление доступным для пилотов любого уровня.
@@ -384,7 +384,7 @@
 							<div class="swiper-wrapper">
 								<div class="swiper-slide">
 									<div class="testimonial-card">
-										<p class="testimonial-text">Дроны Коптра значительно улучшили эффективность нашего сельскохозяйственного бизнеса. Мониторинг полей стал намного эффективнее, а урожайность выросла.</p>
+										<p class="testimonial-text">Дроны Коптра значительно улучшили эффективность нашего сельскохозяйственного бизнеса. Мониторинг полей стал намного эффективнее, а урожайност выросла.</p>
 										<div class="testimonial-author">
 											<span class="client-name">Алексей Новиков</span>
 											<span class="client-position">Руководитель отдела инноваций, АгроТех</span>
@@ -438,7 +438,7 @@
 								</div>
 								<div class="swiper-slide">
 									<div class="testimonial-card">
-										<p class="testimonial-text">Дроны Коптра произвели революцию в наших археологических исследованиях. Мы быстро и эффективно картографируем большие территории.</p>
+										<p class="testimonial-text">Дроны Коптра произвели революцию в наших археолоических исследованиях. Мы быстро и эффективно картографируем большие территории.</p>
 										<div class="testimonial-author">
 											<span class="client-name">Андрей Старов</span>
 											<span class="client-position">Ведущий археолог, Институт Древних Культур</span>
@@ -460,31 +460,53 @@
 					</div>
 				</section>
 
-				<!-- Поддержка и обучение -->
+				<!-- Telegram блок -->
+				<section id="telegram-community" class="telegram-community">
+					<div class="container">
+						<div class="telegram-block">
+							<div class="telegram-icon">
+								<img src="assets/icons/telegram.png" alt="Telegram">
+							</div>
+							<div class="telegram-text">
+								<h3>Присоединяйтесь к сообществу пилотов дронов!</h3>
+								<p>Получайте эксклюзивные новости, советы по пилотированию и техподдержку.</p>
+							</div>
+							<a href="https://t.me/KoptraSupport_bot" class="telegram-button" target="_blank">
+									Присоединиться
+							</a>
+						</div>
+					</div>
+				</section>
+
+				<!-- Поддержка -->
 				<section id="support" class="support">
 					<div class="container">
-						<h2>Поддержка и обучение</h2>
+						<h2>Связаться с нами</h2>
 						<div class="support-content">
-							<div class="support-item">
-								<h3>Техническая поддержка</h3>
-								<p>
-									Наша команда экспертов готова помочь вам 24/7 с любыми
-									вопросами по эксплуатации дронов.
-								</p>
+							<div class="support-form">
+								<form id="support-form">
+									<input type="text" id="name" name="name" placeholder="Ваше имя" required>
+									<input type="email" id="email" name="email" placeholder="Email" required>
+									<input type="tel" id="phone" name="phone" placeholder="Номер телефона" required>
+									<select id="topic" name="topic" required>
+										<option value="" disabled selected>Выберите тему сообщения</option>
+										<option value="general">Общий вопрос</option>
+										<option value="support">Техническая поддержка</option>
+										<option value="order">Заказ продукции</option>
+										<option value="partnership">Партнерство</option>
+									</select>
+									<textarea id="message" name="message" placeholder="Ваше сообщение" required></textarea>
+									<div class="form-footer">
+										<label class="checkbox-container">
+											<input type="checkbox" required>
+											<span>Согласен с <a href="#">политикой конфиденциальности</a></span>
+										</label>
+										<button type="submit" class="submit-button">Отправить</button>
+									</div>
+								</form>
 							</div>
-							<div class="support-item">
-								<h3>Обучаюие курсы</h3>
-								<p>
-									Мы предлагаем комплексные курсы по упралению дроми и их
-									применению в различных сферах.
-								</p>
-							</div>
-							<div class="support-item">
-								<h3>Онлайн-ресурсы</h3>
-								<p>
-									Доступ к обширной базе знаний, видеоурокам и форуму
-									пользователей.
-								</p>
+							<div class="support-image">
+								<img src="https://placehold.co/600x400?text=Картинка+для+поддержки" alt="Поддержка клиентов">
 							</div>
 						</div>
 					</div>

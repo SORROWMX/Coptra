@@ -96,6 +96,7 @@
     text-transform: uppercase;
     letter-spacing: 1px;
     border: 2px solid var(--color-primary);
+    border-radius: var(--border-radius);
     transition: all var(--transition-speed) ease;
     position: relative;
     overflow: hidden;
@@ -114,7 +115,7 @@
     transition: transform var(--transition-speed) ease, color var(--transition-speed) ease;
 }
 
-.product-button:hover .button-text {
+/* .product-button:hover .button-text {
     transform: translateX(-10px);
 }
 
@@ -133,4 +134,45 @@
 .product-button:hover::after {
     right: 3px;
     opacity: 1;
+} */
+
+/* Добавляем новый стиль для кнопки "Читать далее" */
+.read-more {
+    display: inline-block;
+    padding: 8px 16px;
+    margin-top: var(--spacing-small);
+    color: var(--color-primary);
+    text-align: center;
+    text-decoration: none;
+    font-weight: var(--font-weight-medium);
+    font-size: 0.9rem;
+    text-transform: uppercase;
+    letter-spacing: 1px;
+    border: 2px solid var(--color-primary);
+    border-radius: var(--border-radius);
+    transition: all var(--transition-speed) ease;
+    position: relative;
+    overflow: hidden;
+    background-color: transparent;
+}
+
+.read-more:hover {
+    background-color: var(--color-primary);
+    color: var(--color-text-light);
+}
+
+.read-more:hover::after {
+    right: 10px;
+    opacity: 1;
+}
+
+.read-more:hover .button-text {
+    transform: translateX(-10px);
+}
+
+.read-more .button-text {
+    position: relative;
+    z-index: 1;
+    display: inline-block;
+    transition: transform var(--transition-speed) ease;
 }

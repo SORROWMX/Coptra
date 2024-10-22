@@ -352,3 +352,28 @@ document.addEventListener('DOMContentLoaded', function() {
         }
     });
 });
+
+// Функционал для секции поддержки
+function initSupportSection() {
+    const toggleButtons = document.querySelectorAll('.toggle-btn');
+    const supportOptions = document.querySelectorAll('.support-option');
+
+    toggleButtons.forEach(button => {
+        button.addEventListener('click', function() {
+            const target = this.getAttribute('data-target');
+
+            toggleButtons.forEach(btn => btn.classList.remove('active'));
+            this.classList.add('active');
+
+            supportOptions.forEach(option => {
+                option.classList.remove('active');
+                if (option.id === `${target}-support`) {
+                    option.classList.add('active');
+                }
+            });
+        });
+    });
+}
+
+// Вызываем функцию инициализации секции поддержки
+initSupportSection();

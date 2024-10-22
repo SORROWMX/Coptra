@@ -1,0 +1,184 @@
+.support {
+    padding: var(--spacing-xxlarge) 0;
+    padding-top: 30px;
+    /* background-color: var(--color-background-light); */
+    margin-bottom: 120px;
+}
+
+.telegram-community {
+    padding: var(--spacing-large) 0;
+}
+
+.telegram-block {
+    display: flex;
+    align-items: center;
+    justify-content: space-between;
+    background-color: #0088cc;
+    padding: var(--spacing-large) var(--spacing-xxlarge);
+    border-radius: var(--border-radius);
+    box-shadow: 0 4px 10px rgba(0, 0, 0, 0.1);
+}
+
+.telegram-icon {
+    background-color: white;
+    border-radius: 50%;
+    padding: var(--spacing-small);
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    box-shadow: 0 2px 4px rgba(0, 0, 0, 0.1);
+}
+
+.telegram-icon img {
+    width: 60px;
+    height: 60px;
+}
+
+.telegram-text {
+    flex-grow: 1;
+    margin: 0 var(--spacing-large);
+    color: white;
+}
+
+.telegram-text h3 {
+    font-size: var(--font-size-h3);
+    margin-bottom: var(--spacing-small);
+}
+
+.telegram-text p {
+    font-size: var(--font-size-base);
+    opacity: 0.9;
+}
+
+.telegram-button {
+    background-color: white;
+    color: #0088cc;
+    padding: var(--spacing-small) var(--spacing-medium);
+    border-radius: var(--border-radius);
+    text-decoration: none;
+    font-size: var(--font-size-base);
+    font-weight: var(--font-weight-bold);
+    text-transform: uppercase;
+    transition: all var(--transition-speed) ease;
+    box-shadow: 0 2px 4px rgba(0, 0, 0, 0.1);
+}
+
+.telegram-button:hover {
+    background-color: var(--color-secondary);
+    color: white;
+    transform: translateY(-2px);
+    box-shadow: 0 4px 6px rgba(0, 0, 0, 0.15);
+}
+
+.support h2 {
+    text-align: center;
+    margin-bottom: var(--spacing-xlarge);
+    font-size: var(--font-size-h2);
+    color: var(--color-text);
+    position: relative;
+    padding-bottom: var(--spacing-small);
+}
+
+.support-content {
+    display: flex;
+    justify-content: space-between;
+    align-items: flex-start;
+    gap: var(--spacing-xlarge);
+}
+
+.support-form {
+    width: 55%;
+}
+
+#support-form {
+    display: flex;
+    flex-direction: column;
+    gap: var(--spacing-medium);
+}
+
+#support-form input,
+#support-form textarea,
+#support-form select {
+    padding: var(--spacing-medium);
+    border: 1px solid var(--color-border);
+    border-radius: var(--border-radius);
+    font-size: var(--font-size-base);
+    transition: all var(--transition-speed) ease;
+    background-color: var(--color-background-light);
+}
+
+#support-form input:focus,
+#support-form textarea:focus,
+#support-form select:focus {
+    border-color: var(--color-primary);
+    outline: none;
+    box-shadow: 0 0 0 2px rgba(var(--color-primary-rgb), 0.1);
+}
+
+#support-form textarea {
+    height: 150px;
+    resize: vertical;
+}
+
+.form-footer {
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    margin-top: var(--spacing-medium);
+}
+
+.checkbox-container {
+    display: flex;
+    align-items: center;
+    font-size: var(--font-size-small);
+    color: var(--color-text);
+}
+
+.checkbox-container input {
+    margin-right: var(--spacing-small);
+}
+
+.checkbox-container a {
+    color: var(--color-primary);
+    text-decoration: none;
+    transition: color var(--transition-speed) ease;
+}
+
+.checkbox-container a:hover {
+    color: var(--color-secondary);
+}
+
+.submit-button {
+    padding: var(--spacing-medium) var(--spacing-large);
+    background-color: var(--color-primary);
+    color: white;
+    border: none;
+    border-radius: var(--border-radius);
+    cursor: pointer;
+    transition: all var(--transition-speed) ease;
+    font-size: var(--font-size-base);
+    font-weight: var(--font-weight-medium);
+}
+
+.submit-button:hover {
+    background-color: var(--color-secondary);
+    transform: translateY(-2px);
+    box-shadow: 0 4px 6px rgba(0, 0, 0, 0.1);
+}
+
+.support-image {
+    width: 45%;
+    height: 100%;
+}
+
+.support-image img {
+    width: 100%;
+    height: auto;
+    border-radius: var(--border-radius);
+    box-shadow: 0 4px 10px rgba(0, 0, 0, 0.1);
+    transition: transform var(--transition-speed) ease;
+}
+
+.support-image img:hover {
+    transform: scale(1.02);
+}
