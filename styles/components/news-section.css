@@ -3,6 +3,7 @@
     background-color: var(--color-background-light);
     width: 100vw;
     margin-left: calc(50% - 50vw);
+    margin-bottom: 40px;
 }
 
 .news h2 {
@@ -150,21 +151,17 @@
     color: var(--color-primary);
 }
 
-/* .news-item:hover .news-date::before {
-    color: var(--color-secondary);
-} */
-
 .news-excerpt {
     flex-grow: 1;
     margin-bottom: var(--spacing-medium);
     color: var(--color-text);
     font-size: 0.95rem;
     line-height: 1.6;
-    /* overflow: hidden;
+    overflow: hidden;
     display: -webkit-box;
-    -webkit-line-clamp: 4;
+    -webkit-line-clamp: 5;
     -webkit-box-orient: vertical;
-    text-overflow: ellipsis; */
+    text-overflow: ellipsis;
     transition: color var(--transition-speed) ease;
 }
 

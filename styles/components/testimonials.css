@@ -3,6 +3,7 @@
     padding: 60px 0;
     /* width: 100vw;
     margin-left: calc(-50vw + 50%); */
+    margin-bottom: var(--spacing-xxlarge);
 }
 
 .testimonials .container {
