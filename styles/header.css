@@ -60,18 +60,61 @@ nav ul li a:hover {
     color: var(--color-primary);
 }
 
+/* Удаляем старые стили подчеркивания */
 nav ul li a::after {
+    display: none; /* Отключаем базовое подчеркивание */
+}
+
+/* Обновляем стили для выпадающего меню */
+.dropdown {
+    position: relative;
+    padding-right: 15px;
+}
+
+/* Стрелка выпадающего меню */
+.dropdown:after {
+    content: '';
+    position: absolute;
+    top: 8px;
+    right: 0;
+    width: 8px;
+    height: 8px;
+    border-top: 2px solid #2C2D34;
+    border-right: 2px solid #2C2D34;
+    transform: rotate(135deg);
+    transition: transform 0.3s ease, top 0.3s ease;
+}
+
+/* Новые стили для подчеркивания */
+.dropdown > a:before {
     content: '';
     position: absolute;
     width: 0;
     height: 2px;
-    bottom: 0;
+    bottom: -2px;
     left: 0;
     background-color: var(--color-primary);
     transition: width 0.3s ease;
 }
 
-nav ul li a:hover::after {
+.dropdown:hover > a:before,
+.dropdown.active > a:before {
+    width: calc(100% - 15px); /* Ширина без учета места для стрелки */
+}
+
+/* Стили для обычных пунктов меню */
+nav ul li a:before {
+    content: '';
+    position: absolute;
+    width: 0;
+    height: 2px;
+    bottom: -2px;
+    left: 0;
+    background-color: var(--color-primary);
+    transition: width 0.3s ease;
+}
+
+nav ul li a:hover:before {
     width: 100%;
 }
 
@@ -93,7 +136,7 @@ header.scrolled nav ul li a {
     font-size: 1rem;
 }
 
-/* Стили для вып��дающего меню */
+/* Стили для выпадающего меню */
 .dropdown {
     position: relative;
     padding-right: 15px;
@@ -127,7 +170,6 @@ header.scrolled nav ul li a {
     left: 0;
     background-color: var(--color-background);
     box-shadow: 0 2px 10px rgba(0,0,0,0.1);
-    /* border-radius: var(--border-radius); */
     padding: var(--spacing-small) 0;
     min-width: 200px;
     z-index: 1001;
@@ -136,7 +178,6 @@ header.scrolled nav ul li a {
 
 .dropdown:hover .dropdown-menu {
     display: block;
-    animation: fadeIn 0.3s ease;
 }
 
 .dropdown-menu li {
@@ -195,172 +236,4 @@ header.scrolled nav ul li a {
     top: 12px;
     border-top: 2px solid var(--color-primary);
     border-right: 2px solid var(--color-primary);
-}
-
-/* Добавьте в конец файла */
-
-/* Мобильное меню */
-.mobile-menu-btn {
-    display: none;
-    background: none;
-    border: none;
-    cursor: pointer;
-    padding: 15px;  /* Увеличили padding для большей области клика */
-    z-index: 1002;
-    position: relative;  /* Добавили позиционирование */
-}
-
-.mobile-menu-btn span {
-    display: block;
-    width: 25px;
-    height: 2px;
-    background-color: var(--color-text);
-    margin: 6px 0;  /* Увеличили отступ между линиями */
-    transition: 0.3s;
-    position: relative;  /* Добавили позиционирование */
-}
-
-@media (max-width: 768px) {
-    .mobile-menu-btn {
-        display: block;
-    }
-
-    .main-nav {
-        position: fixed;
-        top: var(--header-height);
-        right: -100%;
-        width: 100%;
-        height: calc(100vh - var(--header-height));
-        background-color: var(--color-background);
-        transition: 0.3s;
-        padding: var(--spacing-medium);
-    }
-
-    .main-nav.active {
-        right: 0;
-    }
-
-    nav ul {
-        flex-direction: column;
-        align-items: flex-start;
-    }
-
-    nav ul li {
-        margin: var(--spacing-medium) 0;
-        width: 100%;
-    }
-
-    .dropdown-menu {
-        position: static;
-        box-shadow: none;
-        display: none;
-        padding-left: var(--spacing-medium);
-    }
-
-    .dropdown:hover .dropdown-menu {
-        animation: none;
-    }
-
-    .dropdown:after {
-        right: 10px;
-        top: 15px;
-    }
-}
-
-/* Стили для активного состояния бургер-меню */
-.mobile-menu-btn.active span:nth-child(1) {
-    transform: rotate(45deg) translate(6px, 6px);  /* Скорректировали смещение */
-}
-
-.mobile-menu-btn.active span:nth-child(2) {
-    opacity: 0;
-}
-
-.mobile-menu-btn.active span:nth-child(3) {
-    transform: rotate(-45deg) translate(6px, -6px);  /* Скорректировали смещение */
-}
-
-.sidebar-mobile-btn {
-    display: none;
-    background: none;
-    border: none;
-    cursor: pointer;
-    padding: 15px;
-    z-index: 1002;
-}
-
-@media (max-width: 768px) {
-    .sidebar-mobile-btn {
-        display: block;
-    }
-}
-
-/* Добавляем новые стили для десктопной версии */
-@media (min-width: 769px) {
-    /* Показываем обычную навигацию на десктопе */
-    .main-nav {
-        display: block;
-    }
-
-    /* Скрываем кнопку мобильного меню на десктопе */
-    .mobile-menu-btn,
-    .sidebar-mobile-btn {
-        display: none;
-    }
-}
-
-/* Стили для навигации в документации */
-.docs-nav.desktop-only {
-    display: none; /* По умолчанию скрыто */
-}
-
-@media (min-width: 769px) {
-    .docs-nav.desktop-only {
-        display: block;
-        padding: var(--spacing-medium);
-    }
-
-    .docs-nav.desktop-only ul {
-        display: flex;
-        justify-content: flex-end;
-        list-style: none;
-        margin: 0;
-        padding: 0;
-    }
-
-    .docs-nav.desktop-only li {
-        margin-left: var(--spacing-large);
-    }
-
-    .docs-nav.desktop-only a {
-        color: var(--color-text);
-        text-decoration: none;
-        font-size: 1.2rem;
-        font-weight: 500;
-        transition: color 0.3s ease;
-    }
-
-    .docs-nav.desktop-only a:hover {
-        color: var(--color-primary);
-    }
-}
-
-/* Обновляем стили для страниц документации */
-body.docs-page {
-    /* Для десктопной версии */
-    @media (min-width: 769px) {
-        .main-nav {
-            display: none; /* Скрываем обычную навигацию */
-        }
-        
-        .docs-nav.desktop-only {
-            display: block; /* Показываем навигацию документации */
-        }
-    }
-}
-
-@media (max-width: 768px) {
-    .docs-nav.desktop-only {
-        display: none; /* Скрываем десктопную навигацию на мобильных */
-    }
 }
