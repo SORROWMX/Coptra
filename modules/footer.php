@@ -32,9 +32,10 @@
                 <p>Email: info@koptra.ru</p>
                 <p>Телефон: +7 (123) 456-78-90</p>
                 <div class="social-icons">
-                    <a href="#" aria-label="VKontakte"><i class="fab fa-vk"></i></a>
-                    <a href="#" aria-label="Telegram"><i class="fab fa-telegram-plane"></i></a>
-                    <a href="#" aria-label="YouTube"><i class="fab fa-youtube"></i></a>
+                    <a href="#" aria-label="Facebook">📘</a>
+                    <a href="#" aria-label="Twitter">🐦</a>
+                    <a href="#" aria-label="Instagram">📷</a>
+                    <a href="#" aria-label="YouTube">🎥</a>
                 </div>
             </div>
         </div>
@@ -43,3 +44,4 @@
         </div>
     </footer>
     <script src="/scripts/main.js"></script></html>
+    
