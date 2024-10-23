@@ -29,7 +29,5 @@
             </div>
         </div>
     </main>
-
-   
-  
+</div>
     <?php include __DIR__ . '/../modules/footer.php'; ?>

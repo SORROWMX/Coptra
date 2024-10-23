@@ -2,13 +2,13 @@ body {
 	display: flex;
 	flex-direction: column;
 	min-height: 100vh;
-    margin-top: 12px !important;
+    margin: 0;
 	padding: 0;
 	overflow-x: hidden; /* Предотвращаем горизонтальную прокрутку */
 }
 
 .content {
-	padding-top: 60px; /* Измените это значение в соответствии с высотой вашего хедера */
+	padding-top: 40px; /* Измените это значение в соответствии с высотой вашего хедера */
 }
 
 .main-container {
@@ -35,7 +35,7 @@ body {
 	top: calc(var(--header-height) + var(--spacing-medium));
 }
 
-.nav-section h3 {
+.sidebar-section h3 {
 	font-size: var(--font-size-h3);
 	color: var(--color-primary);
 	margin-bottom: var(--spacing-medium);
@@ -44,21 +44,21 @@ body {
 	border-bottom: 2px solid var(--color-primary);
 }
 
-.nav-item {
+.sidebar-item {
 	margin-bottom: var(--spacing-small);
 }
 
-.nav-link {
+.sidebar-link {
 	color: var(--color-text);
 	text-decoration: none;
 	font-size: var(--font-size-base);
 	display: inline-block;
 	padding: var(--spacing-small) 0;
 	position: relative;
-	transition: transform var(--transition-speed) ease;
+	transition: color var(--transition-speed) ease;
 }
 
-.nav-link::after {
+.sidebar-link::after {
 	content: '';
 	position: absolute;
 	width: 100%;
@@ -71,58 +71,65 @@ body {
 	transition: transform var(--transition-speed) ease;
 }
 
-.nav-link:hover,
-.nav-link:focus {
-	transform: scale(1.05);
-}
-
-.nav-link:hover::after,
-.nav-link:focus::after {
+.sidebar-link:hover::after,
+.sidebar-link:focus::after {
 	transform: scaleX(1);
 	transform-origin: bottom left;
 }
 
-.nav-item.expandable {
+.sidebar-item.expandable {
 	position: relative;
-	padding-right: 15px;
+	padding-right: 20px;
 }
 
-.nav-item.expandable::after {
-	content: '▼';
+.sidebar-item.expandable .arrow {
+	width: 8px;
+	height: 8px;
+	border-top: 2px solid #2C2D34;
+	border-right: 2px solid #2C2D34;
+	transform: rotate(135deg);
+	transition: transform 0.3s ease, border-color 0.3s ease;
 	position: absolute;
 	right: 0;
 	top: 50%;
-	transform: translateY(-50%);
-	font-size: 0.8em;
-	color: var(--color-text);
-	transition: transform var(--transition-speed) ease;
+	margin-top: -6px;
 }
 
-.nav-item.expandable:hover::after {
-	transform: translateY(-50%) rotate(180deg);
+.sidebar-item.expandable:hover .arrow {
+	border-color: var(--color-primary);
+}
+
+.sidebar-item.expandable.active .arrow {
+	transform: rotate(-45deg);
+	margin-top: -2px;
+}
+
+.sidebar-item.expandable:hover .sub-menu {
+	display: none; /* Убираем отображение подменю при наведении */
 }
 
 .sub-menu {
 	display: none;
-	padding-left: var(--spacing-medium);
+	padding-left: 15px;
 	list-style-type: none;
-	margin-top: var(--spacing-small);
+	margin-top: 5px;
+	width: 100%;
 }
 
-.nav-item.expandable:hover .sub-menu {
+.sidebar-item.expandable.active .sub-menu {
 	display: block;
 }
 
-.sub-menu .nav-link {
+.sub-menu .sidebar-link {
 	font-size: calc(var(--font-size-base) * 0.9);
 }
 
 .documentation-content {
 	flex: 1;
-	margin-left: 365px; /* Уменьшаем отступ слева до 365px */
-	padding-left: 50px;
-	padding-right: 50px;
-	max-width: calc(100% - 365px); /* Обновляем максимальную ширину */
+	padding-left: 50px; /* Увеличиваем отступ слева */
+	padding-right: 50px; /* Увеличиваем отступ справа */
+	max-width: 1400px; /* Немного увеличиваем максимальную ирину контента */
+	margin-bottom: 90px;
 }
 
 .documentation-title {
@@ -133,40 +140,36 @@ body {
 	padding-top: 20px; /* Добавляем отступ сверху */
 }
 
-
 @media (max-width: 1600px) {
 	.main-container {
-		margin-left: -315px; /* Обновляем для поддержки нового расположения */
-		width: calc(100% + 365px);
+		margin-left: -160px;
+		width: calc(100% + 210px);
 	}
 
 	.documentation-content {
 		max-width: 1200px;
-		padding-left: 100px;
 	}
 }
 
 @media (max-width: 1400px) {
 	.main-container {
-		margin-left: -285px; /* Обновляем для поддержки нового расположения */
-		width: calc(100% + 335px);
+		margin-left: -130px;
+		width: calc(100% + 180px);
 	}
 
 	.documentation-content {
 		max-width: 1100px;
-		padding-left: 80px;
 	}
 }
 
 @media (max-width: 1200px) {
 	.main-container {
-		margin-left: -255px; /* Обновляем для поддержки нового расположения */
-		width: calc(100% + 305px);
+		margin-left: -100px;
+		width: calc(100% + 150px);
 	}
 
 	.documentation-content {
 		max-width: 1000px;
-		padding-left: 60px;
 	}
 }
 
@@ -189,20 +192,6 @@ body {
 		padding-right: 30px;
 		max-width: 100%;
 	}
-
-	.sidebar {
-		position: static;
-		width: 100%;
-		border-right: none;
-		border: none !important;
-		}
-
-	.documentation-content {
-		margin-left: 0;
-		padding-left: 20px;
-		padding-right: 20px;
-		max-width: 100%;
-	}
 }
 
 .documentation h1:first-child {
@@ -215,6 +204,7 @@ body {
     border-bottom: 2px solid var(--color-primary);
     padding-bottom: 0px;
 }
+
 .documentation h2 {
     font-size: var(--font-size-h2);
     color: var(--color-secondary);
@@ -231,9 +221,43 @@ body {
     margin-bottom: 0px;
 }
 
-.documentation p {
-    margin-bottom: 15px;
-    line-height: 1.6;
+.documentation-content {
+	flex: 1;
+	padding-left: 50px;
+	padding-right: 50px;
+	max-width: 1400px;
+}
+
+.documentation-content h1:first-child {
+	font-size: var(--font-size-h1);
+	text-align: center;
+	margin-bottom: 15px; /* Уменьшаем отступ снизу */
+	width: 100%;
+	padding-top: 20px;
+	color: var(--color-primary);
+	border-bottom: 2px solid var(--color-primary);
+	padding-bottom: 15px; /* Уменьшаем нижний отступ */
+}
+
+.documentation-content h2 {
+	font-size: var(--font-size-h2);
+	color: var(--color-secondary);
+	margin-top: 20px; /* Уменьшаем верхний отступ */
+	margin-bottom: 10px; /* Уменьшаем нижний отступ */
+	padding-bottom: 5px; /* Уменьшаем отступ от нижней границы */
+	border-bottom: 1px solid var(--color-border);
+}
+
+.documentation-content h3 {
+	font-size: var(--font-size-h3);
+	color: var(--color-text);
+	margin-top: 15px; /* Уменьшаем верхний отступ */
+	margin-bottom: 10px; /* Уменьшаем нижний отступ */
+}
+
+.documentation-content p {
+	margin-bottom: 15px;
+	line-height: 1.6;
 }
 
 .documentation-grid {
@@ -242,65 +266,95 @@ body {
     margin-top: 30px;
 }
 
-.nav-link:hover {
+.sidebar-link:hover {
 	color: var(--color-primary);
 }
 
-.nav-item.expandable:after {
-	content: '';
-	position: absolute;
-	top: 8px;
-	right: 0px;
-	box-sizing: border-box;
-	width: 8px;
-	height: 8px;
-	background-color: #ffffff;
-	border-top: 2px solid #2C2D34;
-	border-right: 2px solid #2C2D34;
-	transform: rotate(135deg);
-	transition: transform 0.3s ease, top 0.3s ease;
+.sidebar-item.expandable .sidebar-link {
+	display: flex;
+	align-items: center;
+	justify-content: space-between;
+	padding-right: 20px; /* Место для стрелочки */
 }
 
-.nav-item.expandable:hover:after {
-	transform: rotate(-45deg);
-	top: 12px;
+.sidebar-item.expandable:hover .arrow {
 	border-top: 2px solid var(--color-primary);
 	border-right: 2px solid var(--color-primary);
 }
 
+/* Удаляем старые стили для псевдоэлемента :after */
+.sidebar-item.expandable:after,
+.sidebar-item.expandable:hover:after {
+	content: none;
+}
+
+.sub-menu {
+	display: none;
+	padding-left: 5px; /* Уменьшаем отступ слева */
+	list-style-type: none;
+	margin: 0;
+	width: 100%; /* Занимает всю ширину родительского элемента */
+}
+
+.sidebar-item.expandable:hover .sub-menu {
+	display: none;  /* Убираем отображение подменю при наведении */
+}
+
 .sub-menu li {
-	margin-top: 5px;
-	display: block; /* Обеспечивает вертикальное расположение */
+	width: 100%; /* Занимает всю ширину .sub-menu */
 }
 
 .sub-menu a {
 	font-size: 13px;
 	color: #6c757d;
-	display: block;
+	display: inline-block;
 	padding: 3px 0;
-	white-space: normal; /* Разрешает перенос текста */
-	word-wrap: break-word; /* Переносит длинные слова */
+	position: relative;
+}
+
+.sub-menu a::after {
+	content: '';
+	position: absolute;
+	width: 100%;
+	height: 1px;
+	bottom: 0;
+	left: 0;
+	background-color: var(--color-primary);
+	transform: scaleX(0);
+	transform-origin: bottom right;
+	transition: transform var(--transition-speed) ease;
+}
+
+.sub-menu a:hover::after,
+.sub-menu a:focus::after {
+	transform: scaleX(1);
+	transform-origin: bottom left;
+}
+
+.extended-submenu {
+    padding-left: 20px; /* Увеличиваем отступ слева */
+    margin-top: 10px; /* Увеличиваем отступ сверху */
+    margin-bottom: 15px; /* Увеличиваем отступ снизу */
+}
+
+.extended-submenu li {
+    margin-bottom: 12px; /* Увеличиваем отступ между элементами */
+}
+
+.extended-submenu a {
+    font-size: 15px; /* Увеличиваем размер шрифта */
+    padding: 6px 0; /* Увеличиваем вертикальные отступы */
+    line-height: 1.4; /* Увеличиваем межстрочный интервал */
+}
+
+/* Если нужно увеличить ширину этого конкретного подменю */
+.sidebar-item.expandable .extended-submenu {
+    width: 110%; /* Делаем немного шире, чем родительский элемент */
+    max-width: none; /* Убираем ограничение максимальной ширины, если оно было */
 }
 
 .sub-menu a:hover {
 	color: var(--color-primary);
-}
-.sidebar {
-    width: 365px; /* Уменьшаем ширину с 375px до 365px */
-    padding: var(--spacing-medium);
-    background-color: var(--color-background-light);
-    border-right: 1px solid var(--color-border);
-    box-shadow: 2px 0 10px rgba(0, 0, 0, 0.1);
-    position: fixed;
-    left: 0;
-    top: 0;
-    bottom: 0;
-    overflow-y: auto;
-}
-
-.sidebar-nav {
-    position: sticky;
-    top: calc(var(--header-height) + var(--spacing-medium));
 }
 
 .sidebar-heading {
@@ -310,24 +364,6 @@ body {
     text-align: center;
     padding-bottom: var(--spacing-small);
     border-bottom: 2px solid var(--color-primary);
-}
-
-.sidebar-item {
-    margin-bottom: var(--spacing-small);
-}
-
-.sidebar-link {
-    color: var(--color-text);
-    text-decoration: none;
-    font-size: var(--font-size-base);
-    display: inline-block;
-    padding: var(--spacing-small) 0;
-    position: relative;
-    transition: color var(--transition-speed);
-}
-
-.sidebar-link:hover {
-    color: var(--color-primary);
 }
 
 .sidebar-expandable {
@@ -411,21 +447,6 @@ body {
     grid-template-columns: 365px 1fr;
     min-height: calc(100vh - var(--header-height));
     margin-top: var(--header-height);
-}
-
-.sidebar {
-    position: sticky;
-    top: var(--header-height);
-    height: calc(100vh - var(--header-height));
-    overflow-y: auto;
-    background-color: var(--color-background-light);
-    border-right: 1px solid var(--color-border);
-    padding: var(--spacing-medium);
-}
-
-.content {
-    padding: var(--spacing-large);
-    overflow-y: auto;
 }
 
 @media (max-width: 768px) {
