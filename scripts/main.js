@@ -259,6 +259,52 @@ const TestimonialsModule = {
     }
 };
 
+// Form Validation Module
+const FormModule = {
+    init() {
+        const form = document.getElementById('support-form');
+        if (!form) return;
+
+        const submitButton = form.querySelector('.submit-button');
+        const inputs = form.querySelectorAll('input, textarea, select');
+        const checkbox = form.querySelector('input[type="checkbox"]');
+
+        // Изначально блокируем кнопку
+        submitButton.disabled = true;
+        submitButton.classList.add('disabled');
+
+        // Проверяем валидность формы при изменении любого поля
+        const validateForm = () => {
+            const isValid = Array.from(inputs).every(input => {
+                if (input.type === 'checkbox') {
+                    return input.checked;
+                }
+                return input.value.trim() !== '';
+            });
+
+            submitButton.disabled = !isValid;
+            submitButton.classList.toggle('disabled', !isValid);
+        };
+
+        // Добавляем слушатели событий
+        inputs.forEach(input => {
+            input.addEventListener('input', validateForm);
+            input.addEventListener('change', validateForm);
+        });
+
+        checkbox.addEventListener('change', validateForm);
+
+        // Обработка отправки формы
+        form.addEventListener('submit', (e) => {
+            e.preventDefault();
+            if (!submitButton.disabled) {
+                // Здесь будет логика отправки формы
+                console.log('Form submitted');
+            }
+        });
+    }
+};
+
 // Initialize everything when DOM is ready
 document.addEventListener('DOMContentLoaded', () => {
     HeaderModule.init();
@@ -267,4 +313,5 @@ document.addEventListener('DOMContentLoaded', () => {
     FAQModule.init();
     AboutSectionModule.init();
     TestimonialsModule.init();
+    FormModule.init();
 });

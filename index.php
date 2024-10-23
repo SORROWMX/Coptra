@@ -128,7 +128,7 @@
 								<div class="team-member">
 									<img
 										src="https://placehold.co/600x400?text=Сотрудник+2"
-										alt="Имя Ф��милия"
+										alt="Имя Фамилия"
 										loading="lazy"
 									/>
 									<div class="member-info">
@@ -640,23 +640,45 @@
 					<div class="support-content">
 					<div class="support-form">
 								<form id="support-form">
-									<input type="text" id="name" name="name" placeholder="Ваше имя" required>
-									<input type="email" id="email" name="email" placeholder="Email" required>
-									<input type="tel" id="phone" name="phone" placeholder="Номер телефона" required>
-									<select id="topic" name="topic" required>
-										<option value="" disabled selected>Выберите тему сообщения</option>
-										<option value="general">Общий вопрос</option>
-										<option value="support">Техническая поддержка</option>
-										<option value="order">Заказ продукции</option>
-										<option value="partnership">Партнерство</option>
-									</select>
-									<textarea id="message" name="message" placeholder="Ваше сообщение" required></textarea>
+									<div class="form-group">
+										<input type="text" id="name" name="name" placeholder="Ваше имя" required>
+										<label for="name">Ваше имя</label>
+									</div>
+									
+									<div class="form-group">
+										<input type="email" id="email" name="email" placeholder="Email" required>
+										<label for="email">Email</label>
+									</div>
+									
+									<div class="form-group">
+										<input type="tel" id="phone" name="phone" placeholder="Номер телефона" required>
+										<label for="phone">Номер телефона</label>
+									</div>
+									
+									<div class="form-group">
+										<select id="topic" name="topic" required>
+											<option value="" disabled selected hidden></option>
+											<option value="general">Общий вопрос</option>
+											<option value="support">Техническая поддержка</option>
+											<option value="order">Заказ продукции</option>
+											<option value="partnership">Партнерство</option>
+										</select>
+										<label for="topic">Тема сообщения</label>
+									</div>
+									
+									<div class="form-group">
+										<textarea id="message" name="message" placeholder="Ваше сообщение" required></textarea>
+										<label for="message">Ваше сообщение</label>
+									</div>
+									
 									<div class="form-footer">
-										<label class="checkbox-container">
-											<input type="checkbox" required>
-											<span>Согласен с <a href="#">политикой конфиденциальности</a></span>
-										</label>
-										<button type="submit" class="submit-button">Отправить</button>
+										<div class="checkbox-container">
+											<input type="checkbox" id="privacy" required>
+											<label for="privacy">Согласен с <a href="#">политикой конфиденциальности</a></label>
+										</div>
+										<button type="submit" class="submit-button">
+											<span>Отправить сообщение</span>
+										</button>
 									</div>
 								</form>
 								</div>
@@ -670,3 +692,4 @@
 			</div>
 		</main>
 		<?php include 'modules/footer.php'; ?>
+

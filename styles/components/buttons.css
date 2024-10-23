@@ -176,3 +176,47 @@
     display: inline-block;
     transition: transform var(--transition-speed) ease;
 }
+
+/* Добавляем новые стили для .submit_button */
+.submit-button {
+    width: 100%;
+    padding: var(--spacing-medium) var(--spacing-xlarge);
+    font-size: var(--font-size-base);
+    font-weight: var(--font-weight-medium);
+    /* text-transform: uppercase; */
+    letter-spacing: 1px;
+    color: var(--color-text-light);
+    background-color: var(--color-primary);
+    border: 2px solid var(--color-primary);
+    border-radius: var(--border-radius);
+    cursor: pointer;
+    transition: all var(--transition-speed) ease;
+}
+
+.submit-button:hover {
+    background-color: var(--color-primary);
+    color: var(--color-text-light);
+    transform: translateY(-2px);
+    box-shadow: 0 4px 12px rgba(var(--color-primary-rgb), 0.2);
+}
+
+.submit-button:active {
+    transform: translateY(0);
+}
+
+.submit-button.disabled {
+    background-color: var(--color-primary);
+    border-color: var(--color-border);
+    cursor: not-allowed;
+    opacity: 0.7;
+}
+
+.submit-button:not(.disabled):hover {
+    /* background-color: var(--color-secondary); */
+    transform: translateY(-2px);
+    box-shadow: 0 4px 12px rgba(var(--color-primary-rgb), 0.2);
+}
+
+.submit-button:not(.disabled):active {
+    transform: translateY(0);
+}
