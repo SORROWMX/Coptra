@@ -13,6 +13,7 @@
 @import 'components/news-section.css';
 @import 'components/faq.css';
 @import 'components/about.css';
+@import 'components/sidebar.css';
 
 * {
     margin: 0;
