@@ -310,7 +310,6 @@ const MobileMenuModule = {
     init() {
         const mobileMenuBtn = document.querySelector('.mobile-menu-btn');
         const mainNav = document.querySelector('.main-nav');
-        // Обновляем селектор, чтобы он соответствовал HTML
         const sidebarMobileBtn = document.querySelector('.sidebar-mobile-btn.header-btn');
         const sidebar = document.querySelector('.sidebar');
 
@@ -333,9 +332,7 @@ const MobileMenuModule = {
 
         // Sidebar mobile handlers
         if (sidebarMobileBtn && sidebar) {
-            console.log('Sidebar button found:', sidebarMobileBtn); // Добавляем для отладки
             sidebarMobileBtn.addEventListener('click', function() {
-                console.log('Sidebar button clicked'); // Добавляем для отладки
                 this.classList.toggle('active');
                 sidebar.classList.toggle('active');
             });
@@ -348,8 +345,6 @@ const MobileMenuModule = {
                     sidebar.classList.remove('active');
                 });
             });
-        } else {
-            console.log('Sidebar button or sidebar not found'); // Добавляем для отладки
         }
 
         // Close menus when clicking outside
