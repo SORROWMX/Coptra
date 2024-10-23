@@ -31,7 +31,7 @@ body {
 }
 
 .sidebar-nav {
-	position: sticky;
+	position: fixed;
 	top: calc(var(--header-height) + var(--spacing-medium));
 }
 
