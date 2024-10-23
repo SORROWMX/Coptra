@@ -12,22 +12,23 @@ header {
 
 .header-container {
     display: flex;
-    align-items: center;
     justify-content: space-between;
-    padding: var(--spacing-small) var(--spacing-medium);
-    height: var(--header-height);
+    align-items: center;
+    height: 100%;
+    padding: 0 var(--spacing-medium);
 }
 
 .logo {
     display: flex;
     align-items: center;
     text-decoration: none;
-    color: var(--color-text);
+    color: var(--color-primary);
 }
 
 .logo img {
     height: 40px;
-    margin-right: 10px;
+    margin-right: var(--spacing-small);
+    transition: height 0.3s cubic-bezier(0.25, 0.8, 0.25, 1);
 }
 
 .logo span {

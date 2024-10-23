@@ -286,17 +286,18 @@ body {
 	color: var(--color-primary);
 }
 .sidebar {
-    width: 100%; /* Изменено: занимает всю ширину экрана */
-    position: fixed;
-    right: -100%; /* Изменено: начальная позиция за пределами экрана справа */
-    top: 0; /* Изменено: начинается с самого верха */
-    height: 100vh; /* Изменено: на всю высоту viewport */
-    background-color: var(--color-background-light);
-    transition: right 0.3s ease; /* Изменено: анимация для right */
-    z-index: 1001;
+    width: 365px; /* Уменьшаем ширину с 375px до 365px */
     padding: var(--spacing-medium);
+    background-color: var(--color-background-light);
+    border-right: 1px solid var(--color-border);
+    box-shadow: 2px 0 10px rgba(0, 0, 0, 0.1);
+    position: fixed;
+    left: 0;
+    top: 0;
+    bottom: 0;
     overflow-y: auto;
 }
+
 .sidebar-nav {
     position: sticky;
     top: calc(var(--header-height) + var(--spacing-medium));
@@ -434,14 +435,13 @@ body {
 
     .sidebar {
         position: fixed;
-        right: -100%; /* Изменено с left: -365px */
-        width: 100%;
-        transition: right 0.3s ease; /* Изменено с left на right */
+        left: -365px;
+        transition: left 0.3s ease;
         z-index: 1000;
     }
 
     .sidebar.active {
-        right: 0; /* Изменено с left: 0 */
+        left: 0;
     }
 
     .content {
@@ -467,80 +467,3 @@ body {
         display: block;
     }
 }
-
-/* Добавьте кнопку для мобильного сайдбара */
-.sidebar-mobile-btn {
-    display: none;
-    background: none;
-    border: none;
-    cursor: pointer;
-    padding: 15px;
-    z-index: 1002;
-    margin-left: auto; /* Выравнивание справа */
-}
-
-.sidebar-mobile-btn span {
-    display: block;
-    width: 25px;
-    height: 2px;
-    background-color: var(--color-text);
-    margin: 6px 0;
-    transition: 0.3s;
-}
-
-/* Медиа-запрос для мобильной версии */
-@media (max-width: 768px) {
-    .sidebar-mobile-btn {
-        display: block;
-    }
-
-    .sidebar {
-        position: fixed;
-        right: -100%; /* Изменено с left на right */
-        top: var(--header-height);
-        width: 100%; /* Полная ширина на мобильных */
-        height: calc(100vh - var(--header-height));
-        background-color: var(--color-background);
-        transition: 0.3s;
-        z-index: 1001;
-        padding: var(--spacing-medium);
-    }
-
-    .sidebar.active {
-        right: 0; /* Изменено с left на right */
-        box-shadow: -2px 0 10px rgba(0, 0, 0, 0.1);
-    }
-
-    /* Стили для активного состояния кнопки */
-    .sidebar-mobile-btn.active span:nth-child(1) {
-        transform: rotate(45deg) translate(6px, 6px);
-    }
-
-    .sidebar-mobile-btn.active span:nth-child(2) {
-        opacity: 0;
-    }
-
-    .sidebar-mobile-btn.active span:nth-child(3) {
-        transform: rotate(-45deg) translate(6px, -6px);
-    }
-
-    /* Корректировка контента при открытом сайдбаре */
-    .page-container {
-        flex-direction: column;
-    }
-
-    .content {
-        margin-left: 0;
-        width: 100%;
-    }
-}
-
-/* Стили для десктопной версии */
-@media (min-width: 769px) {
-    .sidebar {
-        width: 250px;
-        height: calc(100vh - var(--header-height));
-        overflow-y: auto;
-    }
-}
-
