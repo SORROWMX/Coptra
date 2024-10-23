@@ -28,6 +28,10 @@ body {
 	background-color: var(--color-background-light);
 	border-right: 1px solid var(--color-border);
 	box-shadow: 2px 0 10px rgba(0, 0, 0, 0.1);
+	position: sticky; /* Добавляем sticky позиционирование */
+	top: var(--header-height); /* Отступ от в��рха равен высе шапки */
+	height: calc(100vh - var(--header-height)); /* Высота равна высоте viewport минус высота шапки */
+	overflow-y: auto; /* Добавляем прокрутку если контент не помещается */
 }
 
 .sidebar-nav {
@@ -133,7 +137,7 @@ body {
 }
 
 .documentation-title {
-	font-size: 36px; /* Увеличиваем размер шрифта */
+	font-size: 36px; /* Увеличивам размер шрифта */
 	text-align: center; /* Центрируем текст */
 	margin-bottom: 30px; /* Добавляем отступ снизу */
 	width: 100%; /* Занимаем всю ширину */
@@ -293,7 +297,7 @@ body {
 	padding-left: 5px; /* Уменьшаем отступ слева */
 	list-style-type: none;
 	margin: 0;
-	width: 100%; /* Занимает всю ширину родительского элемента */
+	width: 100%; /* Занимает всю ширину родительского эл��а */
 }
 
 .sidebar-item.expandable:hover .sub-menu {
@@ -338,7 +342,7 @@ body {
 }
 
 .extended-submenu li {
-    margin-bottom: 12px; /* Увеличиваем отступ между элементами */
+    margin-bottom: 12px; /* Увеличиваем отступ между элеметами */
 }
 
 .extended-submenu a {
@@ -357,120 +361,10 @@ body {
 	color: var(--color-primary);
 }
 
-.sidebar-heading {
-    font-size: var(--font-size-h3);
-    color: var(--color-primary);
-    margin-bottom: var(--spacing-medium);
-    text-align: center;
-    padding-bottom: var(--spacing-small);
-    border-bottom: 2px solid var(--color-primary);
-}
+/* Remove these classes as they're no longer needed */
 
-.sidebar-expandable {
-    position: relative;
-    padding-right: 15px;
-}
 
-.sidebar-expandable:after {
-    content: '';
-    position: absolute;
-    top: 15px;
-    right: 25px;
-    box-sizing: border-box;
-    width: 8px;
-    height: 8px;
-    background-color: #ffffff;
-    border-top: 2px solid #2C2D34;
-    border-right: 2px solid #2C2D34;
-    transform: rotate(135deg);
-    transition: transform 0.3s ease, top 0.3s ease;
-}
-
-.sidebar-submenu {
-    display: none;
-    padding-left: 0px;
-    list-style-type: none;
-    margin: 0;
-    width: 100%;
-}
-
-.sidebar-submenu li {
-    flex: 1;
-    margin-top: 5px; /* Небольшой отступ между элементами */
-}
-
-.sidebar-submenu a {
-    font-size: 12px; /* Уменьшаем размер шрифта */
-    color: #6c757d;
-    display: block;
-    padding: 3px 2px;
-    white-space: nowrap; /* Запрещаем перенос текста */
-    overflow: hidden;
-    text-overflow: ellipsis; /* Добавляем многоточие при переполнении */
-}
-
-.sidebar-submenu a:hover {
-    color: var(--color-primary);
-}
-.sidebar-expandable.active:after {
-    transform: rotate(-45deg);
-    top: 12px;
-    border-top: 2px solid var(--color-primary);
-    border-right: 2px solid var(--color-primary);
-}
-
-.sidebar-expandable.active .sidebar-submenu {
-    display: flex;
-    flex-wrap: nowrap; /* Предотвращаем перенос на новую строку */
-    justify-content: space-between; /* Распределяем элементы равномерно */
-}
-
-/* Разрешаем выделение текста в документации и боковой панели */
-.documentation,
-.sidebar {
-    user-select: text;
-    -webkit-user-select: text;
-    -moz-user-select: text;
-    -ms-user-select: text;
-}
-
-.documentation *,
-.sidebar * {
-    user-select: text;
-    -webkit-user-select: text;
-    -moz-user-select: text;
-    -ms-user-select: text;
-}
-
-.page-container {
-    display: grid;
-    grid-template-columns: 365px 1fr;
-    min-height: calc(100vh - var(--header-height));
-    margin-top: var(--header-height);
-}
-
-@media (max-width: 768px) {
-    .page-container {
-        grid-template-columns: 1fr;
-    }
-
-    .sidebar {
-        position: fixed;
-        left: -365px;
-        transition: left 0.3s ease;
-        z-index: 1000;
-    }
-
-    .sidebar.active {
-        left: 0;
-    }
-
-    .content {
-        padding-left: var(--spacing-medium);
-        padding-right: var(--spacing-medium);
-    }
-}
-
+/* Update mobile menu styles */
 .mobile-menu-toggle {
     display: none;
     background: none;
@@ -487,4 +381,90 @@ body {
     .mobile-menu-toggle {
         display: block;
     }
+    
+    .sidebar {
+        position: fixed;
+        right: -365px; /* Изменено с left на right */
+        transition: right 0.3s ease; /* Изменено с left на right */
+        z-index: 1000;
+    }
+
+    .sidebar.active {
+        right: 0; /* Изменено с left на right */
+    }
 }
+
+.page-container {
+    display: grid;
+    grid-template-columns: 365px 1fr;
+    min-height: calc(100vh - var(--header-height));
+    margin-top: var(--header-height);
+}
+
+@media (max-width: 768px) {
+    .page-container {
+        grid-template-columns: 1fr;
+    }
+
+    .sidebar {
+        position: fixed;
+        right: -100%;
+        width: 100%;
+        top: var(--header-height);
+        height: calc(100vh - var(--header-height));
+        transition: all 0.3s ease;
+        z-index: 1000;
+        background-color: var(--color-background-light);
+        overflow-y: auto;
+    }
+
+    .sidebar.active {
+        right: 0;
+        transition: all 0.3s ease;
+    }
+
+    .sidebar-nav {
+        position: fixed;
+        top: calc(var(--header-height) + var(--spacing-medium));
+        width: calc(100% - 2 * var(--spacing-medium));
+        height: calc(100vh - var(--header-height) - 2 * var(--spacing-medium));
+        overflow-y: auto;
+    }
+
+    .documentation-content {
+        margin-left: 0;
+        padding-left: 20px;
+        padding-right: 20px;
+        max-width: 100%;
+    }
+
+    .content {
+        padding-left: var(--spacing-medium);
+        padding-right: var(--spacing-medium);
+    }
+}
+
+/* Update mobile styles */
+@media (max-width: 768px) {
+    .sidebar {
+        position: fixed;
+        top: var(--header-height);
+        right: -100%;
+        width: 100%;
+        height: calc(100vh - var(--header-height));
+        background-color: var(--color-background);
+        transition: right 0.3s ease;
+        z-index: 1000;
+        overflow-y: auto;
+    }
+
+    .sidebar.active {
+        right: 0;
+    }
+
+    /* Удалите или закомментируйте все дублирующиеся стили для .sidebar-mobile-btn */
+}
+
+/* Mobile menu button styles */
+
+

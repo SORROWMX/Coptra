@@ -305,6 +305,74 @@ const FormModule = {
     }
 };
 
+// Mobile Menu Module
+const MobileMenuModule = {
+    init() {
+        const mobileMenuBtn = document.querySelector('.mobile-menu-btn');
+        const mainNav = document.querySelector('.main-nav');
+        // Обновляем селектор, чтобы он соответствовал HTML
+        const sidebarMobileBtn = document.querySelector('.sidebar-mobile-btn.header-btn');
+        const sidebar = document.querySelector('.sidebar');
+
+        // Mobile main menu handlers
+        if (mobileMenuBtn && mainNav) {
+            mobileMenuBtn.addEventListener('click', function() {
+                this.classList.toggle('active');
+                mainNav.classList.toggle('active');
+            });
+
+            // Close menu when clicking menu items
+            const menuItems = mainNav.querySelectorAll('a');
+            menuItems.forEach(item => {
+                item.addEventListener('click', () => {
+                    mobileMenuBtn.classList.remove('active');
+                    mainNav.classList.remove('active');
+                });
+            });
+        }
+
+        // Sidebar mobile handlers
+        if (sidebarMobileBtn && sidebar) {
+            console.log('Sidebar button found:', sidebarMobileBtn); // Добавляем для отладки
+            sidebarMobileBtn.addEventListener('click', function() {
+                console.log('Sidebar button clicked'); // Добавляем для отладки
+                this.classList.toggle('active');
+                sidebar.classList.toggle('active');
+            });
+
+            // Close sidebar when clicking links
+            const sidebarLinks = sidebar.querySelectorAll('a');
+            sidebarLinks.forEach(link => {
+                link.addEventListener('click', () => {
+                    sidebarMobileBtn.classList.remove('active');
+                    sidebar.classList.remove('active');
+                });
+            });
+        } else {
+            console.log('Sidebar button or sidebar not found'); // Добавляем для отладки
+        }
+
+        // Close menus when clicking outside
+        document.addEventListener('click', (event) => {
+            // Close main nav if clicking outside
+            if (mainNav && !mainNav.contains(event.target) && 
+                !mobileMenuBtn?.contains(event.target) && 
+                mainNav.classList.contains('active')) {
+                mobileMenuBtn?.classList.remove('active');
+                mainNav.classList.remove('active');
+            }
+
+            // Close sidebar if clicking outside
+            if (sidebar && !sidebar.contains(event.target) && 
+                !sidebarMobileBtn?.contains(event.target) && 
+                sidebar.classList.contains('active')) {
+                sidebarMobileBtn?.classList.remove('active');
+                sidebar.classList.remove('active');
+            }
+        });
+    }
+};
+
 // Initialize everything when DOM is ready
 document.addEventListener('DOMContentLoaded', () => {
     HeaderModule.init();
@@ -314,4 +382,5 @@ document.addEventListener('DOMContentLoaded', () => {
     AboutSectionModule.init();
     TestimonialsModule.init();
     FormModule.init();
+    MobileMenuModule.init();
 });
