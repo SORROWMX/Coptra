@@ -268,3 +268,60 @@ document.addEventListener('DOMContentLoaded', () => {
     AboutSectionModule.init();
     TestimonialsModule.init();
 });
+
+// Добавьте этот код в main.js
+document.addEventListener('DOMContentLoaded', function() {
+    const mobileMenuBtn = document.querySelector('.mobile-menu-btn');
+    const mainNav = document.querySelector('.main-nav');
+
+    if (mobileMenuBtn && mainNav) {
+        mobileMenuBtn.addEventListener('click', function() {
+            this.classList.toggle('active');
+            mainNav.classList.toggle('active');
+        });
+    }
+
+    // Закрытие меню при клике на пункт меню
+    const menuItems = document.querySelectorAll('.main-nav a');
+    menuItems.forEach(item => {
+        item.addEventListener('click', () => {
+            mobileMenuBtn.classList.remove('active');
+            mainNav.classList.remove('active');
+        });
+    });
+
+    // Обновленный код для сайдбара
+    const sidebarMobileBtn = document.querySelector('.sidebar-mobile-btn');
+    const sidebar = document.querySelector('.sidebar');
+
+    if (sidebarMobileBtn && sidebar) {
+        sidebarMobileBtn.addEventListener('click', function() {
+            this.classList.toggle('active');
+            sidebar.classList.toggle('active');
+            
+            // Добавляем класс для блокировки прокрутки body
+            document.body.classList.toggle('sidebar-open');
+        });
+
+        // Закрытие сайдбара при клике вне его области
+        document.addEventListener('click', function(event) {
+            if (!sidebar.contains(event.target) && 
+                !sidebarMobileBtn.contains(event.target) && 
+                sidebar.classList.contains('active')) {
+                sidebarMobileBtn.classList.remove('active');
+                sidebar.classList.remove('active');
+                document.body.classList.remove('sidebar-open');
+            }
+        });
+
+        // Закрытие сайдбара при клике на ссылку
+        const sidebarLinks = sidebar.querySelectorAll('a');
+        sidebarLinks.forEach(link => {
+            link.addEventListener('click', () => {
+                sidebarMobileBtn.classList.remove('active');
+                sidebar.classList.remove('active');
+                document.body.classList.remove('sidebar-open');
+            });
+        });
+    }
+});

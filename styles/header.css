@@ -12,23 +12,22 @@ header {
 
 .header-container {
     display: flex;
-    justify-content: space-between;
     align-items: center;
-    height: 100%;
-    padding: 0 var(--spacing-medium);
+    justify-content: space-between;
+    padding: var(--spacing-small) var(--spacing-medium);
+    height: var(--header-height);
 }
 
 .logo {
     display: flex;
     align-items: center;
     text-decoration: none;
-    color: var(--color-primary);
+    color: var(--color-text);
 }
 
 .logo img {
     height: 40px;
-    margin-right: var(--spacing-small);
-    transition: height 0.3s cubic-bezier(0.25, 0.8, 0.25, 1);
+    margin-right: 10px;
 }
 
 .logo span {
@@ -94,7 +93,7 @@ header.scrolled nav ul li a {
     font-size: 1rem;
 }
 
-/* Стили для выпадающего меню */
+/* Стили для вып��дающего меню */
 .dropdown {
     position: relative;
     padding-right: 15px;
@@ -196,4 +195,172 @@ header.scrolled nav ul li a {
     top: 12px;
     border-top: 2px solid var(--color-primary);
     border-right: 2px solid var(--color-primary);
+}
+
+/* Добавьте в конец файла */
+
+/* Мобильное меню */
+.mobile-menu-btn {
+    display: none;
+    background: none;
+    border: none;
+    cursor: pointer;
+    padding: 15px;  /* Увеличили padding для большей области клика */
+    z-index: 1002;
+    position: relative;  /* Добавили позиционирование */
+}
+
+.mobile-menu-btn span {
+    display: block;
+    width: 25px;
+    height: 2px;
+    background-color: var(--color-text);
+    margin: 6px 0;  /* Увеличили отступ между линиями */
+    transition: 0.3s;
+    position: relative;  /* Добавили позиционирование */
+}
+
+@media (max-width: 768px) {
+    .mobile-menu-btn {
+        display: block;
+    }
+
+    .main-nav {
+        position: fixed;
+        top: var(--header-height);
+        right: -100%;
+        width: 100%;
+        height: calc(100vh - var(--header-height));
+        background-color: var(--color-background);
+        transition: 0.3s;
+        padding: var(--spacing-medium);
+    }
+
+    .main-nav.active {
+        right: 0;
+    }
+
+    nav ul {
+        flex-direction: column;
+        align-items: flex-start;
+    }
+
+    nav ul li {
+        margin: var(--spacing-medium) 0;
+        width: 100%;
+    }
+
+    .dropdown-menu {
+        position: static;
+        box-shadow: none;
+        display: none;
+        padding-left: var(--spacing-medium);
+    }
+
+    .dropdown:hover .dropdown-menu {
+        animation: none;
+    }
+
+    .dropdown:after {
+        right: 10px;
+        top: 15px;
+    }
+}
+
+/* Стили для активного состояния бургер-меню */
+.mobile-menu-btn.active span:nth-child(1) {
+    transform: rotate(45deg) translate(6px, 6px);  /* Скорректировали смещение */
+}
+
+.mobile-menu-btn.active span:nth-child(2) {
+    opacity: 0;
+}
+
+.mobile-menu-btn.active span:nth-child(3) {
+    transform: rotate(-45deg) translate(6px, -6px);  /* Скорректировали смещение */
+}
+
+.sidebar-mobile-btn {
+    display: none;
+    background: none;
+    border: none;
+    cursor: pointer;
+    padding: 15px;
+    z-index: 1002;
+}
+
+@media (max-width: 768px) {
+    .sidebar-mobile-btn {
+        display: block;
+    }
+}
+
+/* Добавляем новые стили для десктопной версии */
+@media (min-width: 769px) {
+    /* Показываем обычную навигацию на десктопе */
+    .main-nav {
+        display: block;
+    }
+
+    /* Скрываем кнопку мобильного меню на десктопе */
+    .mobile-menu-btn,
+    .sidebar-mobile-btn {
+        display: none;
+    }
+}
+
+/* Стили для навигации в документации */
+.docs-nav.desktop-only {
+    display: none; /* По умолчанию скрыто */
+}
+
+@media (min-width: 769px) {
+    .docs-nav.desktop-only {
+        display: block;
+        padding: var(--spacing-medium);
+    }
+
+    .docs-nav.desktop-only ul {
+        display: flex;
+        justify-content: flex-end;
+        list-style: none;
+        margin: 0;
+        padding: 0;
+    }
+
+    .docs-nav.desktop-only li {
+        margin-left: var(--spacing-large);
+    }
+
+    .docs-nav.desktop-only a {
+        color: var(--color-text);
+        text-decoration: none;
+        font-size: 1.2rem;
+        font-weight: 500;
+        transition: color 0.3s ease;
+    }
+
+    .docs-nav.desktop-only a:hover {
+        color: var(--color-primary);
+    }
+}
+
+/* Обновляем стили для страниц документации */
+body.docs-page {
+    /* Для десктопной версии */
+    @media (min-width: 769px) {
+        .main-nav {
+            display: none; /* Скрываем обычную навигацию */
+        }
+        
+        .docs-nav.desktop-only {
+            display: block; /* Показываем навигацию документации */
+        }
+    }
+}
+
+@media (max-width: 768px) {
+    .docs-nav.desktop-only {
+        display: none; /* Скрываем десктопную навигацию на мобильных */
+    }
 }
