@@ -29,7 +29,8 @@
     /* Макет */
     --max-width: 1200px;
     --header-height: 80px;
-
+    --footer-height: 314px;
+    
     /* Добавьте эти новые переменные */
     --font-weight-normal: 400;
     --font-weight-medium: 500;
