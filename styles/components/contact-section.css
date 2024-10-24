@@ -1,4 +1,4 @@
-.support {
+.contact {
     padding: var(--spacing-xxlarge) 0;
     padding-top: 30px;
     /* background-color: var(--color-background-light); */
@@ -70,7 +70,7 @@
     box-shadow: 0 4px 6px rgba(0, 0, 0, 0.15);
 }
 
-.support h2 {
+.contact h2 {
     text-align: center;
     margin-bottom: var(--spacing-xlarge);
     font-size: var(--font-size-h2);
@@ -79,14 +79,14 @@
     padding-bottom: var(--spacing-small);
 }
 
-.support-content {
+.contact-content {
     display: flex;
     justify-content: space-between;
     align-items: flex-start;
     gap: var(--spacing-xlarge);
 }
 
-.support-form {
+.contact-form {
     width: 55%;
     background: var(--color-background-light);
     padding: var(--spacing-xlarge);
@@ -94,7 +94,7 @@
     box-shadow: 0 8px 24px rgba(0, 0, 0, 0.08);
 }
 
-#support-form {
+#contact-form {
     display: flex;
     flex-direction: column;
     gap: var(--spacing-medium);
@@ -155,9 +155,9 @@
     color: var(--color-text);
 }
 
-#support-form input,
-#support-form textarea,
-#support-form select {
+#contact-form input,
+#contact-form textarea,
+#contact-form select {
     width: 100%;
     padding: var(--spacing-medium);
     border: 2px solid var(--color-border);
@@ -167,21 +167,21 @@
     background-color: transparent;
 }
 
-#support-form input::placeholder,
-#support-form textarea::placeholder,
-#support-form select::placeholder {
+#contact-form input::placeholder,
+#contact-form textarea::placeholder,
+#contact-form select::placeholder {
     color: transparent;
 }
 
-#support-form input:focus,
-#support-form textarea:focus,
-#support-form select:focus {
+#contact-form input:focus,
+#contact-form textarea:focus,
+#contact-form select:focus {
     border-color: var(--color-primary);
     outline: none;
     box-shadow: 0 0 0 4px rgba(var(--color-primary-rgb), 0.1);
 }
 
-#support-form select {
+#contact-form select {
     appearance: none;
     background-image: url("data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' width='12' height='12' fill='%23666' viewBox='0 0 16 16'%3E%3Cpath d='M8 11L3 6h10l-5 5z'/%3E%3C/svg%3E");
     background-repeat: no-repeat;
@@ -229,7 +229,7 @@
     text-decoration: underline;
 }
 
-#support-form textarea {
+#contact-form textarea {
     resize: vertical;
     min-height: 100px;
     max-height: 250px;

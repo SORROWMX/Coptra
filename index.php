@@ -37,10 +37,7 @@
 
 						<div class="company-description section-transition">
 							<p>
-								Коптра - молодая инновационная компания, специализирующаяся на
-								разработке и производстве высокотехнологичных дронов для
-								образования и бизнеса. Наша цель - сделать передовые технологии
-								доступными и простыми в использовании.
+							Коптра - молодая инновационная компания, входящая в группу АТС ТЕХНОЛОГИИ. Мы специализируемся на разработке и производстве высокотехнологичных дронов, делая передовые технологии доступными и простыми в использовании для образования и бизнеса.
 							</p>
 						</div>
 
@@ -616,7 +613,7 @@
 					</div>
 				</section>
 
-				<!-- Поддержка-->
+				<!-- Связь с нами -->
 				<!-- Telegram блок -->
 				<section id="telegram-community" class="telegram-community">
 					<div class="container">
@@ -634,12 +631,13 @@
 						</div>
 					</div>
 				</section>
-				<section id="support" class="support">
+				<!-- Форма обратной связи -->
+				<section id="contact" class="contact">
 					<div class="container">
 					<h2>Связаться с нами</h2>
-					<div class="support-content">
-					<div class="support-form">
-								<form id="support-form">
+					<div class="contact-content">
+					<div class="contact-form">
+								<form id="contact-form">
 									<div class="form-group">
 										<input type="text" id="name" name="name" placeholder="Ваше имя" required>
 										<label for="name">Ваше имя</label>
@@ -682,7 +680,7 @@
 									</div>
 								</form>
 								</div>
-								<div class="support-image">
+								<div class="contact-image">
 								<img src="https://placehold.co/600x400?text=Картинка+для+поддержки" alt="Поддержка клиентов">
 							</div>
 						</div>

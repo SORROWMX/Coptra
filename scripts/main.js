@@ -262,7 +262,7 @@ const TestimonialsModule = {
 // Form Validation Module
 const FormModule = {
     init() {
-        const form = document.getElementById('support-form');
+        const form = document.getElementById('contact-form');
         if (!form) return;
 
         const submitButton = form.querySelector('.submit-button');
