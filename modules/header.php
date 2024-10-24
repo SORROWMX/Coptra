@@ -33,7 +33,7 @@
                     <li class="dropdown">
                         <a href="../products.php">Продукты</a>
                         <ul class="dropdown-menu">
-                        <li class="dropdown-submenu">
+                            <li class="dropdown-submenu">
                                 <a href="products.php#agriculture">Сельское хозяйство</a>
                                 <div class="submenu">
                                     <a href="products.php#agro-scout">Агроскаут X1</a>
@@ -66,6 +66,7 @@
                                     <a href="products.php#cargo-heavy">Грузовой X8</a>
                                 </div>
                             </li>
+                            <li><a href="products.php#flight-controller">Полётный контроллер</a></li>
                         </ul>
                     </li>
                     <li><a href="/docs/index.php">Документация</a></li>
@@ -123,6 +124,7 @@
                                     <a href="products.php#cargo-heavy">Грузовой X8</a>
                                 </div>
                             </li>
+                            <li><a href="products.php#flight-controller">Полётный контроллер</a></li>
                         </ul>
                     </li>
                     <li><a href="/docs/index.php">Документация</a></li>
