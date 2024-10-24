@@ -126,7 +126,7 @@ footer {
     opacity: 0.8;
 }
 
-@media (max-width: 768px) {
+@media (max-width: 1024px) {
     footer {
         height: 100%;
     }

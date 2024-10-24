@@ -297,7 +297,7 @@
 									<div class="advantage-card-back">
 										<h3>Надежность</h3>
 										<p>
-											Наши дроны проходят строгий контроль качества, обеспечивая
+											Наши дрны проходят строгий контроль качества, обеспечивая
 											стабильную работу в любых условиях.
 										</p>
 									</div>
@@ -408,7 +408,7 @@
 								</div>
 								<div class="swiper-slide">
 									<div class="testimonial-card">
-										<p class="testimonial-text">Дроны Коптра стали незаменимым инструментом в мониторинге лесных массивов. Мы улучшили систему раннего обнаружения пожаров и незаконных вырубок.</p>
+										<p class="testimonial-text">Дроны Коптра стали незаменимым инструментом в мониторинге лесных массивов. Мы улучшили систему раннего обнаржения пожаров и незаконных вырубок.</p>
 										<div class="testimonial-author">
 											<span class="client-name">Игорь Лесников</span>
 											<span class="client-position">Главный эколог, Департамент лесного хозяйства</span>
@@ -523,6 +523,37 @@
 					</div>
 				</section>
 
+				<!-- Партнеры -->
+				<section id="partners" class="partners">
+				    <div class="container">
+				        <h2>Наши партнеры</h2>
+
+				        <div class="partners-grid">
+				            <a href="https://oreluniver.ru/" class="partner-item">
+				                <img src="assets/images/partners/ogu.png" alt="Орловский Государственный Университет им. И.С. Тургенева">
+				            </a>
+				            <a href="https://cyber-drom.ru/" class="partner-item">
+				                <img src="assets/images/partners/cyberdrom.svg" alt="Кибердром">
+				            </a>
+				            <a href="https://cpwr.ru/" class="partner-item">
+				                <img src="assets/images/partners/cpower.png" alt="Си Пауэр">
+				            </a>
+				            <a href="https://edu-poligon77.ru/" class="partner-item">
+				                <img src="assets/images/partners/poligon77.png" alt="Полигон77">
+				            </a>
+				            <a href="https://napaon.ru/" class="partner-item">
+				                <img src="assets/images/partners/napaon.svg" alt="НАП АОН">
+				            </a>
+				            <a href="https://www.nrczh.ru/" class="partner-item">
+				                <img src="assets/images/partners/nic.png" alt="НИЦ Институт им. Жуковского">
+				            </a>
+				            <a href="https://rostecwings.ru/technodinamika/" class="partner-item">
+				                <img src="assets/images/partners/technodynamic.png" alt="Технодинамика">
+				            </a>
+				        </div>
+				    </div>
+				</section>
+
 				<!-- FAQ -->
 				<section id="faq" class="faq">
 					<div class="container">
@@ -541,7 +572,7 @@
 								<div class="faq-answer">
 									<p>
 										Дальность полета зависит от модели дрона и может
-										варьироваться от 5 до 30 км. Наши профессиональые модели
+										варьироваться от 5 до 30 км. Наши профессиональные модели
 										способны преодолевать большие расстояния, в то время как
 										компактные дроны предназначены для более коротких полетов.
 									</p>
@@ -570,7 +601,9 @@
 							</div>
 							<div class="faq-item">
 								<div class="faq-question">
-									<span class="faq-icon"><i class="fas fa-camera"></i></span>
+									<span class="faq-icon"
+										><i class="fas fa-video"></i
+									></span>
 									<span class="question-text"
 										>Какое качество видео обеспечивают камеры дронов?</span
 									>
