@@ -312,10 +312,36 @@ const MobileMenuModule = {
         const mainNav = document.querySelector('.main-nav');
         const sidebarMobileBtn = document.querySelector('.sidebar-mobile-btn.header-btn');
         const sidebar = document.querySelector('.sidebar');
+        let scrollPosition = 0;
+
+        const lockScroll = () => {
+            scrollPosition = window.pageYOffset;
+            document.body.style.position = 'fixed';
+            document.body.style.top = `-${scrollPosition}px`;
+            document.body.style.width = '100%';
+        };
+
+        const unlockScroll = () => {
+            document.body.style.position = '';
+            document.body.style.top = '';
+            document.body.style.width = '';
+            window.scrollTo({
+                top: scrollPosition,
+                behavior: 'instant' // Используем instant вместо auto или smooth
+            });
+        };
 
         // Mobile main menu handlers
         if (mobileMenuBtn && mainNav) {
             mobileMenuBtn.addEventListener('click', function() {
+                const isMenuActive = mainNav.classList.contains('active');
+                
+                if (isMenuActive) {
+                    unlockScroll();
+                } else {
+                    lockScroll();
+                }
+
                 this.classList.toggle('active');
                 mainNav.classList.toggle('active');
             });
@@ -326,6 +352,7 @@ const MobileMenuModule = {
                 item.addEventListener('click', () => {
                     mobileMenuBtn.classList.remove('active');
                     mainNav.classList.remove('active');
+                    unlockScroll();
                 });
             });
         }
@@ -333,6 +360,14 @@ const MobileMenuModule = {
         // Sidebar mobile handlers
         if (sidebarMobileBtn && sidebar) {
             sidebarMobileBtn.addEventListener('click', function() {
+                const isSidebarActive = sidebar.classList.contains('active');
+                
+                if (isSidebarActive) {
+                    unlockScroll();
+                } else {
+                    lockScroll();
+                }
+
                 this.classList.toggle('active');
                 sidebar.classList.toggle('active');
             });
@@ -343,6 +378,7 @@ const MobileMenuModule = {
                 link.addEventListener('click', () => {
                     sidebarMobileBtn.classList.remove('active');
                     sidebar.classList.remove('active');
+                    unlockScroll();
                 });
             });
         }
@@ -355,6 +391,7 @@ const MobileMenuModule = {
                 mainNav.classList.contains('active')) {
                 mobileMenuBtn?.classList.remove('active');
                 mainNav.classList.remove('active');
+                unlockScroll();
             }
 
             // Close sidebar if clicking outside
@@ -363,6 +400,7 @@ const MobileMenuModule = {
                 sidebar.classList.contains('active')) {
                 sidebarMobileBtn?.classList.remove('active');
                 sidebar.classList.remove('active');
+                unlockScroll();
             }
         });
     }

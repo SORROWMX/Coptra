@@ -80,7 +80,7 @@ footer {
 
 .social-icons a[aria-label="VKontakte"] i {
     position: relative;
-    left: -1px;
+    /* left: -1px; */
 }
 
 .social-icons a[aria-label="VKontakte"]:hover {
