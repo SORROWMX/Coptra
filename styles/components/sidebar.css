@@ -9,6 +9,7 @@ body {
 
 .content {
 	padding-top: 40px; /* Измените это значение в соответствии с высотой вашего хедера */
+	margin-left: 62px;
 }
 
 .main-container {
