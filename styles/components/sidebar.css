@@ -402,3 +402,154 @@ body {
         right: 0;
     }
 }
+.documentation-content {
+	flex: 1;
+	padding-left: 50px; /* Увеличиваем отступ слева */
+	padding-right: 50px; /* Увеличиваем отступ справа */
+	max-width: 1400px; /* Немного увеличиваем максимальную ширину контента */
+	margin-bottom: 90px;
+}
+
+.documentation-title {
+	font-size: 36px; /* Увеличивам размер шрифта */
+	text-align: center; /* Центрируем текст */
+	margin-bottom: 30px; /* Добавляем отступ снизу */
+	width: 100%; /* Занимаем всю ширину */
+	padding-top: 20px; /* Добавляем отступ сверху */
+}
+
+@media (max-width: 1600px) {
+	.main-container {
+		margin-left: -160px;
+		width: calc(100% + 210px);
+	}
+
+	.documentation-content {
+		max-width: 1200px;
+	}
+}
+
+@media (max-width: 1400px) {
+	.main-container {
+		margin-left: -130px;
+		width: calc(100% + 180px);
+	}
+
+	.documentation-content {
+		max-width: 1100px;
+	}
+}
+
+@media (max-width: 1200px) {
+	.main-container {
+		margin-left: -100px;
+		width: calc(100% + 150px);
+	}
+
+	.documentation-content {
+		max-width: 1000px;
+	}
+}
+
+@media (max-width: 768px) {
+	.main-container {
+		flex-direction: column;
+		margin-left: -40px; /* Немного увеличиваем отрицательный отступ для мобильных */
+		width: calc(100% + 80px);
+	}
+
+	.sidebar {
+		width: 100%;
+		border-right: none;
+		border-bottom: 1px solid #e9ecef;
+		margin-bottom: 20px;
+	}
+
+	.documentation-content {
+		padding-left: 30px;
+		padding-right: 30px;
+		max-width: 100%;
+	}
+}
+.documentation-content {
+	flex: 1;
+	padding-left: 50px;
+	padding-right: 50px;
+	max-width: 1400px;
+	margin-bottom: 90px;
+}
+
+.documentation-content h1:first-child {
+	font-size: var(--font-size-h1);
+	text-align: center;
+	margin-bottom: 15px; /* Уменьшаем отступ снизу */
+	width: 100%;
+	padding-top: 20px;
+	color: var(--color-primary);
+	border-bottom: 2px solid var(--color-primary);
+	padding-bottom: 15px; /* Уменьшаем нижний отступ */
+}
+
+.documentation-content h2 {
+	font-size: var(--font-size-h2);
+	color: var(--color-secondary);
+	margin-top: 20px; /* Уменьшаем верхний отступ */
+	margin-bottom: 10px; /* Уменьшаем нижний отступ */
+	padding-bottom: 5px; /* Уменьшаем отступ от нижней границы */
+	border-bottom: 1px solid var(--color-border);
+}
+
+.documentation-content h3 {
+	font-size: var(--font-size-h3);
+	color: var(--color-text);
+	margin-top: 15px; /* Уменьшаем верхний отступ */
+	margin-bottom: 10px; /* Уменьшаем нижний отступ */
+}
+
+.documentation-content p {
+	margin-bottom: 15px;
+	line-height: 1.6;
+}
+
+@media (max-width: 768px) {
+    .page-container {
+        grid-template-columns: 1fr;
+    }
+
+    .sidebar {
+        position: fixed;
+        right: -100%;
+        width: 100%;
+        top: var(--header-height);
+        height: calc(100vh - var(--header-height));
+        transition: all 0.3s ease;
+        z-index: 1000;
+        background-color: var(--color-background-light);
+        overflow-y: auto;
+    }
+
+    .sidebar.active {
+        right: 0;
+        transition: all 0.3s ease;
+    }
+
+    .sidebar-nav {
+        position: fixed;
+        top: calc(var(--header-height) + var(--spacing-medium));
+        width: calc(100% - 2 * var(--spacing-medium));
+        height: calc(100vh - var(--header-height) - 2 * var(--spacing-medium));
+        overflow-y: auto;
+    }
+
+    .documentation-content {
+        margin-left: 0;
+        padding-left: 20px;
+        padding-right: 20px;
+        max-width: 100%;
+    }
+
+    .content {
+        padding-left: var(--spacing-medium);
+        padding-right: var(--spacing-medium);
+    }
+}
