@@ -112,7 +112,7 @@
     z-index: 1;
     display: inline-block;
     transform: translateX(0);
-    transition: transform var(--transition-speed) ease, color var(--transition-speed) ease;
+    /* transition: color var(--transition-speed) ease; */
 }
 
 /* .product-button:hover .button-text {
