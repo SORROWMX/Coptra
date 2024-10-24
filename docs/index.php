@@ -1,8 +1,9 @@
 <?php include __DIR__ . '/../modules/header.php'; ?>
 
 <div class="page-container">
-            <?php include __DIR__ . '/../modules/sidebar.php'; ?>
+            <main><?php include __DIR__ . '/../modules/sidebar.php'; ?></main>
             <main class="content">
+                <section id="documentation-content" class="documentation-content">
                     <section id="documentation" class="documentation">
                     <h1>Документация дрона Коптра</h1>
                         <div class="documentation-grid">
@@ -24,7 +25,7 @@
                             <p>Вы можете скачать PDF-версию этой документации. The English version of this documentation is available.</p>
                         </div>
                     </section>
-
+                </section>
                 </div>
             </div>
         </div>
