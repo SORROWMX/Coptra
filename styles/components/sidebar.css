@@ -23,7 +23,7 @@ body {
 }
 
 .sidebar {
-	width: 280px; /* Увеличиваем ширину навигационной панели */
+	width: 365px; /* Увеличиваем ширину навигационной панели */
 	padding: var(--spacing-medium);
 	background-color: var(--color-background-light);
 	border-right: 1px solid var(--color-border);
@@ -37,7 +37,7 @@ body {
 
 .sidebar-nav {
 	position: sticky;
-	top: calc(var(--header-height) + var(--spacing-medium));
+	top: 45px;
 }
 
 .sidebar-section h3 {
@@ -205,56 +205,15 @@ body {
 .documentation-grid {
     display: grid;
     gap: 20px;
-    margin-top: 30px;
-    width: calc(100% - 365px); /* Увеличиваем ширину, чтобы занять оставшееся пространство */
+    width: 100%;
 }
 
 .documentation {
     max-width: 1400px; /* Увеличиваем максимальную ширину */
     margin: 0 auto; /* Центрируем документацию */
-    padding: 0 40px; /* Увеличиваем отступы по бокам */
+	padding-right: 295px;
     line-height: 1.6; /* Увеличиваем межстрочный интервал для лучшей читаемости */
     font-size: 18px; /* Увеличиваем размер шрифта */
-}
-
-.documentation-content {
-	flex: 1;
-	padding-left: 50px; /* Увеличиваем отступ слева */
-	padding-right: 50px; /* Увеличиваем отступ справа */
-	max-width: 1400px; /* Немного увеличиваем максимальную ирину контента */
-	margin-bottom: 90px;
-}
-
-.documentation-content h1:first-child {
-	font-size: var(--font-size-h1);
-	text-align: center;
-	margin-bottom: 15px; /* Уменьшаем отступ снизу */
-	width: 100%;
-	padding-top: 20px;
-	color: var(--color-primary);
-	border-bottom: 2px solid var(--color-primary);
-	padding-bottom: 15px; /* Уменьшаем нижний отступ */
-}
-
-.documentation-content h2 {
-	font-size: var(--font-size-h2);
-	color: var(--color-secondary);
-	margin-top: 20px; /* Уменьшаем верхний отступ */
-	margin-bottom: 10px; /* Уменьшаем нижний отступ */
-	padding-bottom: 5px; /* Уменьшаем отступ от нижней границы */
-	border-bottom: 1px solid var(--color-border);
-}
-
-.documentation-content h3 {
-	font-size: var(--font-size-h3);
-	color: var(--color-text);
-	margin-top: 15px; /* Уменьшаем верхний отступ */
-	margin-bottom: 10px; /* Уменьшаем нижний отступ */
-}
-
-.documentation-content p {
-	margin-bottom: 15px;
-	line-height: 1.6;
 }
 
 .sidebar-link:hover {
