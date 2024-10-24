@@ -56,7 +56,7 @@ body {
 .sidebar-link {
 	color: var(--color-text);
 	text-decoration: none;
-	font-size: var(--font-size-base);
+    font-size: var(--font-size-header);
 	display: inline-block;
 	padding: var(--spacing-small) 0;
 	position: relative;
@@ -72,7 +72,7 @@ body {
 	left: 0;
 	background-color: var(--color-primary);
 	transform: scaleX(0);
-	transform-origin: bottom right;
+	transform-origin: bottom left;
 	transition: transform var(--transition-speed) ease;
 }
 
@@ -126,7 +126,7 @@ body {
 }
 
 .sub-menu .sidebar-link {
-	font-size: calc(var(--font-size-base) * 0.9);
+    font-size: calc(var(--font-size-header) 0.9); /* Немного меньше для подменю */
 }
 
 .documentation-title {
