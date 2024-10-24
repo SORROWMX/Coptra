@@ -58,6 +58,7 @@ body {
 	text-decoration: none;
     font-size: var(--font-size-header);
 	display: inline-block;
+	font-weight: 500;
 	padding: var(--spacing-small) 0;
 	position: relative;
 	transition: color var(--transition-speed) ease;
