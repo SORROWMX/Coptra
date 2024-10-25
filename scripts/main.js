@@ -526,3 +526,24 @@ document.addEventListener('DOMContentLoaded', () => {
     FormModule.init();
     MobileMenuModule.init();
 });
+
+document.addEventListener('DOMContentLoaded', () => {
+    const expandableItems = document.querySelectorAll('.sidebar-item.expandable');
+    
+    expandableItems.forEach(item => {
+        const link = item.querySelector('.sidebar-link');
+        const subMenu = item.querySelector('.sub-menu');
+        
+        link.addEventListener('click', (e) => {
+            e.preventDefault();
+            item.classList.toggle('active');
+            
+            // Плавное открытие/закрытие подменю
+            if (item.classList.contains('active')) {
+                subMenu.style.maxHeight = subMenu.scrollHeight + 'px';
+            } else {
+                subMenu.style.maxHeight = '0px';
+            }
+        });
+    });
+});
