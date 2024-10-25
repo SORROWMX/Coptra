@@ -179,38 +179,39 @@
 						</div>
 						<div class="application-card">
 							<div class="application-icon">
-								<img src="assets/icons/construction1.png" alt="Дрон" class="construction-drone-icon"/>
-								<img src="assets/icons/construction2.png" alt="Кирпич" class="construction-brick-icon"/>
-								<img src="assets/icons/construction3.png" alt="Стена" class="construction-wall-icon"/>
+								<img src="assets/icons/education1.png" alt="Дрон" class="education-drone-icon"/>
+								<img src="assets/icons/education2.png" alt="Книга" class="education-book-icon"/>
 							</div>
-							<h3>Строительство</h3>
+							<h3>Образование</h3>
 							<ul>
-								<li>Инспекция зданий</li>
-								<li>3D-моделирование объектов</li>
-								<li>Контроль за ходом строительства</li>
+								<li>Обучение программированию</li>
+								<li>Практические занятия</li>
+								<li>Научные исследования</li>
 							</ul>
 						</div>
 						<div class="application-card">
 							<div class="application-icon">
-								<img src="assets/icons/safety1.png" alt="Дрон" class="safety-drone-icon" />
-								<img src="assets/icons/safety2.png" alt="Щит" class="safety-shield-icon" />
+								<img src="assets/icons/fpv1.png" alt="Дрон" class="fpv-drone-icon" />
+								<img src="assets/icons/fpv2.png" alt="Щит" class="fpv-connection-icon" />
+								<img src="assets/icons/fpv3.png" alt="Щит" class="fpv-helmet-icon" />
 							</div>
-							<h3>Безопасность</h3>
+							<h3>FPV</h3>
 							<ul>
-								<li>Наблюдение за территорией</li>
-								<li>Поиск и спасение</li>
-								<li>Мониторинг массовых мероприятий</li>
+								<li>Гоночные дроны</li>
+								<li>Фристайл полёты</li>
+								<li>Спортивные соревнования</li>
 							</ul>
 						</div>
 						<div class="application-card">
 							<div class="application-icon">
-								<img src="assets/icons/media.png" alt="Медиа" />
+							<img src="assets/icons/t-and-l-1.png" alt="Дрон" class="t-and-l-drone-icon" />
+							<img src="assets/icons/t-and-l-2.png" alt="Щит" class="t-and-l-points-icon" />
 							</div>
-							<h3>Медиа</h3>
+							<h3>Транспорт и логистика</h3>
 							<ul>
-								<li>Аэрофотосъемка</li>
-								<li>Создание панорам</li>
-								<li>Съемка видеороликов</li>
+								<li>Доставка грузов</li>
+								<li>Складская логистика</li>
+								<li>Мониторинг маршрутов</li>
 							</ul>
 						</div>
 					</div>
