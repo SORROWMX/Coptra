@@ -7,8 +7,11 @@ body {
 	overflow-x: hidden; /* Предотвращаем горизонтальную прокрутку */
 }
 
-.content {
+.content-docs {
 	padding-top: 40px; /* Измените это значение в соответствии с высотой вашего хедера */
+	display: grid;
+	justify-items: center;
+	
 }
 
 .main-container {
@@ -130,14 +133,6 @@ body {
     font-size: calc(var(--font-size-header) 0.9); /* Немного меньше для подменю */
 }
 
-.documentation-title {
-	font-size: 36px; /* Увеличивам размер шрифта */
-	text-align: center; /* Центрируем текст */
-	margin-bottom: 30px; /* Добавляем отступ снизу */
-	width: 100%; /* Занимаем всю ширину */
-	padding-top: 20px; /* Добавляем отступ сверху */
-}
-
 @media (max-width: 1600px) {
 	.main-container {
 		margin-left: -160px;
@@ -212,7 +207,6 @@ body {
 .documentation {
     max-width: 1400px; /* Увеличиваем максимальную ширину */
     margin: 0 auto; /* Центрируем документацию */
-	padding-right: 295px;
     line-height: 1.6; /* Увеличиваем межстрочный интервал для лучшей читаемости */
     font-size: 18px; /* Увеличиваем размер шрифта */
 }
@@ -228,27 +222,10 @@ body {
 	padding-right: 20px; /* Место для стрелочки */
 }
 
-.sidebar-item.expandable:hover .arrow {
-	border-top: 2px solid var(--color-primary);
-	border-right: 2px solid var(--color-primary);
-}
-
 /* Удаляем старые стили для псевдоэлемента :after */
 .sidebar-item.expandable:after,
 .sidebar-item.expandable:hover:after {
 	content: none;
-}
-
-.sub-menu {
-	display: none;
-	padding-left: 5px; /* Уменьшаем отступ слева */
-	list-style-type: none;
-	margin: 0;
-	width: 100%; /* Занимает всю ширину родительского эла */
-}
-
-.sidebar-item.expandable:hover .sub-menu {
-	display: none;  /* Убираем отображение подменю при наведении */
 }
 
 .sub-menu li {
@@ -346,6 +323,7 @@ body {
     grid-template-columns: 365px 1fr;
     min-height: calc(100vh - var(--header-height));
     margin-top: var(--header-height);
+	gap: 20px;
 }
 
 @media (max-width: 768px) {
@@ -402,12 +380,14 @@ body {
         right: 0;
     }
 }
+
 .documentation-content {
 	flex: 1;
-	padding-left: 50px; /* Увеличиваем отступ слева */
+	padding-left: 0px; /* Увеличиваем отступ слева */
 	padding-right: 50px; /* Увеличиваем отступ справа */
-	max-width: 1400px; /* Немного увеличиваем максимальную ширину контента */
+	max-width: none; /* Немного увеличиваем максимальную ширину контента */
 	margin-bottom: 90px;
+	margin-left: 0px;
 }
 
 .documentation-title {
@@ -470,13 +450,6 @@ body {
 		padding-right: 30px;
 		max-width: 100%;
 	}
-}
-.documentation-content {
-	flex: 1;
-	padding-left: 50px;
-	padding-right: 50px;
-	max-width: 1400px;
-	margin-bottom: 90px;
 }
 
 .documentation-content h1:first-child {
