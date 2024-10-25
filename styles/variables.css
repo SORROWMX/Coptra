@@ -9,6 +9,9 @@
     --color-primary-rgb: 255, 107, 107;
     --color-secondary-rgb: 78, 205, 196;
     --color-background-light: #f5f5f5;
+    --color-error: #dc3545;
+    --color-success: #28a745;
+    /* --color-text-light: #6c757d; */
 
     /* Типография */
     --font-family-main: 'Montserrat', Arial, sans-serif;

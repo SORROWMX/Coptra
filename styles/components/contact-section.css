@@ -1,236 +1,290 @@
+/* Секция контактов */
 .contact {
-    padding: var(--spacing-xxlarge) 0;
-    padding-top: 30px;
-    /* background-color: var(--color-background-light); */
-    margin-bottom: var(--spacing-medium);
-}
-
-.telegram-community {
-    padding: var(--spacing-large) 0;
-}
-
-.telegram-block {
-    display: flex;
-    align-items: center;
-    justify-content: space-between;
-    background-color: #0088cc;
-    padding: var(--spacing-large) var(--spacing-xxlarge);
-    border-radius: var(--border-radius);
-    box-shadow: 0 4px 10px rgba(0, 0, 0, 0.1);
-}
-
-.telegram-icon {
-    background-color: white;
-    border-radius: 50%;
-    padding: var(--spacing-small);
-    display: flex;
-    align-items: center;
-    justify-content: center;
-    box-shadow: 0 2px 4px rgba(0, 0, 0, 0.1);
-}
-
-.telegram-icon img {
-    width: 60px;
-    height: 60px;
-}
-
-.telegram-text {
-    flex-grow: 1;
-    margin: 0 var(--spacing-large);
-    color: white;
-}
-
-.telegram-text h3 {
-    font-size: var(--font-size-h3);
-    margin-bottom: var(--spacing-small);
-}
-
-.telegram-text p {
-    font-size: var(--font-size-base);
-    opacity: 0.9;
-}
-
-.telegram-button {
-    background-color: white;
-    color: #0088cc;
-    padding: var(--spacing-small) var(--spacing-medium);
-    border-radius: var(--border-radius);
-    text-decoration: none;
-    font-size: var(--font-size-base);
-    font-weight: var(--font-weight-bold);
-    text-transform: uppercase;
-    transition: all var(--transition-speed) ease;
-    box-shadow: 0 2px 4px rgba(0, 0, 0, 0.1);
-}
-
-.telegram-button:hover {
-    background-color: var(--color-secondary);
-    color: white;
-    transform: translateY(-2px);
-    box-shadow: 0 4px 6px rgba(0, 0, 0, 0.15);
+	padding: var(--spacing-xxlarge) 0;
+	padding-top: 30px;
+	margin-bottom: var(--spacing-medium);
 }
 
 .contact h2 {
-    text-align: center;
-    margin-bottom: var(--spacing-xlarge);
-    font-size: var(--font-size-h2);
-    color: var(--color-text);
-    position: relative;
-    padding-bottom: var(--spacing-small);
+	text-align: center;
+	margin-bottom: var(--spacing-xlarge);
+	font-size: var(--font-size-h2);
+	color: var(--color-text);
+	position: relative;
+	padding-bottom: var(--spacing-small);
 }
 
 .contact-content {
-    display: flex;
-    justify-content: space-between;
-    align-items: flex-start;
-    gap: var(--spacing-xlarge);
+	display: flex;
+	justify-content: space-between;
+	align-items: flex-start;
+	gap: var(--spacing-xlarge);
 }
 
+/* Форма обратной связи */
 .contact-form {
-    width: 55%;
-    background: var(--color-background-light);
-    padding: var(--spacing-xlarge);
-    border-radius: var(--border-radius);
-    box-shadow: 0 8px 24px rgba(0, 0, 0, 0.08);
+	width: 55%;
+	background: var(--color-background-light);
+	padding: var(--spacing-xlarge);
+	border-radius: var(--border-radius);
+	box-shadow: 0 8px 24px rgba(0, 0, 0, 0.08);
 }
 
 #contact-form {
-    display: flex;
-    flex-direction: column;
-    gap: var(--spacing-medium);
+	display: flex;
+	flex-direction: column;
+	gap: var(--spacing-medium);
 }
 
+/* Общие стили для полей формы */
 .form-group {
-    position: relative;
-    margin-bottom: var(--spacing-medium);
+	position: relative;
+	margin-bottom: calc(var(--spacing-medium) + 10px);
 }
 
+.form-group:has(textarea) {
+	margin-bottom: 0;
+}
+
+/* Стили для полей ввода */
+#contact-form input:not([type='checkbox']),
+#contact-form textarea,
+#contact-form select {
+	width: 100%;
+	padding: var(--spacing-medium);
+	border: 2px solid var(--color-border);
+	border-radius: var(--border-radius);
+	font-size: var(--font-size-base);
+	transition: all var(--transition-speed) ease;
+	background-color: transparent;
+	letter-spacing: normal;
+}
+
+/* Состояния полей ввода */
+#contact-form input:focus:not([type='checkbox']),
+#contact-form select:focus {
+	border-color: var(--color-primary);
+	outline: none;
+	box-shadow: 0 0 0 4px rgba(var(--color-primary-rgb), 0.1);
+	letter-spacing: 1px;
+}
+
+#contact-form textarea:focus {
+	border-color: var(--color-primary);
+	outline: none;
+	box-shadow: 0 0 0 4px rgba(var(--color-primary-rgb), 0.1);
+	letter-spacing: normal;
+}
+
+/* Плейсхолдеры */
+#contact-form input::placeholder,
+#contact-form textarea::placeholder,
+#contact-form select::placeholder {
+	color: transparent;
+}
+
+/* Лейблы */
 .form-group label {
-    position: absolute;
-    left: var(--spacing-medium);
-    top: 50%;
-    transform: translateY(-50%);
-    color: var(--color-text);
-    transition: all 0.3s ease;
-    pointer-events: none;
-    font-size: var(--font-size-small);
+	position: absolute;
+	left: var(--spacing-medium);
+	top: 50%;
+	transform: translateY(-50%);
+	color: var(--color-text);
+	transition: all 0.3s ease;
+	pointer-events: none;
+	font-size: var(--font-size-small);
+	z-index: 1;
 }
 
 .form-group textarea + label {
-    top: var(--spacing-medium);
-    transform: none;
+	top: var(--spacing-medium);
+	transform: none;
 }
 
+/* Состояния лейблов */
 .form-group input:focus + label,
-/* .form-group textarea:focus + label, */
 .form-group select:focus + label,
 .form-group input:not(:placeholder-shown) + label,
-/* .form-group textarea:not(:placeholder-shown) + label, */
-.form-group select:not([value=""]):valid + label {
-    top: -12px;
-    left: var(--spacing-small);
-    font-size: 12px;
-    background: var(--color-background-light);
-    padding: 0 var(--spacing-small);
-    color: var(--color-primary);
+.form-group select:not([value='']):valid + label {
+	top: -12px;
+	left: var(--spacing-small);
+	font-size: 12px;
+	background: var(--color-background-light);
+	padding: 0 var(--spacing-small);
+	color: var(--color-primary);
 }
 
 .form-group textarea:focus + label,
 .form-group textarea:not(:placeholder-shown) + label {
-    top: -20px;
-    left: var(--spacing-small);
-    font-size: 12px;
-    background: var(--color-background-light);
-    padding: 0 var(--spacing-small);
-    color: var(--color-primary);
+	top: -20px;
+	left: var(--spacing-small);
+	font-size: 12px;
+	background: var(--color-background-light);
+	padding: 0 var(--spacing-small);
+	color: var(--color-primary);
 }
 
-/* Добавляем стиль для select с выбранным пустым значением */
-.form-group select[value=""] + label {
-    top: 50%;
-    transform: translateY(-50%);
-    font-size: var(--font-size-small);
-    background: transparent;
-    padding: 0;
-    color: var(--color-text);
-}
-
-#contact-form input,
-#contact-form textarea,
+/* Специальные стили для select */
 #contact-form select {
-    width: 100%;
-    padding: var(--spacing-medium);
-    border: 2px solid var(--color-border);
-    border-radius: var(--border-radius);
-    font-size: var(--font-size-base);
-    transition: all 0.3s ease;
-    background-color: transparent;
+	appearance: none;
+	background-image: url("data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' width='12' height='12' fill='%23666' viewBox='0 0 16 16'%3E%3Cpath d='M8 11L3 6h10l-5 5z'/%3E%3C/svg%3E");
+	background-repeat: no-repeat;
+	background-position: right var(--spacing-medium) center;
+	padding-right: var(--spacing-xlarge);
 }
 
-#contact-form input::placeholder,
-#contact-form textarea::placeholder,
-#contact-form select::placeholder {
-    color: transparent;
+.form-group select[value=''] + label {
+	top: 50%;
+	transform: translateY(-50%);
+	font-size: var(--font-size-small);
+	background: transparent;
+	padding: 0;
+	color: var(--color-text);
 }
 
-#contact-form input:focus,
-#contact-form textarea:focus,
-#contact-form select:focus {
-    border-color: var(--color-primary);
-    outline: none;
-    box-shadow: 0 0 0 4px rgba(var(--color-primary-rgb), 0.1);
+/* Специальные стили для textarea */
+#contact-form textarea {
+	resize: vertical;
+	min-height: 100px;
+	max-height: 250px;
 }
 
-#contact-form select {
-    appearance: none;
-    background-image: url("data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' width='12' height='12' fill='%23666' viewBox='0 0 16 16'%3E%3Cpath d='M8 11L3 6h10l-5 5z'/%3E%3C/svg%3E");
-    background-repeat: no-repeat;
-    background-position: right var(--spacing-medium) center;
-    padding-right: var(--spacing-xlarge);
+/* Специальные стили для телефона */
+#contact-form input[type='tel'] {
+	transition: all var(--transition-speed) ease;
 }
 
-.form-footer {
-    display: flex;
-    flex-direction: column;
-    gap: var(--spacing-medium);
+.form-group input[type='tel'].masked {
+	font-family: monospace;
 }
 
+.form-group input[type='tel']::placeholder {
+	color: var(--color-text-light);
+	opacity: 0.5;
+	transition: opacity 0.3s ease;
+}
+
+.form-group input[type='tel']:focus::placeholder {
+	opacity: 0;
+}
+
+/* Стили для чекбокса */
 .checkbox-container {
-    display: grid;
-    grid-template-columns: 18px 1fr;
-    gap: var(--spacing-small);
-    margin: var(--spacing-medium) 0;
+	display: grid;
+	grid-template-columns: 18px 1fr;
+	gap: var(--spacing-small);
+	margin: var(--spacing-medium) 0;
 }
 
-.checkbox-container input[type="checkbox"] {
-    width: 18px;
-    height: 18px;
-    margin: 2px 0 0 0;
-    cursor: pointer;
-    accent-color: var(--color-primary);
+.checkbox-container input[type='checkbox'] {
+	width: 18px;
+	height: 18px;
+	margin: 2px 0 0 0;
+	cursor: pointer;
+	accent-color: var(--color-primary);
 }
 
 .checkbox-container label {
-    color: var(--color-text);
-    font-size: var(--font-size-small);
-    cursor: pointer;
-    line-height: 1.4;
+	color: var(--color-text);
+	font-size: var(--font-size-small);
+	cursor: pointer;
+	line-height: 1.4;
 }
 
 .checkbox-container label a {
-    color: var(--color-primary);
-    text-decoration: none;
-    margin-left: 2px;
-    transition: color var(--transition-speed) ease;
+	color: var(--color-primary);
+	text-decoration: none;
+	margin-left: 2px;
+	transition: color var(--transition-speed) ease;
 }
 
 .checkbox-container label a:hover {
-    color: var(--color-secondary);
-    text-decoration: underline;
+	color: var(--color-secondary);
+	text-decoration: underline;
 }
 
-#contact-form textarea {
-    resize: vertical;
-    min-height: 100px;
-    max-height: 250px;
+/* Валидация */
+.form-group input.invalid {
+	border-color: var(--color-error);
+}
+
+.form-group.error label {
+	color: var(--color-error);
+}
+
+.error-message {
+	position: absolute;
+	bottom: -20px;
+	left: var(--spacing-small);
+	font-size: 12px;
+	color: var(--color-error);
+	background-color: var(--color-background-light);
+	padding: 0 var(--spacing-small);
+	z-index: 2;
+}
+
+/* Telegram блок */
+.telegram-community {
+	padding: var(--spacing-large) 0;
+}
+
+.telegram-block {
+	display: flex;
+	align-items: center;
+	justify-content: space-between;
+	background-color: #0088cc;
+	padding: var(--spacing-large) var(--spacing-xxlarge);
+	border-radius: var(--border-radius);
+	box-shadow: 0 4px 10px rgba(0, 0, 0, 0.1);
+}
+
+.telegram-icon {
+	background-color: white;
+	border-radius: 50%;
+	padding: var(--spacing-small);
+	display: flex;
+	align-items: center;
+	justify-content: center;
+	box-shadow: 0 2px 4px rgba(0, 0, 0, 0.1);
+}
+
+.telegram-icon img {
+	width: 60px;
+	height: 60px;
+}
+
+.telegram-text {
+	flex-grow: 1;
+	margin: 0 var(--spacing-large);
+	color: white;
+}
+
+.telegram-text h3 {
+	font-size: var(--font-size-h3);
+	margin-bottom: var(--spacing-small);
+}
+
+.telegram-text p {
+	font-size: var(--font-size-base);
+	opacity: 0.9;
+}
+
+.telegram-button {
+	background-color: white;
+	color: #0088cc;
+	padding: var(--spacing-small) var(--spacing-medium);
+	border-radius: var(--border-radius);
+	text-decoration: none;
+	font-size: var(--font-size-base);
+	font-weight: var(--font-weight-bold);
+	text-transform: uppercase;
+	transition: all var(--transition-speed) ease;
+	box-shadow: 0 2px 4px rgba(0, 0, 0, 0.1);
+}
+
+.telegram-button:hover {
+	background-color: var(--color-secondary);
+	color: white;
+	transform: translateY(-2px);
+	box-shadow: 0 4px 6px rgba(0, 0, 0, 0.15);
 }
