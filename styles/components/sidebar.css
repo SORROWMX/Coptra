@@ -45,6 +45,32 @@ body {
 	width: 100%;
 }
 
+/* Добавьте стили для полосы прокрутки, если хотите ее стилизовать */
+.sidebar::-webkit-scrollbar {
+	width: 12px; /* Увеличиваем ширину с 8px до 12px */
+}
+
+.sidebar::-webkit-scrollbar-thumb {
+	background-color: var(--color-primary);
+	border-radius: 6px; /* Увеличиваем радиус скругления */
+	border: 3px solid var(--color-background-light); /* Добавляем границу для эффекта "padding" */
+}
+
+.sidebar::-webkit-scrollbar-thumb:hover {
+	background-color: var(--color-primary-dark);
+}
+
+.sidebar::-webkit-scrollbar-track {
+	background-color: var(--color-background-light);
+	border-radius: 6px; /* Скругляем трек */
+}
+
+/* Стили для Firefox */
+.sidebar {
+	scrollbar-width: thin; /* Меняем с thin на auto для более широкого скроллбара */
+	scrollbar-color: var(--color-primary) var(--color-background-light);
+}
+
 .sidebar-section h3 {
 	font-size: var(--font-size-h3);
 	color: var(--color-primary);
@@ -533,4 +559,7 @@ body {
         padding-right: var(--spacing-medium);
     }
 }
+
+
+
 
