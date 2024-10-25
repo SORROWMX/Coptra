@@ -560,6 +560,7 @@ body {
     }
 }
 
-
-
+.sidebar-item.expandable > .sidebar-link {
+    cursor: pointer;
+}
 

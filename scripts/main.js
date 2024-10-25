@@ -547,3 +547,20 @@ document.addEventListener('DOMContentLoaded', () => {
         });
     });
 });
+
+document.addEventListener('DOMContentLoaded', () => {
+    const sidebarLinks = document.querySelectorAll('.sidebar-nav a');
+    
+    sidebarLinks.forEach(link => {
+        link.addEventListener('click', (e) => {
+            const href = link.getAttribute('href');
+            if (href.startsWith('#')) {
+                e.preventDefault();
+                const targetElement = document.getElementById(href.slice(1));
+                if (targetElement) {
+                    targetElement.scrollIntoView({ behavior: 'smooth' });
+                }
+            }
+        });
+    });
+});
