@@ -8,7 +8,7 @@ body {
 }
 
 .content-docs {
-	padding-top: 40px; /* Измените это значение в соответствии с высотой вашего хедера */
+	padding-top: 0px;
 	display: grid;
 	justify-items: center;
 	
@@ -26,13 +26,13 @@ body {
 }
 
 .sidebar {
-	width: 365px; /* Увеличиваем ширину навигационной панели */
+	width: 370px; /* Увеличиваем ширину навигационной панели */
 	padding: var(--spacing-medium);
 	background-color: var(--color-background-light);
 	border-right: 1px solid var(--color-border);
 	box-shadow: 2px 0 10px rgba(0, 0, 0, 0.1);
 	position: fixed; /* Добавляем sticky позиционирование */
-	top: var(--header-height); /* Отступ от верха равен высоте шапки */
+	top: 20px; /* Отступ от верха равен высоте шапки */
 	bottom: var(--footer-height); /* Отступ от низа равен высоте футера */
 	height: calc(100vh - var(--header-height) - var(--footer-height)); /* Высота равна высоте viewport минус высота шапки и футера */
 	overflow-y: auto; /* Добавляем прокрутку если контент не помещается */
@@ -173,12 +173,12 @@ body {
 .documentation h1:first-child {
     font-size: var(--font-size-h1);
     text-align: center;
-    margin-bottom: 10px;
+    margin-bottom: 0px;
     width: 100%;
     padding-top: 0px;
     color: var(--color-primary);
     border-bottom: 2px solid var(--color-primary);
-    padding-bottom: 0px;
+    padding: 0px; /* Для изменения Документация дрона Коптра */
 }
 
 .documentation h2 {
@@ -188,7 +188,6 @@ body {
     margin-bottom: 0px;
     padding-bottom: 0px;
     border-bottom: 1px solid var(--color-border);
-	
 }
 
 .documentation h3 {
@@ -200,7 +199,7 @@ body {
 
 .documentation-grid {
     display: grid;
-    gap: 20px;
+    gap: 15px;
     width: 100%;
 }
 
@@ -390,14 +389,6 @@ body {
 	margin-left: 0px;
 }
 
-.documentation-title {
-	font-size: 36px; /* Увеличивам размер шрифта */
-	text-align: center; /* Центрируем текст */
-	margin-bottom: 30px; /* Добавляем отступ снизу */
-	width: 100%; /* Занимаем всю ширину */
-	padding-top: 20px; /* Добавляем отступ сверху */
-}
-
 @media (max-width: 1600px) {
 	.main-container {
 		margin-left: -160px;
@@ -452,12 +443,12 @@ body {
 	}
 }
 
-.documentation-content h1:first-child {
+.documentation-content h1 {
 	font-size: var(--font-size-h1);
 	text-align: center;
 	margin-bottom: 15px; /* Уменьшаем отступ снизу */
 	width: 100%;
-	padding-top: 20px;
+	padding-top: 5px;
 	color: var(--color-primary);
 	border-bottom: 2px solid var(--color-primary);
 	padding-bottom: 15px; /* Уменьшаем нижний отступ */
@@ -466,16 +457,16 @@ body {
 .documentation-content h2 {
 	font-size: var(--font-size-h2);
 	color: var(--color-secondary);
-	margin-top: 20px; /* Уменьшаем верхний отступ */
-	margin-bottom: 10px; /* Уменьшаем нижний отступ */
-	padding-bottom: 5px; /* Уменьшаем отступ от нижней границы */
+	margin-top: 10px; /* Уменьшаем верхний отступ */
+	margin-bottom: 0px; /* Уменьшаем нижний отступ */
+	padding-bottom: 0px; /* Уменьшаем отступ от нижней границы */
 	border-bottom: 1px solid var(--color-border);
 }
 
 .documentation-content h3 {
 	font-size: var(--font-size-h3);
 	color: var(--color-text);
-	margin-top: 15px; /* Уменьшаем верхний отступ */
+	margin-top: 0px; /* Уменьшаем верхний отступ */
 	margin-bottom: 10px; /* Уменьшаем нижний отступ */
 }
 
