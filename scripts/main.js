@@ -526,3 +526,41 @@ document.addEventListener('DOMContentLoaded', () => {
     FormModule.init();
     MobileMenuModule.init();
 });
+
+document.addEventListener('DOMContentLoaded', () => {
+    const expandableItems = document.querySelectorAll('.sidebar-item.expandable');
+    
+    expandableItems.forEach(item => {
+        const link = item.querySelector('.sidebar-link');
+        const subMenu = item.querySelector('.sub-menu');
+        
+        link.addEventListener('click', (e) => {
+            e.preventDefault();
+            item.classList.toggle('active');
+            
+            // Плавное открытие/закрытие подменю
+            if (item.classList.contains('active')) {
+                subMenu.style.maxHeight = subMenu.scrollHeight + 'px';
+            } else {
+                subMenu.style.maxHeight = '0px';
+            }
+        });
+    });
+});
+
+document.addEventListener('DOMContentLoaded', () => {
+    const sidebarLinks = document.querySelectorAll('.sidebar-nav a');
+    
+    sidebarLinks.forEach(link => {
+        link.addEventListener('click', (e) => {
+            const href = link.getAttribute('href');
+            if (href.startsWith('#')) {
+                e.preventDefault();
+                const targetElement = document.getElementById(href.slice(1));
+                if (targetElement) {
+                    targetElement.scrollIntoView({ behavior: 'smooth' });
+                }
+            }
+        });
+    });
+});
