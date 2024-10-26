@@ -277,7 +277,7 @@ const FormModule = {
 
         const initMask = () => {
             phoneMask = IMask(phoneInput, {
-                mask: '+{7}(000)000-00-00',
+                mask: '+{7} (000) 000-00-00',
                 lazy: true,
                 placeholderChar: '_'
             });
