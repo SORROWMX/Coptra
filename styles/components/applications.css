@@ -48,11 +48,6 @@
     transition: opacity 0.3s ease;
 }
 
-/* .application-card.hidden {
-    opacity: 0.5;
-    pointer-events: none;
-} */
-
 .application-card ul {
     list-style: none;
     text-align: center;
@@ -125,145 +120,6 @@
     height: 100%;
     object-fit: contain;
     transition: transform 0.3s ease;
-}
-
-
-.application-card:hover .application-icon .agriculture-drone-icon,
-.application-card:hover .application-icon .agriculture-drop1-icon,
-.application-card:hover .application-icon .agriculture-drop2-icon{
-    animation: droneFlyX 1s ease;
-}
-
-.application-card:hover .application-icon .agriculture-drop1-icon {
-    animation: dropSplash 1s ease;
-    animation-delay: 0s;
-}
-
-.application-card:hover .application-icon .agriculture-drop2-icon {
-    animation: dropSplash 1s ease;
-    animation-delay: 0.0375s;
-}
-
-/* @keyframes DropsSplash {
-    0%, 100% {
-        transform: translateY(0) translateX(0) scale(1);
-    }
-    25%, 75% {
-        transform: translateX(-5px);
-    }
-    50% {
-        transform: translateY(-3px) translateX(5px) scale(1.05);
-    }
-} */
-
-@keyframes dropSplash {
-    0% {
-        transform: translateX(0);
-    }
-    25% {
-        transform: translateX(-5px);
-    }
-    50% {
-        transform: translateX(5px);
-    }
-    75% {
-        transform: translateX(-5px);
-    }
-    100% {
-        transform: translateX(0);
-    }
-}
-
-/* .application-card:hover .application-icon .safety-shield-icon {
-    animation: shieldHit 0.75s ease;
-}
-
-
-.application-card:hover .application-icon .construction-drone-icon {
-    animation: droneFlyY 1s ease;
-}
-
-
-.application-card:hover .application-icon .construction-brick-icon {
-    animation: brickHit 1s ease;
-} */
-
-@keyframes droneFlyX {
-    0% {
-        transform: translateX(0);
-    }
-    25% {
-        transform: translateX(-5px);
-    }
-    50% {
-        transform: translateX(5px);
-    }
-    75% {
-        transform: translateX(-5px);
-    }
-    100% {
-        transform: translateX(0);
-    }
-}
-
-/* @keyframes shieldHit {
-    0% {
-        transform: translateY(0) rotate(0);
-    }
-    30% {
-        transform: translateY(-10px) rotate(-5deg);
-    }
-    60% {
-        transform: translateY(5px) rotate(3deg);
-    }
-    80% {
-        transform: translateY(-2px) rotate(-1deg);
-    }
-    100% {
-        transform: translateY(0) rotate(0);
-    }
-} */
-
-@keyframes shieldHit {
-    0% {
-        transform: translateX(0);
-    }
-    25% {
-        transform: translateX(-5px) rotate(-5deg);
-    }
-    50% {
-        transform: translateX(5px) rotate(5deg);
-    }
-    75% {
-        transform: translateX(-3px) rotate(-3deg);
-    }
-    100% {
-        transform: translateX(0) rotate(0);
-    }
-}
-
-@keyframes droneFlyY {
-    0% {
-        transform: translateY(0px);
-    }
-    50% {
-        transform: translateY(-10px);
-    }
-    100% {
-        transform: translateY(0px);
-    }
-}
-
-@keyframes brickHit {
-    0% {
-        transform: translateY(0);
-    }
-    50% {
-        transform: translateY(-15px);
-    }
-    100% {
-        transform: translateY(0);
-    }
 }
 
 .application-icon img {
@@ -351,42 +207,66 @@
     overflow: visible;
 }
 
-/* .application-card:nth-child(4) .application-icon::after {
-    content: '✦';
-    position: absolute;
-    bottom: 25%;
-    left: 50%;
-    transform: translate(-50%, 50%) scale(0);
-    font-size: 48px; 
-    color: white;
-    opacity: 0;
-    transition: all 0.3s ease;
+.application-card:hover .application-icon .agriculture-drone-icon,
+.application-card:hover .application-icon .agriculture-drop1-icon,
+.application-card:hover .application-icon .agriculture-drop2-icon{
+    animation: droneFlyX 1s ease;
 }
 
-.application-card:nth-child(4):hover .application-icon::after {
-    animation: flashStar 0.5s ease 2;
-} */
+.application-card:hover .application-icon .agriculture-drop1-icon {
+    animation: dropSplash 1s ease;
+    animation-delay: 0s;
+}
 
-@keyframes flashStar {
-    0%, 100% {
-        transform: translate(-50%, 50%) scale(0);
-        opacity: 0;
+.application-card:hover .application-icon .agriculture-drop2-icon {
+    animation: dropSplash 1s ease;
+    animation-delay: 0.0375s;
+}
+
+@keyframes dropSplash {
+    0% {
+        transform: translateX(0);
+    }
+    25% {
+        transform: translateX(-5px);
     }
     50% {
-        transform: translate(-50%, 50%) scale(1);
-        opacity: 1;
+        transform: translateX(5px);
+    }
+    75% {
+        transform: translateX(-5px);
+    }
+    100% {
+        transform: translateX(0);
     }
 }
 
-/* Добавление анимации для иконок соединения в FPV с эффектом волны, проигрывается один раз */
+@keyframes droneFlyX {
+    0% {
+        transform: translateX(0);
+    }
+    25% {
+        transform: translateX(-5px);
+    }
+    50% {
+        transform: translateX(5px);
+    }
+    75% {
+        transform: translateX(-5px);
+    }
+    100% {
+        transform: translateX(0);
+    }
+}
+
 .application-card:hover .application-icon .fpv-connection1-icon {
     animation: pulseSignalWave 0.5s 2;
-    animation-delay: 0s; /* Начало анимации для первой иконки */
+    animation-delay: 0s; 
 }
 
 .application-card:hover .application-icon .fpv-connection2-icon {
     animation: pulseSignalWave 0.5s 2;
-    animation-delay: 0.1s; /* Задержка для второй иконки, чтобы начать в середине пульсации первой */
+    animation-delay: 0.1s; 
 }
 
 @keyframes pulseSignalWave {
@@ -394,11 +274,10 @@
         transform: translateY(0) scale(1);
     }
     50% {
-        transform: translateY(-3px) scale(1.05); /* Уменьшение амплитуды и масштаба пульсации */
+        transform: translateY(-3px) scale(1.05); 
     }
 }
 
-/* Добавление анимации для иконок точек в Транспорт и логистика */
 .application-card:hover .application-icon .t-and-l-point1-icon,
 .application-card:hover .application-icon .t-and-l-point2-icon,
 .application-card:hover .application-icon .t-and-l-point3-icon,
@@ -407,74 +286,69 @@
 }
 
 .application-card:hover .application-icon .t-and-l-point1-icon {
-    animation-delay: 0s; /* Начало анимации для первой точки */
+    animation-delay: 0s;
 }
 
 .application-card:hover .application-icon .t-and-l-point2-icon {
-    animation-delay: 0.15s; /* Задержка для второй точки */
+    animation-delay: 0.15s;
 }
 
 .application-card:hover .application-icon .t-and-l-point3-icon {
-    animation-delay: 0.3s; /* Задержка для третьей точки */
+    animation-delay: 0.3s;
 }
 
 .application-card:hover .application-icon .t-and-l-point4-icon {
-    animation-delay: 0.45s; /* Задержка для четвертой точки */
+    animation-delay: 0.45s;
 }
 
 @keyframes dropIn {
     0% {
-        /* opacity: 0; */
         transform: translateY(0);
     }
     50% {
         transform: translateY(-10px);
     }
     100% {
-        /* opacity: 1; */
         transform: translateY(0);
     }
 }
 
-/* Стили для иконок образования */
 .application-card .education-drone-icon,
 .application-card .education-book-icon,
 .application-card .education-hat-icon {
     transition: transform 0.5s ease, opacity 0.5s ease;
 }
 
-/* Скрытие книги и перемещение дрона при наведении */
 .application-card:hover .education-book-icon {
     opacity: 0;
-    transform: translateY(20px); /* Смещение книги вниз при исчезновении */
+    transform: translateY(20px);
 }
 
 .application-card:hover .education-drone-icon {
-    transform: translateY(30px); /* Перемещение дрона в центр */
+    transform: translateY(30px);
 }
 
 .application-card:hover .education-hat-icon {
     opacity: 1;
-    animation: openHat 0.75s ease forwards; /* Добавлено свойство forwards */
+    animation: openHat 0.75s ease forwards; 
 }
 
-/* Начальное состояние шапки скрыто */
 .education-hat-icon {
     opacity: 0;
-    transform: translateY(20px); /* Начальное положение шапки за книгой */
+    transform: translateY(20px);
 }
 
 @keyframes openHat {
     0% {
-        transform: translateY(20px); /* Начальное положение шапки за книгой */
+        transform: translateY(20px);
         opacity: 0;
     }
     50% {
-        transform: translateY(-5px); /* Конечное положение шапки */
+        transform: translateY(-5px);
         opacity: 1;
     }
     100% {
         transform: translateY(10px);
-        /* opacity: 0; */
     }
 }
+
