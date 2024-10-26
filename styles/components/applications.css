@@ -103,14 +103,21 @@
 }
 
 .application-icon .agriculture-drone-icon,
+.application-icon .agriculture-drop1-icon,
+.application-icon .agriculture-drop2-icon,
 .application-icon .agriculture-plants-icon,
 .application-icon .education-drone-icon,
 .application-icon .education-book-icon,
+.application-icon .education-hat-icon,
 .application-icon .fpv-drone-icon,
-.application-icon .fpv-connection-icon,
+.application-icon .fpv-connection1-icon,
+.application-icon .fpv-connection2-icon,
 .application-icon .fpv-helmet-icon,
 .application-icon .t-and-l-drone-icon,
-.application-icon .t-and-l-points-icon {
+.application-icon .t-and-l-point1-icon,
+.application-icon .t-and-l-point2-icon,
+.application-icon .t-and-l-point3-icon,
+.application-icon .t-and-l-point4-icon {
     position: absolute;
     top: 0;
     left: 0;
@@ -121,10 +128,51 @@
 }
 
 
-.application-card:hover .application-icon .agriculture-drone-icon {
+.application-card:hover .application-icon .agriculture-drone-icon,
+.application-card:hover .application-icon .agriculture-drop1-icon,
+.application-card:hover .application-icon .agriculture-drop2-icon{
     animation: droneFlyX 1s ease;
 }
 
+.application-card:hover .application-icon .agriculture-drop1-icon {
+    animation: dropSplash 1s ease;
+    animation-delay: 0s;
+}
+
+.application-card:hover .application-icon .agriculture-drop2-icon {
+    animation: dropSplash 1s ease;
+    animation-delay: 0.0375s;
+}
+
+/* @keyframes DropsSplash {
+    0%, 100% {
+        transform: translateY(0) translateX(0) scale(1);
+    }
+    25%, 75% {
+        transform: translateX(-5px);
+    }
+    50% {
+        transform: translateY(-3px) translateX(5px) scale(1.05);
+    }
+} */
+
+@keyframes dropSplash {
+    0% {
+        transform: translateX(0);
+    }
+    25% {
+        transform: translateX(-5px);
+    }
+    50% {
+        transform: translateX(5px);
+    }
+    75% {
+        transform: translateX(-5px);
+    }
+    100% {
+        transform: translateX(0);
+    }
+}
 
 /* .application-card:hover .application-icon .safety-shield-icon {
     animation: shieldHit 0.75s ease;
@@ -327,5 +375,106 @@
     50% {
         transform: translate(-50%, 50%) scale(1);
         opacity: 1;
+    }
+}
+
+/* Добавление анимации для иконок соединения в FPV с эффектом волны, проигрывается один раз */
+.application-card:hover .application-icon .fpv-connection1-icon {
+    animation: pulseSignalWave 0.5s 2;
+    animation-delay: 0s; /* Начало анимации для первой иконки */
+}
+
+.application-card:hover .application-icon .fpv-connection2-icon {
+    animation: pulseSignalWave 0.5s 2;
+    animation-delay: 0.1s; /* Задержка для второй иконки, чтобы начать в середине пульсации первой */
+}
+
+@keyframes pulseSignalWave {
+    0%, 100% {
+        transform: translateY(0) scale(1);
+    }
+    50% {
+        transform: translateY(-3px) scale(1.05); /* Уменьшение амплитуды и масштаба пульсации */
+    }
+}
+
+/* Добавление анимации для иконок точек в Транспорт и логистика */
+.application-card:hover .application-icon .t-and-l-point1-icon,
+.application-card:hover .application-icon .t-and-l-point2-icon,
+.application-card:hover .application-icon .t-and-l-point3-icon,
+.application-card:hover .application-icon .t-and-l-point4-icon {
+    animation: dropIn 0.75s ease-out;
+}
+
+.application-card:hover .application-icon .t-and-l-point1-icon {
+    animation-delay: 0s; /* Начало анимации для первой точки */
+}
+
+.application-card:hover .application-icon .t-and-l-point2-icon {
+    animation-delay: 0.15s; /* Задержка для второй точки */
+}
+
+.application-card:hover .application-icon .t-and-l-point3-icon {
+    animation-delay: 0.3s; /* Задержка для третьей точки */
+}
+
+.application-card:hover .application-icon .t-and-l-point4-icon {
+    animation-delay: 0.45s; /* Задержка для четвертой точки */
+}
+
+@keyframes dropIn {
+    0% {
+        /* opacity: 0; */
+        transform: translateY(0);
+    }
+    50% {
+        transform: translateY(-10px);
+    }
+    100% {
+        /* opacity: 1; */
+        transform: translateY(0);
+    }
+}
+
+/* Стили для иконок образования */
+.application-card .education-drone-icon,
+.application-card .education-book-icon,
+.application-card .education-hat-icon {
+    transition: transform 0.5s ease, opacity 0.5s ease;
+}
+
+/* Скрытие книги и перемещение дрона при наведении */
+.application-card:hover .education-book-icon {
+    opacity: 0;
+    transform: translateY(20px); /* Смещение книги вниз при исчезновении */
+}
+
+.application-card:hover .education-drone-icon {
+    transform: translateY(30px); /* Перемещение дрона в центр */
+}
+
+.application-card:hover .education-hat-icon {
+    opacity: 1;
+    animation: openHat 0.75s ease forwards; /* Добавлено свойство forwards */
+}
+
+/* Начальное состояние шапки скрыто */
+.education-hat-icon {
+    opacity: 0;
+    transform: translateY(20px); /* Начальное положение шапки за книгой */
+}
+
+@keyframes openHat {
+    0% {
+        transform: translateY(20px); /* Начальное положение шапки за книгой */
+        opacity: 0;
+    }
+    50% {
+        transform: translateY(-5px); /* Конечное положение шапки */
+        opacity: 1;
+    }
+    100% {
+        transform: translateY(10px);
+        /* opacity: 0; */
     }
 }

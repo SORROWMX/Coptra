@@ -168,7 +168,9 @@
 						<div class="application-card">
 							<div class="application-icon">
 								<img src="assets/icons/agriculture1.png" alt="Дрон" class="agriculture-drone-icon" />
-								<img src="assets/icons/agriculture2.png" alt="Поле" class="agriculture-plants-icon" />
+								<img src="assets/icons/agriculture2.png" alt="Кали1" class="agriculture-drop1-icon" />
+								<img src="assets/icons/agriculture3.png" alt="Капли2" class="agriculture-drop2-icon" />
+								<img src="assets/icons/agriculture4.png" alt="Поле" class="agriculture-plants-icon" />
 							</div>
 							<h3>Сельское хозяйство</h3>
 							<ul>
@@ -181,6 +183,7 @@
 							<div class="application-icon">
 								<img src="assets/icons/education1.png" alt="Дрон" class="education-drone-icon"/>
 								<img src="assets/icons/education2.png" alt="Книга" class="education-book-icon"/>
+								<img src="assets/icons/education3.png" alt="Книга" class="education-hat-icon"/>
 							</div>
 							<h3>Образование</h3>
 							<ul>
@@ -192,8 +195,9 @@
 						<div class="application-card">
 							<div class="application-icon">
 								<img src="assets/icons/fpv1.png" alt="Дрон" class="fpv-drone-icon" />
-								<img src="assets/icons/fpv2.png" alt="Щит" class="fpv-connection-icon" />
-								<img src="assets/icons/fpv3.png" alt="Щит" class="fpv-helmet-icon" />
+								<img src="assets/icons/fpv2.png" alt="Соединение1" class="fpv-connection1-icon" />
+								<img src="assets/icons/fpv3.png" alt="Соединение2" class="fpv-connection2-icon" />
+								<img src="assets/icons/fpv4.png" alt="Шлем" class="fpv-helmet-icon" />
 							</div>
 							<h3>FPV</h3>
 							<ul>
@@ -205,7 +209,10 @@
 						<div class="application-card">
 							<div class="application-icon">
 							<img src="assets/icons/t-and-l-1.png" alt="Дрон" class="t-and-l-drone-icon" />
-							<img src="assets/icons/t-and-l-2.png" alt="Щит" class="t-and-l-points-icon" />
+							<img src="assets/icons/t-and-l-point1.png" alt="Точки1" class="t-and-l-point1-icon" />
+							<img src="assets/icons/t-and-l-point2.png" alt="Точки2" class="t-and-l-point2-icon" />
+							<img src="assets/icons/t-and-l-point3.png" alt="Точки3" class="t-and-l-point3-icon" />
+							<img src="assets/icons/t-and-l-point4.png" alt="Точки4" class="t-and-l-point4-icon" />
 							</div>
 							<h3>Транспорт и логистика</h3>
 							<ul>
