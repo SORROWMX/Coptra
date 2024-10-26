@@ -39,7 +39,7 @@
             </div>
         </div>
         <div class="copyright">
-            <p>&copy; 2024 Коптра. Все права защищены.</p>
+            <p>&copy; <span id="current-year"></span> Коптра. Все права защищены.</p>
         </div>
     </footer>
     <script src="/scripts/main.js"></script></html>
