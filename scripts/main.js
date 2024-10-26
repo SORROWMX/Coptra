@@ -525,6 +525,11 @@ document.addEventListener('DOMContentLoaded', () => {
     TestimonialsModule.init();
     FormModule.init();
     MobileMenuModule.init();
+
+    const currentYear = document.querySelector('#current-year');
+    if (currentYear) {
+        currentYear.textContent = new Date().getFullYear();
+    }
 });
 
 document.addEventListener('DOMContentLoaded', () => {
@@ -578,5 +583,3 @@ document.addEventListener('DOMContentLoaded', () => {
         });
     });
 });
-const currentYear = document.querySelector('#current-year')
-currentYear.textContent = new Date().getFullYear()
