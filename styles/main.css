@@ -16,6 +16,33 @@
 @import 'components/sidebar.css';
 @import 'components/partners-section.css';
 
+
+/* Стили для скроллбара WebKit (Chrome, Safari, Opera) */
+::-webkit-scrollbar {
+    width: 12px;
+}
+
+::-webkit-scrollbar-thumb {
+    background-color: var(--color-primary);
+    border-radius: 6px;
+    border: 3px solid var(--color-background-light);
+}
+
+::-webkit-scrollbar-thumb:hover {
+    background-color: var(--color-primary-dark);
+}
+
+::-webkit-scrollbar-track {
+    background-color: var(--color-background-light);
+    border-radius: 6px;
+}
+
+/* Стили для Firefox */
+* {
+    scrollbar-width: thin;
+    scrollbar-color: var(--color-primary) var(--color-background-light);
+}
+
 * {
     margin: 0;
     padding: 0;
@@ -43,6 +70,7 @@ body {
     line-height: 1.6;
     color: var(--color-text);
     background-color: var(--color-background);
+    overflow-y: overlay; /* Для лучшей совместимости с WebKit */
 }
 
 .content {
