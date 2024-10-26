@@ -237,19 +237,19 @@
 }
 
 .application-card:nth-child(1) {
-    background-image: url(../../assets/images/agriculture_bg.jpg);
+    background-image: url(../../assets/images/agroculture_bg.jpg);
 }
 
 .application-card:nth-child(2) {
-    background-image: url(../../assets/images/construction_bg.jpg);
+    background-image: url(../../assets/images/education_bg.jpg);
 }
 
 .application-card:nth-child(3) {
-    background-image: url(../../assets/images/safety_bg.jpg);
+    background-image: url(../../assets/images/fpv_bg.jpg);
 }
 
 .application-card:nth-child(4) {
-    background-image: url(../../assets/images/media_bg.jpg);
+    background-image: url(../../assets/images/t-and-l_bg.jpg);
 }
 
 .application-card > * {
