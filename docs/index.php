@@ -2,9 +2,8 @@
 
 <div class="page-container">
             <main><?php include __DIR__ . '/../modules/sidebar.php'; ?></main>
-            
             <main class="content-docs">
-            <section id="documentation-content" class="documentation-content">
+                <section id="documentation-content" class="documentation-content">
                     <section id="documentation" class="documentation">
                     <h1>Документация дрона Коптра</h1>
                         <div class="documentation-grid">
@@ -27,9 +26,6 @@
                         </div>
                     </section>
                 </section>
-                </div>
-            </div>
-        </div>
-    </main>
+            </main>
 </div>
 <?php include __DIR__ . '/../modules/footer.php'; ?>

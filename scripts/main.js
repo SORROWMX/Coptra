@@ -534,15 +534,29 @@ document.addEventListener('DOMContentLoaded', () => {
         const link = item.querySelector('.sidebar-link');
         const subMenu = item.querySelector('.sub-menu');
         
+        // Устанавливаем начальную высоту подменю
+        subMenu.style.maxHeight = '0px';
+        subMenu.style.overflow = 'hidden';
+        subMenu.style.transition = 'max-height 0.3s ease, opacity 0.3s ease';
+        subMenu.style.opacity = '0';
+
         link.addEventListener('click', (e) => {
             e.preventDefault();
-            item.classList.toggle('active');
             
-            // Плавное открытие/закрытие подменю
             if (item.classList.contains('active')) {
-                subMenu.style.maxHeight = subMenu.scrollHeight + 'px';
-            } else {
+                // Закрытие подменю
                 subMenu.style.maxHeight = '0px';
+                subMenu.style.opacity = '0';
+                
+                // Удаляем класс active после завершения анимации
+                setTimeout(() => {
+                    item.classList.remove('active');
+                }, 300); // Время должно соответствовать длительности transition
+            } else {
+                // Открытие подменю
+                item.classList.add('active');
+                subMenu.style.maxHeight = subMenu.scrollHeight + 'px';
+                subMenu.style.opacity = '1';
             }
         });
     });
