@@ -15,9 +15,9 @@
                 <span class="arrow"></span>
             </span>
             <ul class="sub-menu extended-submenu">
-                <li><a href="/../docs/drones/Training/drone1.php">Дрон1</a></li>
-                <li><a href="/../docs/drones/Training/drone2.php">Дрон2</a></li>
-                <li><a href="/../docs/drones/Training/drone3.php">Дрон3</a></li>
+                <li><a href="/../docs/drones/Training/drone1.php" data-ajax-load>Дрон1</a></li>
+                <li><a href="/../docs/drones/Training/drone2.php" data-ajax-load>Дрон2</a></li>
+                <li><a href="/../docs/drones/Training/drone3.php" data-ajax-load>Дрон3</a></li>
             </ul>
         </div>
         <div class="sidebar-item expandable">
@@ -26,9 +26,9 @@
                 <span class="arrow"></span>
             </span>
             <ul class="sub-menu extended-submenu">
-                <li><a href="/../docs/drones/Agricultural/drone1.php">Дрон1</a></li>
-                <li><a href="/../docs/drones/Agricultural/drone2.php">Дрон2</a></li>
-                <li><a href="/../docs/drones/Agricultural/drone3.php">Дрон3</a></li>
+                <li><a href="/../docs/drones/Agricultural/drone1.php" data-ajax-load>Дрон1</a></li>
+                <li><a href="/../docs/drones/Agricultural/drone2.php" data-ajax-load>Дрон2</a></li>
+                <li><a href="/../docs/drones/Agricultural/drone3.php" data-ajax-load>Дрон3</a></li>
             </ul>
         </div>
         <div class="sidebar-item expandable">
@@ -37,9 +37,9 @@
                 <span class="arrow"></span>
             </span>
             <ul class="sub-menu extended-submenu">
-                <li><a href="/../docs/drones/FPV/drone1.php">Дрон1</a></li>
-                <li><a href="/../docs/drones/FPV/drone2.php">Дрон2</a></li>
-                <li><a href="/../docs/drones/FPV/drone3.php">Дрон3</a></li>
+                <li><a href="/../docs/drones/FPV/drone1.php" data-ajax-load>Дрон1</a></li>
+                <li><a href="/../docs/drones/FPV/drone2.php" data-ajax-load>Дрон2</a></li>
+                <li><a href="/../docs/drones/FPV/drone3.php" data-ajax-load>Дрон3</a></li>
             </ul>
         </div>
         <div class="sidebar-item expandable">
@@ -48,9 +48,9 @@
                 <span class="arrow"></span>
             </span>
             <ul class="sub-menu extended-submenu">
-                <li><a href="/../docs/drones/Cargo/drone1.php">Дрон1</a></li>
-                <li><a href="/../docs/drones/Cargo/drone2.php">Дрон2</a></li>
-                <li><a href="/../docs/drones/Cargo/drone3.php">Дрон3</a></li>
+                <li><a href="/../docs/drones/Cargo/drone1.php" data-ajax-load>Дрон1</a></li>
+                <li><a href="/../docs/drones/Cargo/drone2.php" data-ajax-load>Дрон2</a></li>
+                <li><a href="/../docs/drones/Cargo/drone3.php" data-ajax-load>Дрон3</a></li>
             </ul>
         </div>
         <div class="sidebar-item">

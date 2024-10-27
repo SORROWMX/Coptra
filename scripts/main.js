@@ -583,3 +583,39 @@ document.addEventListener('DOMContentLoaded', () => {
         });
     });
 });
+
+document.addEventListener('DOMContentLoaded', () => {
+    const contentSection = document.querySelector('.content-docs');
+    
+    document.querySelectorAll('.sidebar-nav a[data-ajax-load]').forEach(link => {
+        link.addEventListener('click', function(e) {
+            e.preventDefault();
+            const url = this.getAttribute('href');
+            
+            fetch(url, {
+                headers: {
+                    'X-Requested-With': 'XMLHttpRequest'
+                }
+            })
+            .then(response => response.text())
+            .then(html => {
+                const parser = new DOMParser();
+                const doc = parser.parseFromString(html, 'text/html');
+                const newContent = doc.querySelector('.documentation-content');
+                
+                if (newContent) {
+                    contentSection.innerHTML = newContent.outerHTML;
+                    history.pushState(null, '', url);
+                } else {
+                    console.error('Не удалось найти содержимое документации в ответе');
+                }
+            })
+            .catch(error => console.error('Error:', error));
+        });
+    });
+
+    // Обработка изменения истории браузера
+    window.addEventListener('popstate', () => {
+        location.reload();
+    });
+});

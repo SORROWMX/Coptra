@@ -1,3 +1,8 @@
+<?php
+// В начале файла добавьте:
+$root_path = '/'; // Измените на '/your-subdirectory/' если сайт находится в поддиректории
+?>
+
 <!DOCTYPE html>
 <html lang="ru">
 <head>
@@ -19,8 +24,8 @@
 <body>
 <header>
     <div class="container header-container">
-        <a href="../index.php" class="logo">
-            <img src="<?php echo dirname($_SERVER['PHP_SELF']) === '/' ? '' : '/'; ?>assets/images/header-logo.png" alt="Коптра лого" />
+        <a href="<?php echo $root_path; ?>index.php" class="logo">
+            <img src="<?php echo $root_path; ?>assets/images/header-logo.png" alt="Коптра лого" />
             <span>КОПТРА</span>
         </a>
         <?php 
@@ -30,9 +35,9 @@
         ?>
             <nav class="docs-nav desktop-only">
                 <ul>
-                    <li><a href="../index.php">Главная</a></li>
+                    <li><a href="<?php echo $root_path; ?>index.php">Главная</a></li>
                     <li class="dropdown">
-                        <a href="../products.php">Продукты</a>
+                        <a href="<?php echo $root_path; ?>products.php">Продукты</a>
                         <ul class="dropdown-menu">
                             <li class="dropdown-submenu">
                                 <a href="products.php#agriculture">Сельское хозяйство</a>
@@ -70,9 +75,9 @@
                             <li><a href="products.php#flight-controller">Полётный контроллер</a></li>
                         </ul>
                     </li>
-                    <li><a href="/docs/documentation.php">Документация</a></li>
-                    <li><a href="../blog.html">Блог</a></li>
-                    <li><a href="../contacts.html">Контакты</a></li>
+                    <li><a href="<?php echo $root_path; ?>docs/documentation.php">Документация</a></li>
+                    <li><a href="<?php echo $root_path; ?>blog.html">Блог</a></li>
+                    <li><a href="<?php echo $root_path; ?>contacts.html">Контакты</a></li>
                 </ul>
             </nav>
             <button class="sidebar-mobile-btn header-btn" aria-label="Toggle sidebar">
@@ -88,9 +93,9 @@
             </button>
             <nav class="main-nav">
                 <ul>
-                    <li><a href="../index.php">Главная</a></li>
+                    <li><a href="<?php echo $root_path; ?>index.php">Главная</a></li>
                     <li class="dropdown">
-                        <a href="products.php">Продукты</a>
+                        <a href="<?php echo $root_path; ?>products.php">Продукты</a>
                         <ul class="dropdown-menu">
                         <li class="dropdown-submenu">
                                 <a href="products.php#agriculture">Сельское хозяйство</a>
@@ -128,9 +133,9 @@
                             <li><a href="products.php#flight-controller">Полётный контроллер</a></li>
                         </ul>
                     </li>
-                    <li><a href="/docs/documentation.php">Документация</a></li>
-                    <li><a href="blog.html">Блог</a></li>
-                    <li><a href="contacts.html">Контакты</a></li>
+                    <li><a href="<?php echo $root_path; ?>docs/documentation.php">Документация</a></li>
+                    <li><a href="<?php echo $root_path; ?>blog.html">Блог</a></li>
+                    <li><a href="<?php echo $root_path; ?>contacts.html">Контакты</a></li>
                 </ul>
             </nav>
         <?php endif; ?>
