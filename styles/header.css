@@ -118,7 +118,7 @@ nav ul li a::after {
 /* Обновляем стили для выпадающего меню */
 .dropdown {
     position: relative;
-    padding-right: 15px;
+    padding-right: 20px;
 }
 
 /* Стрелка выпадающего меню */
