@@ -70,7 +70,7 @@
                             <li><a href="products.php#flight-controller">Полётный контроллер</a></li>
                         </ul>
                     </li>
-                    <li><a href="/docs/index.php">Документация</a></li>
+                    <li><a href="/docs/documentation.php">Документация</a></li>
                     <li><a href="../blog.html">Блог</a></li>
                     <li><a href="../contacts.html">Контакты</a></li>
                 </ul>
@@ -128,7 +128,7 @@
                             <li><a href="products.php#flight-controller">Полётный контроллер</a></li>
                         </ul>
                     </li>
-                    <li><a href="/docs/index.php">Документация</a></li>
+                    <li><a href="/docs/documentation.php">Документация</a></li>
                     <li><a href="blog.html">Блог</a></li>
                     <li><a href="contacts.html">Контакты</a></li>
                 </ul>

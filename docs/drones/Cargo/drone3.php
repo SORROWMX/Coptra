@@ -1,14 +1,14 @@
-<?php include __DIR__ . '/../modules/header.php'; ?>
+<?php include __DIR__ . '/../../../modules/header.php'; ?>
 
 <div class="page-container">
-            <main><?php include __DIR__ . '/../modules/sidebar.php'; ?></main>
+            <main><?php include __DIR__ . '/../../../modules/sidebar.php'; ?></main>
             <main class="content-docs">
                 <section id="documentation-content" class="documentation-content">
                     <section id="documentation" class="documentation">
-                    <h1>Документация дрона Коптра</h1>
+                    <h1>Документация</h1>
                         <div class="documentation-grid">
-                            <h2 id="introduction">Введение</h2>
-                            <h3>Клевер 4.2</h3>
+                            <h2>Третий грузовой дрон</h2>
+                            <h3>Заголовок</h3>
 
                             <p>«Клевер» — это учебный конструктор программируемого квадрокоптера, состоящего из популярных открытых компонентов, а также набор необходимой документации и библиотек для работы с ним.</p>
 
@@ -28,4 +28,4 @@
                 </section>
             </main>
 </div>
-<?php include __DIR__ . '/../modules/footer.php'; ?>
+<?php include __DIR__ . '/../../../modules/footer.php'; ?>

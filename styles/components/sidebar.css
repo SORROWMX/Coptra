@@ -109,7 +109,6 @@ body {
 
 .sidebar-item.expandable {
 	position: relative;
-	padding-right: 20px;
 	width: 100%;
 }
 
@@ -152,7 +151,7 @@ body {
 	height: 8px;
 	border-top: 2px solid var(--color-text);
 	border-right: 2px solid var(--color-text);
-	transform: rotate(135deg);
+	transform: rotate(135	);
 	transition: transform 0.3s ease;
 	flex-shrink: 0;
 	display: inline-block;
@@ -326,18 +325,11 @@ body {
 	width: 80%;
 }
 
-/* Если нужно увеличить ширину этого конкретного подменю */
-.sidebar-item.expandable .extended-submenu {
-    width: 110%; /* Делаем немного шире, чем родительский элемент */
-    max-width: none; /* Убираем ограничение максимальной ширины, если оно было */
-}
-
-.sub-menu a:hover {
-	color: var(--color-primary);
-}
-
-/* Remove these classes as they're no longer needed */
-
+/* /* Если нужно увеличить ширину этого конкретного подменю */
+/* .sidebar-item.expandable .extended-submenu { */
+    /* width: 110%; Делаем немного шире, чем родительский элемент */
+    /* max-width: none; Убираем ограничение максимальной ширины, если оно было */
+/* } */
 
 /* Update mobile menu styles */
 .mobile-menu-toggle {
