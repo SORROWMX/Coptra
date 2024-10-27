@@ -64,7 +64,7 @@ const DropdownModule = {
         // Обработка десктопных дропдаунов
         document.querySelectorAll('.dropdown').forEach(this.setupDropdown);
         
-        // Добавляем обработку мобильных дропдаунов
+        // Добавяем обработку мобильных дропдаунов
         this.setupMobileDropdowns();
     },
 
@@ -582,19 +582,23 @@ document.addEventListener('DOMContentLoaded', () => {
             e.preventDefault();
             
             if (item.classList.contains('active')) {
-                // Закрытие подменю
-                subMenu.style.maxHeight = '0px';
-                subMenu.style.opacity = '0';
+                // Сначала устанавливаем высоту в 0
+                requestAnimationFrame(() => {
+                    subMenu.style.maxHeight = '0px';
+                    subMenu.style.opacity = '0';
+                });
                 
-                // Удаляем класс active после завершения анимации
-                setTimeout(() => {
+                // Ждем следующего кадра для плавной анимации
+                requestAnimationFrame(() => {
                     item.classList.remove('active');
-                }, 300); // Время должо соответствоать длительности transition
+                });
             } else {
                 // Открытие подменю
                 item.classList.add('active');
-                subMenu.style.maxHeight = subMenu.scrollHeight + 'px';
-                subMenu.style.opacity = '1';
+                requestAnimationFrame(() => {
+                    subMenu.style.maxHeight = subMenu.scrollHeight + 'px';
+                    subMenu.style.opacity = '1';
+                });
             }
         });
     });

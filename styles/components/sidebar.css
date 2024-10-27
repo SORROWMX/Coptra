@@ -152,8 +152,9 @@ body {
 	height: 8px;
 	border-top: 2px solid var(--color-text);
 	border-right: 2px solid var(--color-text);
-	transform: rotate(135	);
-	transition: transform 0.3s ease;
+	transform: rotate(135deg);
+	/* Обновляем transition для плавности в обоих направлениях */
+	transition: all 0.3s cubic-bezier(0.4, 0, 0.2, 1);
 	flex-shrink: 0;
 	display: inline-block;
 	margin-left: 10px;
@@ -161,32 +162,47 @@ body {
 
 .sidebar-item.expandable.active > .sidebar-link .arrow {
 	transform: rotate(-45deg);
+	border-color: var(--color-primary);
+	/* Используем тот же transition для обратной анимации */
+	transition: all 0.3s cubic-bezier(0.4, 0, 0.2, 1);
 }
 
+/* Удаляем дублирующиеся правила и оставляем одно общее определение */
 .sub-menu {
-	max-height: 0;
-	overflow: hidden;
-	opacity: 0;
-	transition: max-height 0.3s ease, opacity 0.3s ease;
-	width: 100%;
+    max-height: 0;
+    overflow: hidden;
+    opacity: 0;
+    width: 100%;
+    /* Обновляем transition для большей плавности */
+    transition: max-height 0.3s cubic-bezier(0.4, 0, 0.2, 1),
+                opacity 0.3s cubic-bezier(0.4, 0, 0.2, 1),
+                transform 0.3s cubic-bezier(0.4, 0, 0.2, 1);
+    transform: translateY(-10px);
 }
 
 .sidebar-item.expandable.active > .sub-menu {
-	max-height: 1000px; /* Достаточно большое значение для любого содержимого */
-	opacity: 1;
+    max-height: 1000px;
+    opacity: 1;
+    transform: translateY(0);
+    /* Используем те же значения transition */
+    transition: max-height 0.3s cubic-bezier(0.4, 0, 0.2, 1),
+                opacity 0.3s cubic-bezier(0.4, 0, 0.2, 1),
+                transform 0.3s cubic-bezier(0.4, 0, 0.2, 1);
+}
+
+/* Удаляем конфликтующие стили */
+.sidebar-item.expandable .sub-menu {
+    display: block; /* Меняем с none на block */
+}
+
+/* Удаляем ненужное правило */
+.sidebar-item.expandable.active .sub-menu {
+    display: block;
 }
 
 .sub-menu .sidebar-link {
 	padding-left: var(--spacing-large);
 	font-size: 1rem; /* Увеличиваем размер подпунктов меню */
-}
-
-.sidebar-item.expandable .sub-menu {
-	display: none;
-}
-
-.sidebar-item.expandable.active .sub-menu {
-	display: block;
 }
 
 .sub-menu .sidebar-link {
@@ -273,7 +289,7 @@ body {
 }
 
 .documentation {
-    max-width: 1400px; /* Увеличиваем максимальную шири��у */
+    max-width: 1400px; /* Увеличиваем максимальную шириу */
     margin: 0 auto; /* Центрируем документацию */
     line-height: 1.6; /* Увеличиваем межстрочный интервал для лучшей читаемости */
     font-size: 18px; /* Увеличиваем размер шрифта */
@@ -478,3 +494,5 @@ body {
 	transform: translateY(-50%) rotate(-135deg); // Стрелка влево
 }
 */
+
+
