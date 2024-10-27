@@ -589,7 +589,7 @@ document.addEventListener('DOMContentLoaded', () => {
                 // Удаляем класс active после завершения анимации
                 setTimeout(() => {
                     item.classList.remove('active');
-                }, 300); // Время должно соответствовать длительности transition
+                }, 300); // Время должо соответствоать длительности transition
             } else {
                 // Открытие подменю
                 item.classList.add('active');
@@ -651,5 +651,49 @@ document.addEventListener('DOMContentLoaded', () => {
     window.addEventListener('popstate', () => {
         location.reload();
     });
+});
+
+document.addEventListener('DOMContentLoaded', () => {
+    const cards = document.querySelectorAll('.goal-card');
+    const steps = document.querySelectorAll('.goal-step');
+
+    function setProgress(card) {
+        const circle = card.querySelector('.progress-ring__circle');
+        const progress = card.dataset.progress;
+        const radius = circle.r.baseVal.value;
+        const circumference = radius * 2 * Math.PI;
+        
+        circle.style.strokeDasharray = `${circumference} ${circumference}`;
+        
+        // Добавляем задержку для анимации
+        setTimeout(() => {
+            circle.style.strokeDashoffset = circumference - (progress / 100) * circumference;
+        }, 100);
+    }
+
+    const observer = new IntersectionObserver((entries) => {
+        entries.forEach(entry => {
+            if (entry.isIntersecting) {
+                entry.target.classList.add('visible');
+                
+                if (entry.target.classList.contains('goal-card')) {
+                    setProgress(entry.target);
+                    
+                    // Анимируем шаги с задержкой
+                    const steps = entry.target.querySelectorAll('.goal-step');
+                    steps.forEach((step, index) => {
+                        setTimeout(() => {
+                            step.classList.add('visible');
+                        }, 200 * (index + 1));
+                    });
+                }
+            }
+        });
+    }, {
+        threshold: 0.2,
+        rootMargin: '0px 0px -100px 0px'
+    });
+
+    cards.forEach(card => observer.observe(card));
 });
 
