@@ -491,29 +491,40 @@ const MobileMenuModule = {
             });
         }
 
-        // Close menus when clicking outside
+        // Обработчик для кнопки сайдбара
+        if (sidebarMobileBtn && sidebar) {
+            sidebarMobileBtn.addEventListener('click', function(e) {
+                e.stopPropagation(); // Предотвращаем всплытие события
+                const isActive = sidebar.classList.contains('active');
+                
+                // Переключаем состояние
+                this.classList.toggle('active');
+                sidebar.classList.toggle('active');
+                
+                // Управляем скроллом
+                if (sidebar.classList.contains('active')) {
+                    lockScroll();
+                } else {
+                    unlockScroll();
+                }
+            });
+        }
+
+        // Закрытие при клике вне сайдбара
         document.addEventListener('click', (event) => {
-            // Проверяем, является ли клик по элементу меню или его дочерним элементам
-            const isMenuClick = event.target.closest('.main-nav') || 
-                              event.target.closest('.mobile-menu-btn') ||
-                              event.target.closest('.dropdown') ||
-                              event.target.closest('.dropdown-submenu');
-
-            // Закрываем меню только если клик был вне меню и его элементов
-            if (mainNav && !isMenuClick && mainNav.classList.contains('active')) {
-                mobileMenuBtn?.classList.remove('active');
-                mainNav.classList.remove('active');
-                unlockScroll();
-            }
-
-            // Обработка сайдбара остается без изменений
-            if (sidebar && !sidebar.contains(event.target) && 
+            if (sidebar && 
+                !sidebar.contains(event.target) && 
                 !sidebarMobileBtn?.contains(event.target) && 
                 sidebar.classList.contains('active')) {
                 sidebarMobileBtn?.classList.remove('active');
                 sidebar.classList.remove('active');
                 unlockScroll();
             }
+        });
+
+        // Предотвращаем закрытие при клике внутри сайдбара
+        sidebar?.addEventListener('click', (e) => {
+            e.stopPropagation();
         });
     }
 };

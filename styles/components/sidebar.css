@@ -376,13 +376,25 @@ body {
     
     .sidebar {
         position: fixed;
-        right: - var(--sidebar-width); /* Изменено с left на right */
-        transition: right 0.3s ease; /* Изменено с left на right */
+        right: -100%; /* Меняем left на right */
+        left: auto; /* Убираем left позиционирование */
+        width: 100%;
+        height: calc(100vh - var(--header-height));
+        transition: all 0.3s cubic-bezier(0.4, 0, 0.2, 1);
         z-index: 1000;
+        background-color: var(--color-background);
+        transform: translateX(100%); /* Меняем направление transform */
+        opacity: 0;
     }
 
     .sidebar.active {
-        right: 0; /* Изменено с left на right */
+        right: 0; /* Меняем left на right */
+        transform: translateX(0);
+        opacity: 1;
+    }
+
+    .page-container {
+        grid-template-columns: 1fr;
     }
 }
 
@@ -494,5 +506,8 @@ body {
 	transform: translateY(-50%) rotate(-135deg); // Стрелка влево
 }
 */
+
+
+
 
 
