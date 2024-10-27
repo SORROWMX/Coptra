@@ -557,3 +557,49 @@ header.scrolled nav ul li a {
         display: none;
     }
 }
+
+@media (max-width: 768px) {
+    /* ... существующие стили ... */
+
+    .dropdown-menu,
+    .submenu {
+        position: static;
+        box-shadow: none;
+        width: 100%;
+        padding-left: 20px;
+        display: none;
+    }
+
+    .dropdown-submenu > a:after {
+        content: '+';
+        position: absolute;
+        right: 15px;
+        transition: transform 0.3s ease;
+    }
+
+    .dropdown-submenu.active > a:after {
+        transform: rotate(45deg);
+    }
+
+    .dropdown > a,
+    .dropdown-submenu > a {
+        position: relative;
+        display: block;
+        width: 100%;
+        padding: 10px 0;
+    }
+
+    .dropdown.active > a,
+    .dropdown-submenu.active > a {
+        color: var(--color-primary);
+    }
+
+    /* Анимация стрелки при активном состоянии */
+    .dropdown:after {
+        transition: transform 0.3s ease;
+    }
+
+    .dropdown.active:after {
+        transform: rotate(-180deg);
+    }
+}

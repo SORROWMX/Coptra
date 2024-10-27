@@ -61,7 +61,11 @@ const HeaderModule = {
 // Dropdown Module
 const DropdownModule = {
     init() {
+        // Обработка десктопных дропдаунов
         document.querySelectorAll('.dropdown').forEach(this.setupDropdown);
+        
+        // Добавляем обработку мобильных дропдаунов
+        this.setupMobileDropdowns();
     },
 
     setupDropdown(dropdown) {
@@ -69,28 +73,73 @@ const DropdownModule = {
         const menu = dropdown.querySelector('.dropdown-menu');
         let timeout;
 
-        const showMenu = () => {
-            clearTimeout(timeout);
-            dropdown.classList.add('active');
-            menu.style.display = 'block';
-        };
+        // Только для десктопа
+        if (window.innerWidth > 768) {
+            const showMenu = () => {
+                clearTimeout(timeout);
+                dropdown.classList.add('active');
+                menu.style.display = 'block';
+            };
 
-        const hideMenu = () => {
-            timeout = setTimeout(() => {
-                dropdown.classList.remove('active');
-                menu.style.display = 'none';
-            }, CONSTANTS.DROPDOWN_DELAY);
-        };
+            const hideMenu = () => {
+                timeout = setTimeout(() => {
+                    dropdown.classList.remove('active');
+                    menu.style.display = 'none';
+                }, CONSTANTS.DROPDOWN_DELAY);
+            };
 
-        dropdown.addEventListener('mouseenter', showMenu);
-        dropdown.addEventListener('mouseleave', hideMenu);
-        link.addEventListener('click', (e) => {
-            e.preventDefault();
-            menu.style.display === 'block' ? hideMenu() : showMenu();
+            dropdown.addEventListener('mouseenter', showMenu);
+            dropdown.addEventListener('mouseleave', hideMenu);
+        }
+    },
+
+    setupMobileDropdowns() {
+        // Обработчик для основного дропдауна
+        document.querySelectorAll('.dropdown > a').forEach(link => {
+            link.addEventListener('click', (e) => {
+                if (window.innerWidth <= 768) {
+                    e.preventDefault();
+                    const dropdown = link.parentElement;
+                    const menu = dropdown.querySelector('.dropdown-menu');
+                    
+                    // Закрываем все остальные открытые меню
+                    document.querySelectorAll('.dropdown').forEach(otherDropdown => {
+                        if (otherDropdown !== dropdown) {
+                            otherDropdown.classList.remove('active');
+                            const otherMenu = otherDropdown.querySelector('.dropdown-menu');
+                            if (otherMenu) otherMenu.style.display = 'none';
+                        }
+                    });
+
+                    // Переключаем текущее меню
+                    dropdown.classList.toggle('active');
+                    menu.style.display = menu.style.display === 'block' ? 'none' : 'block';
+                }
+            });
         });
 
-        document.addEventListener('click', (e) => {
-            if (!dropdown.contains(e.target)) hideMenu();
+        // Обработчик для подменю
+        document.querySelectorAll('.dropdown-submenu > a').forEach(link => {
+            link.addEventListener('click', (e) => {
+                if (window.innerWidth <= 768) {
+                    e.preventDefault();
+                    const submenu = link.nextElementSibling;
+                    const parentLi = link.parentElement;
+                    
+                    // Закрываем все остальные открытые подменю
+                    document.querySelectorAll('.dropdown-submenu').forEach(otherSubmenu => {
+                        if (otherSubmenu !== parentLi) {
+                            otherSubmenu.classList.remove('active');
+                            const otherSubMenu = otherSubmenu.querySelector('.submenu');
+                            if (otherSubMenu) otherSubMenu.style.display = 'none';
+                        }
+                    });
+
+                    // Переключаем текущее подменю
+                    parentLi.classList.toggle('active');
+                    submenu.style.display = submenu.style.display === 'block' ? 'none' : 'block';
+                }
+            });
         });
     }
 };
@@ -406,7 +455,7 @@ const MobileMenuModule = {
             document.body.style.width = '';
             window.scrollTo({
                 top: scrollPosition,
-                behavior: 'instant' // Используем instant вместо auto или smooth
+                behavior: 'instant'
             });
         };
 
@@ -425,55 +474,39 @@ const MobileMenuModule = {
                 mainNav.classList.toggle('active');
             });
 
-            // Close menu when clicking menu items
+            // Модифицируем обработчик кликов по пунктам меню
             const menuItems = mainNav.querySelectorAll('a');
             menuItems.forEach(item => {
-                item.addEventListener('click', () => {
-                    mobileMenuBtn.classList.remove('active');
-                    mainNav.classList.remove('active');
-                    unlockScroll();
-                });
-            });
-        }
-
-        // Sidebar mobile handlers
-        if (sidebarMobileBtn && sidebar) {
-            sidebarMobileBtn.addEventListener('click', function() {
-                const isSidebarActive = sidebar.classList.contains('active');
-                
-                if (isSidebarActive) {
-                    unlockScroll();
-                } else {
-                    lockScroll();
-                }
-
-                this.classList.toggle('active');
-                sidebar.classList.toggle('active');
-            });
-
-            // Close sidebar when clicking links
-            const sidebarLinks = sidebar.querySelectorAll('a');
-            sidebarLinks.forEach(link => {
-                link.addEventListener('click', () => {
-                    sidebarMobileBtn.classList.remove('active');
-                    sidebar.classList.remove('active');
-                    unlockScroll();
+                item.addEventListener('click', (e) => {
+                    // Проверяем, является ли элемент частью дропдауна
+                    const isDropdownLink = item.closest('.dropdown') || item.closest('.dropdown-submenu');
+                    
+                    // Если это не дропдаун и не его подменю, закрываем меню
+                    if (!isDropdownLink) {
+                        mobileMenuBtn.classList.remove('active');
+                        mainNav.classList.remove('active');
+                        unlockScroll();
+                    }
                 });
             });
         }
 
         // Close menus when clicking outside
         document.addEventListener('click', (event) => {
-            // Close main nav if clicking outside
-            if (mainNav && !mainNav.contains(event.target) && 
-                !mobileMenuBtn?.contains(event.target) && 
-                mainNav.classList.contains('active')) {
+            // Проверяем, является ли клик по элементу меню или его дочерним элементам
+            const isMenuClick = event.target.closest('.main-nav') || 
+                              event.target.closest('.mobile-menu-btn') ||
+                              event.target.closest('.dropdown') ||
+                              event.target.closest('.dropdown-submenu');
+
+            // Закрываем меню только если клик был вне меню и его элементов
+            if (mainNav && !isMenuClick && mainNav.classList.contains('active')) {
                 mobileMenuBtn?.classList.remove('active');
                 mainNav.classList.remove('active');
                 unlockScroll();
             }
 
-            // Close sidebar if clicking outside
+            // Обработка сайдбара остается без изменений
             if (sidebar && !sidebar.contains(event.target) && 
                 !sidebarMobileBtn?.contains(event.target) && 
                 sidebar.classList.contains('active')) {
@@ -663,3 +696,4 @@ document.addEventListener('DOMContentLoaded', () => {
 
     cards.forEach(card => observer.observe(card));
 });
+
