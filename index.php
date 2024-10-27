@@ -59,45 +59,137 @@
 							</div>
 						</div>
 
-						<div class="key-facts">
-							<div class="fact-card" data-count="100">
-								<div class="fact-icon">
-									<i class="fas fa-users"></i>
+						<div class="goals-section">
+							<h2>Цели на ближайший год</h2>
+							<div class="goals-timeline">
+								<div class="goals-progress-line"></div>
+								
+								<div class="goal-card" data-progress="25">
+									<div class="goal-progress">
+										<svg class="progress-ring" width="120" height="120">
+											<circle class="progress-ring__circle" stroke="var(--color-primary)" stroke-width="4" fill="transparent" r="52" cx="60" cy="60"/>
+											<circle class="progress-ring__path" stroke="var(--color-secondary)" stroke-width="4" fill="transparent" r="52" cx="60" cy="60"/>
+										</svg>
+										<div class="goal-icon">
+											<i class="fas fa-graduation-cap"></i>
+										</div>
+									</div>
+									<div class="goal-content">
+										<h4>Образовательный дрон</h4>
+										<div class="goal-steps">
+											<div class="goal-step">
+												<span class="step-marker"></span>
+												<p>Запуск учебного дрона</p>
+											</div>
+											<div class="goal-step">
+												<span class="step-marker"></span>
+												<p>Интеграция с платформами</p>
+											</div>
+											<div class="goal-step">
+												<span class="step-marker"></span>
+												<p>Старт продаж</p>
+											</div>
+										</div>
+									</div>
+									<div class="goal-image">
+										<img src="https://placehold.co/600x400?text=Образовательный+дрон" alt="Образовательный дрон">
+									</div>
 								</div>
-								<div class="fact-content">
-									<span class="fact-number">0</span>
-									<span class="fact-text">Довольных клиентов</span>
+
+								<div class="goal-card" data-progress="40">
+									<div class="goal-progress">
+										<svg class="progress-ring" width="120" height="120">
+											<circle class="progress-ring__circle" stroke="var(--color-primary)" stroke-width="4" fill="transparent" r="52" cx="60" cy="60"/>
+											<circle class="progress-ring__path" stroke="var(--color-secondary)" stroke-width="4" fill="transparent" r="52" cx="60" cy="60"/>
+										</svg>
+										<div class="goal-icon">
+											<i class="fas fa-handshake"></i>
+										</div>
+									</div>
+									<div class="goal-content">
+										<h4>Партнерская сеть</h4>
+										<div class="goal-steps">
+											<div class="goal-step">
+												<span class="step-marker"></span>
+												<p>Сотрудничество с 10 ведущими вузами</p>
+											</div>
+											<div class="goal-step">
+												<span class="step-marker"></span>
+												<p>Создание учебных лабораторий</p>
+											</div>
+											<div class="goal-step">
+												<span class="step-marker"></span>
+												<p>Поддержка студенческих проектов</p>
+											</div>
+										</div>
+									</div>
+									<div class="goal-image">
+										<img src="https://placehold.co/600x400?text=Партнерская+сеть" alt="Партнерская сеть">
+									</div>
 								</div>
-							</div>
-							<div class="fact-card" data-count="3">
-								<div class="fact-icon">
-									<img
-										src="assets/icons/drone.png"
-										alt="Иконка дрона"
-										class="custom-icon"
-									/>
+
+								<div class="goal-card" data-progress="15">
+									<div class="goal-progress">
+										<svg class="progress-ring" width="120" height="120">
+											<circle class="progress-ring__circle" stroke="var(--color-primary)" stroke-width="4" fill="transparent" r="52" cx="60" cy="60"/>
+											<circle class="progress-ring__path" stroke="var(--color-secondary)" stroke-width="4" fill="transparent" r="52" cx="60" cy="60"/>
+										</svg>
+										<div class="goal-icon">
+											<i class="fas fa-laptop-code"></i>
+										</div>
+									</div>
+									<div class="goal-content">
+										<h4>Обучающая платформа</h4>
+										<div class="goal-steps">
+											<div class="goal-step">
+												<span class="step-marker"></span>
+												<p>Запуск онлайн-курсов программирования</p>
+											</div>
+											<div class="goal-step">
+												<span class="step-marker"></span>
+												<p>Проведение практических мастер-классов</p>
+											</div>
+											<div class="goal-step">
+												<span class="step-marker"></span>
+												<p>Внедрение системы сертификации</p>
+											</div>
+										</div>
+									</div>
+									<div class="goal-image">
+										<img src="https://placehold.co/600x400?text=Обучающая+платформа" alt="Обучающая платформа">
+									</div>
 								</div>
-								<div class="fact-content">
-									<span class="fact-number">0</span>
-									<span class="fact-text">Моделей дронов</span>
-								</div>
-							</div>
-							<div class="fact-card" data-count="2024">
-								<div class="fact-icon">
-									<i class="fas fa-calendar"></i>
-								</div>
-								<div class="fact-content">
-									<span class="fact-number">0</span>
-									<span class="fact-text">Год основания</span>
-								</div>
-							</div>
-							<div class="fact-card" data-count="20">
-								<div class="fact-icon">
-									<i class="fas fa-code"></i>
-								</div>
-								<div class="fact-content">
-									<span class="fact-number">0</span>
-									<span class="fact-text">Экспертов в команде</span>
+
+								<div class="goal-card" data-progress="35">
+									<div class="goal-progress">
+										<svg class="progress-ring" width="120" height="120">
+											<circle class="progress-ring__circle" stroke="var(--color-primary)" stroke-width="4" fill="transparent" r="52" cx="60" cy="60"/>
+											<circle class="progress-ring__path" stroke="var(--color-secondary)" stroke-width="4" fill="transparent" r="52" cx="60" cy="60"/>
+										</svg>
+										<div class="goal-icon">
+											<i class="fas fa-robot"></i>
+										</div>
+									</div>
+									<div class="goal-content">
+										<h4>Инновации</h4>
+										<div class="goal-steps">
+											<div class="goal-step">
+												<span class="step-marker"></span>
+												<p>Разработка системы автономной навигации</p>
+											</div>
+											<div class="goal-step">
+												<span class="step-marker"></span>
+												<p>Увеличение времени полета на 40%</p>
+											</div>
+											<div class="goal-step">
+												<span class="step-marker"></span>
+												<p>Создание специализированных датчиков</p>
+											</div>
+										</div>
+									</div>
+									<div class="goal-image">
+										<img src="https://placehold.co/600x400?text=Инновации" alt="Инновации">
+									</div>
 								</div>
 							</div>
 						</div>
@@ -434,7 +526,7 @@
 								</div>
 								<div class="swiper-slide">
 									<div class="testimonial-card">
-										<p class="testimonial-text">Использование дронов Коптра в нашем виноградарском хозяйстве позволило оптимизировать использование ресурсов и повысить качество урожая.</p>
+										<p class="testimonial-text">Использование дронов Коптра в нашем в��нградарском хозяйстве позволило оптимизировать использование ресурсов и повысить качество урожая.</p>
 										<div class="testimonial-author">
 											<span class="client-name">Мария Виноградова</span>
 											<span class="client-position">Владелец, Винодельня 'Солнечная Долина'</span>
@@ -630,15 +722,9 @@
 							</div>
 							<div class="faq-item">
 								<div class="faq-question">
-									<span class="faq-icon"
-										><i class="fas fa-graduation-cap"></i
-									></span>
-									<span class="question-text"
-										>Нужно ли специальное обучение для управления дроном?</span
-									>
-									<span class="faq-toggle"
-										><i class="fas fa-chevron-down"></i
-									></span>
+									<span class="faq-icon"><i class="fas fa-graduation-cap"></i></span>
+									<span class="question-text">Нужно ли специальное обучение для управления дроном?</span>
+									<span class="faq-toggle"><i class="fas fa-chevron-down"></i></span>
 								</div>
 								<div class="faq-answer">
 									<p>
@@ -713,7 +799,7 @@
 									<div class="form-footer">
 										<div class="checkbox-container">
 											<input type="checkbox" id="privacy" required>
-											<label for="privacy">Согласен с <a href="#">политикой конфиденциальности</a></label>
+											<label for="privacy">Согласен с <a href="#">политикой конфидециальности</a></label>
 										</div>
 										<button type="submit" class="submit-button">
 											<span>Отправить сообщение</span>
