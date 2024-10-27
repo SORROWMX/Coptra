@@ -318,7 +318,7 @@ body {
 }
 
 .extended-submenu {
-    padding-left: 20px; /* Увеличиваем отступ слева */
+    padding-left: 2px; /* Увеличиваем отступ слева */
     margin-top: 10px; /* Увеличиваем отступ сверху */
     margin-bottom: 15px; /* Увеличиваем отступ снизу */
 }
