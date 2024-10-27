@@ -27,10 +27,10 @@
                     <li><a href="#">Контакты</a></li>
                 </ul>
             </div>
-            <div class="footer-section">
+            <div class="footer-section contact-info">
                 <h3>Свяжитесь с нами</h3>
-                <p>Email: info@koptra.ru</p>
-                <p>Телефон: +7 (123) 456-78-90</p>
+                <p><i class="fas fa-envelope"></i> info@koptra.ru</p>
+                <p><i class="fas fa-phone"></i> +7 (123) 456-78-90</p>
                 <div class="social-icons">
                     <a href="#" aria-label="VKontakte"><i class="fab fa-vk"></i></a>
                     <a href="#" aria-label="Telegram"><i class="fab fa-telegram-plane"></i></a>

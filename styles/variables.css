@@ -48,4 +48,19 @@
     --color-primary-dark: #2980b9;
     --color-secondary-light: #7ee8e1;
     --color-secondary-dark: #7f8c8d;
+
+    /* Переменные для футера */
+    --footer-bg: #27272a;
+    --footer-text: #fafafa;
+    --footer-link: #a1a1aa;
+    --footer-link-hover: #FF6B6B;
+    --footer-social-shadow: rgba(0, 0, 0, 0.2);
+
+    /* Социальные сети */
+   --vk-color: rgba(255, 255, 255, 0.1);
+    --vk-hover: #0077FF;
+    --telegram-color: rgba(255, 255, 255, 0.1);
+    --telegram-hover: #26A5E4;
+    --youtube-color: rgba(255, 255, 255, 0.1);
+    --youtube-hover: #FF0000;
 }
