@@ -258,7 +258,7 @@ body {
     margin-bottom: 0px;
 	text-align: center;
 	padding-top: 20px;
-	font-weight: var(--font-weight-medium);
+	font-weight: var(--font-weight-bold);
 }
 
 .documentation h4 {

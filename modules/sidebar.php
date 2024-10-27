@@ -4,7 +4,7 @@
             <h3>РУКОВОДСТВА:</h3>
         </div>
         <div class="sidebar-item">
-            <a href="/../docs/documentation.php" class="sidebar-link">Введение</a>
+            <a href="/../docs/documentation.php" class="sidebar-link" data-ajax-load>Введение</a>
         </div>
         <!-- =<div class="sidebar-item">
             <a href="boards" class="sidebar-link">Полётный контроллер</a>
