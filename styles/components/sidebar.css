@@ -273,7 +273,7 @@ body {
 }
 
 .documentation {
-    max-width: 1400px; /* Увеличиваем максимальную ширину */
+    max-width: 1400px; /* Увеличиваем максимальную шири��у */
     margin: 0 auto; /* Центрируем документацию */
     line-height: 1.6; /* Увеличиваем межстрочный интервал для лучшей читаемости */
     font-size: 18px; /* Увеличиваем размер шрифта */
@@ -328,7 +328,7 @@ body {
 }
 
 .extended-submenu a {
-    font-size: 15px; /* Увеличиваем размер шрифта */
+    font-size: 16px; /* Увеличиваем размер шрифта */
     padding: 6px 0; /* Увеличиваем вертикальные отступы */
     line-height: 1.4; /* Увеличиваем межстрочный интервал */
 	width: 80%;
@@ -432,3 +432,49 @@ body {
 	max-height: 1000px; /* Достаточно большое значение для любого содержимого */
 	opacity: 1;
 }
+
+/* Обновляем стили для стрелочек в подменю */
+.sub-menu li {
+	position: relative;
+	padding-left: 20px; /* Место для стрелочки */
+}
+
+.sub-menu li::before {
+	content: '';
+	position: absolute;
+	left: 0;
+	top: 50%;
+	width: 8px;
+	height: 8px;
+	border-top: 2px solid var(--color-text);
+	border-right: 2px solid var(--color-text);
+	transform: translateY(-50%) rotate(45deg); /* Стрелка вправо */
+	transition: border-color 0.3s ease, transform 0.3s ease;
+}
+
+/* При наведении меняем цвет стрелочки */
+.sub-menu li:hover::before {
+	border-color: var(--color-primary);
+	transform: translateY(-50%) rotate(45deg) scale(1.2); /* Немного увеличиваем при наведении */
+}
+
+/* Обновляем стили для активного состояния */
+.sub-menu li.active::before {
+	border-color: var(--color-primary);
+}
+
+/* Обновляем отступы для ссылок в подменю */
+.extended-submenu a {
+	font-size: 15px;
+	padding: 6px 0 6px 10px; /* Добавляем отступ слева */
+	line-height: 1.4;
+	width: calc(100% - 30px); /* Учитываем место для стрелочки */
+	display: inline-block;
+}
+
+/* Альтернативный вариант: стрелка слева */
+/*
+.sub-menu li::before {
+	transform: translateY(-50%) rotate(-135deg); // Стрелка влево
+}
+*/
