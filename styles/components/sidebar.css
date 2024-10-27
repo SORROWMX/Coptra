@@ -333,14 +333,8 @@ body {
 	padding-left: 5px;
 }
 
-.extended-submenu {
-    padding-left: 2px; /* Увеличиваем отступ слева */
-    margin-top: 10px; /* Увеличиваем отступ сверху */
-    margin-bottom: 15px; /* Увеличиваем отступ снизу */
-}
-
 .extended-submenu li {
-    margin-bottom: 12px; /* Увеличиваем отступ между элеметами */
+    margin-top: 12px; /* Увеличиваем отступ между элеметами */
 }
 
 .extended-submenu a {
