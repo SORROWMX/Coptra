@@ -197,11 +197,16 @@ header.scrolled nav ul li a {
     padding: var(--spacing-small) 0;
     min-width: 200px;
     z-index: 1001;
-    display: none;
+    opacity: 0;
+    visibility: hidden;
+    transform: translateY(-10px);
+    transition: all 0.3s cubic-bezier(0.4, 0, 0.2, 1);
 }
 
 .dropdown:hover .dropdown-menu {
-    display: block;
+    opacity: 1;
+    visibility: visible;
+    transform: translateY(0);
 }
 
 .dropdown-menu li {
@@ -307,11 +312,16 @@ header.scrolled nav ul li a {
     padding: var(--spacing-small) 0;
     min-width: 200px;
     z-index: 1001;
-    display: none;
+    opacity: 0;
+    visibility: hidden;
+    transform: translateY(-10px);
+    transition: all 0.3s cubic-bezier(0.4, 0, 0.2, 1);
 }
 
 .dropdown:hover .dropdown-menu {
-    display: block;
+    opacity: 1;
+    visibility: visible;
+    transform: translateY(0);
 }
 
 /* Стили для подменю */
@@ -326,12 +336,17 @@ header.scrolled nav ul li a {
     background-color: var(--color-background);
     box-shadow: 0 2px 10px rgba(0,0,0,0.1);
     min-width: 200px;
-    display: none;
+    opacity: 0;
+    visibility: hidden;
+    transform: translateX(-10px);
+    transition: all 0.3s cubic-bezier(0.4, 0, 0.2, 1);
     padding: var(--spacing-small) 0;
 }
 
 .dropdown-submenu:hover .submenu {
-    display: block;
+    opacity: 1;
+    visibility: visible;
+    transform: translateX(0);
 }
 
 /* Стили для пунктов меню */
@@ -569,7 +584,12 @@ header.scrolled nav ul li a {
         box-shadow: none;
         width: 100%;
         padding-left: 20px;
-        display: none;
+        transform: none;
+        max-height: 0;
+        overflow: hidden;
+        opacity: 0;
+        visibility: visible;
+        transition: all 0.3s cubic-bezier(0.4, 0, 0.2, 1);
     }
 
     .dropdown-submenu > a:after {
