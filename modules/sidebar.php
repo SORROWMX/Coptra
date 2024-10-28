@@ -54,7 +54,7 @@
             </ul>
         </div>
         <div class="sidebar-item">
-            <a href="boards" class="sidebar-link">Пульт радиоуправления</a>
+            <a href="/../docs/remotecontroller.php" class="sidebar-link">Пульт управления</a>
         </div>
         <div class="sidebar-item expandable">
             <span class="sidebar-link">
@@ -62,9 +62,9 @@
                 <span class="arrow"></span>
             </span>
             <ul class="sub-menu extended-submenu">
-                <li><a href="setup">Система ИК навигации</a></li>
-                <li><a href="hardware">Система УЗ навигации</a></li>
-                <li><a href="troubleshooting">УСиcтема оптической навигации</a></li>
+                <li><a href="/../docs/Navigation systems/infrared.php">Система ИК навигации</a></li>
+                <li><a href="/../docs/Navigation systems/ultrasonic.php">Система УЗ навигации</a></li>
+                <li><a href="/../docs/Navigation systems/optical.php">Сиcтема оптической навигации</a></li>
             </ul>
         </div>
         <div class="sidebar-item expandable">
@@ -73,9 +73,7 @@
                 <span class="arrow"></span>
             </span>
             <ul class="sub-menu extended-submenu">
-                <li><a href="setup">Плата подключения дополнительных модулей</a></li>
-                <li><a href="hardware">Конфигурация</a></li>
-                <li><a href="troubleshooting">Управление</a></li>
+                <li><a href="/../docs/Payload/option-board.php">Плата подключения дополнительных модулей</a></li>
             </ul>
         </div>
         <div class="sidebar-item expandable">
@@ -84,8 +82,8 @@
                 <span class="arrow"></span>
             </span>
             <ul class="sub-menu extended-submenu">
-                <li><a href="pioneer-station">Pioneer Station</a></li>
-                <li><a href="pioneer-drone-sim">Pioneer Drone Sim</a></li>
+                <li><a href="/../docs/Software/pioneer-station.php">Pioneer Station</a></li>
+                <li><a href="/../docs/Software/pioneer-drone-sim.php">Pioneer Drone Sim</a></li>
             </ul>
         </div>
         <div class="sidebar-item expandable">
@@ -94,10 +92,9 @@
                 <span class="arrow"></span>
             </span>
             <ul class="sub-menu extended-submenu">
-                <li><a href="python">Python</a></li>
-                <li><a href="trik-studio">TRIK Studio</a></li>
-                <li><a href="lua">LUA</a></li>
-                <li><a href="pioneer-max-ros">Пионер Макс + ROS</a></li>
+                <li><a href="/../docs/Programming/python.php">Python</a></li>
+                <li><a href="/../docs/Programming/trik-studio.php">TRIK Studio</a></li>
+                <li><a href="/../docs/Programming/lua.php">LUA</a></li>
             </ul>
         </div>
         <div class="sidebar-item expandable">
@@ -106,9 +103,9 @@
                 <span class="arrow"></span>
             </span>
             <ul class="sub-menu extended-submenu">
-                <li><a href="knowledge-base">База знаний</a></li>
-                <li><a href="downloads">Загрузки</a></li>
-                <li><a href="methods-and-cases">Методики и кейсы</a></li>
+                <li><a href="/../docs/Additional materials/database.php">База знаний</a></li>
+                <li><a href="/../docs/Additional materials/downloads.php">Загрузки</a></li>
+                <li><a href="/../docs/Additional materials/methods-and-cases.php">Методики и кейсы</a></li>
             </ul>
         </div>
     </nav>
