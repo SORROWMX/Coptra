@@ -270,8 +270,8 @@
 }
 
 .telegram-button {
-	background-color: white;
-	color: #0088cc;
+	background-color: #0088cc;
+	color: white;
 	padding: var(--spacing-small) var(--spacing-medium);
 	border-radius: var(--border-radius);
 	text-decoration: none;
@@ -279,14 +279,16 @@
 	font-weight: var(--font-weight-bold);
 	text-transform: uppercase;
 	transition: all var(--transition-speed) ease;
-	box-shadow: 0 2px 4px rgba(0, 0, 0, 0.1);
+	border: 2px solid white;
+	position: relative;
+	overflow: hidden;
 }
 
 .telegram-button:hover {
-	background-color: var(--color-secondary);
-	color: white;
-	transform: translateY(-2px);
-	box-shadow: 0 4px 6px rgba(0, 0, 0, 0.15);
+	background-color: transparent;
+	color: #0088cc;
+	border-color: #0088cc;
+	background-color: white;
 }
 
 /* Правая часть с контактной информацией */
