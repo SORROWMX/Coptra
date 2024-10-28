@@ -221,3 +221,45 @@
 .submit-button:not(.disabled):active {
     transform: translateY(0);
 }
+
+.page-navigation {
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    margin: 2rem 0;
+    padding: 0 2rem;
+}
+
+.nav-button {
+    display: flex;
+    align-items: center;
+    padding: 0.5rem 1rem;
+    border: 1px solid var(--color-border);
+    border-radius: var(--border-radius);
+    background-color: var(--color-background-light);
+    color: var(--color-text);
+    text-decoration: none;
+    transition: all 0.3s ease;
+}
+
+.nav-button:hover {
+    background-color: var(--color-primary);
+    color: white;
+    border-color: var(--color-primary);
+}
+
+.nav-button.prev::before {
+    content: '←';
+    margin-right: 0.5rem;
+}
+
+.nav-button.next::after {
+    content: '→';
+    margin-left: 0.5rem;
+}
+
+@media (max-width: 767px) {
+    .page-navigation {
+        padding: 0 1rem;
+    }
+}
