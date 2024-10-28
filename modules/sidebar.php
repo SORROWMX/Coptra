@@ -54,7 +54,7 @@
             </ul>
         </div>
         <div class="sidebar-item">
-            <a href="/../docs/remotecontroller.php" class="sidebar-link">Пульт управления</a>
+            <a href="/../docs/remotecontroller.php" class="sidebar-link" data-ajax-load>Пульт управления</a>
         </div>
         <div class="sidebar-item expandable">
             <span class="sidebar-link">
@@ -62,9 +62,9 @@
                 <span class="arrow"></span>
             </span>
             <ul class="sub-menu extended-submenu">
-                <li><a href="/../docs/navigationsystems/infrared.php">Система ИК навигации</a></li>
-                <li><a href="/../docs/navigationsystems/ultrasonic.php">Система УЗ навигации</a></li>
-                <li><a href="/../docs/navigationsystems/optical.php">Сиcтема оптической навигации</a></li>
+                <li><a href="/../docs/navigationsystems/infrared.php" data-ajax-load>Система ИК навигации</a></li>
+                <li><a href="/../docs/navigationsystems/ultrasonic.php" data-ajax-load>Система УЗ навигации</a></li>
+                <li><a href="/../docs/navigationsystems/optical.php" data-ajax-load>Сиcтема оптической навигации</a></li>
             </ul>
         </div>
         <div class="sidebar-item expandable">
@@ -73,7 +73,7 @@
                 <span class="arrow"></span>
             </span>
             <ul class="sub-menu extended-submenu">
-                <li><a href="/../docs/Payload/option-board.php">Плата подключения дополнительных модулей</a></li>
+                <li><a href="/../docs/Payload/option-board.php" data-ajax-load>Плата подключения дополнительных модулей</a></li>
             </ul>
         </div>
         <div class="sidebar-item expandable">
@@ -82,8 +82,8 @@
                 <span class="arrow"></span>
             </span>
             <ul class="sub-menu extended-submenu">
-                <li><a href="/../docs/Software/pioneer-station.php">Pioneer Station</a></li>
-                <li><a href="/../docs/Software/pioneer-drone-sim.php">Pioneer Drone Sim</a></li>
+                <li><a href="/../docs/Software/pioneer-station.php" data-ajax-load>Pioneer Station</a></li>
+                <li><a href="/../docs/Software/pioneer-drone-sim.php" data-ajax-load>Pioneer Drone Sim</a></li>
             </ul>
         </div>
         <div class="sidebar-item expandable">
@@ -92,9 +92,9 @@
                 <span class="arrow"></span>
             </span>
             <ul class="sub-menu extended-submenu">
-                <li><a href="/../docs/Programming/python.php">Python</a></li>
-                <li><a href="/../docs/Programming/trik-studio.php">TRIK Studio</a></li>
-                <li><a href="/../docs/Programming/lua.php">LUA</a></li>
+                <li><a href="/../docs/Programming/python.php" data-ajax-load>Python</a></li>
+                <li><a href="/../docs/Programming/trik-studio.php" data-ajax-load>TRIK Studio</a></li>
+                <li><a href="/../docs/Programming/lua.php" data-ajax-load>LUA</a></li>
             </ul>
         </div>
         <div class="sidebar-item expandable">
@@ -103,9 +103,9 @@
                 <span class="arrow"></span>
             </span>
             <ul class="sub-menu extended-submenu">
-                <li><a href="/../docs/additionalmaterials/database.php">База знаний</a></li>
-                <li><a href="/../docs/additionalmaterials/downloads.php">Загрузки</a></li>
-                <li><a href="/../docs/additionalmaterials/methods-and-cases.php">Методики и кейсы</a></li>
+                <li><a href="/../docs/additionalmaterials/database.php" data-ajax-load>База знаний</a></li>
+                <li><a href="/../docs/additionalmaterials/downloads.php" data-ajax-load>Загрузки</a></li>
+                <li><a href="/../docs/additionalmaterials/methods-and-cases.php" data-ajax-load>Методики и кейсы</a></li>
             </ul>
         </div>
     </nav>
