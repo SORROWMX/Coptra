@@ -32,7 +32,8 @@
 
     /* Макет */
     --max-width: 1200px;
-    --header-height: 80px;
+    --header-height: 80px; /* Начальная высота хедера */
+    --header-height-scrolled: 60px; /* Высота хедера после скролла */
     --footer-height: 314px;
     --sidebar-width: 380px;
 
