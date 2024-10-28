@@ -526,7 +526,7 @@
 								</div>
 								<div class="swiper-slide">
 									<div class="testimonial-card">
-										<p class="testimonial-text">Использование дронов Коптра в нашем в��нградарском хозяйстве позволило оптимизировать использование ресурсов и повысить качество урожая.</p>
+										<p class="testimonial-text">Использование дронов Коптра в нашем внградарском хозяйстве позволило оптимизировать использование ресурсов и повысить качество урожая.</p>
 										<div class="testimonial-author">
 											<span class="client-name">Мария Виноградова</span>
 											<span class="client-position">Владелец, Винодельня 'Солнечная Долина'</span>
@@ -807,8 +807,33 @@
 									</div>
 								</form>
 								</div>
-								<div class="contact-image">
-								<img src="https://placehold.co/600x400?text=Картинка+для+поддержки" alt="Поддержка клиентов">
+								<div class="contact-info-container">
+								<div class="contact-info">
+									<div class="info-item">
+										<i class="fas fa-map-marker-alt"></i>
+										<div>
+											<h4>Адрес</h4>
+											<p>г. Орёл, ул. Наугорское шоссе, 29</p>
+										</div>
+									</div>
+									<div class="info-item">
+										<i class="fas fa-phone"></i>
+										<div>
+											<h4>Телефон</h4>
+											<p>+7 (4862) 12-34-56</p>
+										</div>
+									</div>
+									<div class="info-item">
+										<i class="fas fa-envelope"></i>
+										<div>
+											<h4>Email</h4>
+											<p>info@koptra.ru</p>
+										</div>
+									</div>
+								</div>
+								<div class="contact-map">
+									<div id="map" style="width: 512px; height: 400px"></div>
+								</div>
 							</div>
 						</div>
 					</div>

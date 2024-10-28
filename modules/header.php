@@ -20,6 +20,32 @@ $root_path = '/'; // Измените на '/your-subdirectory/' если сай
     <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/swiper@11/swiper-bundle.min.css"/>
     <script src="https://cdn.jsdelivr.net/npm/swiper@11/swiper-bundle.min.js"></script>
     <script src="https://unpkg.com/imask"></script>
+    <script src="https://api-maps.yandex.ru/2.1/?apikey=1cff0148-de87-458e-a968-48f0c089c477&lang=ru_RU" type="text/javascript">
+    </script>
+    <script type="text/javascript">
+    ymaps.ready(init);
+    function init(){
+        // Создание карты.
+        var myMap = new ymaps.Map("map", {
+            // Координаты центра карты.
+            // Порядок по умолчанию: «широта, долгота».
+            center: [52.976048, 36.069789], // Координаты Наугорского шоссе, 29
+            // Уровень масштабирования
+            zoom: 16
+        });
+
+        // Создаем метку
+        var myPlacemark = new ymaps.Placemark([52.976048, 36.069789], {
+            balloonContent: 'КОПТРА<br>Наугорское шоссе, 29'
+        }, {
+            preset: 'islands#redDotIcon'
+        });
+
+        // Добавляем метку на карту
+        myMap.geoObjects.add(myPlacemark);
+    }
+</script>
+
 </head>
 <body>
 <div class="preloader">
