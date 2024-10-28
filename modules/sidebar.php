@@ -73,7 +73,7 @@
                 <span class="arrow"></span>
             </span>
             <ul class="sub-menu extended-submenu">
-                <li><a href="/../docs/payload/option-board.php">Плата подключения дополнительных модулей</a></li>
+                <li><a href="/../docs/Payload/option-board.php">Плата подключения дополнительных модулей</a></li>
             </ul>
         </div>
         <div class="sidebar-item expandable">
@@ -82,8 +82,8 @@
                 <span class="arrow"></span>
             </span>
             <ul class="sub-menu extended-submenu">
-                <li><a href="/../docs/software/pioneer-station.php">Pioneer Station</a></li>
-                <li><a href="/../docs/software/pioneer-drone-sim.php">Pioneer Drone Sim</a></li>
+                <li><a href="/../docs/Software/pioneer-station.php">Pioneer Station</a></li>
+                <li><a href="/../docs/Software/pioneer-drone-sim.php">Pioneer Drone Sim</a></li>
             </ul>
         </div>
         <div class="sidebar-item expandable">
@@ -92,9 +92,9 @@
                 <span class="arrow"></span>
             </span>
             <ul class="sub-menu extended-submenu">
-                <li><a href="/../docs/programming/python.php">Python</a></li>
-                <li><a href="/../docs/programming/trik-studio.php">TRIK Studio</a></li>
-                <li><a href="/../docs/programming/lua.php">LUA</a></li>
+                <li><a href="/../docs/Programming/python.php">Python</a></li>
+                <li><a href="/../docs/Programming/trik-studio.php">TRIK Studio</a></li>
+                <li><a href="/../docs/Programming/lua.php">LUA</a></li>
             </ul>
         </div>
         <div class="sidebar-item expandable">
