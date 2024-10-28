@@ -639,6 +639,10 @@ document.addEventListener('DOMContentLoaded', () => {
         link.addEventListener('click', function(e) {
             e.preventDefault();
             const url = this.getAttribute('href');
+            const preloader = document.querySelector('.preloader');
+            
+            // Показываем прелоадер
+            preloader.classList.remove('hidden');
             
             fetch(url, {
                 headers: {
@@ -654,11 +658,20 @@ document.addEventListener('DOMContentLoaded', () => {
                 if (newContent) {
                     contentSection.innerHTML = newContent.outerHTML;
                     history.pushState(null, '', url);
+                    
+                    // Скрываем прелоадер после загрузки контента
+                    setTimeout(() => {
+                        preloader.classList.add('hidden');
+                    }, 300);
                 } else {
                     console.error('Не удалось найти содержимое документации в ответе');
+                    preloader.classList.add('hidden');
                 }
             })
-            .catch(error => console.error('Error:', error));
+            .catch(error => {
+                console.error('Error:', error);
+                preloader.classList.add('hidden');
+            });
         });
     });
 
@@ -710,5 +723,26 @@ document.addEventListener('DOMContentLoaded', () => {
     });
 
     cards.forEach(card => observer.observe(card));
+});
+
+document.addEventListener('DOMContentLoaded', () => {
+    const preloader = document.querySelector('.preloader');
+    
+    // Функция для скрытия прелоадера
+    function hidePreloader() {
+        preloader.classList.add('hidden');
+    }
+    
+    // Скрываем прелоадер после загрузки всех ресурсов
+    window.addEventListener('load', () => {
+        setTimeout(hidePreloader, 500); // Добавляем небольшую задержку для плавности
+    });
+    
+    // Показываем прелоадер при переходе по AJAX-ссылкам
+    document.querySelectorAll('a[data-ajax-load]').forEach(link => {
+        link.addEventListener('click', () => {
+            preloader.classList.remove('hidden');
+        });
+    });
 });
 

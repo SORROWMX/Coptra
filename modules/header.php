@@ -22,6 +22,13 @@ $root_path = '/'; // Измените на '/your-subdirectory/' если сай
     <script src="https://unpkg.com/imask"></script>
 </head>
 <body>
+<div class="preloader">
+    <div class="preloader-content">
+        <img src="<?php echo $root_path; ?>assets/images/header-logo.png" alt="Коптра" class="preloader-logo">
+        <div class="preloader-spinner"></div>
+        <div class="preloader-text">Загрузка...</div>
+    </div>
+</div>
 <header>
     <div class="container header-container">
         <a href="<?php echo $root_path; ?>index.php" class="logo">
