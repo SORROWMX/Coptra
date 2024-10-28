@@ -288,3 +288,62 @@
 	transform: translateY(-2px);
 	box-shadow: 0 4px 6px rgba(0, 0, 0, 0.15);
 }
+
+/* Правая часть с контактной информацией */
+.contact-info-container {
+	width: 45%;
+	display: flex;
+	flex-direction: column;
+	gap: var(--spacing-xlarge);
+}
+
+.contact .contact-info {
+	background: var(--color-background-light);
+	padding: var(--spacing-large);
+	border-radius: var(--border-radius);
+	box-shadow: 0 8px 24px rgba(0, 0, 0, 0.08);
+}
+
+.contact .contact-info p {
+	color: var(--color-text);
+}
+
+.info-item {
+	display: flex;
+	align-items: flex-start;
+	gap: var(--spacing-medium);
+	margin-bottom: var(--spacing-medium);
+}
+
+.info-item:last-child {
+	margin-bottom: 0;
+}
+
+.info-item i {
+	color: var(--color-primary);
+	font-size: 24px;
+	padding-top: 4px;
+}
+
+.info-item h4 {
+	margin: 0;
+	font-size: var(--font-size-base);
+	color: var(--color-text);
+	margin-bottom: 4px;
+}
+
+.info-item p {
+	margin: 0;
+	color: var(--color-text-light);
+	font-size: var(--font-size-small);
+}
+
+.contact-map {
+	border-radius: var(--border-radius);
+	overflow: hidden;
+	box-shadow: 0 8px 24px rgba(0, 0, 0, 0.08);
+}
+
+.contact-map iframe {
+	display: block;
+}
