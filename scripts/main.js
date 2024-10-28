@@ -843,27 +843,23 @@ const ParticlesModule = {
                     }
                 },
                 interactivity: {
-                    detectsOn: 'canvas',
+                    detect_on: 'canvas',
                     events: {
-                        onHover: {
+                        onhover: {
                             enable: true,
                             mode: 'grab'
                         },
-                        onClick: {
-                            enable: true,
-                            mode: 'push'
+                        onclick: {
+                            enable: false
                         },
                         resize: true
                     },
                     modes: {
                         grab: {
                             distance: 140,
-                            links: {
+                            line_linked: {
                                 opacity: 1
                             }
-                        },
-                        push: {
-                            quantity: 4
                         }
                     }
                 },
@@ -878,3 +874,4 @@ document.addEventListener('DOMContentLoaded', () => {
     // ... существующие инициализации ...
     ParticlesModule.init();
 });
+
