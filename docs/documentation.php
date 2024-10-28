@@ -27,6 +27,17 @@ if ($isAjax) {
                     <p>Вы можете скачать PDF-версию этой документации. The English version of this documentation is available.</p>
 
                 </div>
+                <div class="page-navigation" style="display: flex; justify-content: flex-end;">
+                    <?php
+                    // Определяем только следующую страницу
+                    $next_page = '/../docs/drones/Training/drone1.php';
+                    
+                    if ($next_page): ?>
+                        <a href="<?php echo $next_page; ?>" class="nav-button next" data-ajax-load>
+                            Следующая страница
+                        </a>
+                    <?php endif; ?>
+                </div>
             </section>
         </section>
     </main>
@@ -58,6 +69,17 @@ if ($isAjax) {
                         <p>Чат по разработке самой платформы Клевера и образа для RPi: @devclover.</p>
 
                         <p>Вы можете скачать PDF-версию этой документации. The English version of this documentation is available.</p>
+                    </div>
+                    <div class="page-navigation" style="display: flex; justify-content: flex-end;">
+                        <?php
+                        // Определяем только следующую страницу
+                        $next_page = '/../docs/drones/Training/drone1.php';
+                        
+                        if ($next_page): ?>
+                            <a href="<?php echo $next_page; ?>" class="nav-button next" data-ajax-load>
+                                Следующая страница
+                            </a>
+                        <?php endif; ?>
                     </div>
                 </section>
             </section>

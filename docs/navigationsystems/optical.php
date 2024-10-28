@@ -4,7 +4,6 @@ $isAjax = isset($_SERVER['HTTP_X_REQUESTED_WITH']) && strtolower($_SERVER['HTTP_
 if ($isAjax) {
     // Если это AJAX-запрос, возвращаем только содержимое документации
     ?>
-    <main></main>
             <main class="content-docs">
                 <section id="documentation-content" class="documentation-content">
                     <section id="documentation" class="documentation">
@@ -27,6 +26,23 @@ if ($isAjax) {
 
                             <p>Вы можете скачать PDF-версию этой документации. The English version of this documentation is available.</p>
                         </div>
+                        <div class="page-navigation">
+                    <?php
+                    $prev_page = '/../docs/navigationsystems/ultrasonic.php'; // Путь к предыдущей странице
+                    $next_page = '/../docs/Payload/option-board.php'; // Путь к следующей странице
+                    
+                    if ($prev_page): ?>
+                        <a href="<?php echo $prev_page; ?>" class="nav-button prev" data-ajax-load>
+                            Предыдущая страница
+                        </a>
+                    <?php endif; ?>
+                    
+                    <?php if ($next_page): ?>
+                        <a href="<?php echo $next_page; ?>" class="nav-button next" data-ajax-load>
+                            Следующая страница
+                        </a>
+                    <?php endif; ?>
+                </div>
                     </section>
                 </section>
             </main>
@@ -59,6 +75,23 @@ if ($isAjax) {
 
                             <p>Вы можете скачать PDF-версию этой документации. The English version of this documentation is available.</p>
                         </div>
+                        <div class="page-navigation">
+                    <?php
+                    $prev_page = '/../docs/navigationsystems/ultrasonic.php'; // Путь к предыдущей странице
+                    $next_page = '/../docs/Payload/option-board.php'; // Путь к следующей странице
+                    
+                    if ($prev_page): ?>
+                        <a href="<?php echo $prev_page; ?>" class="nav-button prev" data-ajax-load>
+                            Предыдущая страница
+                        </a>
+                    <?php endif; ?>
+                    
+                    <?php if ($next_page): ?>
+                        <a href="<?php echo $next_page; ?>" class="nav-button next" data-ajax-load>
+                            Следующая страница
+                        </a>
+                    <?php endif; ?>
+                </div>
                     </section>
                 </section>
             </main>

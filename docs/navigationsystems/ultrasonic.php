@@ -27,6 +27,23 @@ if ($isAjax) {
 
                             <p>Вы можете скачать PDF-версию этой документации. The English version of this documentation is available.</p>
                         </div>
+                        <div class="page-navigation">
+                <?php
+                $prev_page = '/../docs/navigationsystems/infrared.php'; // Путь к предыдущей странице
+                $next_page = '/../docs/navigationsystems/optical.php'; // Путь к следующей странице
+                
+                if ($prev_page): ?>
+                    <a href="<?php echo $prev_page; ?>" class="nav-button prev" data-ajax-load>
+                        Предыдущая страница
+                    </a>
+                <?php endif; ?>
+                
+                <?php if ($next_page): ?>
+                    <a href="<?php echo $next_page; ?>" class="nav-button next" data-ajax-load>
+                        Следующая страница
+                    </a>
+                <?php endif; ?>
+            </div>
                     </section>
                 </section>
             </main>
@@ -59,6 +76,23 @@ if ($isAjax) {
 
                             <p>Вы можете скачать PDF-версию этой документации. The English version of this documentation is available.</p>
                         </div>
+                        <div class="page-navigation">
+                <?php
+                $prev_page = '/../docs/navigationsystems/infrared.php'; // Путь к предыдущей странице
+                $next_page = '/../docs/navigationsystems/optical.php'; // Путь к следующей странице
+                
+                if ($prev_page): ?>
+                    <a href="<?php echo $prev_page; ?>" class="nav-button prev" data-ajax-load>
+                        Предыдущая страница
+                    </a>
+                <?php endif; ?>
+                
+                <?php if ($next_page): ?>
+                    <a href="<?php echo $next_page; ?>" class="nav-button next" data-ajax-load>
+                        Следующая страница
+                    </a>
+                <?php endif; ?>
+            </div>
                     </section>
                 </section>
             </main>

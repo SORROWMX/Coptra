@@ -725,3 +725,57 @@ document.addEventListener('DOMContentLoaded', () => {
         setTimeout(hidePreloader, 500);
     });
 });
+
+// Добавляем новый модуль для обработки AJAX-навигации
+const NavigationModule = {
+    init() {
+        // Обработчик для кнопок навигации
+        document.addEventListener('click', (e) => {
+            const navButton = e.target.closest('.nav-button[data-ajax-load]');
+            if (navButton) {
+                e.preventDefault();
+                const url = navButton.getAttribute('href');
+                this.loadContent(url);
+            }
+        });
+
+        // Обработка событий истории браузера
+        window.addEventListener('popstate', (e) => {
+            if (e.state && e.state.url) {
+                this.loadContent(e.state.url, false);
+            }
+        });
+    },
+
+    loadContent(url, pushState = true) {
+        const contentSection = document.querySelector('.documentation-content');
+        
+        fetch(url, {
+            headers: {
+                'X-Requested-With': 'XMLHttpRequest'
+            }
+        })
+        .then(response => response.text())
+        .then(html => {
+            const parser = new DOMParser();
+            const doc = parser.parseFromString(html, 'text/html');
+            const newContent = doc.querySelector('.documentation-content');
+            
+            if (newContent) {
+                contentSection.innerHTML = newContent.innerHTML;
+                if (pushState) {
+                    history.pushState({ url }, '', url);
+                }
+                // Прокручиваем страницу вверх после загрузки нового контента
+                contentSection.scrollIntoView({ behavior: 'smooth' });
+            }
+        })
+        .catch(error => console.error('Error:', error));
+    }
+};
+
+// Инициализируем модуль вместе с остальными
+document.addEventListener('DOMContentLoaded', () => {
+    // ... существующие инициализации ...
+    NavigationModule.init();
+});

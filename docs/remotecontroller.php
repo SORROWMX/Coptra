@@ -2,7 +2,6 @@
 $isAjax = isset($_SERVER['HTTP_X_REQUESTED_WITH']) && strtolower($_SERVER['HTTP_X_REQUESTED_WITH']) == 'xmlhttprequest';
 
 if ($isAjax) {
-    // Для AJAX-запроса возвращаем только контент
     ?>
     <main class="content-docs">
         <section id="documentation-content" class="documentation-content">
@@ -25,14 +24,30 @@ if ($isAjax) {
                     <p>Чат по разработке самой платформы Клевера и образа для RPi: @devclover.</p>
 
                     <p>Вы можете скачать PDF-версию этой документации. The English version of this documentation is available.</p>
-
+                </div>
+                <div class="page-navigation">
+                    <?php
+                    // Определяем предыдущую и следующую страницы
+                    $prev_page = '/../docs/drones/Cargo/drone3.php'; // Путь к предыдущей странице
+                    $next_page = '/../docs/navigationsystems/infrared.php'; // Путь к следующей странице
+                    
+                    if ($prev_page): ?>
+                        <a href="<?php echo $prev_page; ?>" class="nav-button prev" data-ajax-load>
+                            Предыдущая страница
+                        </a>
+                    <?php endif; ?>
+                    
+                    <?php if ($next_page): ?>
+                        <a href="<?php echo $next_page; ?>" class="nav-button next" data-ajax-load>
+                            Следующая страница
+                        </a>
+                    <?php endif; ?>
                 </div>
             </section>
         </section>
     </main>
     <?php
 } else {
-    // Для обычного запроса возвращаем полную страницу
     include __DIR__ . '/../modules/header.php';
     ?>
     <div class="page-container">
@@ -58,6 +73,24 @@ if ($isAjax) {
                         <p>Чат по разработке самой платформы Клевера и образа для RPi: @devclover.</p>
 
                         <p>Вы можете скачать PDF-версию этой документации. The English version of this documentation is available.</p>
+                    </div>
+                    <div class="page-navigation">
+                        <?php
+                        // Определяем предыдущую и следующую страницы
+                        $prev_page = '/../docs/drones/Cargo/drone3.php'; // Путь к предыдущей странице
+                        $next_page = '/../docs/navigationsystems/infrared.php'; // Путь к следующей странице
+                        
+                        if ($prev_page): ?>
+                            <a href="<?php echo $prev_page; ?>" class="nav-button prev" data-ajax-load>
+                                Предыдущая страница
+                            </a>
+                        <?php endif; ?>
+                        
+                        <?php if ($next_page): ?>
+                            <a href="<?php echo $next_page; ?>" class="nav-button next" data-ajax-load>
+                                Следующая страница
+                            </a>
+                        <?php endif; ?>
                     </div>
                 </section>
             </section>
