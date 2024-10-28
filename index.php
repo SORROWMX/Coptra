@@ -6,6 +6,7 @@
 
 				<!-- Герой-секция -->
 				<section id="home" class="hero">
+					<div id="particles-js"></div>
 					<div class="hero-content">
 						<div class="hero-text">
 							<h1>ИННОВАЦИОННЫЕ ДРОНЫ ДЛЯ ОБРАЗОВАНИЯ И БИЗНЕСА</h1>
