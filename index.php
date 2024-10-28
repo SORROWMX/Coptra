@@ -820,7 +820,7 @@
 										<i class="fas fa-phone"></i>
 										<div>
 											<h4>Телефон</h4>
-											<p>+7 (4862) 12-34-56</p>
+											<p>+7 (123) 456-78-90</p>
 										</div>
 									</div>
 									<div class="info-item">

@@ -193,20 +193,21 @@
     transition: all var(--transition-speed) ease;
 }
 
-.submit-button:hover {
+/* .submit-button:hover {
     background-color: var(--color-primary);
     color: var(--color-text-light);
     transform: translateY(-2px);
     box-shadow: 0 4px 12px rgba(var(--color-primary-rgb), 0.2);
-}
+} */
 
 .submit-button:active {
     transform: translateY(0);
 }
 
 .submit-button.disabled {
-    background-color: var(--color-primary);
-    border-color: var(--color-border);
+    background-color: transparent;
+    color: var(--color-primary);
+    border-color: var(--color-primary);
     cursor: not-allowed;
     opacity: 0.7;
 }
