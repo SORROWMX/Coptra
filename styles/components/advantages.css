@@ -98,16 +98,6 @@
     height: 250px;
     perspective: 1000px;
     position: relative;
-    opacity: 0;
-    transform: translateY(50px) scale(0.9);
-    filter: blur(10px);
-    transition: all 0.8s cubic-bezier(0.34, 1.56, 0.64, 1);
-}
-
-.advantage-card.animate {
-    opacity: 1;
-    transform: translateY(0) scale(1);
-    filter: blur(0);
 }
 
 /* .advantage-card::after {
@@ -310,83 +300,4 @@
         opacity: 1;
         transform: translateY(0);
     }
-}
-
-/* Добавляем стили для анимации */
-.advantage-card {
-    opacity: 0;
-    transform: translateY(50px) scale(0.9);
-    filter: blur(10px);
-    transition: all 0.8s cubic-bezier(0.34, 1.56, 0.64, 1);
-}
-
-.advantage-card.animate {
-    opacity: 1;
-    transform: translateY(0) scale(1);
-    filter: blur(0);
-}
-
-/* Добавляем разные направления появления для карточек */
-.advantage-card:nth-child(4n+1) {
-    transform: translateX(-50px) translateY(50px) scale(0.9) rotate(-5deg);
-}
-
-.advantage-card:nth-child(4n+2) {
-    transform: translateX(50px) translateY(50px) scale(0.9) rotate(5deg);
-}
-
-.advantage-card:nth-child(4n+3) {
-    transform: translateX(-50px) translateY(50px) scale(0.9) rotate(5deg);
-}
-
-.advantage-card:nth-child(4n+4) {
-    transform: translateX(50px) translateY(50px) scale(0.9) rotate(-5deg);
-}
-
-/* Возвращаем все карточки в нормальное положение при анимации */
-.advantage-card.animate:nth-child(4n+1),
-.advantage-card.animate:nth-child(4n+2),
-.advantage-card.animate:nth-child(4n+3),
-.advantage-card.animate:nth-child(4n+4) {
-    transform: translateX(0) translateY(0) scale(1) rotate(0);
-}
-
-/* Добавляем эффект тени при появлении */
-.advantage-card {
-    box-shadow: 0 0 0 rgba(0, 0, 0, 0);
-    transition: all 0.8s cubic-bezier(0.34, 1.56, 0.64, 1), box-shadow 0.3s ease;
-}
-
-.advantage-card.animate {
-    box-shadow: 0 10px 30px rgba(0, 0, 0, 0.1);
-}
-
-/* Анимация заголовка */
-.advantages h2 {
-    opacity: 0;
-    position: relative;
-    overflow: hidden;
-    padding: 10px 0;
-    text-align: center;
-    margin-bottom: var(--spacing-xxlarge);
-}
-
-.advantages h2.animate {
-    animation: revealMask 0.8s cubic-bezier(0.77, 0, 0.175, 1) forwards;
-}
-
-.advantages h2::after {
-    content: '';
-    position: absolute;
-    bottom: 0;
-    left: 50%;
-    width: 0;
-    height: 2px;
-    background: var(--color-primary);
-    transform: translateX(-50%);
-}
-
-.advantages h2.animate::after {
-    animation: underlineExpand 0.6s ease-out forwards;
-    animation-delay: 0.8s;
 }
