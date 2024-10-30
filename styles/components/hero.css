@@ -41,13 +41,11 @@
 .hero h1 {
     font-size: 3rem;
     margin-bottom: var(--spacing-medium);
-    animation: slideInLeft 1s ease-out;
 }
 
 .hero p {
     font-size: 1.2rem;
     margin-bottom: var(--spacing-large);
-    animation: slideInLeft 1s ease-out 0.3s backwards;
 }
 
 .hero-image {
@@ -75,7 +73,6 @@
     position: relative;
     overflow: hidden;
     z-index: 1;
-    animation: slideInLeft 1s ease-out 0.3s backwards;
 }
 
 .cta-button::before {
@@ -132,17 +129,6 @@
     100% { transform: translate(100px, 100px) rotate(360deg); }
 }
 
-@keyframes slideInLeft {
-    from {
-        opacity: 0;
-        transform: translateX(-50px);
-    }
-    to {
-        opacity: 1;
-        transform: translateX(0);
-    }
-}
-
 @keyframes float {
     0%, 100% {
         transform: translateY(0);
@@ -186,11 +172,234 @@
 
 .hero-content {
     position: relative;
-    z-index: 2;  /* Увеличиваем z-index чтобы контент был поверх частиц */
+    z-index: 2;
     display: flex;
     justify-content: space-between;
     align-items: center;
     max-width: var(--max-width);
     margin: 0 auto;
     padding: 0 var(--spacing-medium);
+}
+
+@keyframes heroTextSlideIn {
+    0% {
+        opacity: 0;
+        transform: translateX(-100px);
+    }
+    100% {
+        opacity: 1;
+        transform: translateX(0);
+    }
+}
+
+@keyframes heroImageSlideIn {
+    0% {
+        opacity: 0;
+        transform: translateX(100px);
+    }
+    100% {
+        opacity: 1;
+        transform: translateX(0);
+    }
+}
+
+.hero-text {
+    opacity: 0;
+    animation: heroTextSlideIn 1s ease-out forwards;
+    animation-delay: 0.5s;
+}
+
+.hero-image {
+    opacity: 0;
+    animation: heroImageSlideIn 1s ease-out forwards;
+    animation-delay: 0.8s;
+}
+
+.floating-elements {
+    opacity: 0;
+    animation: fadeIn 1.5s ease-out forwards;
+    animation-delay: 1.2s;
+}
+
+@keyframes particlesFadeIn {
+    from {
+        opacity: 0;
+    }
+    to {
+        opacity: 1;
+    }
+}
+
+#particles-js {
+    opacity: 0;
+    animation: particlesFadeIn 2s ease-out forwards;
+    animation-delay: 0.3s;
+}
+
+/* Анимации для текста */
+@keyframes heroTextReveal {
+    0% {
+        opacity: 0;
+        transform: translateX(-50px) skewX(-15deg);
+        filter: blur(10px);
+    }
+    100% {
+        opacity: 1;
+        transform: translateX(0) skewX(0);
+        filter: blur(0);
+    }
+}
+
+/* Анимация для каждой буквы заголовка */
+@keyframes letterFadeIn {
+    0% {
+        opacity: 0;
+        transform: translateY(50px) rotate(45deg);
+    }
+    100% {
+        opacity: 1;
+        transform: translateY(0) rotate(0);
+    }
+}
+
+/* Анимация для изображения */
+@keyframes heroImageReveal {
+    0% {
+        opacity: 0;
+        transform: translateX(100px) scale(0.8) rotate(-10deg);
+        filter: brightness(0) blur(20px);
+    }
+    50% {
+        filter: brightness(1) blur(0);
+    }
+    75% {
+        transform: translateX(0) scale(1.1) rotate(5deg);
+    }
+    100% {
+        opacity: 1;
+        transform: translateX(0) scale(1) rotate(0);
+    }
+}
+
+/* Анимация для кнопки */
+@keyframes buttonPop {
+    0% {
+        opacity: 0;
+        transform: scale(0.5);
+    }
+    50% {
+        transform: scale(1.2);
+    }
+    75% {
+        transform: scale(0.9);
+    }
+    100% {
+        opacity: 1;
+        transform: scale(1);
+    }
+}
+
+/* Анимация для частиц */
+@keyframes particlesReveal {
+    0% {
+        opacity: 0;
+        transform: scale(1.5);
+    }
+    100% {
+        opacity: 1;
+        transform: scale(1);
+    }
+}
+
+/* Анимация для плавающих элементов */
+@keyframes floatingElementsReveal {
+    0% {
+        opacity: 0;
+        transform: translateY(100px) scale(0);
+    }
+    50% {
+        transform: translateY(-20px) scale(1.2);
+    }
+    100% {
+        opacity: 1;
+        transform: translateY(0) scale(1);
+    }
+}
+
+/* Применяем анимации */
+.hero-text h1 {
+    animation: heroTextReveal 1.2s cubic-bezier(0.68, -0.55, 0.265, 1.55) forwards;
+    animation-delay: 0.3s;
+}
+
+.hero-text h1 .word span {
+    display: inline-block;
+    opacity: 0;
+}
+
+.hero-text h1 .word {
+    display: inline-block;
+}
+
+.hero-text h1 .word:last-child {
+    margin-right: 0;
+}
+
+.hero-text p {
+    opacity: 0;
+    animation: heroTextReveal 1s cubic-bezier(0.68, -0.55, 0.265, 1.55) forwards;
+    animation-delay: 0.8s;
+}
+
+.hero-text .cta-button {
+    opacity: 0;
+    animation: buttonPop 0.8s cubic-bezier(0.68, -0.55, 0.265, 1.55) forwards;
+    animation-delay: 1.3s;
+}
+
+.hero-image {
+    opacity: 0;
+    animation: heroImageReveal 1.5s cubic-bezier(0.68, -0.55, 0.265, 1.55) forwards;
+    animation-delay: 0.5s;
+    transform-origin: center center;
+}
+
+#particles-js {
+    opacity: 0;
+    animation: particlesReveal 2s ease-out forwards;
+    animation-delay: 0.2s;
+}
+
+.floating-element {
+    opacity: 0;
+}
+
+.floating-element:nth-child(1) { animation: floatingElementsReveal 1s ease-out forwards 1.4s; }
+.floating-element:nth-child(2) { animation: floatingElementsReveal 1s ease-out forwards 1.6s; }
+.floating-element:nth-child(3) { animation: floatingElementsReveal 1s ease-out forwards 1.8s; }
+.floating-element:nth-child(4) { animation: floatingElementsReveal 1s ease-out forwards 2.0s; }
+.floating-element:nth-child(5) { animation: floatingElementsReveal 1s ease-out forwards 2.2s; }
+
+/* Добавляем эффект свечения для кнопки после анимации */
+.hero-text .cta-button::after {
+    content: '';
+    position: absolute;
+    top: -50%;
+    left: -50%;
+    width: 200%;
+    height: 200%;
+    background: linear-gradient(
+        45deg,
+        transparent,
+        rgba(255, 255, 255, 0.1),
+        transparent
+    );
+    transform: translateX(-100%);
+    animation: buttonGlow 3s infinite 2s;
+}
+
+@keyframes buttonGlow {
+    100% {
+        transform: translateX(100%);
+    }
 }

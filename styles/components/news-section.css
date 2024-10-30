@@ -8,10 +8,34 @@
 
 .news h2 {
     text-align: center;
-    margin-bottom: var(--spacing-xlarge);
+    margin-bottom: var(--spacing-xxlarge);
     color: var(--color-text);
     font-size: var(--font-size-h2);
     font-weight: var(--font-weight-bold);
+    opacity: 0;
+    position: relative;
+    overflow: hidden;
+    padding: 10px 0;
+}
+
+.news h2.animate {
+    animation: revealMask 0.8s cubic-bezier(0.77, 0, 0.175, 1) forwards;
+}
+
+.news h2::after {
+    content: '';
+    position: absolute;
+    bottom: 0;
+    left: 50%;
+    width: 0;
+    height: 2px;
+    background: var(--color-primary);
+    transform: translateX(-50%);
+}
+
+.news h2.animate::after {
+    animation: underlineExpand 0.6s ease-out forwards;
+    animation-delay: 0.8s;
 }
 
 .news-grid {
@@ -51,8 +75,19 @@
     /* background-color: var(--color-background-light); */
     border-radius: var(--border-radius);
     overflow: hidden;
-    box-shadow: 0 4px 6px rgba(0, 0, 0, 0.1);
-    transition: transform var(--transition-speed) ease, box-shadow var(--transition-speed) ease;
+    box-shadow: 0 0 0 rgba(0, 0, 0, 0);
+    transition: all 0.8s cubic-bezier(0.34, 1.56, 0.64, 1), box-shadow 0.3s ease;
+    opacity: 0;
+    transform: translateY(50px) scale(0.9);
+    filter: blur(10px);
+    transition: all 0.8s cubic-bezier(0.34, 1.56, 0.64, 1);
+}
+
+.news-item.animate {
+    opacity: 1;
+    transform: translateY(0) scale(1);
+    filter: blur(0);
+    box-shadow: 0 10px 30px rgba(0, 0, 0, 0.1);
 }
 
 .news-item:hover {
@@ -240,4 +275,24 @@
         font-size: 0.7rem;
         padding: 3px 6px;
     }
+}
+
+/* Разные направления появления для карточек */
+.news-item:nth-child(3n+1) {
+    transform: translateX(-50px) translateY(50px) scale(0.9) rotate(-5deg);
+}
+
+.news-item:nth-child(3n+2) {
+    transform: translateY(50px) scale(0.9);
+}
+
+.news-item:nth-child(3n+3) {
+    transform: translateX(50px) translateY(50px) scale(0.9) rotate(5deg);
+}
+
+/* Возвращаем карточки в нормальное положение */
+.news-item.animate:nth-child(3n+1),
+.news-item.animate:nth-child(3n+2),
+.news-item.animate:nth-child(3n+3) {
+    transform: translateX(0) translateY(0) scale(1) rotate(0);
 }
