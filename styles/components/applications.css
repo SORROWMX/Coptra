@@ -1,13 +1,91 @@
+@keyframes cardSlideIn {
+    0% {
+        opacity: 0;
+        transform: translateY(50px) scale(0.9) rotate(-3deg);
+        filter: blur(10px) brightness(0.7);
+    }
+    50% {
+        transform: translateY(-10px) scale(1.02) rotate(1deg);
+        filter: blur(3px) brightness(0.9);
+    }
+    75% {
+        transform: translateY(5px) scale(0.99) rotate(-0.5deg);
+        filter: blur(1px) brightness(0.95);
+    }
+    100% {
+        opacity: 1;
+        transform: translateY(0) scale(1) rotate(0);
+        filter: blur(0) brightness(1);
+    }
+}
+
+@keyframes cardSlideInRight {
+    0% {
+        opacity: 0;
+        transform: translateY(50px) translateX(50px) scale(0.9) rotate(3deg);
+        filter: blur(10px) brightness(0.7);
+    }
+    50% {
+        transform: translateY(-10px) translateX(-10px) scale(1.02) rotate(-1deg);
+        filter: blur(3px) brightness(0.9);
+    }
+    75% {
+        transform: translateY(5px) translateX(5px) scale(0.99) rotate(0.5deg);
+        filter: blur(1px) brightness(0.95);
+    }
+    100% {
+        opacity: 1;
+        transform: translateY(0) translateX(0) scale(1) rotate(0);
+        filter: blur(0) brightness(1);
+    }
+}
+
 .applications {
     padding: var(--spacing-xxlarge) 0;
+    padding-bottom: 0;
     background-color: var(--color-background);
 }
 
 .applications h2 {
+    position: relative;
+    overflow: hidden;
+    padding: 10px 0;
     font-size: var(--font-size-h2);
-    text-align: center;
-    margin-bottom: var(--spacing-xlarge);
     color: var(--color-text);
+    text-align: center;
+    margin-bottom: var(--spacing-large);
+    opacity: 0;
+}
+
+.applications h2::before {
+    content: '';
+    position: absolute;
+    top: 0;
+    left: 0;
+    width: 100%;
+    height: 100%;
+    transform: scaleX(0);
+    transform-origin: left;
+}
+
+.applications h2.animate {
+    animation: revealMask 0.8s cubic-bezier(0.77, 0, 0.175, 1) forwards;
+}
+
+.applications h2::after {
+    content: '';
+    position: absolute;
+    bottom: 0;
+    left: 50%;
+    width: 0;
+    height: 2px;
+    background: var(--color-primary);
+    transform: translateX(-50%);
+}
+
+.applications h2.animate::after {
+    animation: underlineExpand 0.6s ease-out forwards;
+    animation-delay: 0.5s;
 }
 
 .applications-grid {
@@ -32,6 +110,9 @@
     --before-top: 0;
     --before-left: 0;
     overflow: hidden;
+    opacity: 0;
+    transform-origin: center;
+    will-change: transform, opacity, filter;
 }
 
 .application-card.expanded {
@@ -46,6 +127,14 @@
 
 .application-card:not(.expanded) {
     transition: opacity 0.3s ease;
+}
+
+.application-card.animate {
+    animation: cardSlideIn 0.8s cubic-bezier(0.34, 1.56, 0.64, 1) forwards;
+}
+
+.application-card:nth-child(even).animate {
+    animation-name: cardSlideInRight;
 }
 
 .application-card ul {
@@ -351,4 +440,3 @@
         transform: translateY(10px);
     }
 }
-

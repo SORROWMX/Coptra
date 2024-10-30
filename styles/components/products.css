@@ -4,11 +4,35 @@
 }
 
 .products h2 {
+    position: relative;
+    overflow: hidden;
+    padding: 10px 0;
     text-align: center;
     margin-bottom: var(--spacing-xxlarge);
     color: var(--color-text);
     font-size: var(--font-size-h2);
     font-weight: var(--font-weight-bold);
+    opacity: 0;
+}
+
+.products h2.animate {
+    animation: revealMask 0.8s cubic-bezier(0.77, 0, 0.175, 1) forwards;
+}
+
+.products h2::after {
+    content: '';
+    position: absolute;
+    bottom: 0;
+    left: 50%;
+    width: 0;
+    height: 2px;
+    background: var(--color-primary);
+    transform: translateX(-50%);
+}
+
+.products h2.animate::after {
+    animation: underlineExpand 0.6s ease-out forwards;
+    animation-delay: 0.5s;
 }
 
 .product-grid {
@@ -30,6 +54,23 @@
     flex-direction: column;
     height: 100%;
     position: relative;
+    opacity: 0;
+    transform: translateY(30px);
+}
+
+.product-card.animate {
+    animation: productCardAppear 0.8s cubic-bezier(0.34, 1.56, 0.64, 1) forwards;
+}
+
+@keyframes productCardAppear {
+    0% {
+        opacity: 0;
+        transform: translateY(30px) scale(0.95);
+    }
+    100% {
+        opacity: 1;
+        transform: translateY(0) scale(1);
+    }
 }
 
 /* Эффект подъема */

@@ -167,32 +167,32 @@ const ScrollProgressModule = {
 };
 
 // FAQ Module
-const FAQModule = {
-    init() {
-        document.querySelectorAll('.faq-item').forEach(this.setupFAQItem);
-    },
+// const FAQModule = {
+//     init() {
+//         document.querySelectorAll('.faq-item').forEach(this.setupFAQItem);
+//     },
 
-    setupFAQItem(item) {
-        const question = item.querySelector('.faq-question');
-        const answer = item.querySelector('.faq-answer');
-        const toggle = item.querySelector('.faq-toggle');
+//     setupFAQItem(item) {
+//         const question = item.querySelector('.faq-question');
+//         const answer = item.querySelector('.faq-answer');
+//         const toggle = item.querySelector('.faq-toggle');
 
-        question.addEventListener('click', () => {
-            const isActive = item.classList.contains('active');
-            document.querySelectorAll('.faq-item').forEach(q => {
-                q.classList.remove('active');
-                q.querySelector('.faq-answer').style.maxHeight = null;
-                q.querySelector('.faq-toggle').style.transform = 'rotate(0deg)';
-            });
+//         question.addEventListener('click', () => {
+//             const isActive = item.classList.contains('active');
+//             document.querySelectorAll('.faq-item').forEach(q => {
+//                 q.classList.remove('active');
+//                 q.querySelector('.faq-answer').style.maxHeight = null;
+//                 q.querySelector('.faq-toggle').style.transform = 'rotate(0deg)';
+//             });
 
-            if (!isActive) {
-                item.classList.add('active');
-                answer.style.maxHeight = `${answer.scrollHeight + 20}px`;
-                toggle.style.transform = 'rotate(180deg)';
-            }
-        });
-    }
-};
+//             if (!isActive) {
+//                 item.classList.add('active');
+//                 answer.style.maxHeight = `${answer.scrollHeight + 20}px`;
+//                 toggle.style.transform = 'rotate(180deg)';
+//             }
+//         });
+//     }
+// };
 
 // About Section Module
 const AboutSectionModule = {
@@ -264,6 +264,16 @@ const AboutSectionModule = {
 // Testimonials Module
 const TestimonialsModule = {
     init() {
+        const testimonialsSection = document.querySelector('.testimonials');
+        if (!testimonialsSection) return;
+
+        const title = testimonialsSection.querySelector('h2');
+        const cards = testimonialsSection.querySelectorAll('.testimonial-card');
+        const pagination = testimonialsSection.querySelector('.swiper-pagination');
+        let isAnimated = false;
+        let lastScrollY = window.scrollY;
+
+        // Инициализация Swiper
         const swiper = new Swiper('.testimonials-slider', {
             slidesPerView: 1,
             spaceBetween: 30,
@@ -277,23 +287,61 @@ const TestimonialsModule = {
                 clickable: true,
             },
             breakpoints: {
-                640: {
+                768: {
                     slidesPerView: 2,
                 }
             }
         });
 
-        this.setupSwiperEvents(swiper);
-    },
-
-    setupSwiperEvents(swiper) {
-        let userInteracted = false;
-
-        swiper.on('slideChange', () => {
-            swiper.pagination.render();
-            swiper.pagination.update();
+        // Отслеживаем скорость прокрутки
+        window.addEventListener('scroll', () => {
+            lastScrollY = window.scrollY;
         });
 
+        // Настройка анимации появления
+        const observer = new IntersectionObserver((entries) => {
+            entries.forEach(entry => {
+                if (entry.isIntersecting && !isAnimated) {
+                    isAnimated = true;
+                    
+                    // Определяем скорость прокрутки
+                    const scrollSpeed = Math.abs(window.scrollY - lastScrollY);
+                    const isFastScroll = scrollSpeed > 50;
+                    
+                    // Устанавливаем задержки в зависимости от скорости
+                    const titleDelay = isFastScroll ? 0 : 0; // Задержка для заголовка
+                    const cardsStartDelay = isFastScroll ? 100 : 200; // Задержка перед началом анимации карточек
+                    const itemDelay = isFastScroll ? 50 : 100; // Задержка между карточками
+                    
+                    // Анимируем заголовок
+                    setTimeout(() => {
+                        if (title) title.classList.add('animate');
+                    }, titleDelay);
+                    
+                    // Анимируем карточки
+                    cards.forEach((card, index) => {
+                        setTimeout(() => {
+                            card.classList.add('animate');
+                        }, cardsStartDelay + (index * itemDelay));
+                    });
+
+                    // Анимируем пагинацию
+                    const paginationDelay = cardsStartDelay + (cards.length * itemDelay) - 100;
+                    setTimeout(() => {
+                        if (pagination) pagination.classList.add('animate');
+                    }, paginationDelay);
+                }
+            });
+        }, {
+            threshold: 0.2,
+            rootMargin: '0px 0px -50px 0px'
+        });
+
+        observer.observe(testimonialsSection);
+
+        // Обработка событий слайдера
+        let userInteracted = false;
+        
         swiper.on('touchStart', () => {
             userInteracted = true;
             swiper.autoplay.stop();
@@ -307,6 +355,10 @@ const TestimonialsModule = {
         });
     }
 };
+
+document.addEventListener('DOMContentLoaded', () => {
+    TestimonialsModule.init();
+});
 
 // Form Validation Module
 const FormModule = {
@@ -875,3 +927,607 @@ document.addEventListener('DOMContentLoaded', () => {
     ParticlesModule.init();
 });
 
+// Hero Animation Module
+const HeroAnimationModule = {
+    init() {
+        const hero = document.querySelector('.hero');
+        if (!hero) return;
+
+        // Разбиваем текст заголовка на слова, а затем на буквы для анимации
+        const title = hero.querySelector('h1');
+        if (title) {
+            const words = title.textContent.split(' ');
+            title.textContent = '';
+            
+            words.forEach((word, wordIndex) => {
+                const wordSpan = document.createElement('span');
+                wordSpan.className = 'word';
+                
+                // Добавляем буквы для каждого слова
+                word.split('').forEach((char, charIndex) => {
+                    const letterSpan = document.createElement('span');
+                    letterSpan.textContent = char;
+                    letterSpan.style.animationDelay = `${0.3 + (wordIndex * word.length + charIndex) * 0.05}s`;
+                    letterSpan.style.animation = 'letterFadeIn 0.5s cubic-bezier(0.68, -0.55, 0.265, 1.55) forwards';
+                    wordSpan.appendChild(letterSpan);
+                });
+                
+                title.appendChild(wordSpan);
+                
+                // Добавляем пробел после каждого слова, кроме последнего
+                if (wordIndex < words.length - 1) {
+                    title.appendChild(document.createTextNode(' '));
+                }
+            });
+        }
+
+        // Остальной код остается без изменений...
+    }
+    // ... остальные методы модуля
+};
+
+// Добавляем инициализацию в общий список
+document.addEventListener('DOMContentLoaded', () => {
+    HeroAnimationModule.init();
+});
+
+// About Animation Module
+const AboutAnimationModule = {
+    init() {
+        const aboutSection = document.querySelector('.about');
+        if (!aboutSection) return;
+
+        const animatedElements = aboutSection.querySelectorAll('h2, .company-description, .timeline-item, .goals-section');
+        
+        const observer = new IntersectionObserver((entries) => {
+            entries.forEach(entry => {
+                if (entry.isIntersecting) {
+                    entry.target.classList.add('animate');
+                    
+                    // Если это timeline-item, добавляем меньшую задержку
+                    if (entry.target.classList.contains('timeline-item')) {
+                        const index = Array.from(entry.target.parentNode.children).indexOf(entry.target);
+                        entry.target.style.animationDelay = `${0.1 * index}s`; // Было 0.2s
+                    }
+                }
+            });
+        }, {
+            threshold: 0.2,
+            rootMargin: '0px 0px -50px 0px' // Уменьшили отступ для более раннего срабатывания
+        });
+
+        animatedElements.forEach(element => observer.observe(element));
+    }
+};
+
+// Добавляем инициализацию
+document.addEventListener('DOMContentLoaded', () => {
+    AboutAnimationModule.init();
+});
+
+const GoalsAnimationModule = {
+    init() {
+        const goalsSection = document.querySelector('.goals');
+        if (!goalsSection) return;
+
+        const title = goalsSection.querySelector('h2');
+        const cards = goalsSection.querySelectorAll('.goal-card');
+
+        const observer = new IntersectionObserver((entries) => {
+            entries.forEach(entry => {
+                if (entry.isIntersecting) {
+                    if (entry.target.tagName.toLowerCase() === 'h2') {
+                        entry.target.classList.add('animate');
+                    } else if (entry.target.classList.contains('goal-card')) {
+                        entry.target.classList.add('visible');
+                        this.setProgress(entry.target);
+                        
+                        const steps = entry.target.querySelectorAll('.goal-step');
+                        steps.forEach((step, index) => {
+                            setTimeout(() => {
+                                step.classList.add('visible');
+                            }, 200 * (index + 1));
+                        });
+                    }
+                }
+            });
+        }, {
+            threshold: 0.2,
+            rootMargin: '0px 0px -50px 0px'
+        });
+
+        if (title) observer.observe(title);
+        cards.forEach(card => observer.observe(card));
+    },
+
+    setProgress(card) {
+        const circle = card.querySelector('.progress-ring__circle');
+        const progress = card.dataset.progress;
+        const radius = circle.r.baseVal.value;
+        const circumference = radius * 2 * Math.PI;
+        
+        circle.style.strokeDasharray = `${circumference} ${circumference}`;
+        setTimeout(() => {
+            circle.style.strokeDashoffset = circumference - (progress / 100) * circumference;
+        }, 100);
+    }
+};
+
+// Добавляем инициализацию
+document.addEventListener('DOMContentLoaded', () => {
+    GoalsAnimationModule.init();
+});
+
+const ApplicationsAnimationModule = {
+    init() {
+        const applicationsSection = document.querySelector('.applications');
+        if (!applicationsSection) return;
+
+        const title = applicationsSection.querySelector('h2');
+        const cards = applicationsSection.querySelectorAll('.application-card');
+        let lastScrollY = window.scrollY;
+
+        // Отслеживаем скорость прокрутки
+        window.addEventListener('scroll', () => {
+            lastScrollY = window.scrollY;
+        });
+
+        const observer = new IntersectionObserver((entries) => {
+            entries.forEach(entry => {
+                if (entry.isIntersecting) {
+                    // Определяем скорость прокрутки
+                    const scrollSpeed = Math.abs(window.scrollY - lastScrollY);
+                    const isFastScroll = scrollSpeed > 50;
+                    
+                    // Устанавливаем задержки в зависимости от скорости
+                    const titleDelay = isFastScroll ? 0 : 0; // Задержка для заголовка
+                    const cardsStartDelay = isFastScroll ? 100 : 300; // Задержка перед началом анимации карточек
+                    const itemDelay = isFastScroll ? 50 : 100; // Задержка между карточками
+                    
+                    // Анимируем заголовок
+                    setTimeout(() => {
+                        if (title) title.classList.add('animate');
+                    }, titleDelay);
+                    
+                    // Анимируем карточки
+                    cards.forEach((card, index) => {
+                        setTimeout(() => {
+                            card.classList.add('animate');
+                        }, cardsStartDelay + (index * itemDelay));
+                    });
+                }
+            });
+        }, {
+            threshold: 0.2,
+            rootMargin: '0px 0px -50px 0px'
+        });
+
+        observer.observe(applicationsSection);
+    }
+};
+
+// Добавляем инициализацию
+document.addEventListener('DOMContentLoaded', () => {
+    ApplicationsAnimationModule.init();
+});
+
+const ProductsAnimationModule = {
+    init() {
+        const productsSection = document.querySelector('.products');
+        if (!productsSection) return;
+
+        const title = productsSection.querySelector('h2');
+        const cards = productsSection.querySelectorAll('.product-card');
+        let lastScrollY = window.scrollY;
+
+        // Отслеживаем скорость прокрутки
+        window.addEventListener('scroll', () => {
+            lastScrollY = window.scrollY;
+        });
+
+        const observer = new IntersectionObserver((entries) => {
+            entries.forEach(entry => {
+                if (entry.isIntersecting) {
+                    // Определяем скорость прокрутки
+                    const scrollSpeed = Math.abs(window.scrollY - lastScrollY);
+                    const isFastScroll = scrollSpeed > 50;
+                    
+                    // Устанавливаем задержки в зависимости от скорости
+                    const titleDelay = isFastScroll ? 0 : 0; // Задержка для заголовка
+                    const cardsStartDelay = isFastScroll ? 200 : 300; // Задержка перед началом анимации карточек
+                    const itemDelay = isFastScroll ? 100 : 200; // Задержка между карточками
+                    
+                    // Анимируем заголовок
+                    setTimeout(() => {
+                        if (title) title.classList.add('animate');
+                    }, titleDelay);
+                    
+                    // Анимируем карточки
+                    cards.forEach((card, index) => {
+                        setTimeout(() => {
+                            card.classList.add('animate');
+                        }, cardsStartDelay + (index * itemDelay));
+                    });
+                }
+            });
+        }, {
+            threshold: 0.2,
+            rootMargin: '0px 0px -50px 0px'
+        });
+
+        observer.observe(productsSection);
+    }
+};
+
+// Добавляем инициализацию
+document.addEventListener('DOMContentLoaded', () => {
+    ProductsAnimationModule.init();
+});
+
+const AdvantagesAnimationModule = {
+    init() {
+        const advantagesSection = document.querySelector('.advantages');
+        if (!advantagesSection) return;
+
+        const title = advantagesSection.querySelector('h2');
+        const cards = advantagesSection.querySelectorAll('.advantage-card');
+        let lastScrollY = window.scrollY;
+
+        // Отслеживаем скорость прокрутки
+        window.addEventListener('scroll', () => {
+            lastScrollY = window.scrollY;
+        });
+
+        const observer = new IntersectionObserver((entries) => {
+            entries.forEach(entry => {
+                if (entry.isIntersecting) {
+                    // Определяем скорость прокрутки
+                    const scrollSpeed = Math.abs(window.scrollY - lastScrollY);
+                    const isFastScroll = scrollSpeed > 50;
+                    
+                    // Устанавливаем задержки в зависимости от скорости
+                    const titleDelay = isFastScroll ? 0 : 0; // Задержка для заголовка
+                    const cardsStartDelay = isFastScroll ? 100 : 200; // Задержка перед началом анимации карточек
+                    const itemDelay = isFastScroll ? 50 : 100; // Задержка между карточками
+                    
+                    // Анимируем заголовок
+                    setTimeout(() => {
+                        if (title) title.classList.add('animate');
+                    }, titleDelay);
+                    
+                    // Анимируем карточки
+                    cards.forEach((card, index) => {
+                        setTimeout(() => {
+                            card.classList.add('animate');
+                        }, cardsStartDelay + (index * itemDelay));
+                    });
+                }
+            });
+        }, {
+            threshold: 0.2,
+            rootMargin: '0px 0px -50px 0px'
+        });
+
+        observer.observe(advantagesSection);
+    }
+};
+
+// Добавляем инициализацию
+document.addEventListener('DOMContentLoaded', () => {
+    AdvantagesAnimationModule.init();
+});
+
+const NewsAnimationModule = {
+    init() {
+        const newsSection = document.querySelector('.news');
+        if (!newsSection) return;
+
+        const title = newsSection.querySelector('h2');
+        const newsItems = newsSection.querySelectorAll('.news-item');
+        let isAnimated = false;
+        let lastScrollY = window.scrollY;
+
+        // Отслеживаем скорость прокрутки
+        window.addEventListener('scroll', () => {
+            lastScrollY = window.scrollY;
+        });
+
+        const observer = new IntersectionObserver((entries) => {
+            entries.forEach(entry => {
+                if (entry.isIntersecting && !isAnimated) {
+                    isAnimated = true;
+                    
+                    // Определяем скорость прокрутки
+                    const scrollSpeed = Math.abs(window.scrollY - lastScrollY);
+                    const isFastScroll = scrollSpeed > 50;
+                    
+                    // Устанавливаем задержки в зависимости от скорости
+                    const titleDelay = isFastScroll ? 0 : 0; // Задержка для заголовка
+                    const itemsStartDelay = isFastScroll ? 100 : 300; // Задержка перед началом анимации новостей
+                    const itemDelay = isFastScroll ? 50 : 100; // Задержка между новостями
+                    
+                    // Анимируем заголовок
+                    setTimeout(() => {
+                        if (title) title.classList.add('animate');
+                    }, titleDelay);
+                    
+                    // Анимируем новости
+                    newsItems.forEach((item, index) => {
+                        setTimeout(() => {
+                            item.classList.add('animate');
+                        }, itemsStartDelay + (index * itemDelay));
+                    });
+                }
+            });
+        }, {
+            threshold: 0.2,
+            rootMargin: '0px 0px -50px 0px'
+        });
+
+        observer.observe(newsSection);
+    }
+};
+
+// Добавляем инициализацию
+document.addEventListener('DOMContentLoaded', () => {
+    NewsAnimationModule.init();
+});
+
+const PartnersAnimationModule = {
+    init() {
+        const partnersSection = document.querySelector('.partners');
+        if (!partnersSection) return;
+
+        const title = partnersSection.querySelector('h2');
+        const partners = partnersSection.querySelectorAll('.partner-item');
+        let isAnimated = false;
+        let lastScrollY = window.scrollY;
+
+        // Отслеживаем скорость прокрутки
+        window.addEventListener('scroll', () => {
+            lastScrollY = window.scrollY;
+        });
+
+        const observer = new IntersectionObserver((entries) => {
+            entries.forEach(entry => {
+                if (entry.isIntersecting && !isAnimated) {
+                    isAnimated = true;
+                    
+                    // Определяем скорость прокрутки
+                    const scrollSpeed = Math.abs(window.scrollY - lastScrollY);
+                    const isFastScroll = scrollSpeed > 50;
+                    
+                    // Устанавливаем задержки в зависимости от скорости
+                    const titleDelay = isFastScroll ? 0 : 0; // Задержка для заголовка
+                    const partnersStartDelay = isFastScroll ? 100 : 300; // Задержка перед началом анимации партнеров
+                    const itemDelay = isFastScroll ? 50 : 150; // Меньшая задержка для партнеров
+                    
+                    // Анимируем заголовок
+                    setTimeout(() => {
+                        if (title) title.classList.add('animate');
+                    }, titleDelay);
+                    
+                    // Анимируем партнеров
+                    partners.forEach((partner, index) => {
+                        setTimeout(() => {
+                            partner.classList.add('animate');
+                        }, partnersStartDelay + (index * itemDelay));
+                    });
+                }
+            });
+        }, {
+            threshold: 0.2,
+            rootMargin: '0px 0px -50px 0px'
+        });
+
+        observer.observe(partnersSection);
+    }
+};
+
+// Добавляем инициализацию
+document.addEventListener('DOMContentLoaded', () => {
+    PartnersAnimationModule.init();
+});
+
+const FAQAnimationModule = {
+    init() {
+        const faqSection = document.querySelector('.faq');
+        if (!faqSection) return;
+
+        const title = faqSection.querySelector('h2');
+        const faqItems = faqSection.querySelectorAll('.faq-item');
+        let isAnimated = false;
+        let lastScrollY = window.scrollY;
+
+        // Отслеживаем скорость прокрутки
+        window.addEventListener('scroll', () => {
+            lastScrollY = window.scrollY;
+        });
+
+        // Обработчики кликов для FAQ
+        faqItems.forEach(item => {
+            const question = item.querySelector('.faq-question');
+            const answer = item.querySelector('.faq-answer');
+
+            question.addEventListener('click', () => {
+                const isActive = item.classList.contains('active');
+                
+                // Закрываем все остальные ответы
+                faqItems.forEach(q => {
+                    q.classList.remove('active');
+                    q.querySelector('.faq-answer').style.maxHeight = null;
+                });
+
+                if (!isActive) {
+                    item.classList.add('active');
+                    answer.style.maxHeight = `${answer.scrollHeight + 20}px`;
+                }
+            });
+        });
+
+        // Анимация появления элементов
+        const observer = new IntersectionObserver((entries) => {
+            entries.forEach(entry => {
+                if (entry.isIntersecting && !isAnimated) {
+                    isAnimated = true;
+                    
+                    // Определяем скорость прокрутки
+                    const scrollSpeed = Math.abs(window.scrollY - lastScrollY);
+                    const isFastScroll = scrollSpeed > 50;
+                    
+                    // Устанавливаем задержки в зависимости от скорости
+                    const titleDelay = isFastScroll ? 0 : 0; // Задержка для заголовка
+                    const itemsStartDelay = isFastScroll ? 100 : 500; // Задержка перед началом анимации вопросов
+                    const itemDelay = isFastScroll ? 50 : 100; // Задержка между вопросами
+                    
+                    // Анимируем заголовок
+                    setTimeout(() => {
+                        if (title) title.classList.add('animate');
+                    }, titleDelay);
+                    
+                    // Анимируем вопросы
+                    faqItems.forEach((item, index) => {
+                        setTimeout(() => {
+                            item.classList.add('animate');
+                        }, itemsStartDelay + (index * itemDelay));
+                    });
+                }
+            });
+        }, {
+            threshold: 0.2,
+            rootMargin: '0px 0px -50px 0px'
+        });
+
+        observer.observe(faqSection);
+    }
+};
+
+// Добавляем инициализацию
+document.addEventListener('DOMContentLoaded', () => {
+    FAQAnimationModule.init();
+});
+
+const TelegramAnimationModule = {
+    init() {
+        const telegramSection = document.querySelector('.telegram-community');
+        if (!telegramSection) return;
+
+        const telegramBlock = telegramSection.querySelector('.telegram-block');
+        const icon = telegramSection.querySelector('.telegram-icon');
+        const text = telegramSection.querySelector('.telegram-text');
+        const button = telegramSection.querySelector('.telegram-button');
+        let isAnimated = false;
+        let lastScrollY = window.scrollY;
+
+        // Отслеживаем скорость прокрутки
+        window.addEventListener('scroll', () => {
+            lastScrollY = window.scrollY;
+        });
+
+        const observer = new IntersectionObserver((entries) => {
+            entries.forEach(entry => {
+                if (entry.isIntersecting && !isAnimated) {
+                    isAnimated = true;
+                    
+                    // Определяем скорость прокрутки
+                    const scrollSpeed = Math.abs(window.scrollY - lastScrollY);
+                    const isFastScroll = scrollSpeed > 50;
+                    
+                    // Устанавливаем задержки в зависимости от скорости
+                    const blockDelay = isFastScroll ? 0 : 200; // Задержка для блока
+                    const elementDelay = isFastScroll ? 50 : 150; // Задержка между элементами
+                    
+                    // Анимируем блок
+                    setTimeout(() => {
+                        telegramBlock.classList.add('animate');
+                    }, blockDelay);
+                    
+                    // Анимируем иконку
+                    setTimeout(() => {
+                        icon.classList.add('animate');
+                    }, blockDelay + elementDelay);
+                    
+                    // Анимируем текст
+                    setTimeout(() => {
+                        text.classList.add('animate');
+                    }, blockDelay + (elementDelay * 2));
+                    
+                    // Анимируем кнопку
+                    setTimeout(() => {
+                        button.classList.add('animate');
+                    }, blockDelay + (elementDelay * 3));
+                }
+            });
+        }, {
+            threshold: 0.2,
+            rootMargin: '0px 0px -50px 0px'
+        });
+
+        observer.observe(telegramSection);
+    }
+};
+
+// Добавляем инициализацию
+document.addEventListener('DOMContentLoaded', () => {
+    TelegramAnimationModule.init();
+});
+
+const ContactAnimationModule = {
+    init() {
+        const contactSection = document.querySelector('.contact');
+        if (!contactSection) return;
+
+        const title = contactSection.querySelector('h2');
+        const form = contactSection.querySelector('.contact-form');
+        const infoContainer = contactSection.querySelector('.contact-info-container');
+        let isAnimated = false;
+        let lastScrollY = window.scrollY;
+
+        // Отслеживаем скорость прокрутки
+        window.addEventListener('scroll', () => {
+            lastScrollY = window.scrollY;
+        });
+
+        const observer = new IntersectionObserver((entries) => {
+            entries.forEach(entry => {
+                if (entry.isIntersecting && !isAnimated) {
+                    isAnimated = true;
+                    
+                    // Определяем скорость прокрутки
+                    const scrollSpeed = Math.abs(window.scrollY - lastScrollY);
+                    const isFastScroll = scrollSpeed > 50;
+                    
+                    // Устанавливаем задержки в зависимости от скорости
+                    const titleDelay = isFastScroll ? 0 : 0; // Задержка для заголовка
+                    const formDelay = isFastScroll ? 100 : 300; // Задержка для формы
+                    const infoDelay = isFastScroll ? 200 : 450; // Задержка для контактной информации
+                    
+                    // Анимируем заголовок
+                    setTimeout(() => {
+                        if (title) title.classList.add('animate');
+                    }, titleDelay);
+                    
+                    // Анимируем форму
+                    setTimeout(() => {
+                        form.classList.add('animate');
+                    }, formDelay);
+
+                    // Анимируем контактную информацию
+                    setTimeout(() => {
+                        infoContainer.classList.add('animate');
+                    }, infoDelay);
+                }
+            });
+        }, {
+            threshold: 0.2,
+            rootMargin: '0px 0px -50px 0px'
+        });
+
+        observer.observe(contactSection);
+    }
+};
+
+// Добавляем инициализацию
+document.addEventListener('DOMContentLoaded', () => {
+    ContactAnimationModule.init();
+});
