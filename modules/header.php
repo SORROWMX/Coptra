@@ -129,7 +129,7 @@ $root_path = '/'; // Измените на '/your-subdirectory/' если сай
                 <ul>
                     <li><a href="<?php echo $root_path; ?>index.php">Главная</a></li>
                     <li class="dropdown">
-                        <a href="<?php echo $root_path; ?>products.php">Продукты</a>
+                        <a href="javascript:void(0);" class="dropdown-toggle">Продукты</a>
                         <ul class="dropdown-menu">
                         <li class="dropdown-submenu">
                                 <a href="products.php#agriculture">Сельское хозяйство</a>

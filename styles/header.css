@@ -36,16 +36,6 @@
     transform: rotate(-45deg) translate(5px, -5px);
 }
 
-@media (max-width: 768px) {
-    .docs-nav.desktop-only {
-        display: none;
-    }
-
-    .sidebar-mobile-btn.header-btn {
-        display: flex;
-    }
-}
-
 header {
     background-color: var(--color-background);
     box-shadow: 0 2px 15px rgba(0, 0, 0, 0.1);
@@ -135,18 +125,6 @@ nav ul li a::after {
     transition: transform 0.3s ease, top 0.3s ease;
 }
 
-/* Новые стили для подчеркивания */
-.dropdown > a:before {
-    content: '';
-    position: absolute;
-    width: 0;
-    height: 2px;
-    bottom: -2px;
-    left: 0;
-    background-color: var(--color-primary);
-    transition: width 0.3s ease;
-}
-
 .dropdown:hover > a:before,
 .dropdown.active > a:before {
     width: calc(100% - 15px); /* Ширина без учета места для стрелки */
@@ -187,47 +165,31 @@ header.scrolled nav ul li a {
     font-size: 1rem;
 }
 
-/* Стили для выпадающего меню */
-.dropdown-menu {
-    position: absolute;
-    top: 100%;
-    left: 0;
-    background-color: var(--color-background);
-    box-shadow: 0 2px 10px rgba(0,0,0,0.1);
-    padding: var(--spacing-small) 0;
-    min-width: 200px;
-    z-index: 1001;
-    display: none;
-}
-
+/* Показываем меню при наведении */
 .dropdown:hover .dropdown-menu {
     display: block;
+    visibility: visible;
+    opacity: 1;
+    animation: fadeInMenu 0.35s cubic-bezier(0.4, 0, 0.2, 1) forwards;
 }
 
-.dropdown-menu li {
-    margin: 0;
-}
 
 .dropdown-menu li a {
     display: block;
+    width: 100%;
     padding: var(--spacing-small) var(--spacing-medium);
     color: var(--color-text);
     font-size: 1rem;
-    transition: background-color var(--transition-speed) ease;
+    transition: all 0.1s ease-out;
+    transition-delay: 0s !important;
 }
 
 .dropdown-menu li a:hover {
     background-color: var(--color-border);
 }
 
-/* Анимация появления выпадающего меню */
-@keyframes fadeIn {
-    from { opacity: 0; transform: translateY(-10px); }
-    to { opacity: 1; transform: translateY(0); }
-}
-
 .dropdown > a {
-    position: relative;
+    transition: all 0.1s ease-out; /* Ускорили до 0.1s */
 }
 
 .dropdown > a::after,
@@ -242,13 +204,21 @@ header.scrolled nav ul li a {
     transition: width 0.3s ease;
 }
 
+/* Подчеркивание для основного пункта */
 .dropdown > a::after {
+    content: '';
+    position: absolute;
     width: 0;
+    height: 2px;
+    bottom: -2px;
+    left: 0;
+    background-color: var(--color-primary);
+    transition: width 0.2s ease-out;
 }
 
 .dropdown:hover > a::after,
 .dropdown.active > a::after {
-    width: 100%;
+    width: calc(100% - 15px);
 }
 
 .dropdown.active > a {
@@ -276,6 +246,7 @@ header.scrolled nav ul li a {
 }
 
 .dropdown-submenu:hover > .dropdown-menu {
+    animation: fadeInSubmenu 0.3s ease;
     display: block;
 }
 
@@ -287,74 +258,29 @@ header.scrolled nav ul li a {
     transform: translateY(-50%);
 }
 
-/* Анимация для подменю */
-.dropdown-submenu:hover > .dropdown-menu {
-    animation: fadeInSubmenu 0.3s ease;
-}
-
-@keyframes fadeInSubmenu {
-    from { opacity: 0; transform: translateX(-10px); }
-    to { opacity: 1; transform: translateX(0); }
-}
-
-/* Стили для выпадающего меню */
-.dropdown-menu {
+/* Обновляем стили для выпадающего меню */
+.dropdown-menu,
+.submenu {
     position: absolute;
     top: 100%;
     left: 0;
-    background-color: var(--color-background);
-    box-shadow: 0 2px 10px rgba(0,0,0,0.1);
-    padding: var(--spacing-small) 0;
     min-width: 200px;
     z-index: 1001;
-    display: none;
-}
-
-.dropdown:hover .dropdown-menu {
-    display: block;
-}
-
-/* Стили для подменю */
-.dropdown-submenu {
-    position: relative;
-}
-
-.submenu {
-    position: absolute;
-    left: 100%;
-    top: 0;
+    opacity: 0;
+    visibility: hidden;
+    transform: translateY(-8px);
+    padding: var(--spacing-small) 0;
     background-color: var(--color-background);
     box-shadow: 0 2px 10px rgba(0,0,0,0.1);
-    min-width: 200px;
-    display: none;
-    padding: var(--spacing-small) 0;
 }
 
-.dropdown-submenu:hover .submenu {
-    display: block;
-}
 
-/* Стили для пунктов меню */
-.dropdown-menu a,
-.submenu a {
-    position: relative; /* Добавляем для правильного позиционирования подчеркивания */
-    display: block;
-    padding: 8px 20px;
-    color: var(--color-text);
-    text-decoration: none;
-    white-space: nowrap;
-}
-
-.dropdown-menu li a:before,
-.submenu a:before {
-    content: '';
+.dropdown-submenu:hover > a:after {
+    content: '>';
     position: absolute;
-    width: 0;
-    height: 2px;
-    bottom: 0; /* Изменяем с -2px на 0 */
-    left: 0; /* Убираем отступ слева */
-    background-color: var(--color-primary);
-    transition: width 0.3s ease;
+    right: 8px;
+    top: 50%;
+    transform: translateY(-50%);
 }
 
 .dropdown-menu li a:hover:before,
@@ -375,12 +301,15 @@ header.scrolled nav ul li a {
 }
 
 /* Сохраняем эффект наведения при открытом подменю */
-.dropdown:hover > a {
-    color: var(--color-primary);
+.dropdown:hover .dropdown-menu {
+    display: block;
+    visibility: visible;
+    opacity: 1;
+    animation: fadeInMenu 0.35s cubic-bezier(0.4, 0, 0.2, 1) forwards;
 }
 
-.dropdown:hover > a:before {
-    width: calc(100% - 15px); /* Сохраняем подчеркивание с учетом стрелки */
+.dropdown-menu li {
+    background-color: transparent !important; /* Принудительно делаем фон прозрачным */
 }
 
 /* Для подменю первого уровня */
@@ -393,7 +322,7 @@ header.scrolled nav ul li a {
     width: 100%;
 }
 
-/* Для активного состояния при открытом подменю */
+/* Для активного состояния при открытом поденю */
 .dropdown-submenu:hover .submenu + a:before {
     width: 100%;
 }
@@ -423,12 +352,6 @@ header.scrolled nav ul li a {
     transition: 0.3s;
 }
 
-@media (max-width: 768px) {
-    .sidebar-mobile-btn {
-        display: block;
-    }
-}
-
 /* Mobile menu styles */
 .mobile-menu-btn,
 .sidebar-mobile-btn {
@@ -450,79 +373,7 @@ header.scrolled nav ul li a {
     transition: 0.3s;
 }
 
-@media (max-width: 768px) {
-    .mobile-menu-btn,
-    .sidebar-mobile-btn {
-        display: block;
-    }
 
-    .main-nav {
-        position: fixed;
-        top: var(--header-height);
-        right: -100%;
-        width: 100%;
-        height: calc(100vh - var(--header-height));
-        background-color: var(--color-background);
-        transition: 0.3s;
-        padding: var(--spacing-medium);
-        z-index: 1001;
-    }
-
-    .main-nav.active {
-        right: 0;
-    }
-
-    .main-nav ul {
-        flex-direction: column;
-        align-items: flex-start;
-    }
-
-    .main-nav ul li {
-        margin: var(--spacing-medium) 0;
-        width: 100%;
-    }
-
-    .dropdown-menu {
-        position: static;
-        box-shadow: none;
-        display: none;
-        padding-left: var(--spacing-medium);
-    }
-
-    .dropdown:hover .dropdown-menu {
-        animation: none;
-    }
-
-    .dropdown:after {
-        right: 10px;
-        top: 15px;
-    }
-
-    /* Button animation when active */
-    .mobile-menu-btn.active span:nth-child(1),
-    .sidebar-mobile-btn.active span:nth-child(1) {
-        transform: rotate(45deg) translate(6px, 6px);
-    }
-
-    .mobile-menu-btn.active span:nth-child(2),
-    .sidebar-mobile-btn.active span:nth-child(2) {
-        opacity: 0;
-    }
-
-    .mobile-menu-btn.active span:nth-child(3),
-    .sidebar-mobile-btn.active span:nth-child(3) {
-        transform: rotate(-45deg) translate(6px, -6px);
-    }
-
-    /* Hide desktop navigation on mobile */
-    .docs-nav.desktop-only {
-        display: none;
-    }
-    
-    .header-container {
-        justify-content: space-between;
-    }
-}
 
 /* Обновляем стили для мобильной кнопки сайдбара */
 .sidebar-mobile-btn.header-btn {
@@ -550,59 +401,626 @@ header.scrolled nav ul li a {
     transition: all 0.3s ease;
 }
 
-@media (max-width: 768px) {
-    .sidebar-mobile-btn.header-btn {
-        display: flex; /* Явно указываем flex для мобильной версии */
+/* Стили для пунктов меню */
+.dropdown-menu li,
+.submenu li {
+    list-style: none;
+    margin: 0;
+    padding: 0;
+    background-color: transparent !important; /* Принудительно делаем фон прозрачным */
+}
+
+.dropdown-menu a,
+.submenu a {
+    display: block;
+    padding: 12px 20px;
+    color: var(--color-text);
+    text-decoration: none;
+    white-space: nowrap;
+    transition: all 0.4s ease;
+    background-color: var(--color-background);
+    opacity: 1; /* Изменяем с 0.95 на 1 */
+    transform: none; /* Убираем transform */
+}
+
+.dropdown-menu a:hover,
+.submenu a:hover {
+    background-color: var(--color-border);
+    color: var(--color-primary);
+    transform: none; /* Убираем transform при наведении */
+}
+
+/* Удаляем анимацию исчезновения */
+.dropdown-menu li a,
+.submenu a { 
+    transition: background-color 0.08s ease-out;
+    transition-delay: 0s !important;
+    opacity: 1; /* Всегда видимый текст */
+    transform: none; /* Убираем transform */
+}
+
+/* Удаляем стили, которые могут скрывать текст */
+.dropdown-menu a:hover,
+.submenu a:hover {
+    background-color: var(--color-border);
+    color: var(--color-primary);
+    transform: none; /* Убираем transform при наведении */
+}
+
+/* Удаляем анимацию появления пунктов меню */
+.dropdown:hover .dropdown-menu a,
+.dropdown-submenu:hover .submenu a {
+    opacity: 1;
+    transform: none;
+}
+
+/* Анимации */
+@keyframes fadeInMenu {
+    from {
+        opacity: 0;
+        transform: translateY(-10px);
     }
-    
-    .docs-nav.desktop-only {
-        display: none;
+    to {
+        opacity: 1;
+        transform: translateY(0);
     }
 }
 
-@media (max-width: 768px) {
-    /* ... существующие стили ... */
+@keyframes fadeInSubmenu {
+    from {
+        opacity: 0;
+        transform: translateX(-10px);
+    }
+    to {
+        opacity: 1;
+        transform: translateX(0);
+    }
+}
 
+/* Анимация появления пунктов меню */
+.dropdown:hover .dropdown-menu a,
+.dropdown-submenu:hover .submenu a {
+    opacity: 1;
+    transform: translateX(0);
+}
+
+/* Анимация при наведении на пункты меню */
+.dropdown-menu a:hover,
+.submenu a:hover {
+    background-color: var(--color-border);
+    color: var(--color-primary);
+    transform: translateX(5px); /* Небольшой сдвиг при наведении */
+}
+
+/* Общие стили для всех выпадающих меню */
+.dropdown-menu,
+.submenu {
+    position: absolute;
+    background-color: var(--color-background);
+    box-shadow: 0 2px 10px rgba(0,0,0,0.1);
+    min-width: 200px;
+    z-index: 1001;
+    opacity: 0;
+    visibility: hidden;
+    transform: translateY(-5px); /* Уеньшили смещение */
+    transition: all 0.08s ease-out; /* Максимально быстрая анимация */
+    padding: var(--spacing-small) 0;
+}
+
+/* Стили для пунктов меню */
+.dropdown-menu > li > a,
+.dropdown-menu .dropdown-submenu > a,
+.submenu > a {
+    transition: all 0.08s ease-out; /* Синхронизировали с основной анимацией */
+}
+
+/* Показываем меню при наведении */
+.dropdown:hover > .dropdown-menu,
+.dropdown-submenu:hover > .submenu {
+    opacity: 1;
+    visibility: visible;
+    transform: translateY(0);
+}
+
+/* Стили для всех пунктов меню */
+.dropdown-menu > li > a,
+.dropdown-menu .dropdown-submenu > a {
+    display: block;
+    padding: 12px 20px;
+    color: var(--color-text);
+    text-decoration: none;
+    white-space: nowrap;
+    transition: all 0.1s ease-out; /* Ускорили до 0.1s */
+}
+
+/* Отдельные стили для dropdown-submenu при наведении */
+.dropdown-menu .dropdown-submenu > a:hover {
+    background-color: var(--color-border);
+    color: var(--color-primary);
+    /* Убрали transform для dropdown-submenu */
+}
+
+/* Анимация для основного меню */
+@keyframes slowFadeInMenu {
+    0% {
+        opacity: 0;
+        transform: translateY(-30px);
+    }
+    50% {
+        opacity: 0.5;
+        transform: translateY(-15px);
+    }
+    100% {
+        opacity: 1;
+        transform: translateY(0);
+    }
+}
+
+/* Стили для подменю */
+.submenu {
+    position: absolute;
+    left: 100%;
+    top: 0;
+    min-width: 250px;
+    width: 100%;
+    opacity: 0;
+    visibility: hidden;
+    transform: translateX(-10px);
+    transition: all 0.2s ease-out;
+    padding: var(--spacing-small) 0;
+    display: none;
+}
+
+/* Активное состояние для подменю */
+.dropdown-submenu:hover .submenu {
+    display: block;
+    opacity: 1;
+    visibility: visible;
+    animation: fadeInSubmenu 0.25s ease-out forwards;
+}
+
+@keyframes fadeInSubmenu {
+    from {
+        opacity: 0;
+        transform: translateX(-10px);
+    }
+    to {
+        opacity: 1;
+        transform: translateX(0);
+    }
+}
+
+/* Стили для dropdown-submenu */
+.dropdown-submenu > a {
+    transition: all 0.15s ease-out; /* Быстрая анимация без задержки */
+}
+
+/* Убирае се задержки */
+.dropdown-menu li a,
+.submenu a { 
+    transition: all 0.08s ease-out;
+    transition-delay: 0s !important;
+}
+
+/* Удаляем все transition-delay */
+.dropdown-menu li:nth-child(1) a,
+.dropdown-menu li:nth-child(2) a,
+.dropdown-menu li:nth-child(3) a,
+.dropdown-menu li:nth-child(4) a {
+    transition-delay: 0s;
+}
+
+/* Стили для подчркивания */
+.dropdown > a {
+    position: relative;
+}
+
+.dropdown > a::after {
+    content: '';
+    position: absolute;
+    width: 0;
+    height: 2px;
+    bottom: -2px;
+    left: 0;
+    background-color: var(--color-primary);
+    transition: width 0.2s ease-out;
+    z-index: 1002; /* Добавляем больший z-index */
+}
+
+.dropdown:hover > a::after {
+    width: 100%;
+}
+
+/* Анимация для выпадающего меню */
+@keyframes fadeInMenu {
+    from {
+        opacity: 0;
+        transform: translateY(-10px);
+    }
+    to {
+        opacity: 1;
+        transform: translateY(0);
+    }
+}
+
+/* Стили для активного состояния */
+.dropdown.active .dropdown-menu {
+    display: block !important; /* Принудительно показываем */
+    visibility: visible;
+    opacity: 1;
+    transform: translateY(0);
+    animation: fadeInMenu 0.8s cubic-bezier(0.4, 0, 0.2, 1) forwards; /* Увеличили с 0.35s до 0.8s */
+    background-color: var(--color-background);
+
+}
+
+/* Отключаем все hover эффекты */
+.dropdown:hover .dropdown-menu {
+    display: none;
+}
+
+/* Стили для пунктов меню */
+.dropdown-menu li {
+    margin: 0;
+    width: 100%; /* Растягиваем на всю ширину */
+    background-color: var(--color-background);
+}
+
+/* Обновляем анимацию для выпадающего меню */
+@keyframes fadeInMenu {
+    from {
+        opacity: 0;
+        transform: translateY(-10px);
+    }
+    to {
+        opacity: 1;
+        transform: translateY(0);
+    }
+}
+
+/* Замедляем анимацию появления меню */
+.dropdown.active .dropdown-menu {
+    display: block !important;
+    visibility: visible;
+    opacity: 1;
+    transform: translateY(0);
+    animation: fadeInMenu 0.5s cubic-bezier(0.4, 0, 0.2, 1) forwards; /* Увеличили с 0.35s до 0.8s */
+    background-color: var(--color-background);
+}
+
+/* Замедляем анимацию для подменю */
+@keyframes fadeInSubmenu {
+    from {
+        opacity: 0;
+        transform: translateX(-10px);
+    }
+    to {
+        opacity: 1;
+        transform: translateX(0);
+    }
+}
+
+.dropdown-submenu:hover .submenu {
+    display: block;
+    opacity: 1;
+    visibility: visible;
+    animation: fadeInSubmenu 0.5s ease-out forwards; /* Увеличили с 0.25s до 0.8s */
+}
+
+/* Добавляем медиа-запрос для мобильных устройств */
+/* Мобильное меню */
+@media screen and (max-width: 768px) {
+    .mobile-menu-btn {
+        display: flex;
+        flex-direction: column;
+        justify-content: space-between;
+        width: 30px;
+        height: 20px;
+        background: none;
+        border: none;
+        cursor: pointer;
+        padding: 0;
+        margin-left: auto;
+        z-index: 1002;
+    }
+
+    .mobile-menu-btn span {
+        display: block;
+        width: 100%;
+        height: 2px;
+        background-color: var(--color-text);
+        transition: all 0.3s ease;
+    }
+
+    .mobile-menu-btn.active span:nth-child(1) {
+        transform: translateY(9px) rotate(45deg);
+    }
+
+    .mobile-menu-btn.active span:nth-child(2) {
+        opacity: 0;
+    }
+
+    .mobile-menu-btn.active span:nth-child(3) {
+        transform: translateY(-9px) rotate(-45deg);
+    }
+
+    .main-nav {
+        position: fixed;
+        top: var(--header-height);
+        left: -100%;
+        width: 100%;
+        height: calc(100vh - var(--header-height));
+        background-color: var(--color-background);
+        transition: left 0.3s ease;
+        overflow-y: auto;
+        z-index: 1000;
+    }
+
+    .main-nav.active {
+        left: 0;
+    }
+
+    .main-nav ul {
+        flex-direction: column;
+        padding: var(--spacing-medium);
+    }
+
+    .main-nav ul li {
+        width: 100%;
+        border-bottom: 1px solid var(--color-border);
+    }
+
+    .main-nav ul li:last-child {
+        border-bottom: none;
+    }
+
+    /* Стили для выпадающих меню */
     .dropdown-menu,
     .submenu {
-        position: static;
-        box-shadow: none;
         width: 100%;
-        padding-left: 20px;
+        display: none;
+        position: static;
+        opacity: 1;
+        visibility: visible;
+        box-shadow: none;
+        padding-left: var(--spacing-medium);
+        background-color: var(--color-background);
+    }
+
+    .dropdown.active > .dropdown-menu,
+    .dropdown-submenu.active > .submenu {
+        display: block;
+    }
+
+    .dropdown:hover .dropdown-menu,
+    .dropdown-submenu:hover .submenu {
         display: none;
     }
 
-    .dropdown-submenu > a:after {
-        content: '+';
-        position: absolute;
-        right: 15px;
-        transition: transform 0.3s ease;
+    /* Показываем только при наличии класса active */
+    .dropdown.active > .dropdown-menu,
+    .dropdown-submenu.active > .submenu {
+        display: block;
     }
 
-    .dropdown-submenu.active > a:after {
-        transform: rotate(45deg);
-    }
-
+    /* Стили для ссылок */
     .dropdown > a,
     .dropdown-submenu > a {
+        padding: 15px 35px 15px 20px; /* right padding увеличен для стрелки */
         position: relative;
         display: block;
         width: 100%;
-        padding: 10px 0;
     }
 
-    .dropdown.active > a,
-    .dropdown-submenu.active > a {
-        color: var(--color-primary);
-    }
-
-    /* Анимация стрелки при активном состоянии */
-    .dropdown:after {
+    /* Стрелки для выпадающих меню */
+    .dropdown > a::after,
+    .dropdown-submenu > a::after {
+        content: '';
+        position: absolute;
+        left: calc(100% - 25px); /* Размещаем стрелку справа от текста */
+        top: 50%;
+        width: 8px;
+        height: 8px;
+        border-right: 2px solid var(--color-text);
+        border-bottom: 2px solid var(--color-text);
+        transform: translateY(-50%) rotate(45deg);
         transition: transform 0.3s ease;
     }
 
-    .dropdown.active:after {
-        transform: rotate(-180deg);
+    .dropdown.active > a::after,
+    .dropdown-submenu.active > a::after {
+        transform: translateY(-50%) rotate(-135deg);
+    }
+
+    /* Блокировка прокрутки при открытом меню */
+    body.menu-open {
+        overflow: hidden;
+        position: fixed;
+        width: 100%;
     }
 }
 
+/* Стили для мобильной кнопки меню */
+.mobile-menu-btn {
+    display: none; /* По умолчанию скрыта */
+    flex-direction: column;
+    justify-content: center;
+    align-items: center;
+    width: 40px;
+    height: 40px;
+    background: none;
+    border: none;
+    cursor: pointer;
+    padding: 10px;
+    margin-left: auto;
+    position: relative;
+    z-index: 1002;
+}
+
+.mobile-menu-btn span {
+    display: block;
+    width: 24px;
+    height: 2px;
+    background-color: var(--color-text);
+    margin: 2px 0;
+    transition: all 0.3s ease;
+    border-radius: 2px;
+}
+
+/* Анимация для активного состояния */
+.mobile-menu-btn.active span:nth-child(1) {
+    transform: translateY(6px) rotate(45deg);
+}
+
+.mobile-menu-btn.active span:nth-child(2) {
+    opacity: 0;
+}
+
+.mobile-menu-btn.active span:nth-child(3) {
+    transform: translateY(-6px) rotate(-45deg);
+}
+
+/* Показываем кнопку на мобильных устройствах */
+@media screen and (max-width: 768px) {
+    .mobile-menu-btn {
+        display: flex;
+    }
+
+    /* Добавляем эффект при наведении */
+    .mobile-menu-btn:hover span {
+        background-color: var(--color-primary);
+    }
+}
+
+@media screen and (max-width: 768px) {
+    /* Стили для мобильного меню */
+    .main-nav {
+        position: fixed;
+        top: var(--header-height);
+        left: -100%;
+        width: 100%;
+        height: calc(100vh - var(--header-height));
+        background-color: var(--color-background);
+        transition: left 0.3s ease;
+        overflow-y: auto;
+        z-index: 1000;
+    }
+
+    .main-nav.active {
+        left: 0;
+        overflow-x: hidden;
+    }
+
+    /* Общие стили для всех пунктов меню */
+    .main-nav ul li a,
+    .dropdown > a,
+    .dropdown-submenu > a,
+    .submenu a {
+        display: flex;
+        justify-content: space-between;
+        align-items: center;
+        padding: 15px 20px;
+        width: 100%;
+        border-bottom: 1px solid var(--color-border);
+        position: relative;
+    }
+
+    /* Стрелки для выпадающих меню */
+    .dropdown > a::after,
+    .dropdown-submenu > a::after {
+        content: '';
+        width: 8px;
+        height: 8px;
+        border-right: 2px solid var(--color-text);
+        border-bottom: 2px solid var(--color-text);
+        transform: rotate(45deg);
+        transition: transform 0.3s ease;
+        margin-left: 10px;
+    }
+
+    /* Анимация стрелки при открытом меню */
+    .dropdown.active > a::after,
+    .dropdown-submenu.active > a::after {
+        transform: rotate(-135deg);
+    }
+
+    /* Стили для подменю */
+    .dropdown-menu,
+    .submenu {
+        display: none;
+        width: 100%;
+        background-color: var(--color-background-light);
+    }
+
+    /* Показываем подменю при активном состоянии */
+    .dropdown.active > .dropdown-menu,
+    .dropdown-submenu.active > .submenu {
+        display: block;
+    }
+}
+
+/* Стили для десктопного меню */
+@media screen and (min-width: 769px) {
+    .dropdown-menu {
+        position: absolute;
+        top: 100%;
+        left: 0;
+        min-width: 200px;
+        background: var(--color-background);
+        box-shadow: 0 2px 5px rgba(0,0,0,0.1);
+        opacity: 0;
+        visibility: hidden;
+        transition: all 0.3s ease;
+    }
+
+    /* Показываем меню при наведении */
+    .dropdown:hover > .dropdown-menu {
+        opacity: 1;
+        visibility: visible;
+        transform: translateY(0);
+    }
+
+    /* Стили для подменю */
+    .submenu {
+        position: absolute;
+        left: 100%;
+        top: 0;
+        min-width: 200px;
+        background: var(--color-background);
+        box-shadow: 0 2px 5px rgba(0,0,0,0.1);
+        opacity: 0;
+        visibility: hidden;
+        transition: all 0.3s ease;
+    }
+
+    /* Показываем меню при наведении */
+    .dropdown:hover > .dropdown-menu,
+    .dropdown.active > .dropdown-menu {
+        opacity: 1;
+        visibility: visible;
+        transform: translateY(0);
+    }
+
+    /* Отключаем стандартное поведение ссылки в десктопной версии */
+    .dropdown > a.dropdown-toggle {
+        cursor: pointer;
+    }
+
+    /* Показываем меню при наведении на весь элемент .dropdown */
+    .dropdown:hover > .dropdown-menu {
+        display: block;
+        opacity: 1;
+        visibility: visible;
+        transform: translateY(0);
+    }
+
+    /* Убираем конфликтующие стили */
+    .dropdown:hover .dropdown-menu {
+        display: block !important;
+    }
+
+    /* Отменяем все мобильные стили для десктопа */
+    .dropdown > a::after {
+        display: none;
+    }
+}
