@@ -61,35 +61,85 @@ const HeaderModule = {
 // Dropdown Module
 const DropdownModule = {
     init() {
-        const dropdowns = document.querySelectorAll('.dropdown, .dropdown-submenu');
+        // Обработка десктопных дропдаунов
+        document.querySelectorAll('.dropdown').forEach(this.setupDropdown);
         
-        dropdowns.forEach(dropdown => {
-            const link = dropdown.querySelector('a');
-            
-            // Обработчик клика
+        // Добавяем обработку мобильных дропдаунов
+        this.setupMobileDropdowns();
+    },
+
+    setupDropdown(dropdown) {
+        const link = dropdown.querySelector('a');
+        const menu = dropdown.querySelector('.dropdown-menu');
+        let timeout;
+
+        // Только для десктопа
+        if (window.innerWidth > 768) {
+            const showMenu = () => {
+                clearTimeout(timeout);
+                dropdown.classList.add('active');
+                menu.style.display = 'block';
+            };
+
+            const hideMenu = () => {
+                timeout = setTimeout(() => {
+                    dropdown.classList.remove('active');
+                    menu.style.display = 'none';
+                }, CONSTANTS.DROPDOWN_DELAY);
+            };
+
+            dropdown.addEventListener('mouseenter', showMenu);
+            dropdown.addEventListener('mouseleave', hideMenu);
+        }
+    },
+
+    setupMobileDropdowns() {
+        // Обработчик для основного дропдауна
+        document.querySelectorAll('.dropdown > a').forEach(link => {
             link.addEventListener('click', (e) => {
-                e.preventDefault();
-                e.stopPropagation();
-                
-                // Закрываем другие открытые меню
-                dropdowns.forEach(other => {
-                    if (other !== dropdown && other.classList.contains('active')) {
-                        other.classList.remove('active');
-                    }
-                });
-                
-                // Переключаем текущее меню
-                dropdown.classList.toggle('active');
+                if (window.innerWidth <= 768) {
+                    e.preventDefault();
+                    const dropdown = link.parentElement;
+                    const menu = dropdown.querySelector('.dropdown-menu');
+                    
+                    // Закрываем все остальные открытые меню
+                    document.querySelectorAll('.dropdown').forEach(otherDropdown => {
+                        if (otherDropdown !== dropdown) {
+                            otherDropdown.classList.remove('active');
+                            const otherMenu = otherDropdown.querySelector('.dropdown-menu');
+                            if (otherMenu) otherMenu.style.display = 'none';
+                        }
+                    });
+
+                    // Переключаем текущее меню
+                    dropdown.classList.toggle('active');
+                    menu.style.display = menu.style.display === 'block' ? 'none' : 'block';
+                }
             });
         });
-        
-        // Закрытие при клике вне меню
-        document.addEventListener('click', (e) => {
-            if (!e.target.closest('.dropdown')) {
-                dropdowns.forEach(dropdown => {
-                    dropdown.classList.remove('active');
-                });
-            }
+
+        // Обработчик для подменю
+        document.querySelectorAll('.dropdown-submenu > a').forEach(link => {
+            link.addEventListener('click', (e) => {
+                if (window.innerWidth <= 768) {
+                    e.preventDefault();
+                    const submenu = link.nextElementSibling;
+                    const parentLi = link.parentElement;
+                    
+                    // Закрываем все остальные открытые подменю
+                    document.querySelectorAll('.dropdown-submenu').forEach(otherSubmenu => {
+                        if (otherSubmenu !== parentLi) {
+                            otherSubmenu.classList.remove('active');
+                            const otherSubMenu = otherSubmenu.querySelector('.submenu');
+                            if (otherSubMenu) otherSubMenu.style.display = 'none';
+                        }
+                    });
+
+                    // Переключаем текущее подменю
+                    parentLi.classList.toggle('active');
+                    submenu.style.display = submenu.style.display === 'block' ? 'none' : 'block';
+                }
+            });
         });
     }
 };
@@ -911,7 +961,7 @@ const HeroAnimationModule = {
             });
         }
 
-        // Остальной од остается без изменений...
+        // Остальной код остается без изменений...
     }
     // ... остальные методы модуля
 };
@@ -1083,7 +1133,7 @@ const ProductsAnimationModule = {
                     const isFastScroll = scrollSpeed > 50;
                     
                     // Устанавливаем задержки в зависимости от скорости
-                    const titleDelay = isFastScroll ? 0 : 0; // Задерж��а для заголовка
+                    const titleDelay = isFastScroll ? 0 : 0; // Задержка для заголовка
                     const cardsStartDelay = isFastScroll ? 200 : 300; // Задержка перед началом анимации карточек
                     const itemDelay = isFastScroll ? 100 : 200; // Задержка между карточками
                     
