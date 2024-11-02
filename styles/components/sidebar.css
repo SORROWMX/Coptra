@@ -12,7 +12,9 @@ body {
 	display: grid;
 	justify-items: center;
 	overflow-x: hidden;
-	margin-left: 20px;
+    width: 100%;
+    min-height: calc(100vh - var(--header-height));
+    position: relative;
 }
 
 .main-container {
@@ -294,6 +296,8 @@ body {
     margin: 0 auto; /* Центрируем документацию */
     line-height: 1.6; /* Увеличиваем межстрочный интервал для лучшей читаемости */
     font-size: 18px; /* Увеличиваем размер шрифта */
+    padding: 0px 10px;
+
 }
 
 .sidebar-link:hover {
@@ -383,12 +387,7 @@ body {
     position: relative;
 }
 
-.content-docs {
-    padding: 0px 20px;
-    width: 100%;
-    min-height: calc(100vh - var(--header-height));
-    position: relative;
-}
+
 
 
 /* Смещаем основной контент */
@@ -408,6 +407,7 @@ body {
 @media (max-width: 768px) {
     .page-container {
         grid-template-columns: 1fr;
+        margin-top: var(--header-height);
     }
 
     .sidebar {
@@ -422,8 +422,22 @@ body {
     }
 
     .documentation-content {
-        padding: 20px;
+        padding: 0 15px; /* Уменьшаем отступы для мобильных */
+        max-width: 100%;
+        margin: 0 auto;
+        width: calc(100% - 30px); /* Учитываем мобильные отступы */
     }
+
+    .documentation {
+        width: 100%;
+    }
+
+    .documentation-grid {
+        width: 100%;
+        padding: 0; /* Убираем лишние отступы */
+    }
+
+    
 }
 
 .sub-menu {
