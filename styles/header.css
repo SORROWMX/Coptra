@@ -165,15 +165,6 @@ header.scrolled nav ul li a {
     font-size: 1rem;
 }
 
-/* Показываем меню при наведении */
-.dropdown:hover .dropdown-menu {
-    display: block;
-    visibility: visible;
-    opacity: 1;
-    animation: fadeInMenu 0.35s cubic-bezier(0.4, 0, 0.2, 1) forwards;
-}
-
-
 .dropdown-menu li a {
     display: block;
     width: 100%;
@@ -302,7 +293,6 @@ header.scrolled nav ul li a {
 
 /* Сохраняем эффект наведения при открытом подменю */
 .dropdown:hover .dropdown-menu {
-    display: block;
     visibility: visible;
     opacity: 1;
     animation: fadeInMenu 0.35s cubic-bezier(0.4, 0, 0.2, 1) forwards;
@@ -970,14 +960,8 @@ header.scrolled nav ul li a {
         box-shadow: 0 2px 5px rgba(0,0,0,0.1);
         opacity: 0;
         visibility: hidden;
+        transform: translateY(-5px);
         transition: all 0.3s ease;
-    }
-
-    /* Показываем меню при наведении */
-    .dropdown:hover > .dropdown-menu {
-        opacity: 1;
-        visibility: visible;
-        transform: translateY(0);
     }
 
     /* Стили для подменю */
@@ -993,9 +977,10 @@ header.scrolled nav ul li a {
         transition: all 0.3s ease;
     }
 
-    /* Показываем меню при наведении */
+     /* Показываем меню при наведении И при активном состоянии */
     .dropdown:hover > .dropdown-menu,
     .dropdown.active > .dropdown-menu {
+        display: block;
         opacity: 1;
         visibility: visible;
         transform: translateY(0);
@@ -1006,21 +991,9 @@ header.scrolled nav ul li a {
         cursor: pointer;
     }
 
-    /* Показываем меню при наведении на весь элемент .dropdown */
-    .dropdown:hover > .dropdown-menu {
-        display: block;
-        opacity: 1;
-        visibility: visible;
-        transform: translateY(0);
-    }
-
-    /* Убираем конфликтующие стили */
-    .dropdown:hover .dropdown-menu {
-        display: block !important;
-    }
-
     /* Отменяем все мобильные стили для десктопа */
     .dropdown > a::after {
         display: none;
     }
+
 }

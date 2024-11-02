@@ -67,9 +67,10 @@ $root_path = '/'; // Измените на '/your-subdirectory/' если сай
         
         if (strpos(strtolower($current_file), 'docs') !== false): 
         ?>
+            <!-- СТРАНИЦА ДОКУМЕНТАЦИИ ДЛЯ ДЕСКТОПА -->
             <nav class="docs-nav desktop-only">
                 <ul>
-                    <li><a href="<?php echo $root_path; ?>index.php">Главная</a></li>
+                    <li><a href="<?php echo $root_path; ?>index.php">Гойда</a></li>
                     <li class="dropdown">
                         <a href="<?php echo $root_path; ?>products.php">Продукты</a>
                         <ul class="dropdown-menu">
@@ -125,13 +126,14 @@ $root_path = '/'; // Измените на '/your-subdirectory/' если сай
                 <span></span>
                 <span></span>
             </button>
+            <!-- ГЛАВНАЯ СТРАНИЦА ДЛЯ ДЕСКТОПА И МОБИЛКИ -->
             <nav class="main-nav">
                 <ul>
                     <li><a href="<?php echo $root_path; ?>index.php">Главная</a></li>
                     <li class="dropdown">
                         <a href="javascript:void(0);" class="dropdown-toggle">Продукты</a>
                         <ul class="dropdown-menu">
-                        <li class="dropdown-submenu">
+                            <li class="dropdown-submenu">
                                 <a href="products.php#agriculture">Сельское хозяйство</a>
                                 <div class="submenu">
                                     <a href="products.php#agro-scout">Агроскаут X1</a>

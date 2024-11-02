@@ -52,7 +52,7 @@ const utils = {
 const HeaderModule = {
     init() {
         // Находим все навигационные меню
-        const navMenus = document.querySelectorAll('.main-nav, .docs-nav');
+        const navMenus = document.querySelectorAll('.docs-nav'); // Убираем .main-nav отсюда
         
         navMenus.forEach(nav => {
             const dropdowns = nav.querySelectorAll('.dropdown');
@@ -62,21 +62,26 @@ const HeaderModule = {
                 
                 if (link) {
                     link.addEventListener('click', (e) => {
-                        // Предотвращаем переход по ссылке только если это не мобильная версия
                         if (window.innerWidth > 768) {
                             e.preventDefault();
                             e.stopPropagation();
                             
-                            // Закрываем другие открытые дропдауны
                             dropdowns.forEach(otherDropdown => {
                                 if (otherDropdown !== dropdown) {
                                     otherDropdown.classList.remove('active');
                                 }
                             });
                             
-                            // Переключаем текущий дропдаун
                             dropdown.classList.toggle('active');
                         }
+                    });
+                }
+            });
+
+            document.addEventListener('click', (e) => {
+                if (!e.target.closest('.dropdown')) {
+                    dropdowns.forEach(dropdown => {
+                        dropdown.classList.remove('active');
                     });
                 }
             });
@@ -296,10 +301,6 @@ const TestimonialsModule = {
     }
 };
 
-document.addEventListener('DOMContentLoaded', () => {
-    TestimonialsModule.init();
-});
-
 // Form Validation Module
 const FormModule = {
     init() {
@@ -425,143 +426,126 @@ const FormModule = {
     }
 };
 
-document.addEventListener('DOMContentLoaded', () => {
-    const MobileMenuModule = {
-        init() {
-            // Инициализация основных элементов
-            this.dropdowns = document.querySelectorAll('.dropdown');
-            this.mobileMenuBtn = document.querySelector('.mobile-menu-btn');
-            this.mainNav = document.querySelector('.main-nav');
-            this.dropdownSubmenus = document.querySelectorAll('.dropdown-submenu');
+const MobileMenuModule = {
+    init() {
+        this.dropdowns = document.querySelectorAll('.dropdown');
+        this.mobileMenuBtn = document.querySelector('.mobile-menu-btn');
+        this.mainNav = document.querySelector('.main-nav');
+        this.dropdownSubmenus = document.querySelectorAll('.dropdown-submenu');
 
-            if (!this.mobileMenuBtn || !this.mainNav) return;
+        if (!this.mobileMenuBtn || !this.mainNav) return;
 
-            this.setupEventListeners();
-        },
+        this.setupEventListeners();
+    },
 
-        setupEventListeners() {
-            // Обработчик для мобильной кнопки меню
-            this.mobileMenuBtn.addEventListener('click', () => {
-                this.mobileMenuBtn.classList.toggle('active');
-                this.mainNav.classList.toggle('active');
-                document.body.classList.toggle('menu-open');
+    setupEventListeners() {
+        // Обработчик для мобильной кнопки меню
+        this.mobileMenuBtn.addEventListener('click', () => {
+            this.mobileMenuBtn.classList.toggle('active');
+            this.mainNav.classList.toggle('active');
+            document.body.classList.toggle('menu-open');
 
-                // Закрываем все открытые меню при закрытии мобильного меню
-                if (!this.mainNav.classList.contains('active')) {
-                    this.closeAllMenus();
-                }
-            });
+            if (!this.mainNav.classList.contains('active')) {
+                this.closeAllMenus();
+            }
+        });
 
-            // Обработчик для всех дропдаунов
-            this.dropdowns.forEach(dropdown => {
-                const link = dropdown.querySelector('a');
-                if (link) {
-                    link.addEventListener('click', (e) => {
-                        e.preventDefault();
-                        e.stopPropagation();
-                        this.toggleDropdown(dropdown);
-                    });
-                }
-            });
+        // Обработчик для дропдаунов
+        this.dropdowns.forEach(dropdown => {
+            const link = dropdown.querySelector('.dropdown-toggle');
+            if (link) {
+                link.addEventListener('click', (e) => {
+                    e.preventDefault();
+                    e.stopPropagation();
+                    this.toggleDropdown(dropdown);
+                });
+            }
+        });
 
-            // Обработчик для подменю
-            this.dropdownSubmenus.forEach(submenu => {
-                const link = submenu.querySelector('a');
-                if (link) {
-                    link.addEventListener('click', (e) => {
+        // Обработчик для подменю
+        this.dropdownSubmenus.forEach(submenu => {
+            const link = submenu.querySelector('a');
+            if (link) {
+                link.addEventListener('click', (e) => {
+                    if (window.innerWidth <= 768) {
                         e.preventDefault();
                         e.stopPropagation();
                         this.toggleSubmenu(submenu);
-                    });
-                }
-            });
-
-            // Закрытие при клике вне меню
-            document.addEventListener('click', (e) => {
-                if (window.innerWidth > 768) {
-                    if (!e.target.closest('.dropdown')) {
-                        this.closeAllMenus();
-                    }
-                }
-            });
-        },
-
-        toggleDropdown(dropdown) {
-            const isActive = dropdown.classList.contains('active');
-            
-            if (window.innerWidth <= 768) {
-                // Мобильная версия
-                this.closeOtherDropdowns(dropdown);
-                dropdown.classList.toggle('active');
-                
-                if (!isActive) {
-                    this.closeAllSubmenus(dropdown);
-                }
-            } else {
-                // Десктопная версия
-                if (isActive) {
-                    dropdown.classList.remove('active');
-                } else {
-                    this.closeAllMenus();
-                    dropdown.classList.add('active');
-                }
-            }
-        },
-
-        toggleSubmenu(submenu) {
-            if (window.innerWidth <= 768) {
-                const isActive = submenu.classList.contains('active');
-                
-                // Закрываем другие открытые подменю на том же уровне
-                const siblings = submenu.parentElement.querySelectorAll('.dropdown-submenu');
-                siblings.forEach(sibling => {
-                    if (sibling !== submenu) {
-                        sibling.classList.remove('active');
                     }
                 });
-
-                submenu.classList.toggle('active');
             }
-        },
+        });
 
-        closeAllMenus() {
-            this.dropdowns.forEach(dropdown => {
-                dropdown.classList.remove('active');
-                this.closeAllSubmenus(dropdown);
-            });
-        },
+        // Закрытие при клике вне меню только для десктопа
+        document.addEventListener('click', (e) => {
+            if (window.innerWidth > 768 && !e.target.closest('.dropdown')) {
+                this.closeAllMenus();
+            }
+        });
+    },
+    
+    // В MobileMenuModule исправляем метод toggleDropdown
+    toggleDropdown(dropdown) {
+        const isActive = dropdown.classList.contains('active');
+        
+    if (window.innerWidth <= 768) {
+        // Мобильная версия - оставляем как есть
+        this.closeOtherDropdowns(dropdown);
+        dropdown.classList.toggle('active');
+        
+        if (!isActive) {
+            this.closeAllSubmenus(dropdown);
+        }
+    } else {
+        // Десктопная версия - добавляем/убираем active, но сохраняем hover
+        if (isActive) {
+            dropdown.classList.remove('active');
+        } else {
+            this.closeAllMenus();
+                dropdown.classList.add('active');
+            }
+        }
+    },
 
-        closeOtherDropdowns(currentDropdown) {
-            this.dropdowns.forEach(dropdown => {
-                if (dropdown !== currentDropdown && dropdown.classList.contains('active')) {
-                    dropdown.classList.remove('active');
-                    this.closeAllSubmenus(dropdown);
+    toggleSubmenu(submenu) {
+        if (window.innerWidth <= 768) {
+            const isActive = submenu.classList.contains('active');
+            
+            const siblings = submenu.parentElement.querySelectorAll('.dropdown-submenu');
+            siblings.forEach(sibling => {
+                if (sibling !== submenu) {
+                    sibling.classList.remove('active');
                 }
             });
-        },
 
-        closeAllSubmenus(dropdown) {
-            const submenus = dropdown.querySelectorAll('.dropdown-submenu');
-            submenus.forEach(submenu => submenu.classList.remove('active'));
+            submenu.classList.toggle('active');
         }
-    };
+    },
 
-    MobileMenuModule.init();
-});
+    closeAllMenus() {
+        this.dropdowns.forEach(dropdown => {
+            dropdown.classList.remove('active');
+            this.closeAllSubmenus(dropdown);
+        });
+    },
 
-// Инициализация модуля при загрузке страницы
-document.addEventListener('DOMContentLoaded', () => {
-    MobileMenuModule.init();
-});
+    closeOtherDropdowns(currentDropdown) {
+        this.dropdowns.forEach(dropdown => {
+            if (dropdown !== currentDropdown && dropdown.classList.contains('active')) {
+                dropdown.classList.remove('active');
+                this.closeAllSubmenus(dropdown);
+            }
+        });
+    },
+
+    closeAllSubmenus(dropdown) {
+        const submenus = dropdown.querySelectorAll('.dropdown-submenu');
+        submenus.forEach(submenu => submenu.classList.remove('active'));
+    }
+};
 
 // Инициализация модуля
 document.addEventListener('DOMContentLoaded', () => {
-    HeaderModule.init();
-    ScrollProgressModule.init();
-    FAQModule.init();
-    AboutSectionModule.init();
-    TestimonialsModule.init();
-    FormModule.init();
 
     const currentYear = document.querySelector('#current-year');
     if (currentYear) {
@@ -766,11 +750,6 @@ const NavigationModule = {
         .catch(error => console.error('Error:', error));
     }
 };
-// Инициализируем модуль вместе с остальными
-document.addEventListener('DOMContentLoaded', () => {
-    // ... существующие инициализации ...
-    NavigationModule.init();
-});
 
 // Particles Module
 const ParticlesModule = {
@@ -860,12 +839,6 @@ const ParticlesModule = {
         }
     }
 };
-
-// Добавляем инициализацию в общий список
-document.addEventListener('DOMContentLoaded', () => {
-    // ... существующие инициализации ...
-    ParticlesModule.init();
-});
 
 // Hero Animation Module
 const HeroAnimationModule = {
@@ -1208,11 +1181,6 @@ const NewsAnimationModule = {
     }
 };
 
-// Добавляем инициалзацию
-document.addEventListener('DOMContentLoaded', () => {
-    NewsAnimationModule.init();
-});
-
 const PartnersAnimationModule = {
     init() {
         const partnersSection = document.querySelector('.partners');
@@ -1263,7 +1231,6 @@ const PartnersAnimationModule = {
         observer.observe(partnersSection);
     }
 };
-
 // Добавляем инициализацию
 document.addEventListener('DOMContentLoaded', () => {
     PartnersAnimationModule.init();
@@ -1466,11 +1433,6 @@ const ContactAnimationModule = {
     }
 };
 
-// Добавляем инициализацию
-document.addEventListener('DOMContentLoaded', () => {
-    ContactAnimationModule.init();
-});
-
 // 404 Page Module
 const Error404Module = {
     init() {
@@ -1558,8 +1520,21 @@ const Error404Module = {
     }
 };
 
-// Добавляем инициализацию в общий список
+// Удаляем все остальные DOMContentLoaded и оставляем только этот в конце файла
 document.addEventListener('DOMContentLoaded', () => {
+    // Основной модуль меню
+    MobileMenuModule.init();
+    // Остальные модули
+    HeaderModule.init();
+    ScrollProgressModule.init();
+    FAQModule.init();
+    AboutSectionModule.init();
+    TestimonialsModule.init();
+    FormModule.init();
+    ContactAnimationModule.init();
     Error404Module.init();
+    ParticlesModule.init();
+    NewsAnimationModule.init();
+    NavigationModule.init();
 });
 
