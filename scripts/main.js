@@ -301,6 +301,11 @@ const TestimonialsModule = {
     }
 };
 
+// Добавляем инициализацию
+document.addEventListener('DOMContentLoaded', () => {
+    TestimonialsModule.init();
+});
+
 // Form Validation Module
 const FormModule = {
     init() {
@@ -544,14 +549,51 @@ const MobileMenuModule = {
     }
 };
 
-// Инициализация модуля
-document.addEventListener('DOMContentLoaded', () => {
+// Добавляем новый модуль для сайдбара
+const SidebarModule = {
+    init() {
+        this.sidebarBtn = document.querySelector('.sidebar-mobile-btn');
+        this.sidebar = document.querySelector('.sidebar');
+        this.mainNav = document.querySelector('.main-nav');
+        
+        if (!this.sidebarBtn || !this.sidebar) return;
+        
+        this.setupEventListeners();
+    },
 
-    const currentYear = document.querySelector('#current-year');
-    if (currentYear) {
-        currentYear.textContent = new Date().getFullYear();
+    setupEventListeners() {
+        this.sidebarBtn.addEventListener('click', () => {
+            this.toggleSidebar();
+        });
+
+        // Закрываем при клике вне сайдбара
+        document.addEventListener('click', (e) => {
+            if (window.innerWidth <= 768 && 
+                !e.target.closest('.sidebar') && 
+                !e.target.closest('.sidebar-mobile-btn') && 
+                this.sidebar.classList.contains('active')) {
+                this.closeSidebar();
+            }
+        });
+    },
+
+    toggleSidebar() {
+        this.sidebarBtn.classList.toggle('active');
+        this.sidebar.classList.toggle('active');
+        document.body.classList.toggle('sidebar-open');
+        
+        // Закрываем основное меню, если оно открыто
+        if (this.mainNav && this.mainNav.classList.contains('active')) {
+            this.mainNav.classList.remove('active');
+        }
+    },
+
+    closeSidebar() {
+        this.sidebarBtn.classList.remove('active');
+        this.sidebar.classList.remove('active');
+        document.body.classList.remove('sidebar-open');
     }
-});
+};
 
 document.addEventListener('DOMContentLoaded', () => {
     const expandableItems = document.querySelectorAll('.sidebar-item.expandable');
@@ -873,10 +915,7 @@ const HeroAnimationModule = {
                 }
             });
         }
-
-        // Остальной од остается без изменений...
     }
-    // ... остальные методы модуля
 };
 
 // Добавляем инициализацию в общий список
@@ -1181,6 +1220,11 @@ const NewsAnimationModule = {
     }
 };
 
+// Добавляем инициализацию
+document.addEventListener('DOMContentLoaded', () => {
+    NewsAnimationModule.init();
+});
+
 const PartnersAnimationModule = {
     init() {
         const partnersSection = document.querySelector('.partners');
@@ -1433,6 +1477,11 @@ const ContactAnimationModule = {
     }
 };
 
+// Добавляем инициализацию
+document.addEventListener('DOMContentLoaded', () => {
+    ContactAnimationModule.init();
+});
+
 // 404 Page Module
 const Error404Module = {
     init() {
@@ -1526,15 +1575,31 @@ document.addEventListener('DOMContentLoaded', () => {
     MobileMenuModule.init();
     // Остальные модули
     HeaderModule.init();
+    SidebarModule.init();
     ScrollProgressModule.init();
     FAQModule.init();
     AboutSectionModule.init();
-    TestimonialsModule.init();
     FormModule.init();
-    ContactAnimationModule.init();
     Error404Module.init();
     ParticlesModule.init();
-    NewsAnimationModule.init();
     NavigationModule.init();
-});
 
+    const currentYear = document.querySelector('#current-year');
+    if (currentYear) {
+        currentYear.textContent = new Date().getFullYear();
+    }
+    const sidebarBtn = document.querySelector('.sidebar-mobile-btn');
+    const sidebar = document.querySelector('.sidebar');
+    
+    
+    if (sidebarBtn && sidebar) {
+        sidebarBtn.addEventListener('click', function() {
+            // Переключаем класс active у сайдбара
+            sidebar.classList.toggle('active');
+            this.classList.toggle('active');
+            
+            // Добавляем/убираем класс для блокировки прокрутки body
+            document.body.classList.toggle('sidebar-open');
+        });
+    }
+});
