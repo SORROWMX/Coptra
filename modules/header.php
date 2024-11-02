@@ -70,7 +70,7 @@ $root_path = '/'; // Измените на '/your-subdirectory/' если сай
             <!-- СТРАНИЦА ДОКУМЕНТАЦИИ ДЛЯ ДЕСКТОПА -->
             <nav class="docs-nav desktop-only">
                 <ul>
-                    <li><a href="<?php echo $root_path; ?>index.php">Гойда</a></li>
+                    <li><a href="<?php echo $root_path; ?>index.php">Главная</a></li>
                     <li class="dropdown">
                         <a href="<?php echo $root_path; ?>products.php">Продукты</a>
                         <ul class="dropdown-menu">
@@ -116,9 +116,9 @@ $root_path = '/'; // Измените на '/your-subdirectory/' если сай
                 </ul>
             </nav>
             <button class="sidebar-mobile-btn header-btn" aria-label="Toggle sidebar">
-                <span></span>
-                <span></span>
-                <span></span>
+                <span class="sidebar-btn-line"></span>
+                <span class="sidebar-btn-line"></span>
+                <span class="sidebar-btn-line"></span>
             </button>
         <?php else: ?>
             <button class="mobile-menu-btn">

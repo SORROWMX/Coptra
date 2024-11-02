@@ -49,29 +49,35 @@ const utils = {
 };
 
 // Header Module
+// Header Module
 const HeaderModule = {
     init() {
+        const header = document.querySelector('header');
+        window.addEventListener('scroll', () => {
+            header.classList.toggle('scrolled', window.scrollY > CONSTANTS.SCROLL_THRESHOLD);
+        });
+
         // Находим все навигационные меню
         const navMenus = document.querySelectorAll('.docs-nav'); // Убираем .main-nav отсюда
-        
+
         navMenus.forEach(nav => {
             const dropdowns = nav.querySelectorAll('.dropdown');
-            
+
             dropdowns.forEach(dropdown => {
                 const link = dropdown.querySelector('a');
-                
+
                 if (link) {
                     link.addEventListener('click', (e) => {
                         if (window.innerWidth > 768) {
                             e.preventDefault();
                             e.stopPropagation();
-                            
+
                             dropdowns.forEach(otherDropdown => {
                                 if (otherDropdown !== dropdown) {
                                     otherDropdown.classList.remove('active');
                                 }
                             });
-                            
+
                             dropdown.classList.toggle('active');
                         }
                     });
@@ -88,7 +94,6 @@ const HeaderModule = {
         });
     }
 };
-
 // Scroll Progress Module
 const ScrollProgressModule = {
     init() {
@@ -255,7 +260,7 @@ const TestimonialsModule = {
                     
                     // Устанавливаем задержки в зависимости от скорости
                     const titleDelay = isFastScroll ? 0 : 0; // Задержка для заголовка
-                    const cardsStartDelay = isFastScroll ? 100 : 200; // Задержка перед началом анимации карточек
+                    const cardsStartDelay = isFastScroll ? 100 : 200; // Задержка перед на��алом анимации карточек
                     const itemDelay = isFastScroll ? 50 : 100; // Задержка между карточками
                     
                     // Анимируем заголовок
@@ -639,7 +644,7 @@ document.addEventListener('DOMContentLoaded', () => {
         });
     });
 
-    // Обработка изменения истории браузера
+    // Обработка и��менения истории браузера
     window.addEventListener('popstate', () => {
         location.reload();
     });
@@ -1018,7 +1023,6 @@ const ApplicationsAnimationModule = {
         observer.observe(applicationsSection);
     }
 };
-
 // Добавляем инициализацию
 document.addEventListener('DOMContentLoaded', () => {
     ApplicationsAnimationModule.init();
@@ -1206,7 +1210,7 @@ const PartnersAnimationModule = {
                     const isFastScroll = scrollSpeed > 50;
                     
                     // Устанавливаем задержки в зависимости от скорости
-                    const titleDelay = isFastScroll ? 0 : 0; // Задержка для заголовка
+                    const titleDelay = isFastScroll ? 0 : 0; // Задержка для з��головка
                     const partnersStartDelay = isFastScroll ? 100 : 300; // Задержка перед началом анимации партнеров
                     const itemDelay = isFastScroll ? 50 : 150; // Меньшая задержка для пртнеров
                     
@@ -1519,7 +1523,50 @@ const Error404Module = {
         });
     }
 };
+const SidebarModule = {
+    init() {
+        const sidebarMobileBtn = document.querySelector('.sidebar-mobile-btn');
+        const sidebar = document.querySelector('.sidebar');
+        
+        if (!sidebarMobileBtn || !sidebar) return;
 
+        // Функция переключения состояния сайдбара
+        const toggleSidebar = (show) => {
+            sidebar.classList.toggle('active', show);
+            sidebarMobileBtn.classList.toggle('active', show);
+            document.body.classList.toggle('sidebar-open', show);
+        };
+
+        // Обработчик для кнопки
+        sidebarMobileBtn.addEventListener('click', (e) => {
+            e.stopPropagation();
+            const isActive = sidebar.classList.contains('active');
+            toggleSidebar(!isActive);
+        });
+
+        // Закрытие при клике вне сайдбара
+        document.addEventListener('click', (e) => {
+            if (window.innerWidth <= 768 && 
+                sidebar.classList.contains('active') && 
+                !sidebar.contains(e.target) && 
+                !sidebarMobileBtn.contains(e.target)) {
+                toggleSidebar(false);
+            }
+        });
+
+        // Обработка изменения размера окна
+        window.addEventListener('resize', () => {
+            if (window.innerWidth > 768) {
+                toggleSidebar(false);
+            }
+        });
+
+        // Предотвращаем закрытие при клике внутри сайдбара
+        sidebar.addEventListener('click', (e) => {
+            e.stopPropagation();
+        });
+    }
+};
 // Удаляем все остальные DOMContentLoaded и оставляем только этот в конце файла
 document.addEventListener('DOMContentLoaded', () => {
     // Основной модуль меню
@@ -1527,10 +1574,11 @@ document.addEventListener('DOMContentLoaded', () => {
     // Остальные модули
     HeaderModule.init();
     ScrollProgressModule.init();
-    FAQModule.init();
     AboutSectionModule.init();
     TestimonialsModule.init();
     FormModule.init();
+    SidebarModule.init(); // Add this line
+    
     ContactAnimationModule.init();
     Error404Module.init();
     ParticlesModule.init();
