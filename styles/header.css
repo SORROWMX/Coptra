@@ -997,3 +997,13 @@ header.scrolled nav ul li a {
     }
 
 }
+
+@media (max-width: 768px) {
+    .docs-nav.desktop-only {
+        display: none;
+    }
+
+    .sidebar-mobile-btn.header-btn {
+        display: flex;
+    }
+}
