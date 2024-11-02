@@ -42,4 +42,4 @@
             <p>&copy; <span id="current-year"></span> Коптра. Все права защищены.</p>
         </div>
     </footer>
-    <script src="/scripts/main.js"></script></html>
+    <script type="module" src="/scripts/main.js"></script>

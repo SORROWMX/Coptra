@@ -115,10 +115,10 @@ $root_path = '/'; // Измените на '/your-subdirectory/' если сай
                     <li><a href="<?php echo $root_path; ?>contacts.html">Контакты</a></li>
                 </ul>
             </nav>
-            <button class="sidebar-mobile-btn header-btn" aria-label="Toggle sidebar">
-                <span class="sidebar-btn-line"></span>
-                <span class="sidebar-btn-line"></span>
-                <span class="sidebar-btn-line"></span>
+            <button class="mobile-menu-btn header-btn" aria-label="Toggle sidebar">
+                <span></span>
+                <span></span>
+                <span></span>
             </button>
         <?php else: ?>
             <button class="mobile-menu-btn">
