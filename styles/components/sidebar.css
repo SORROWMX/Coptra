@@ -13,11 +13,6 @@ body {
 	justify-items: center;
 	overflow-x: hidden;
 	margin-left: 20px;
-	margin-right: 20px; /* Добавляем отступ справа */
-	width: 100%;
-	max-width: 1200px; /* Ограничиваем максимальную ширину */
-	margin: 0 auto; /* Центрируем контент */
-	padding: 0 20px; /* Добавляем отступы по бокам */
 }
 
 .main-container {
@@ -51,15 +46,6 @@ body {
 	position: relative;
 	top: 0;
 	width: 100%;
-}
-
-.sidebar-nav a {
-    display: block; /* Оставляем block только для ссылок в сайдбаре */
-    width: 100%;
-    padding: 8px 15px;
-    color: var(--color-text);
-    text-decoration: none;
-    transition: color 0.3s ease;
 }
 
 /* Стили для Firefox */
@@ -246,7 +232,21 @@ body {
 	}
 }
 
+@media (max-width: 768px) {
+	.main-container {
+		flex-direction: column;
+		margin-left: -40px; /* Немного увеличиваем отрицательный отступ для мобильных */
+		width: calc(100% + 80px);
+	}
 
+	.sidebar {
+		width: 100%;
+		max-width: 100vw;
+		border-right: none;
+		border-bottom: 1px solid #e9ecef;
+		margin-bottom: 20px;
+	}
+}
 
 .documentation h1:first-child {
     font-size: var(--font-size-h1);
@@ -287,8 +287,6 @@ body {
     display: grid;
     gap: 20px;
     width: 100%;
-    max-width: 900px; /* Ограничиваем ширину текста для лучшей читаемости */
-    margin: 0 auto;
 }
 
 .documentation {
@@ -349,7 +347,34 @@ body {
     z-index: 1001;
 }
 
+@media (max-width: 768px) {
+    .mobile-menu-toggle {
+        display: block;
+    }
+    
+    .sidebar {
+        position: fixed;
+        right: -100%; /* ��еняем left на right */
+        left: auto; /* Убираем left позиционирование */
+        width: 100%;
+        height: calc(100vh - var(--header-height));
+        transition: all 0.3s cubic-bezier(0.4, 0, 0.2, 1);
+        z-index: 1000;
+        background-color: var(--color-background);
+        transform: translateX(100%); /* Меняем направление transform */
+        opacity: 0;
+    }
 
+    .sidebar.active {
+        right: 0; /* Меняем left на right */
+        transform: translateX(0);
+        opacity: 1;
+    }
+
+    .page-container {
+        grid-template-columns: 1fr;
+    }
+}
 
 .page-container {
     display: grid;
@@ -366,39 +391,12 @@ body {
     position: relative;
 }
 
+
 /* Смещаем основной контент */
 .documentation-content {
     margin-left: 0;
     max-width: 1450px;
     width: 100%;
-	user-select: text;
-    -webkit-user-select: text;
-    -moz-user-select: text;
-    -ms-user-select: text;
-}
-
-/* Сбрасываем стили для ссылок в контенте документации */
-.documentation-content a {
-    display: inline; /* Возвращаем inline для ссылок в контенте */
-    width: auto;
-    padding: 0;
-    color: var(--color-primary); /* Делаем ссылки в тексте заметными */
-    text-decoration: underline;
-}
-
-/* Стили для ссылок при наведении в контенте */
-.documentation-content a:hover {
-    color: var(--color-primary-dark);
-}
-
-/* Убираем pointer-events у текста, чтобы он не реагировал как ссылка */
-.documentation-content p {
-    pointer-events: none;
-}
-
-/* Но разрешаем для реальных ссылок внутри параграфов */
-.documentation-content p a {
-    pointer-events: auto;
 }
 
 /* Обновляем стили футера для страницы документации */
@@ -437,7 +435,7 @@ body {
 }
 
 .sidebar-item.expandable.active > .sub-menu {
-	max-height: 1000px; /* Достаточно большое значение ля любого содержимого */
+	max-height: 1000px; /* Достаточно большое значение ��ля любого содержимого */
 	opacity: 1;
 }
 
@@ -491,138 +489,3 @@ body {
     box-shadow: 0 2px 4px rgba(0, 0, 0, 0.1);
 }
 
-.documentation h1,
-.documentation h2,
-.documentation h3{
-    text-align: center; /* Центрируем заголовки */
-    width: 100%;
-    margin-bottom: 1em;
-}
-
-/* Стили только для кнопки сайдбара в документации */
-.sidebar-mobile-btn.header-btn {
-    display: none; /* По умолчанию скрыта */
-}
-
-.sidebar-mobile-btn.header-btn span {
-    width: 100%;
-    height: 2px;
-    background-color: var(--color-text);
-    transition: 0.3s;
-}
-
-/* Анимация для активного состояния */
-.sidebar-mobile-btn.header-btn.active span:nth-child(1) {
-    transform: rotate(45deg) translate(6px, 6px);
-}
-
-.sidebar-mobile-btn.header-btn.active span:nth-child(2) {
-    opacity: 0;
-}
-
-.sidebar-mobile-btn.header-btn.active span:nth-child(3) {
-    transform: rotate(-45deg) translate(6px, -6px);
-}
-
-/* Медиа-запрос для мобильных устройств */
-@media screen and (max-width: 768px) {
-    .content-docs {
-        margin: 0;
-        padding: 0px; /* Уменьшаем отступы на мобильных */
-    }
-
-    .documentation {
-        font-size: 16px; /* Уменьшаем размер шрифта на мобильных */
-    }
-
-    .documentation-grid {
-        padding: 0 10px; /* Добавляем небольшие отступы для текста */
-    }
-
-    /* Уменьшаем размеры заголовков на мобильных */
-    .documentation h1 { font-size: 24px; }
-    .documentation h2 { font-size: 20px; }
-    .documentation h3 { font-size: 18px; }
-    .documentation h4 { font-size: 16px; }
-
-    /* Исправляем отступы для параграфов */
-    .documentation p {
-        margin-bottom: 1em;
-        line-height: 1.5;
-    }
-
-	.documentation h3, h4 {
-        margin: 0;
-    }
-
-	.sidebar-mobile-btn.header-btn {
-        display: flex;
-        flex-direction: column;
-        justify-content: center;
-    }
-
-    /* Обновляем позиционирование сайдбара */
-	.sidebar {
-        position: fixed;
-        left: -100%;
-        top: var(--header-height);
-        width: 100%;
-        height: calc(100vh - var(--header-height));
-        background: var(--color-background);
-        transition: left 0.3s ease;
-        z-index: 1001;
-        overflow-y: auto;
-        padding: 20px;
-    }
-
-    .sidebar.active {
-        left: 0;
-    }
-
-    body.sidebar-open {
-        overflow: hidden;
-    }
-
-    /* Убираем стили для основного меню при открытом сайдбаре */
-    body.sidebar-open .main-nav {
-        display: none;
-    }
-	
-    /* Стили для кнопки в хедере */
-    .sidebar-mobile-btn.active span:nth-child(1) {
-        transform: translateY(8px) rotate(45deg);
-    }
-
-    .sidebar-mobile-btn.active span:nth-child(2) {
-        opacity: 0;
-    }
-
-    .sidebar-mobile-btn.active span:nth-child(3) {
-        transform: translateY(-8px) rotate(-45deg);
-    }
-
-	.sidebar-mobile-btn.header-btn {
-        display: flex;
-        flex-direction: column;
-        justify-content: center;
-        align-items: center;
-        width: 30px;
-        height: 24px;
-        background: none;
-        border: none;
-        cursor: pointer;
-        padding: 0;
-        margin-right: 20px;
-        z-index: 1002;
-    }
-
-    /* Убираем все стили от основного меню */
-    .docs-header .mobile-menu-btn {
-        display: none !important;
-    }
-	
-    /* Скрываем обычный сайдбар на мобильных */
-    .page-container > .sidebar {
-        display: none;
-    }
-}

@@ -1,3 +1,19 @@
+/* Добавьте эти стили в начало файла */
+.sidebar-mobile-btn.header-btn {
+    display: none; /* По умолчанию скрыта */
+    flex-direction: column;
+    justify-content: center;
+    align-items: center;
+    background: none;
+    border: none;
+    cursor: pointer;
+    padding: 15px;
+    margin-left: auto;
+    z-index: 1002;
+    height: 40px;
+    width: 40px;
+}
+
 .sidebar-mobile-btn.header-btn span {
     display: block;
     width: 35px;
@@ -347,20 +363,23 @@ header.scrolled nav ul li a {
     transition: 0.3s;
 }
 
+
+
 /* Обновляем стили для мобильной кнопки сайдбара */
 .sidebar-mobile-btn.header-btn {
     display: none;
     flex-direction: column;
-    justify-content: center;
+    justify-content: space-between;
     align-items: center;
-    width: 30px;
-    height: 24px;
     background: none;
     border: none;
     cursor: pointer;
-    padding: 0;
-    margin-right: 20px;
+    padding: 10px;
+    margin-left: auto;
     z-index: 1002;
+    height: 40px;
+    width: 40px;
+    position: relative; /* Добавляем позиционирование */
 }
 
 .sidebar-mobile-btn.header-btn span {
@@ -678,70 +697,21 @@ header.scrolled nav ul li a {
     animation: fadeInSubmenu 0.5s ease-out forwards; /* Увеличили с 0.25s до 0.8s */
 }
 
-/* Специальные стили для хедера в документации */
-.docs-header .header-container {
-    display: flex;
-    align-items: center;
-    padding: 0 20px;
-    height: var(--header-height);
-    max-width: 100%;
-}
-
-.docs-header .logo {
-    margin-right: auto;
-}
-
-.docs-header .main-nav {
-    display: none; /* Скрываем основную навигацию в документации */
-}
-
-/* Стили для мобильной кнопки сайдбара */
-.docs-header .sidebar-mobile-btn {
-    display: none;
-    flex-direction: column;
-    justify-content: center;
-    align-items: center;
-    width: 30px;
-    height: 30px;
-    background: none;
-    border: none;
-    cursor: pointer;
-    padding: 0;
-    margin-left: 15px;
-}
-
-.docs-header .sidebar-mobile-btn span {
-    display: block;
-    width: 25px;
-    height: 2px;
-    background-color: var(--color-text);
-    margin: 4px 0;
-    transition: 0.3s;
-}
-
 /* Добавляем медиа-запрос для мобильных устройств */
+/* Мобильное меню */
 @media screen and (max-width: 768px) {
-    .docs-header .sidebar-mobile-btn.header-btn {
-        display: flex;
-    }
-
     .mobile-menu-btn {
         display: flex;
         flex-direction: column;
-        justify-content: center;
-        align-items: center;
+        justify-content: space-between;
         width: 30px;
-        height: 24px;
+        height: 20px;
         background: none;
         border: none;
         cursor: pointer;
         padding: 0;
-        margin-right: 20px;
-    }
-
-       /* Убираем все стили от сайдбара */
-    .main-header .sidebar-mobile-btn {
-        display: none !important;
+        margin-left: auto;
+        z-index: 1002;
     }
 
     .mobile-menu-btn span {
@@ -783,11 +753,6 @@ header.scrolled nav ul li a {
     .main-nav ul {
         flex-direction: column;
         padding: var(--spacing-medium);
-    }
-
-    .main-nav li{
-        padding: 0;
-        margin: 0;
     }
 
     .main-nav ul li {
@@ -867,7 +832,19 @@ header.scrolled nav ul li a {
 
 /* Стили для мобильной кнопки меню */
 .mobile-menu-btn {
-    display: none;
+    display: none; /* По умолчанию скрыта */
+    flex-direction: column;
+    justify-content: center;
+    align-items: center;
+    width: 40px;
+    height: 40px;
+    background: none;
+    border: none;
+    cursor: pointer;
+    padding: 10px;
+    margin-left: auto;
+    position: relative;
+    z-index: 1002;
 }
 
 .mobile-menu-btn span {
