@@ -16,6 +16,7 @@ import { PreloaderModule } from './modules/preloader.js';
 import { ScrollToTopModule } from './modules/scroll-to-top.js';
 import { LazyLoadingModule } from './modules/lazy-loading.js';
 import { ApplicationsModule } from './modules/applications.js';
+import { HeroMapModule } from './modules/hero-map.js';
 
 // Импорт модулей анимаций
 import { HeroAnimationModule } from './modules/animations/hero.js';
@@ -51,6 +52,7 @@ document.addEventListener('DOMContentLoaded', () => {
     MapModule.init();
     SidebarModule.init();
     ApplicationsModule.init();
+    HeroMapModule.init();
     
     // Инициализация модулей анимаций
     HeroAnimationModule.init();

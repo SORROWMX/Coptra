@@ -17,6 +17,7 @@
 @import 'components/partners-section.css';
 @import 'components/goals.css';
 @import 'components/preloader.css';
+@import 'pages/contacts.css';
 
 
 /* Стили для скроллбара WebKit (Chrome, Safari, Opera) */

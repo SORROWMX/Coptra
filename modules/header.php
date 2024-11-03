@@ -112,7 +112,7 @@ $root_path = '/'; // Измените на '/your-subdirectory/' если сай
                     </li>
                     <li><a href="<?php echo $root_path; ?>docs/documentation.php">Документация</a></li>
                     <li><a href="<?php echo $root_path; ?>blog.html">Блог</a></li>
-                    <li><a href="<?php echo $root_path; ?>contacts.html">Контакты</a></li>
+                    <li><a href="<?php echo $root_path; ?>contacts.php">Контакты</a></li>
                 </ul>
             </nav>
             <button class="mobile-menu-btn header-btn" aria-label="Toggle sidebar">
@@ -171,7 +171,7 @@ $root_path = '/'; // Измените на '/your-subdirectory/' если сай
                     </li>
                     <li><a href="<?php echo $root_path; ?>docs/documentation.php">Документация</a></li>
                     <li><a href="<?php echo $root_path; ?>blog.html">Блог</a></li>
-                    <li><a href="<?php echo $root_path; ?>contacts.html">Контакты</a></li>
+                    <li><a href="<?php echo $root_path; ?>contacts.php">Контакты</a></li>
                 </ul>
             </nav>
         <?php endif; ?>
