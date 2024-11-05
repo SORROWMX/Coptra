@@ -10,6 +10,7 @@ export const SidebarModule = {
         this.setupEventListeners();
         this.initExpandableItems();
         this.initAjaxNavigation();
+        this.initSidebar();
     },
 
     setupEventListeners() {
@@ -135,6 +136,28 @@ export const SidebarModule = {
                 this.updateActiveMenuItem(url);
                 window.scrollTo(0, 0);
             }
+
+            // Удаляем старый активный класс
+            const oldActive = this.sidebar.querySelector('.active');
+            if (oldActive) {
+                oldActive.classList.remove('active');
+            }
+
+            // Находим и активируем текущую ссылку
+            const currentLink = this.sidebar.querySelector(`a[href="${url}"]`);
+            if (currentLink) {
+                currentLink.classList.add('active');
+                
+                // Активируем родительский пункт меню если есть
+                const parentItem = currentLink.closest('.sidebar-item.expandable');
+                if (parentItem) {
+                    parentItem.classList.add('active');
+                    const submenu = parentItem.querySelector('.sub-menu');
+                    if (submenu) {
+                        submenu.style.maxHeight = submenu.scrollHeight + 'px';
+                    }
+                }
+            }
         } catch (error) {
             console.error('Error loading content:', error);
         }
@@ -151,6 +174,23 @@ export const SidebarModule = {
             currentLink.classList.add('active');
             
             // Раскрываем родительское подменю если есть
+            const parentItem = currentLink.closest('.sidebar-item.expandable');
+            if (parentItem) {
+                parentItem.classList.add('active');
+                const submenu = parentItem.querySelector('.sub-menu');
+                if (submenu) {
+                    submenu.style.maxHeight = submenu.scrollHeight + 'px';
+                }
+            }
+        }
+    },
+
+    initSidebar() {
+        // Добавляем определение текущей страницы при загрузке
+        const currentPath = window.location.pathname;
+        const currentLink = this.sidebar.querySelector(`a[href*="${currentPath}"]`);
+        if (currentLink) {
+            currentLink.classList.add('active');
             const parentItem = currentLink.closest('.sidebar-item.expandable');
             if (parentItem) {
                 parentItem.classList.add('active');
