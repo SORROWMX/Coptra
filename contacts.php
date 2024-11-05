@@ -70,31 +70,44 @@
                     <div class="contact-info">
                         <div class="info-block">
                             <div class="info-header">
-                                <i class="fas fa-map-marker-alt"></i>
-                                <h3>Адрес</h3>
+                                <i class="fas fa-comments"></i>
+                                <h3>Онлайн-консультация</h3>
                             </div>
-                            <div class="address-info">
-                                <p>г. Орёл, ул. Наугорское шоссе, 29</p>
-                                <a href="#" class="route-link">
-                                    <i class="fas fa-directions"></i>
-                                    Построить маршрут
-                                </a>
+                            <div class="consultation-info">
+                                <div class="messenger-item">
+                                    <i class="fab fa-telegram"></i>
+                                    <div>
+                                        <a href="#" class="messenger-link">Telegram-бот</a>
+                                        <span>Быстрые ответы 24/7</span>
+                                    </div>
+                                </div>
+                                <div class="messenger-item">
+                                    <i class="fab fa-vk"></i>
+                                    <div>
+                                        <a href="#" class="messenger-link">Сообщество VK</a>
+                                        <span>Новости и консультации</span>
+                                    </div>
+                                </div>
                             </div>
                         </div>
 
                         <div class="info-block">
                             <div class="info-header">
-                                <i class="fas fa-clock"></i>
-                                <h3>Режим работы</h3>
+                                <i class="fas fa-file-contract"></i>
+                                <h3>Документация</h3>
                             </div>
-                            <div class="schedule">
-                                <div class="schedule-item">
-                                    <span>Пн-Пт:</span>
-                                    <span>9:00 - 18:00</span>
+                            <div class="docs-info">
+                                <div class="doc-item">
+                                    <i class="fas fa-file-pdf"></i>
+                                    <a href="#">Инструкции по эксплуатации</a>
                                 </div>
-                                <div class="schedule-item">
-                                    <span>Сб-Вс:</span>
-                                    <span>Выходной</span>
+                                <div class="doc-item">
+                                    <i class="fas fa-file-pdf"></i>
+                                    <a href="#">Схемы подключения</a>
+                                </div>
+                                <div class="doc-item">
+                                    <i class="fas fa-file-pdf"></i>
+                                    <a href="#">Сертификаты качества</a>
                                 </div>
                             </div>
                         </div>
@@ -117,11 +130,11 @@
                         </div>
 
                         <div class="social-links">
-                            <a href="#" class="social-link telegram">
-                                <i class="fab fa-telegram"></i>
-                            </a>
                             <a href="#" class="social-link vk">
                                 <i class="fab fa-vk"></i>
+                            </a>
+                            <a href="#" class="social-link telegram">
+                                <i class="fab fa-telegram"></i>
                             </a>
                             <a href="#" class="social-link youtube">
                                 <i class="fab fa-youtube"></i>

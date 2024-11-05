@@ -129,17 +129,6 @@
     background: var(--color-background-light);
 }
 
-.contact-form-section .form-footer {
-    display: flex;
-    justify-content: space-between;
-    align-items: center;
-    margin-top: var(--spacing-medium);
-}
-
-.contact-form-section .submit-button {
-    max-width: 250px;
-}
-
 /* Правая часть */
 .contact-additional {
     width: 45%;
@@ -150,6 +139,7 @@
     height: 100%;
     background: var(--color-background-light);
     padding: var(--spacing-xlarge);
+    padding-top: 0;
     border-radius: var(--border-radius);
     box-shadow: 0 8px 24px rgba(0, 0, 0, 0.08);
     display: flex;
@@ -274,27 +264,113 @@
     }
 }
 
-/* Добавляем стили для блока с адресом */
-.address-info {
+/* Стили для сервисного центра */
+.service-info {
     display: flex;
     flex-direction: column;
     gap: var(--spacing-medium);
 }
 
-.route-link {
+.service-list {
+    list-style: none;
+    padding: 0;
+    display: flex;
+    flex-direction: column;
+    gap: var(--spacing-small);
+}
+
+.service-list li {
+    position: relative;
+    padding-left: 24px;
+    line-height: 1.5;
+}
+
+.service-list li::before {
+    content: '\f058';
+    font-family: 'Font Awesome 5 Free';
+    font-weight: 900;
+    position: absolute;
+    left: 0;
+    color: var(--color-primary);
+    font-size: 14px;
+}
+
+/* Стили для документации */
+.docs-info {
+    display: flex;
+    flex-direction: column;
+    gap: var(--spacing-medium);
+}
+
+.doc-item {
     display: flex;
     align-items: center;
     gap: var(--spacing-medium);
-    color: var(--color-primary);
+}
+
+.doc-item i {
+    color: #e74c3c;
+    font-size: 20px;
+}
+
+.doc-item a {
+    color: var(--color-text);
     text-decoration: none;
-    font-size: var(--font-size-small);
     transition: all 0.3s ease;
 }
 
-.route-link:hover {
+.doc-item a:hover {
+    color: var(--color-primary);
     transform: translateX(5px);
 }
 
-.route-link i {
-    font-size: 16px;
+/* Стили для онлайн-консультации */
+.consultation-info {
+    display: flex;
+    flex-direction: column;
+    gap: var(--spacing-medium);
 }
+
+.messenger-item {
+    display: flex;
+    align-items: center;
+    gap: var(--spacing-medium);
+    padding: var(--spacing-medium) 0;
+    border-radius: var(--border-radius);
+    transition: all 0.3s ease;
+    border: 1px solid transparent;
+}
+
+.messenger-item:hover {
+    transform: translateX(5px);
+}
+
+.messenger-item i {
+    font-size: 24px;
+    width: 24px;
+    transition: transform 0.3s ease;
+}
+
+.messenger-item:hover i {
+    transform: scale(1.1);
+}
+
+.messenger-link {
+    color: var(--color-text);
+    text-decoration: none;
+    font-weight: var(--font-weight-medium);
+    transition: color 0.3s ease;
+}
+
+.messenger-item:hover .messenger-link {
+    color: var(--color-primary);
+}
+
+.messenger-item span {
+    font-size: var(--font-size-small);
+    color: var(--color-text);
+}
+
+/* Цвета иконок */
+.messenger-item i.fa-telegram { color: #0088cc; }
+.messenger-item i.fa-vk { color: #4C75A3; }
