@@ -233,33 +233,92 @@
 .nav-button {
     display: flex;
     align-items: center;
-    padding: 0.5rem 1rem;
-    border: 1px solid var(--color-border);
-    border-radius: var(--border-radius);
-    background-color: var(--color-background-light);
+    padding: 10px 20px;
+    background-color: var(--color-background);
     color: var(--color-text);
     text-decoration: none;
-    transition: all 0.3s ease;
+    font-weight: var(--font-weight-medium);
+    border: 2px solid var(--color-primary);
+    border-radius: var(--border-radius);
+    transition: all 0.3s cubic-bezier(0.4, 0, 0.2, 1);
+    position: relative;
+    overflow: hidden;
+    z-index: 1;
+}
+
+/* Фон кнопки */
+.nav-button::before {
+    content: '';
+    position: absolute;
+    top: 0;
+    right: -100%;
+    width: 100%;
+    height: 100%;
+    background-color: var(--color-primary);
+    transition: all 0.3s cubic-bezier(0.4, 0, 0.2, 1);
+    z-index: -1;
 }
 
 .nav-button:hover {
-    background-color: var(--color-primary);
-    color: white;
-    border-color: var(--color-primary);
+    color: var(--color-text-light);
+    transform: translateY(-2px);
+    box-shadow: 0 4px 12px rgba(var(--color-primary-rgb), 0.2);
 }
 
-.nav-button.prev::before {
-    content: '←';
-    margin-right: 0.5rem;
+.nav-button:hover::before {
+    right: 0;
+}
+
+/* Стрелка для кнопки "Предыдущая" */
+.nav-button.prev {
+    flex-direction: row-reverse; /* Меняем направление flex-контейнера */
+}
+
+.nav-button.prev::after {
+    content: '⟵';
+    margin-right: 0.8rem; /* Подстройка отступа */
+    margin-left: 0.4rem;
+    font-size: 1.2em;
+    transition: transform 0.3s ease;
+    z-index: 2;
 }
 
 .nav-button.next::after {
-    content: '→';
-    margin-left: 0.5rem;
+    content: '⟶';
+    position: relative;
+    margin-left: 0.8rem;
+    font-size: 1.2em;
+    transition: transform 0.3s ease;
+    z-index: 2;
+}
+
+.nav-button.prev:hover::after {
+    transform: translateX(-3px);
+}
+
+.nav-button.next:hover::after {
+    transform: translateX(3px);
 }
 
 @media (max-width: 767px) {
     .page-navigation {
         padding: 0 1rem;
     }
+    
+    .nav-button {
+        padding: 8px 16px;
+        font-size: 0.9rem;
+    }
+}
+
+/* Переопределяем направление для кнопки "Следующая" */
+.nav-button.next::before {
+    right: auto;
+    left: -100%;
+}
+
+/* Анимация заполнения для кнопки "Следующая" */
+.nav-button.next:hover::before {
+    left: 0;
+    right: auto;
 }
