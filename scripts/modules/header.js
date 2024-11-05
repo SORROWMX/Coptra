@@ -7,27 +7,12 @@ export const HeaderModule = {
             header.classList.toggle('scrolled', window.scrollY > CONSTANTS.SCROLL_THRESHOLD);
         });
 
-        const navMenus = document.querySelectorAll('.docs-nav');
-
-        navMenus.forEach(nav => {
-            const dropdowns = nav.querySelectorAll('.dropdown');
+        const docsNav = document.querySelector('.docs-nav');
+        if (docsNav) {
+            const dropdowns = docsNav.querySelectorAll('.dropdown');
+            const activeStates = new Map();
 
             dropdowns.forEach(dropdown => {
-                dropdown.addEventListener('mouseenter', () => {
-                    if (window.innerWidth > 768) {
-                        dropdowns.forEach(otherDropdown => {
-                            otherDropdown.classList.remove('active');
-                        });
-                        dropdown.classList.add('active');
-                    }
-                });
-
-                dropdown.addEventListener('mouseleave', () => {
-                    if (window.innerWidth  > 768) {
-                        dropdown.classList.remove('active');
-                    }
-                });
-
                 const link = dropdown.querySelector('a');
                 if (link) {
                     link.addEventListener('click', (e) => {
@@ -38,10 +23,25 @@ export const HeaderModule = {
                             dropdowns.forEach(otherDropdown => {
                                 if (otherDropdown !== dropdown) {
                                     otherDropdown.classList.remove('active');
+                                    activeStates.set(otherDropdown, false);
                                 }
                             });
                             
-                            dropdown.classList.toggle('active');
+                            const isActive = !activeStates.get(dropdown);
+                            activeStates.set(dropdown, isActive);
+                            dropdown.classList.toggle('active', isActive);
+                        }
+                    });
+
+                    dropdown.addEventListener('mouseenter', () => {
+                        if (window.innerWidth > 768 && !activeStates.get(dropdown)) {
+                            dropdown.classList.add('active');
+                        }
+                    });
+
+                    dropdown.addEventListener('mouseleave', () => {
+                        if (window.innerWidth > 768 && !activeStates.get(dropdown)) {
+                            dropdown.classList.remove('active');
                         }
                     });
                 }
@@ -51,9 +51,10 @@ export const HeaderModule = {
                 if (!e.target.closest('.dropdown')) {
                     dropdowns.forEach(dropdown => {
                         dropdown.classList.remove('active');
+                        activeStates.set(dropdown, false);
                     });
                 }
             });
-        });
+        }
     }
 }; 

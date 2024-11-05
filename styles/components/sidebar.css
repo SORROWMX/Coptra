@@ -250,6 +250,16 @@ body {
 	}
 }
 
+.documentation {
+    max-width: 1400px;
+    margin: 0 auto;
+    line-height: 1.6;
+    font-size: 18px;
+    padding: 0px 10px;
+    width: 100%; /* Добавляем width: 100% */
+    box-sizing: border-box; /* Добавляем box-sizing */
+}
+
 .documentation h1:first-child {
     font-size: var(--font-size-h1);
     text-align: center;
@@ -291,15 +301,6 @@ body {
     width: 100%;
 }
 
-.documentation {
-    max-width: 1400px; /* Увеличиваем максимальную шириу */
-    margin: 0 auto; /* Центрируем документацию */
-    line-height: 1.6; /* Увеличиваем межстрочный интервал для лучшей читаемости */
-    font-size: 18px; /* Увеличиваем размер шрифта */
-    padding: 0px 10px;
-
-}
-
 .sidebar-link:hover {
 	color: var(--color-primary);
 }
@@ -336,7 +337,6 @@ body {
 .extended-submenu li {
     margin-top: 12px; /* Увеличиваем отступ между элеметами */
 }
-
 
 /* Update mobile menu styles */
 .mobile-menu-toggle {
@@ -387,14 +387,13 @@ body {
     position: relative;
 }
 
-
-
-
 /* Смещаем основной контент */
 .documentation-content {
-    margin-left: 0;
-    max-width: 1450px;
+    padding: 0 15px;
+    margin: 0 auto;
     width: 100%;
+    max-width: 1400px;
+    box-sizing: border-box;
 }
 
 /* Обновляем стили футера для страницы документации */
@@ -422,22 +421,35 @@ body {
     }
 
     .documentation-content {
-        padding: 0 15px; /* Уменьшаем отступы для мобильных */
-        max-width: 100%;
-        margin: 0 auto;
-        width: calc(100% - 30px); /* Учитываем мобильные отступы */
+        padding: 0 10px;
+        width: 100%;
+        min-width: 0; /* Убираем минимальную ширину если она была */
+        overflow-x: hidden; /* Предотвращаем горизонтальный скролл */
     }
 
     .documentation {
+        font-size: 16px;
+        padding: 0;
+        width: 100%;
+    }
+
+    .documentation h1:first-child {
+        font-size: var(--font-size-h3);
+        padding: 0;
         width: 100%;
     }
 
     .documentation-grid {
         width: 100%;
-        padding: 0; /* Убираем лишние отступы */
+        word-wrap: break-word; /* Для переноса длинных слов */
     }
 
-    
+    .content-docs {
+        width: 100%;
+        padding: 0 15px;
+        box-sizing: border-box;
+        overflow-x: hidden; /* Предотвращаем горизонтальный скролл */
+    }
 }
 
 .sub-menu {
