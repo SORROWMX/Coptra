@@ -11,7 +11,7 @@
                         <p><i class="fas fa-map-marker-alt"></i> г. Орёл, ул. Наугорское шоссе, 29</p>
                         <p><i class="fas fa-clock"></i> Пн-Пт: 9:00 - 18:00</p>
                         <p><i class="fas fa-phone"></i> +7 (123) 456-78-90</p>
-                        <p><i class="fas fa-envelope"></i> info@koptra.ru</p>
+                        <p><i class="fas fa-envelope"></i> info@coptra.ru</p>
                     </div>
                 </div>
             </div>
@@ -122,9 +122,9 @@
                                     <i class="fas fa-phone"></i>
                                     +7 (123) 456-78-91
                                 </a>
-                                <a href="mailto:support@koptra.ru" class="contact-link">
+                                <a href="mailto:support@coptra.ru" class="contact-link">
                                     <i class="fas fa-envelope"></i>
-                                    support@koptra.ru
+                                    support@coptra.ru
                                 </a>
                             </div>
                         </div>

@@ -29,7 +29,7 @@
             </div>
             <div class="footer-section contact-info">
                 <h3>Свяжитесь с нами</h3>
-                <p><i class="fas fa-envelope"></i> info@koptra.ru</p>
+                <p><i class="fas fa-envelope"></i> info@coptra.ru</p>
                 <p><i class="fas fa-phone"></i> +7 (123) 456-78-90</p>
                 <div class="social-icons">
                     <a href="#" aria-label="VKontakte"><i class="fab fa-vk"></i></a>

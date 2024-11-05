@@ -275,7 +275,7 @@
 						</p>
 						<div class="product-card-buttons">
 							<a href="#" class="product-button secondary"><span class="button-text">Заказать</span></a>
-							<a href="products.html#koptra-mini" class="product-button"><span class="button-text">Подробнее</span></a>
+							<a href="products.html#coptra-mini" class="product-button"><span class="button-text">Подробнее</span></a>
 						</div>
 					</div>
 				</div>
@@ -289,7 +289,7 @@
 						</p>
 						<div class="product-card-buttons">
 							<a href="#" class="product-button secondary"><span class="button-text">Заказать</span></a>
-							<a href="products.html#koptra-basic" class="product-button"><span class="button-text">Подробнее</span></a>
+							<a href="products.html#coptra-basic" class="product-button"><span class="button-text">Подробнее</span></a>
 						</div>
 					</div>
 				</div>
@@ -303,7 +303,7 @@
 						</p>
 						<div class="product-card-buttons">
 							<a href="#" class="product-button secondary"><span class="button-text">Заказать</span></a>
-							<a href="products.html#koptra-pro" class="product-button"><span class="button-text">Подробнее</span></a>
+							<a href="products.html#coptra-pro" class="product-button"><span class="button-text">Подробнее</span></a>
 						</div>
 					</div>
 				</div>
@@ -665,7 +665,7 @@
 						<h3>Присоединяйтесь к сообществу пилотов дронов!</h3>
 						<p>Получайте эксклюзивные новости, советы по пилотированию и техподдержку.</p>
 					</div>
-					<a href="https://t.me/KoptraSupport_bot" class="telegram-button" target="_blank">
+					<a href="https://t.me/CoptraSupport_bot" class="telegram-button" target="_blank">
 						Присоединиться
 					</a>
 				</div>
@@ -740,7 +740,7 @@
 								<i class="fas fa-envelope"></i>
 								<div>
 									<h4>Email</h4>
-									<p>info@koptra.ru</p>
+									<p>info@coptra.ru</p>
 								</div>
 							</div>
 						</div>
