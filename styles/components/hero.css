@@ -161,6 +161,12 @@
     }
 }
 
+@media (max-width: 480px) {
+    .hero h1 {
+        font-size: 1.8rem;
+    }
+}
+
 #particles-js {
     position: absolute;
     width: 100%;
