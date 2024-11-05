@@ -6,6 +6,13 @@ body {
 	padding: 0;
 	overflow-x: hidden; /* Предотвращаем горизонтальную прокрутку */
 	overflow-y: hidden;
+	padding-right: calc(100vw - 100%); /* Компенсация ширины скроллбара */
+}
+
+body.scroll-locked {
+    overflow: hidden;
+    /* Сохраняем ширину страницы при блокировке прокрутки */
+    padding-right: calc(100vw - 100%);
 }
 
 .content-docs {
@@ -489,10 +496,17 @@ body {
 	transition: border-color 0.3s ease, transform 0.3s ease;
 }
 
+/* Стили для стрелочки активного элемента */
+.sub-menu li a.active + ::before,
+.sub-menu li:has(> a.active)::before {
+	border-color: var(--color-primary);
+	transform: translateY(-50%) rotate(45deg) scale(1.2);
+}
+
 /* При наведении меняем цвет стрелочки */
 .sub-menu li:hover::before {
 	border-color: var(--color-primary);
-	transform: translateY(-50%) rotate(45deg) scale(1.2); /* Немного увеличиваем при наведении */
+	transform: translateY(-50%) rotate(45deg) scale(1.2);
 }
 
 /* Обновляем стили для активного состояния */
@@ -727,5 +741,38 @@ body.sidebar-open {
 .sidebar-item.expandable.active > .sidebar-link {
     color: var(--color-primary);
     background-color: rgba(var(--color-primary-rgb), 0.05);
+}
+
+/* Стили для активного элемента в поденю */
+.sub-menu a.active {
+    background-color: rgba(var(--color-primary-rgb), 0.15);
+    padding-left: calc(var(--spacing-small) + 5px);
+    border-left: 3px solid var(--color-primary);
+}
+
+/* Стили для стрелочки в основном меню */
+.sidebar-item.expandable > .sidebar-link .arrow {
+    content: '';
+    width: 8px;
+    height: 8px;
+    border-top: 2px solid var(--color-text);
+    border-right: 2px solid var(--color-text);
+    transform: rotate(135deg);
+    transition: all 0.3s cubic-bezier(0.4, 0, 0.2, 1);
+    flex-shrink: 0;
+    display: inline-block;
+    margin-left: 10px;
+}
+
+/* Стили для стрелочки активного родительского пункта */
+.sidebar-item.expandable.active > .sidebar-link .arrow {
+    transform: rotate(-45deg);
+    border-color: var(--color-primary);
+    transition: all 0.3s cubic-bezier(0.4, 0, 0.2, 1);
+}
+
+/* При наведении на родительский пункт */
+.sidebar-item.expandable:hover > .sidebar-link .arrow {
+    border-color: var(--color-primary);
 }
 
