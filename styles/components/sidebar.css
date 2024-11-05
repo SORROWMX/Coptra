@@ -671,3 +671,28 @@ body.sidebar-open {
     }
 }
 
+.documentation ul {
+    padding-left: 20px; /* Уменьшаем отступ слева для списков */
+    margin: 10px 0;
+    list-style-position: inside; /* Маркеры списка внутри */
+    width: 100%;
+    box-sizing: border-box;
+}
+
+.documentation ul li {
+    margin-bottom: 8px;
+    line-height: 1.4;
+    padding-left: 5px;
+}
+
+@media (max-width: 768px) {
+    .documentation ul {
+        padding-left: 15px; /* Ещё меньше отступ для мобильных */
+    }
+    
+    .documentation ul li {
+        padding-left: 0;
+        text-align: left;
+    }
+}
+

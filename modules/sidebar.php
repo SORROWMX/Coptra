@@ -82,8 +82,8 @@
                 <span class="arrow"></span>
             </span>
             <ul class="sub-menu extended-submenu">
-                <li><a href="/../docs/Software/pioneer-station.php" data-ajax-load>Pioneer Station</a></li>
-                <li><a href="/../docs/Software/pioneer-drone-sim.php" data-ajax-load>Pioneer Drone Sim</a></li>
+                <li><a href="/../docs/Software/pioneer-station.php" data-ajax-load>Koptra drone control system</a></li>
+                <li><a href="/../docs/Software/pioneer-drone-sim.php" data-ajax-load>Koptra Sim</a></li>
             </ul>
         </div>
         <div class="sidebar-item expandable">

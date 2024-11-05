@@ -302,7 +302,7 @@
 
 @media (max-width: 767px) {
     .page-navigation {
-        padding: 0 1rem;
+        padding: 0 6px;
     }
     
     .nav-button {
