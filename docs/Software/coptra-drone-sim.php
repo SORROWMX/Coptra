@@ -43,7 +43,7 @@ if ($isAjax) {
                 <div class="page-navigation">
                     <?php
                     // Определяем предыдущую и следующую страницы
-                    $prev_page = '/../docs/Software/pioneer-station.php'; // Путь к предыдущей странице
+                    $prev_page = '/../docs/Software/coptra-station.php'; // Путь к предыдущей странице
                     $next_page = '/../docs/Programming/python.php'; // Путь к следующей странице
                     
                     if ($prev_page): ?>
@@ -72,7 +72,7 @@ if ($isAjax) {
                 <section id="documentation" class="documentation">
                     <h1>Документация</h1>
                     <div class="documentation-grid">
-                        <h3>Симулятор пилотирования Pioneer Drone Simulator</h3>
+                        <h3>Симулятор пилотирования Coptra Drone Simulator</h3>
                         <h4>Погружение в мир беспилотных полетов</h4>
 
                         <p>Коптра Сим — это инновационный симулятор полетов, разработанный для обучения и тренировки операторов дронов. Он предоставляет пользователям возможность погрузиться в реалистичную среду полетов, отрабатывая навыки управления беспилотными летательными аппаратами без необходимости выхода на улицу. Это идеальный инструмент как для новичков, так и для опытных пользователей, желающих улучшить свои навыки и повысить уверенность в управлении дронами.</p>
@@ -107,7 +107,7 @@ if ($isAjax) {
                     <div class="page-navigation">
                         <?php
                         // Определяем предыдущую и следующую страницы
-                        $prev_page = '/../docs/Software/pioneer-station.php'; // Путь к предыдущей странице
+                        $prev_page = '/../docs/Software/coptra-station.php'; // Путь к предыдущей странице
                         $next_page = '/../docs/Programming/python.php'; // Путь к следующей странице
                         
                         if ($prev_page): ?>

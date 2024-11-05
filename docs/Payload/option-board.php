@@ -52,7 +52,7 @@ if ($isAjax) {
                     <?php
                     // Определяем предыдущую и следующую страницы
                     $prev_page = '/../docs/navigationsystems/optical.php'; // Путь к предыдущей странице
-                    $next_page = '/../docs/Software/pioneer-station.php'; // Путь к следующей странице
+                    $next_page = '/../docs/Software/coptra-station.php'; // Путь к следующей странице
                     
                     if ($prev_page): ?>
                         <a href="<?php echo $prev_page; ?>" class="nav-button prev" data-ajax-load>
@@ -124,7 +124,7 @@ if ($isAjax) {
                         <?php
                         // Определяем предыдущую и следующую страницы
                         $prev_page = '/../docs/navigationsystems/optical.php'; // Путь к предыдущей странице
-                        $next_page = '/../docs/Software/pioneer-station.php'; // Путь к следующей странице
+                        $next_page = '/../docs/Software/coptra-station.php'; // Путь к следующей странице
                         
                         if ($prev_page): ?>
                             <a href="<?php echo $prev_page; ?>" class="nav-button prev" data-ajax-load>

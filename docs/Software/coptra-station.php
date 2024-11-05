@@ -38,7 +38,7 @@ if ($isAjax) {
                     <?php
                     // Определяем предыдущую и следующую страницы
                     $prev_page = '/../docs/Payload/option-board.php'; // Путь к предыдущей странице
-                    $next_page = '/../docs/Software/pioneer-drone-sim.php'; // Путь к следующей странице
+                    $next_page = '/../docs/Software/coptra-drone-sim.php'; // Путь к следующей странице
                     
                     if ($prev_page): ?>
                         <a href="<?php echo $prev_page; ?>" class="nav-button prev" data-ajax-load>
@@ -96,7 +96,7 @@ if ($isAjax) {
                         <?php
                         // Определяем предыдущую и следующую страницы
                         $prev_page = '/../docs/Payload/option-board.php'; // Путь к предыдущей странице
-                        $next_page = '/../docs/Software/pioneer-drone-sim.php'; // Путь к следующей странице
+                        $next_page = '/../docs/Software/coptra-drone-sim.php'; // Путь к следующей странице
                         
                         if ($prev_page): ?>
                             <a href="<?php echo $prev_page; ?>" class="nav-button prev" data-ajax-load>
