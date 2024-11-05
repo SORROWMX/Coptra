@@ -23,7 +23,7 @@ export const TestimonialsModule = {
                 clickable: true,
             },
             breakpoints: {
-                768: {
+                1024: {
                     slidesPerView: 2,
                 }
             }

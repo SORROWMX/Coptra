@@ -7,6 +7,8 @@ export const AdvantagesAnimationModule = {
         const cards = advantagesSection.querySelectorAll('.advantage-card');
         let lastScrollY = window.scrollY;
 
+        this.initializeCardFlip(cards);
+
         window.addEventListener('scroll', () => {
             lastScrollY = window.scrollY;
         });
@@ -38,5 +40,31 @@ export const AdvantagesAnimationModule = {
         });
 
         observer.observe(advantagesSection);
+    },
+
+    initializeCardFlip(cards) {
+        const isMobile = () => window.innerWidth <= 480;
+        let activeCard = null;
+
+        cards.forEach(card => {
+            card.addEventListener('click', function() {
+                if (isMobile()) {
+                    if (activeCard && activeCard !== this) {
+                        activeCard.classList.remove('is-flipped');
+                    }
+
+                    this.classList.toggle('is-flipped');
+                    
+                    activeCard = this.classList.contains('is-flipped') ? this : null;
+                }
+            });
+        });
+
+        window.addEventListener('resize', function() {
+            if (!isMobile()) {
+                cards.forEach(card => card.classList.remove('is-flipped'));
+                activeCard = null;
+            }
+        });
     }
 }; 

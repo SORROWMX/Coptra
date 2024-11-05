@@ -285,30 +285,108 @@
 }
 
 @media (max-width: 768px) {
+    .advantages {
+        padding: var(--spacing-large) 0;
+        margin-bottom: var(--spacing-large);
+    }
+
     .advantages-grid {
-        grid-template-columns: 1fr;
+        grid-template-columns: repeat(2, 1fr); /* 2 колонки на планшетах */
+        gap: 15px;
+        padding: 0 15px;
     }
+
     .advantage-card {
-        height: auto;
+        min-height: 220px;
     }
+
+    .advantage-icon {
+        width: 60px;
+        height: 60px;
+        margin-bottom: var(--spacing-small);
+    }
+
+    .advantage-icon img {
+        width: 50%;
+        height: 50%;
+    }
+
+    .advantage-card h3 {
+        font-size: 1.2rem;
+        margin-bottom: var(--spacing-xsmall);
+    }
+
+    .advantage-card-back p {
+        font-size: 0.9rem;
+        padding: 0 10px;
+    }
+
+    .rotate-hint {
+        font-size: 1.2rem;
+    }
+}
+
+@media (max-width: 480px) {
+    .advantages {
+        padding: var(--spacing-medium) 0;
+    }
+
+    .advantages-grid {
+        grid-template-columns: 1fr; /* 1 колонка на телефонах */
+        gap: 12px;
+        padding: 0 10px;
+    }
+
+    .advantage-card {
+        min-height: 200px;
+    }
+
+    .advantage-icon {
+        width: 50px;
+        height: 50px;
+    }
+
+    .advantage-icon img {
+        width: 45%;
+        height: 45%;
+    }
+
+    .advantage-card h3 {
+        font-size: 1.1rem;
+    }
+
+    .advantage-card-back p {
+        font-size: 0.85rem;
+        padding: 0 8px;
+    }
+
+    .advantages h2 {
+        font-size: 1.8rem;
+        margin-bottom: var(--spacing-large);
+    }
+
+    /* Исправляем стили для мобильного переворота */
+    .advantage-card {
+        cursor: pointer; /* Добавляем курсор-указатель */
+    }
+
     .advantage-card-inner {
-        transform-style: flat;
+        transform-style: preserve-3d;
     }
-    .advantage-card:hover .advantage-card-inner {
+
+    /* Отключаем hover-эффекты */
+    .advantage-card:hover .advantage-card-inner,
+    .advantage-card:hover .advantage-icon,
+    .advantage-card:hover .advantage-card-front h3,
+    .advantage-card:hover .advantage-card-front p,
+    .advantage-card:hover .rotate-hint {
         transform: none;
-    }
-    .advantage-card-front, .advantage-card-back {
-        position: static;
-        height: auto;
-        backface-visibility: visible;
-    }
-    .advantage-card-back {
-        transform: none;
-        margin-top: var(--spacing-small);
-    }
-    .advantage-card p {
         opacity: 1;
-        transform: translateY(0);
+    }
+
+    /* Стили для перевернутого состояния */
+    .advantage-card.is-flipped .advantage-card-inner {
+        transform: rotateY(180deg);
     }
 }
 

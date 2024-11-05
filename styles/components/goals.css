@@ -286,21 +286,73 @@
         text-align: center;
         margin: 40px 0;
         padding-bottom: 40px;
+        transform: translateY(0);
     }
 
     .goal-progress {
-        margin: 20px 0;
+        margin: 0 0 30px 0;
+        transform: scale(0.9);
+    }
+
+    .goal-content {
+        max-width: 100%;
+        padding: 0 20px;
+    }
+
+    .goal-content h4 {
+        width: 100%;
+        text-align: center;
+    }
+
+    .goal-content h4::after {
+        left: 50%;
+        transform: translateX(-50%);
+    }
+
+    .goal-steps {
+        width: 100%;
+        margin: 0 auto;
     }
 
     .goal-step {
-        justify-content: center;
+        justify-content: flex-start;
+        padding-left: 20px;
+        margin: 15px 0;
+    }
+
+    .goal-step p {
+        text-align: left;
     }
 
     .goal-image {
         width: 100%;
         max-width: 300px;
-        margin: 20px 0;
-        height: 180px;
+        margin: 20px 0 0 0;
+        height: 200px;
+        transform: translateX(0) !important;
+    }
+
+    .goal-card:nth-child(even) .goal-step,
+    .goal-card:nth-child(even) .goal-image {
+        transform: translateX(0);
+    }
+}
+
+@media (max-width: 480px) {
+    .goal-progress {
+        margin: 0 0 20px 0;
+    }
+
+    .goal-image {
+        height: 200px;
+    }
+
+    .goal-content h4 {
+        font-size: 1.5rem;
+    }
+
+    .goal-step p {
+        font-size: 1rem;
     }
 }
 

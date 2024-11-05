@@ -216,10 +216,6 @@
         grid-template-columns: 1fr;
     }
 
-    .news h2 {
-        font-size: calc(var(--font-size-h2) * 0.8);
-    }
-
     .news-content h3 {
         font-size: calc(var(--font-size-h3) * 0.9);
     }

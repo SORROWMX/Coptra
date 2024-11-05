@@ -440,3 +440,84 @@
         transform: translateY(10px);
     }
 }
+
+/* Добавляем медиа-запросы в конец файла */
+@media (max-width: 768px) {
+    .applications-grid {
+        grid-template-columns: 1fr; /* Меняем на одну колонку */
+        height: auto; /* Убираем фиксированную высоту */
+        gap: 15px; /* Увеличиваем отступ между карточками */
+        padding: 0 15px; /* Добавляем отступы по бокам */
+    }
+
+    .application-card {
+        height: 300px; /* Фиксированная высота для карточек */
+        padding: var(--spacing-medium);
+    }
+
+    .application-card ul li {
+        opacity: 1;
+    }
+
+    .application-card h3 {
+        font-size: 1.5rem; /* Уменьшаем размер заголовка */
+        margin-bottom: var(--spacing-small);
+    }
+
+    .application-icon {
+        width: 48px;
+        height: 48px;
+        margin-bottom: var(--spacing-small);
+    }
+
+    .application-icon img {
+        width: 36px;
+        height: 36px;
+    }
+
+    .application-card ul li {
+        font-size: 0.9rem; /* Уменьшаем размер текста */
+        margin-bottom: 3px;
+    }
+
+    /* Корректируем анимации появления */
+    .application-card.animate,
+    .application-card:nth-child(even).animate {
+        animation-name: cardSlideIn; /* Используем одинаковую анимацию для всех карточек */
+    }
+}
+
+@media (max-width: 480px) {
+    .applications-grid {
+        gap: 10px;
+        padding: 0 10px;
+    }
+
+    .application-card {
+        height: 280px;
+        padding: var(--spacing-small);
+    }
+
+    .application-card h3 {
+        font-size: 1.3rem;
+    }
+
+    .application-icon {
+        width: 40px;
+        height: 40px;
+    }
+
+    .application-icon img {
+        width: 32px;
+        height: 32px;
+    }
+
+    .application-card ul li {
+        font-size: 0.85rem;
+    }
+
+    .applications h2 {
+        font-size: 1.8rem;
+        margin-bottom: var(--spacing-medium);
+    }
+}
