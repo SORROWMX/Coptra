@@ -3,8 +3,20 @@ export const AboutAnimationModule = {
         const aboutSection = document.querySelector('.about');
         if (!aboutSection) return;
 
-        const animatedElements = aboutSection.querySelectorAll('h2, .company-description, .timeline-item, .goals-section');
+        const title = aboutSection.querySelector('h2');
+        const description = aboutSection.querySelector('.company-description');
+        const otherElements = aboutSection.querySelectorAll('.timeline-item, .goals-section');
         
+        // Анимируем заголовок и описание сразу после hero секции
+        setTimeout(() => {
+            if (title) title.classList.add('animate');
+            
+            setTimeout(() => {
+                if (description) description.classList.add('animate');
+            }, 200);
+        }, 600); // Задержка после анимации hero секции
+        
+        // Остальные элементы анимируем при скролле
         const observer = new IntersectionObserver((entries) => {
             entries.forEach(entry => {
                 if (entry.isIntersecting) {
@@ -21,6 +33,6 @@ export const AboutAnimationModule = {
             rootMargin: '0px 0px -50px 0px'
         });
 
-        animatedElements.forEach(element => observer.observe(element));
+        otherElements.forEach(element => observer.observe(element));
     }
 };

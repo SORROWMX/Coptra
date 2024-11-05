@@ -1,17 +1,22 @@
 export const ApplicationsModule = {
     init() {
         const applicationCards = document.querySelectorAll('.application-card');
+        const title = document.querySelector('.applications h2');
         if (!applicationCards.length) return;
 
-        this.initializeAnimations();
+        this.initializeAnimations(title);
         this.initializeHoverEffects();
     },
 
-    initializeAnimations() {
+    initializeAnimations(title) {
         const observer = new IntersectionObserver((entries) => {
             entries.forEach(entry => {
                 if (entry.isIntersecting) {
-                    entry.target.classList.add('animate');
+                    if (entry.target.tagName === 'H2') {
+                        entry.target.classList.add('animate');
+                    } else {
+                        entry.target.classList.add('animate');
+                    }
                     observer.unobserve(entry.target);
                 }
             });
@@ -19,6 +24,12 @@ export const ApplicationsModule = {
             threshold: 0.2
         });
 
+        // Наблюдаем за заголовком
+        if (title) {
+            observer.observe(title);
+        }
+
+        // Наблюдаем за карточками
         document.querySelectorAll('.application-card').forEach(card => {
             observer.observe(card);
         });

@@ -198,60 +198,6 @@
 			</div>
 		</section>
 
-		<section class="team-section">
-			<h3>Наша команда</h3>
-			<div class="team-grid">
-				<div class="team-member">
-					<img
-						src="https://placehold.co/600x400?text=Сотрудник+1"
-						alt="Имя Фамилия"
-						loading="lazy" />
-					<div class="member-info">
-						<h4>Имя Фамилия</h4>
-						<p class="position">Должность</p>
-					</div>
-					<div class="member-details">
-						<p>
-							Подробная информация о члене команды, его опыте и
-							достижениях.
-						</p>
-					</div>
-				</div>
-				<div class="team-member">
-					<img
-						src="https://placehold.co/600x400?text=Сотрудник+2"
-						alt="Имя Фамилия"
-						loading="lazy" />
-					<div class="member-info">
-						<h4>Имя Фамилия</h4>
-						<p class="position">Должность</p>
-					</div>
-					<div class="member-details">
-						<p>
-							Подробная информация о члене команды, его опыте и
-							достижениях.
-						</p>
-					</div>
-				</div>
-				<div class="team-member">
-					<img
-						src="https://placehold.co/600x400?text=Сотрудник+3"
-						alt="Имя Фамилия"
-						loading="lazy" />
-					<div class="member-info">
-						<h4>Имя Фамилия</h4>
-						<p class="position">Должность</p>
-					</div>
-					<div class="member-details">
-						<p>
-							Подробная информация о члене команды, его опыте и
-							достижениях.
-						</p>
-					</div>
-				</div>
-			</div>
-		</section>
-
 		<!-- Области применения дронов -->
 		<section id="applications" class="applications">
 			<h2>Области применения наших дронов</h2>
@@ -383,7 +329,7 @@
 							<div class="advantage-card-back">
 								<h3>Надежность</h3>
 								<p>
-									Наши дрны проходят строгий контроль качества, обеспечивая
+									Наши дроны проходят строгий контроль качества, обеспечивая
 									стабильную работу в любых условиях.
 								</p>
 							</div>
