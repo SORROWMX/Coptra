@@ -820,7 +820,7 @@ header.scrolled nav ul li a {
     .dropdown-submenu.active > a::after {
         transform: translateY(-50%) rotate(-135deg);
     }
-
+    
     /* Блокировка прокрутки при открытом меню */
     body.menu-open {
         overflow: hidden;
@@ -900,6 +900,10 @@ header.scrolled nav ul li a {
         overflow-x: hidden;
     }
 
+    .dropdown-menu .dropdown-submenu > a {
+        padding: 15px 5px;
+    }
+
     /* Общие стили для всех пунктов меню */
     .main-nav ul li a,
     .dropdown > a,
@@ -908,7 +912,7 @@ header.scrolled nav ul li a {
         display: flex;
         justify-content: space-between;
         align-items: center;
-        padding: 15px 0px;
+        padding: 15px 10px;
         width: 100%;
         border-bottom: 1px solid var(--color-border);
         position: relative;
@@ -1090,16 +1094,16 @@ header.scrolled nav ul li a {
     display: none;
 }
 
-/* Стили для submenu */
+/* Стили для подменю */
 .submenu {
-    position: absolute;
     left: 100%;
     top: 0;
-    min-width: 200px;
-    background: var(--color-background);
-    box-shadow: 0 2px 5px rgba(0,0,0,0.1);
+    min-width: 250px;
+    width: 100%;
     opacity: 0;
     visibility: hidden;
+    padding: var(--spacing-small) 0;
+    display: none;
     transform: translateX(-10px);
     transition: all 0.3s ease;
 }
