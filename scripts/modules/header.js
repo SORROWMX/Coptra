@@ -3,9 +3,32 @@ import { CONSTANTS } from './constants.js';
 export const HeaderModule = {
     init() {
         const header = document.querySelector('header');
+        const mobileMenuBtn = document.querySelector('.mobile-menu-btn');
+        const mainNav = document.querySelector('.main-nav');
+
+        // Обработчик прокрутки
         window.addEventListener('scroll', () => {
-            header.classList.toggle('scrolled', window.scrollY > CONSTANTS.SCROLL_THRESHOLD);
+            if (!mainNav?.classList.contains('active')) { // Проверяем, не открыто ли меню
+                header.classList.toggle('scrolled', window.scrollY > CONSTANTS.SCROLL_THRESHOLD);
+            }
         });
+
+        // Обработчик мобильного меню
+        if (mobileMenuBtn && mainNav) {
+            mobileMenuBtn.addEventListener('click', () => {
+                const isOpening = !mainNav.classList.contains('active');
+                
+                mobileMenuBtn.classList.toggle('active');
+                mainNav.classList.toggle('active');
+                document.body.classList.toggle('menu-open');
+                
+                if (!isOpening) {
+                    header.classList.remove('scrolled');
+                } else if (window.scrollY > CONSTANTS.SCROLL_THRESHOLD) {
+                    header.classList.add('scrolled');
+                }
+            });
+        }
 
         const docsNav = document.querySelector('.docs-nav');
         if (docsNav) {
@@ -58,3 +81,5 @@ export const HeaderModule = {
         }
     }
 }; 
+
+HeaderModule.init();

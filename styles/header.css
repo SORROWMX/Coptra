@@ -764,14 +764,16 @@ header.scrolled nav ul li a {
     }
 
     .dropdown:after {
+        position: absolute;
         top: 23px;
-        right: 225px;
+        left: 125px;
     }
 
     .dropdown.active:after,
     .dropdown:hover:after {
+        position: absolute;
         top: 27px !important;
-        right: 225px;
+        right: 125px;
     }
 
     .dropdown.active > a {
@@ -865,8 +867,16 @@ header.scrolled nav ul li a {
     /* Блокировка прокрутки при открытом меню */
     body.menu-open {
         overflow: hidden;
+    }
+
+    .main-nav.active {
+        overflow-y: auto;
+        height: calc(100vh - var(--header-height));
         position: fixed;
+        top: var(--header-height);
+        left: 0;
         width: 100%;
+        background-color: var(--color-background);
     }
 }
 
