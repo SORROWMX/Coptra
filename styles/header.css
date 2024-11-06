@@ -763,6 +763,47 @@ header.scrolled nav ul li a {
         border-bottom: none;
     }
 
+    .dropdown:after {
+        top: 23px;
+        right: 225px;
+    }
+
+    .dropdown.active:after,
+    .dropdown:hover:after {
+        top: 27px !important;
+        right: 225px;
+    }
+
+    .dropdown.active > a {
+        color: var(--color-primary) !important;
+    }
+
+    .main-nav ul li a:hover {
+        color: var(--color-text);
+    }
+
+    .dropdown:hover:after {
+        border-top: 2px solid var(--color-text) !important;
+        border-right: 2px solid var(--color-text) !important;
+        transform: rotate(135deg) !important;
+        top: 23px !important;
+    }
+
+    .dropdown.active:after {
+        border-top: 2px solid var(--color-primary) !important;
+        border-right: 2px solid var(--color-primary) !important;
+        transform: rotate(-45deg) !important;
+        top: 27px !important;
+    }
+
+    .dropdown:hover > a:before {
+        width: 0 !important;
+    }
+
+    .dropdown.active > a:before {
+        width: calc(100% - 15px) !important;
+    }
+
     /* Стили для выпадающих меню */
     .dropdown-menu,
     .submenu {
