@@ -22,24 +22,6 @@ export const HeroMapModule = {
 
             // Отключаем зум скроллом
             heroMap.behaviors.disable('scrollZoom');
-            
-            // Добавляем обработчики событий для мобильных устройств
-            heroMapContainer.addEventListener('touchstart', () => {
-                heroMap.behaviors.enable('drag');
-            });
-
-            heroMapContainer.addEventListener('touchend', () => {
-                heroMap.behaviors.disable('drag');
-            });
-
-            // Оптимизация производительности
-            heroMap.events.add('actionbegin', () => {
-                heroMapContainer.style.pointerEvents = 'auto';
-            });
-
-            heroMap.events.add('actionend', () => {
-                heroMapContainer.style.pointerEvents = 'none';
-            });
         });
     }
 }; 
