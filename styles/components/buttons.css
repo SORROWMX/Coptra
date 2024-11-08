@@ -228,6 +228,7 @@
     align-items: center;
     margin: 2rem 0;
     padding: 0 2rem;
+    gap: 20px;
 }
 
 .nav-button {
@@ -303,11 +304,39 @@
 @media (max-width: 767px) {
     .page-navigation {
         padding: 0 6px;
+        gap: 8px;
     }
     
     .nav-button {
-        padding: 8px 16px;
-        font-size: 0.9rem;
+        padding: 6px 10px;
+        font-size: 0.8rem;
+        min-width: 100px;
+        text-align: center;
+        justify-content: center;
+    }
+
+    .nav-button.prev::after,
+    .nav-button.next::after {
+        font-size: 0.9em;
+        margin-left: 0.3rem;
+        margin-right: 0.3rem;
+    }
+
+    .nav-button span {
+        max-width: 70px;
+    }
+}
+
+/* Добавляем дополнительные стили для очень маленьких экранов */
+@media (max-width: 359px) {
+    .page-navigation {
+        flex-direction: column; /* Кнопки друг под другом */
+        gap: 12px;
+    }
+    
+    .nav-button {
+        width: 100%; /* Кнопки на всю ширину */
+        min-width: auto;
     }
 }
 

@@ -262,7 +262,7 @@ body.scroll-locked {
     margin: 0 auto;
     line-height: 1.6;
     font-size: 18px;
-    padding: 0px 10px;
+    padding-left: 10px;
     width: 100%; /* Добавляем width: 100% */
     box-sizing: border-box; /* Добавляем box-sizing */
     user-select: text !important; /* Принудительно разрешаем выделение */
