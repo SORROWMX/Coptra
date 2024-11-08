@@ -8,9 +8,18 @@ export const PreloaderModule = {
             preloader.classList.add('hidden');
         };
         
-        // Скрываем прелоадер после загрузки всех ресурсов
+        // Основной обработчик загрузки
         window.addEventListener('load', () => {
             setTimeout(hidePreloader, 500);
+        });
+
+        // Страховочный таймер
+        document.addEventListener('DOMContentLoaded', () => {
+            setTimeout(() => {
+                if (!preloader.classList.contains('hidden')) {
+                    hidePreloader();
+                }
+            }, 5000);
         });
     }
 }; 
