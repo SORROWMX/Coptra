@@ -1,17 +1,17 @@
 :root {
     /* Цвета */
-    --color-primary: #FF6B6B;
-    --color-secondary: #4ECDC4;
+    --color-primary: #0054A6;
+    --color-secondary: #6A2EA8;
     --color-background: #ffffff;
-    --color-text: #333333;
+    --color-text: #002B54;
     --color-text-light: #ffffff;
-    --color-border: #e0e0e0;
-    --color-primary-rgb: 255, 107, 107;
-    --color-secondary-rgb: 78, 205, 196;
-    --color-background-light: #f5f5f5;
-    --color-error: #dc3545;
-    --color-success: #28a745;
-    --color-background-hover: #e9e9e9;
+    --color-border: #E8F1FA;
+    --color-primary-rgb: 0, 84, 166;
+    --color-secondary-rgb: 106, 46, 168;
+    --color-background-light: #F5FAFF;
+    --color-error: #DC3545;
+    --color-success: #198754;
+    --color-background-hover: #F0F7FF;
     /* --color-text-light: #6c757d; */
     
 
@@ -47,10 +47,10 @@
     --transition-speed: 0.3s;
 
     /* Новые переменные для кнопок */
-    --color-primary-light: #ff8f8f;
-    --color-primary-dark: #2980b9;
-    --color-secondary-light: #7ee8e1;
-    --color-secondary-dark: #7f8c8d;
+    --color-primary-light: #0066CC;
+    --color-primary-dark: #004080;
+    --color-secondary-light: #7B3CBD;
+    --color-secondary-dark: #522384;
 
     /* Переменные для футера */
     --footer-bg: #27272a;
@@ -60,8 +60,8 @@
     --footer-social-shadow: rgba(0, 0, 0, 0.2);
 
     /* Социальные сети */
-   --vk-color: rgba(255, 255, 255, 0.1);
-    --vk-hover: #0077FF;
+    --vk-color: rgba(255, 255, 255, 0.1);
+    --vk-hover: #0054A6;
     --telegram-color: rgba(255, 255, 255, 0.1);
     --telegram-hover: #26A5E4;
     --youtube-color: rgba(255, 255, 255, 0.1);

@@ -147,9 +147,11 @@
 }
 
 .application-card ul li {
-    opacity: 0.5;
+    color: var(--color-text-light);
+    opacity: 0.9;
     transition: transform 0.3s ease, opacity 0.3s ease;
     margin-bottom: 5px;
+    text-shadow: 0 1px 2px rgba(0, 0, 0, 0.1);
 }
 
 .application-card:hover ul li {
@@ -171,11 +173,13 @@
 
 .application-card h3 {
     font-size: var(--font-size-h3);
-    color: var(--color-primary);
+    color: var(--color-text-light);
     margin-bottom: var(--spacing-medium);
     text-align: center;
     position: relative;
     z-index: 1;
+    font-weight: var(--font-weight-bold);
+    text-shadow: 0 2px 4px rgba(0, 0, 0, 0.2);
 }
 
 .application-icon {
@@ -202,6 +206,7 @@
 .application-icon .t-and-l-point2-icon,
 .application-icon .t-and-l-point3-icon,
 .application-icon .t-and-l-point4-icon {
+    filter: brightness(0) invert(1);
     position: absolute;
     top: 0;
     left: 0;
@@ -224,7 +229,11 @@
     left: 0;
     width: 100%;
     height: 100%;
-    background-color: rgba(0, 0, 0, 0.7);
+    background: linear-gradient(
+        135deg,
+        rgba(0, 84, 166, 0.85),    /* var(--color-primary) */
+        rgba(106, 46, 168, 0.85)    /* var(--color-secondary) */
+    );
     border-radius: inherit;
     z-index: 0;
 }
@@ -299,21 +308,21 @@
 .application-card:hover .application-icon .agriculture-drone-icon,
 .application-card:hover .application-icon .agriculture-drop1-icon,
 .application-card:hover .application-icon .agriculture-drop2-icon{
-    animation: droneFlyX 1s ease;
+    animation: droneFlyX 1s ease forwards;
 }
 
 .application-card:hover .application-icon .agriculture-drop1-icon {
-    animation: dropSplash 1s ease;
+    animation: dropSplash 1s ease forwards;
     animation-delay: 0s;
 }
 
 .application-card:hover .application-icon .agriculture-drop2-icon {
-    animation: dropSplash 1s ease;
+    animation: dropSplash 1s ease forwards;
     animation-delay: 0.0375s;
 }
 
 @keyframes dropSplash {
-    0% {
+    0%, 100% {
         transform: translateX(0);
     }
     25% {
@@ -324,14 +333,11 @@
     }
     75% {
         transform: translateX(-5px);
-    }
-    100% {
-        transform: translateX(0);
     }
 }
 
 @keyframes droneFlyX {
-    0% {
+    0%, 100% {
         transform: translateX(0);
     }
     25% {
@@ -342,9 +348,6 @@
     }
     75% {
         transform: translateX(-5px);
-    }
-    100% {
-        transform: translateX(0);
     }
 }
 
@@ -405,7 +408,8 @@
 .application-card .education-drone-icon,
 .application-card .education-book-icon,
 .application-card .education-hat-icon {
-    transition: transform 0.5s ease, opacity 0.5s ease;
+    transition: opacity 0.5s ease;
+    transform: translateY(0);
 }
 
 .application-card:hover .education-book-icon {
@@ -414,12 +418,12 @@
 }
 
 .application-card:hover .education-drone-icon {
-    transform: translateY(30px);
+    animation: droneFlyUp 0.75s ease forwards;
 }
 
 .application-card:hover .education-hat-icon {
     opacity: 1;
-    animation: openHat 0.75s ease forwards; 
+    animation: openHat 0.75s ease forwards;
 }
 
 .education-hat-icon {
@@ -438,6 +442,30 @@
     }
     100% {
         transform: translateY(10px);
+    }
+}
+
+/* Добавляем новую анимацию для дрона */
+@keyframes droneFlyUp {
+    0% {
+        transform: translateY(0);
+    }
+    100% {
+        transform: translateY(30px);
+    }
+}
+
+/* При уходе курсора */
+.application-card:not(:hover) .education-drone-icon {
+    animation: droneFlyDown 0.5s ease forwards;
+}
+
+@keyframes droneFlyDown {
+    0% {
+        transform: translateY(30px);
+    }
+    100% {
+        transform: translateY(0);
     }
 }
 
@@ -519,5 +547,36 @@
     .applications h2 {
         font-size: 1.8rem;
         margin-bottom: var(--spacing-medium);
+    }
+}
+
+/* Анимации при наведении */
+.application-card:hover .application-icon .agriculture-drone-icon {
+    animation: droneFlyX 1s ease forwards;
+}
+
+.application-card:hover .application-icon .agriculture-drop1-icon {
+    animation: dropSplash 1s ease forwards;
+    animation-delay: 0s;
+}
+
+.application-card:hover .application-icon .agriculture-drop2-icon {
+    animation: dropSplash 1s ease forwards;
+    animation-delay: 0.0375s;
+}
+
+/* Анимации при уходе курсора */
+.application-card:not(:hover) .application-icon .agriculture-drone-icon,
+.application-card:not(:hover) .application-icon .agriculture-drop1-icon,
+.application-card:not(:hover) .application-icon .agriculture-drop2-icon {
+    animation: resetPosition 0.3s ease forwards;
+}
+
+@keyframes resetPosition {
+    0% {
+        transform: translateX(var(--current-x, 0));
+    }
+    100% {
+        transform: translateX(0);
     }
 }
