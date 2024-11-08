@@ -6,20 +6,29 @@ export const PreloaderModule = {
         // Функция для скрытия прелоадера
         const hidePreloader = () => {
             preloader.classList.add('hidden');
-        };
-        
-        // Основной обработчик загрузки
-        window.addEventListener('load', () => {
-            setTimeout(hidePreloader, 500);
-        });
-
-        // Страховочный таймер
-        document.addEventListener('DOMContentLoaded', () => {
+            // Удаляем прелоадер из DOM после анимации
             setTimeout(() => {
-                if (!preloader.classList.contains('hidden')) {
-                    hidePreloader();
-                }
-            }, 5000);
-        });
+                preloader.remove();
+            }, 300);
+        };
+
+        // Комбинированный подход к скрытию прелоадера
+        const startPreloaderHide = () => {
+            // Сразу запускаем таймер
+            const timeoutId = setTimeout(hidePreloader, 3000);
+
+            // Пытаемся отловить загрузку страницы
+            window.addEventListener('load', () => {
+                clearTimeout(timeoutId); // Очищаем таймер если успели поймать load
+                hidePreloader();
+            }, { once: true }); // Используем once для автоматического удаления слушателя
+        };
+
+        // Запускаем процесс скрытия прелоадера
+        if (document.readyState === 'complete') {
+            hidePreloader();
+        } else {
+            startPreloaderHide();
+        }
     }
 }; 
