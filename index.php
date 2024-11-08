@@ -95,7 +95,7 @@
 							</div>
 						</div>
 						<div class="goal-image">
-							<img src="https://placehold.co/600x400?text=Образовательный+дрон" alt="Образовательный дрон">
+							<img src="assets/images/drone.png" alt="Образовательный дрон">
 						</div>
 					</div>
 
@@ -127,7 +127,7 @@
 							</div>
 						</div>
 						<div class="goal-image">
-							<img src="https://placehold.co/600x400?text=Партнерская+сеть" alt="Партнерская сеть">
+							<img src="assets/images/drone.png" alt="Партнерская сеть">
 						</div>
 					</div>
 
@@ -159,7 +159,7 @@
 							</div>
 						</div>
 						<div class="goal-image">
-							<img src="https://placehold.co/600x400?text=Обучающая+платформа" alt="Обучающая платформа">
+							<img src="assets/images/drone.png" alt="Обучающая платформа">
 						</div>
 					</div>
 
@@ -191,7 +191,7 @@
 							</div>
 						</div>
 						<div class="goal-image">
-							<img src="https://placehold.co/600x400?text=Инновации" alt="Инновации">
+							<img src="assets/images/drone.png" alt="Инновации">
 						</div>
 					</div>
 				</div>
@@ -494,7 +494,7 @@
 					<article class="news-item">
 						<div class="news-image-container">
 							<div class="news-image">
-								<img src="https://placehold.co/600x400?text=Новость+1" alt="Запуск новой модели дрона">
+								<img src="assets/images/drone.png" alt="Запуск новой модели дрона">
 							</div>
 							<div class="news-tags">
 								<span class="news-tag">Новинка</span>
@@ -513,7 +513,7 @@
 					<article class="news-item">
 						<div class="news-image-container">
 							<div class="news-image">
-								<img src="https://placehold.co/600x400?text=Новость+2" alt="Международная выставка дронов">
+								<img src="assets/images/drone.png" alt="Международная выставка дронов">
 							</div>
 							<div class="news-tags">
 								<span class="news-tag">Событие</span>
@@ -532,7 +532,7 @@
 					<article class="news-item">
 						<div class="news-image-container">
 							<div class="news-image">
-								<img src="https://placehold.co/600x400?text=Новость+3" alt="Новое партнерство">
+								<img src="assets/images/drone.png" alt="Новое партнерство">
 							</div>
 							<div class="news-tags">
 								<span class="news-tag">Партнерство</span>
