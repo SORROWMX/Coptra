@@ -232,3 +232,27 @@
 .swiper-pagination.animate .swiper-pagination-bullet:nth-child(6) { animation-delay: 0.6s; }
 .swiper-pagination.animate .swiper-pagination-bullet:nth-child(7) { animation-delay: 0.7s; }
 .swiper-pagination.animate .swiper-pagination-bullet:nth-child(8) { animation-delay: 0.8s; }
+
+[data-theme="dark"] .testimonial-card {
+    background-color: var(--testimonial-card-background);
+}
+
+[data-theme="dark"] .testimonial-text {
+    color: var(--testimonial-text);
+}
+
+[data-theme="dark"] .client-name {
+    color: var(--testimonial-client-name);
+}
+
+[data-theme="dark"] .client-position {
+    color: var(--testimonial-client-position);
+}
+
+[data-theme="dark"] .swiper-pagination-bullet {
+    background: var(--testimonial-bullet);
+}
+
+[data-theme="dark"] .swiper-pagination-bullet-active {
+    background: var(--testimonial-bullet) !important;
+}

@@ -213,3 +213,7 @@
         transform: none;
     }
 }
+
+[data-theme="dark"] .product-card {
+    background-color: var(--product-card-background);
+}

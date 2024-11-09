@@ -292,3 +292,7 @@
 .news-item.animate:nth-child(3n+3) {
     transform: translateX(0) translateY(0) scale(1) rotate(0);
 }
+
+[data-theme="dark"] .news {
+    background-color: var(--news-background);
+}

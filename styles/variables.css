@@ -67,3 +67,77 @@
     --youtube-color: rgba(255, 255, 255, 0.1);
     --youtube-hover: #FF0000;
 }
+
+/* Добавляем тёмную тему */
+[data-theme="dark"] {
+    --color-primary: #90b7f8;
+    --color-secondary: #e89ff8;
+    --color-background: #1A1A1A;
+    --color-text: #c0d5ea;
+    --color-text-light: #FFFFFF;
+    --color-border: #333333;
+    --color-background-light: #222222;
+    --color-background-hover: #2A2A2A;
+
+    /* Добавляем цвет для стрелок в меню */
+    --arrow-color: #474747;
+    
+    /* Обновляем RGB значения для тёмной темы */
+    --color-primary-rgb: 0, 102, 204;
+    --color-secondary-rgb: 123, 60, 189;
+    
+    /* Обновляем цвета кнопок для тёмной темы */
+    --color-primary-light: #1A75D2;
+    --color-primary-dark: #004C99;
+    --color-secondary-light: #8B4CCD;
+    --color-secondary-dark: #62309E;
+    
+    /* Обновляем цвета футера для тёмной темы */
+    --footer-bg: #272729;
+    --footer-text: #f9f9fb;
+    --footer-link: #a6a5ab;
+    --footer-link-hover: #FF6B6B;
+
+    /* Специальные цвета для hero секции */
+    --hero-button-background: #121212;
+    --hero-button-hover: #6A2EA8;
+    --hero-text: var(--color-text-light); /* Текст в секции остаётся белым */
+
+    /* Добавляем специальный цвет для таймлайна */
+    --timeline-color: #0055a2;
+
+    /* Цвета для продуктов */
+    --product-card-background: #1c1f24;
+
+    --advantages-background: #1c2125;
+    /* Добавляем цвета для карточек преимуществ */
+    --advantage-card-gradient-start: #131313;
+    --advantage-card-gradient-end: #262626;
+    --advantage-card-border: #90b7f8;
+    --advantage-icon-background: #0054a5;
+
+    /* Градиент для обратной стороны карточек */
+    --advantage-card-back-gradient-start: #0354a6;
+    --advantage-card-back-gradient-end: #6730a8;
+
+    /* Добавляем цвета для отзывов */
+    --testimonial-card-background: #1c1f24;
+    --testimonial-text: #b4b8bb;
+    --testimonial-client-name: #d9d9d9;
+    --testimonial-client-position: #b4b8bb;
+    --testimonial-bullet: #d9d9d9;
+
+    /* Добавляем цвет для новостей */
+    --news-background: #1c1f24;
+
+    /* Добавляем цвет для активного вопроса в FAQ */
+    --faq-background: #1c1f24;
+    --faq-active-background: #0054a5;
+
+    /* Добавляем цвета для формы обратной связи */
+    --input-text-color: #ffffff;
+    --input-background: #1c1f24;
+
+    /* Обновляем цвет ошибки */
+    --color-error: #f65356;
+}

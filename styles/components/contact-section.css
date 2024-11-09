@@ -662,3 +662,14 @@
         height: 300px;
     }
 }
+
+[data-theme="dark"] #contact-form input:not([type='checkbox']),
+[data-theme="dark"] #contact-form textarea,
+[data-theme="dark"] #contact-form select,
+[data-theme="dark"] .contact-form,
+[data-theme="dark"] .contact .contact-info,
+[data-theme="dark"] .contact-additional .contact-info {
+    color: var(--input-text-color);
+    background-color: var(--input-background)!important;
+}
+

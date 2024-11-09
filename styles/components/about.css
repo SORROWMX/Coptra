@@ -160,6 +160,10 @@
     transform: translateX(-50%);
 }
 
+[data-theme="dark"] .timeline::before {
+    background-color: var(--timeline-color);
+}
+
 .timeline-item {
     position: relative;
     width: 50%;

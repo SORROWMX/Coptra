@@ -1216,3 +1216,23 @@ header.scrolled nav ul li a {
     visibility: visible;
     transform: translateX(0);
 }
+
+@media screen and (max-width: 768px) {
+    .header-container {
+        justify-content: flex-start;
+    }
+
+    .mobile-menu-btn {
+        margin-left: auto;
+    }
+
+    .header-actions {
+        margin-left: var(--spacing-medium);
+    }
+}
+
+[data-theme="dark"] .dropdown:after,
+[data-theme="dark"] .dropdown-submenu:after {
+    border-right: 2px solid var(--arrow-color);
+    border-top: 2px solid var(--arrow-color);
+}

@@ -4,6 +4,7 @@ import { utils } from './modules/utils.js';
 
 // Импорт основных модулей
 import { HeaderModule } from './modules/header.js';
+import { ThemeModule } from './modules/theme.js';
 import { ScrollProgressModule } from './modules/scroll-progress.js';
 import { AboutSectionModule } from './modules/about-section.js';
 import { TestimonialsModule } from './modules/testimonials.js';
@@ -41,6 +42,7 @@ document.addEventListener('DOMContentLoaded', () => {
     LazyLoadingModule.init();
     
     // Инициализация основных модулей
+    ThemeModule.init();
     HeaderModule.init();
     MobileMenuModule.init();
     NavigationModule.init();

@@ -115,12 +115,39 @@ $root_path = '/'; // Измените на '/your-subdirectory/' если сай
                     <li><a href="<?php echo $root_path; ?>contacts.php">Контакты</a></li>
                 </ul>
             </nav>
+            <div class="header-actions">
+                <button class="action-button theme-toggle" aria-label="Сменить тему">
+                    <i class="fas fa-sun"></i>
+                </button>
+                <a href="/login.php" class="action-button login-button">
+                    <i class="fas fa-user"></i>
+                    <span>Войти</span>
+                </a>
+            </div>
+            <div class="header-actions-mobile">
+                <button class="action-button theme-toggle" aria-label="Сменить тему">
+                    <i class="fas fa-sun"></i>
+                </button>
+                <a href="/login.php" class="action-button login-button">
+                    <i class="fas fa-user"></i>
+                    <span>Войти</span>
+                </a>
+            </div>
             <button class="mobile-menu-btn header-btn" aria-label="Toggle sidebar">
                 <span></span>
                 <span></span>
                 <span></span>
             </button>
         <?php else: ?>
+            <div class="header-actions-mobile">
+                <button class="action-button theme-toggle" aria-label="Сменить тему">
+                    <i class="fas fa-sun"></i>
+                </button>
+                <a href="/login.php" class="action-button login-button">
+                    <i class="fas fa-user"></i>
+                    <span>Войти</span>
+                </a>
+            </div>
             <button class="mobile-menu-btn">
                 <span></span>
                 <span></span>
@@ -174,6 +201,15 @@ $root_path = '/'; // Измените на '/your-subdirectory/' если сай
                     <li><a href="<?php echo $root_path; ?>contacts.php">Контакты</a></li>
                 </ul>
             </nav>
+            <div class="header-actions">
+                <button class="action-button theme-toggle" aria-label="Сменить тему">
+                    <i class="fas fa-sun"></i></i>
+                </button>
+                <a href="/login.php" class="action-button login-button">
+                    <i class="fas fa-user"></i>
+                    <span>Войти</span>
+                </a>
+            </div>
         <?php endif; ?>
     </div>
 </header>

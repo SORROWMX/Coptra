@@ -40,6 +40,7 @@
 .hero-text {
     flex: 1;
     max-width: 50%;
+    color: var(--color-text-light);
 }
 
 .hero h1 {
@@ -412,4 +413,26 @@
     100% {
         transform: translateX(100%);
     }
+}
+
+.hero-text .cta-button {
+    background-color: var(--color-text-light);
+}
+
+/* Стили для тёмной темы */
+[data-theme="dark"] .hero-text .cta-button {
+    background-color: var(--hero-button-background);
+}
+
+/* Текст в hero секции не меняется в тёмной теме */
+[data-theme="dark"] .hero-text {
+    color: var(--hero-text);
+}
+
+[data-theme="dark"] .cta-button:before {
+    background-color: var(--hero-button-hover);
+}
+
+[data-theme="dark"] .cta-button:hover:before {
+    background-color: var(--hero-button-hover);
 }

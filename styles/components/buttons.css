@@ -351,3 +351,135 @@
     left: 0;
     right: auto;
 }
+
+/* Стили для кнопок действий в хедере */
+.header-actions {
+    display: flex;
+    align-items: center;
+    gap: var(--spacing-medium);
+    margin-left: var(--spacing-large);
+}
+
+.header-actions-mobile {
+    display: none;
+}
+
+.action-button {
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    padding: 8px 16px;
+    background: transparent;
+    border: 2px solid var(--color-primary);
+    border-radius: var(--border-radius);
+    color: var(--color-text);
+    font-size: var(--font-size-base);
+    cursor: pointer;
+    position: relative;
+    overflow: hidden;
+    z-index: 1;
+    transition: color var(--transition-speed) ease;
+}
+
+.action-button::before {
+    content: '';
+    position: absolute;
+    top: 0;
+    left: -100%;
+    width: 100%;
+    height: 100%;
+    background-color: var(--color-primary);
+    transition: all var(--transition-speed) ease;
+    z-index: -1;
+}
+
+.action-button:hover {
+    color: var(--color-text-light);
+}
+
+.action-button:hover::before {
+    left: 0;
+}
+
+.theme-toggle {
+    padding: 8px;
+    width: 40px;
+    height: 40px;
+    border: 2px solid;
+    border-radius: var(--border-radius);
+    cursor: pointer;
+    position: relative;
+    overflow: hidden;
+    transition: all 0.3s cubic-bezier(0.4, 0, 0.2, 1);
+    background: transparent;
+}
+
+/* Базовые стили иконки */
+.theme-toggle i {
+    position: relative;
+    z-index: 2;
+    transition: all 0.3s cubic-bezier(0.4, 0, 0.2, 1);
+}
+
+/* Стили для светлой темы (по умолчанию) */
+.theme-toggle {
+    border-color: #FFB100; /* Золотистый для солнца */
+}
+
+.theme-toggle i {
+    color: #FFB100;
+}
+
+/* Стили для тёмной темы */
+.theme-toggle.dark {
+    border-color: var(--color-secondary); /* Для луны */
+}
+
+.theme-toggle.dark i {
+    color: var(--color-secondary);
+}
+
+/* Эффект при наведении */
+.theme-toggle:hover i {
+    transform: scale(1.2);
+}
+
+/* Отключаем стандартные эффекты */
+.theme-toggle::before {
+    display: none;
+}
+
+.login-button {
+    gap: var(--spacing-small);
+    text-decoration: none;
+}
+
+.login-button i {
+    font-size: 1.1em;
+    position: relative;
+    z-index: 2;
+}
+
+/* Медиа-запрос для мобильных устройств */
+@media (max-width: 768px) {
+    .header-actions {
+        display: none;
+    }
+
+    .header-actions-mobile {
+        display: flex;
+        gap: var(--spacing-small);
+        position: absolute;
+        right: 60px;
+    }
+
+    .login-button span {
+        display: none;
+    }
+
+    .login-button {
+        padding: 8px;
+        width: 40px;
+        height: 40px;
+    }
+}

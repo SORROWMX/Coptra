@@ -266,3 +266,16 @@
         font-size: 0.9rem;
     }
 }
+
+[data-theme="dark"] .faq-item {
+    background-color: var(--faq-background);
+    box-shadow: 0 4px 6px rgba(0, 0, 0, 0.2);
+}
+
+[data-theme="dark"] .faq-question:hover {
+    background-color: rgba(0, 84, 165, 0.1);
+}
+
+[data-theme="dark"] .faq-item.active .faq-question {
+    background-color: var(--faq-active-background);
+}

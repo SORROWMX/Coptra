@@ -468,3 +468,37 @@
     animation: underlineExpand 0.6s ease-out forwards;
     animation-delay: 0.8s;
 }
+
+[data-theme="dark"] .advantages {
+    background-color: var(--advantages-background);
+}
+
+[data-theme="dark"] .advantages::before,
+[data-theme="dark"] .advantages::after {
+    background: radial-gradient(circle, rgba(var(--color-primary-rgb), 0.1) 0%, rgba(var(--color-primary-rgb), 0) 70%);
+}
+
+[data-theme="dark"] .advantage-card-front {
+    background: linear-gradient(135deg, 
+        var(--advantage-card-gradient-start),
+        var(--advantage-card-gradient-end)
+    );
+    border: 1px solid var(--advantage-card-border);
+    box-shadow: none;
+}
+
+[data-theme="dark"] .advantage-card:hover .advantage-card-front {
+    border-color: var(--color-primary);
+    box-shadow: 0 0 15px rgba(100, 123, 164, 0.3);
+}
+
+[data-theme="dark"] .advantage-icon {
+    background-color: var(--advantage-icon-background);
+}
+
+[data-theme="dark"] .advantage-card-back {
+    background: linear-gradient(135deg, 
+        var(--advantage-card-back-gradient-start),
+        var(--advantage-card-back-gradient-end)
+    );
+}
