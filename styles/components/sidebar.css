@@ -776,3 +776,12 @@ body.sidebar-open {
     border-color: var(--color-primary);
 }
 
+[data-theme="dark"] .documentation a:not(.nav-button) {
+    color: var(--color-secondary);
+    transition: color var(--transition-speed) ease;
+}
+
+[data-theme="dark"] .documentation a:not(.nav-button):hover {
+    color: var(--color-secondary-light);
+}
+

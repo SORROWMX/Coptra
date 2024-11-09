@@ -1,13 +1,29 @@
 export const ThemeModule = {
     init() {
         this.themeToggles = document.querySelectorAll('.theme-toggle');
-        this.currentTheme = localStorage.getItem('theme') || 'light';
         
-        // Устанавливаем светлую тему по умолчанию
+        // Проверяем предпочтения системы
+        this.systemPrefersDark = window.matchMedia('(prefers-color-scheme: dark)');
+        
+        // Получаем сохраненную тему или используем системную
+        this.currentTheme = localStorage.getItem('theme') || 
+            (this.systemPrefersDark.matches ? 'dark' : 'light');
+        
+        // Устанавливаем начальную тему
         document.documentElement.setAttribute('data-theme', this.currentTheme);
         this.updateToggles(this.currentTheme);
 
-        // Добавляем обработчики для всех кнопок переключения темы
+        // Добавляем слушатель изменения системной темы
+        this.systemPrefersDark.addEventListener('change', (e) => {
+            if (!localStorage.getItem('theme')) {
+                const newTheme = e.matches ? 'dark' : 'light';
+                this.currentTheme = newTheme;
+                document.documentElement.setAttribute('data-theme', newTheme);
+                this.updateToggles(newTheme);
+            }
+        });
+
+        // Добавляем обработчики для кнопок переключения темы
         this.themeToggles.forEach(toggle => {
             toggle.addEventListener('click', () => this.toggleTheme());
         });
