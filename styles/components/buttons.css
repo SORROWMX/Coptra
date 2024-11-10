@@ -378,7 +378,7 @@
     position: relative;
     overflow: hidden;
     z-index: 1;
-    transition: color var(--transition-speed) ease;
+    transition: all var(--transition-speed) ease;
 }
 
 .action-button::before {
@@ -403,8 +403,8 @@
 
 .theme-toggle {
     padding: 8px;
-    width: 40px;
-    height: 40px;
+    width: 45px;
+    height: 45px;
     border: 2px solid;
     border-radius: var(--border-radius);
     cursor: pointer;

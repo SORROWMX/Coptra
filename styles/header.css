@@ -122,7 +122,7 @@ nav ul li a::after {
     border-top: 2px solid #2C2D34;
     border-right: 2px solid #2C2D34;
     transform: rotate(135deg);
-    transition: transform 0.3s ease, top 0.3s ease;
+    transition: all 0.3s ease;
 }
 
 .dropdown:hover > a:before,
@@ -1235,4 +1235,24 @@ header.scrolled nav ul li a {
 [data-theme="dark"] .dropdown-submenu:after {
     border-right: 2px solid var(--arrow-color);
     border-top: 2px solid var(--arrow-color);
+}
+
+header.scrolled .dropdown:after {
+    width: 6px;
+    height: 6px;
+    right: 2px;
+}
+
+header.scrolled .theme-toggle {
+    width: 40px;
+    height: 40px;
+}
+
+header.scrolled .theme-toggle i {
+    transform: scale(0.9);
+}
+
+header.scrolled .login-button {
+    padding: 7px 12px;
+    font-size: calc(var(--font-size-base) - 2px);
 }
