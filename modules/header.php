@@ -1,10 +1,20 @@
 <?php
-// В начале файла добавьте:
-// Определяем базовый путь автоматически
+// Определяем базовый путь с учетом вложенных директорий
 $root_path = '';
-$project_folder = 'rework'; // Имя папки вашего проекта
-if(isset($_SERVER['REQUEST_URI']) && strpos($_SERVER['REQUEST_URI'], $project_folder) !== false) {
-    $root_path = '/' . $project_folder . '/';
+$current_script = $_SERVER['SCRIPT_FILENAME'];
+$document_root = $_SERVER['DOCUMENT_ROOT'];
+
+// Определяем относительный путь от текущего скрипта к корню сайта
+$relative_path = str_replace($document_root, '', dirname($current_script));
+$depth = substr_count($relative_path, DIRECTORY_SEPARATOR);
+
+// Генерируем путь наверх в зависимости от глубины вложенности
+$root_path = str_repeat('../', $depth);
+
+// Убираем лишний слеш в конце, если он есть
+$root_path = rtrim($root_path, '/');
+if (!empty($root_path)) {
+    $root_path .= '/';
 }
 ?>
 
