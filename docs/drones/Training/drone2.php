@@ -48,8 +48,8 @@ if ($isAjax) {
                 <div class="page-navigation">
                     <?php
                     // Определяем предыдущую и следующую страницы
-                    $prev_page = '/../docs/drones/Training/drone1.php'; // Путь к предыдущей странице
-                    $next_page = '/../docs/drones/Training/drone3.php'; // Путь к следующей странице
+                    $prev_page = $root_path . 'docs/drones/Training/drone1.php'; // Путь к предыдущей странице
+                    $next_page = $root_path . 'docs/drones/Training/drone3.php'; // Путь к следующей странице
                     
                     if ($prev_page): ?>
                         <a href="<?php echo $prev_page; ?>" class="nav-button prev" data-ajax-load>
@@ -107,8 +107,8 @@ if ($isAjax) {
                     <div class="page-navigation">
                         <?php
                         // Определяем предыдущую и следующую страницы
-                        $prev_page = '/../docs/drones/Training/drone1.php'; // Путь к предыдущей странице
-                        $next_page = '/../docs/drones/Training/drone3.php'; // Путь к следующей странице
+                        $prev_page = $root_path . 'docs/drones/Training/drone1.php'; // Путь к предыдущей странице
+                        $next_page = $root_path . 'docs/drones/Training/drone3.php'; // Путь к следующей странице
                         
                         if ($prev_page): ?>
                             <a href="<?php echo $prev_page; ?>" class="nav-button prev" data-ajax-load>

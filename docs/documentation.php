@@ -50,7 +50,7 @@ if ($isAjax) {
                 <div class="page-navigation" style="display: flex; justify-content: flex-end;">
                     <?php
                     // Определяем только следующую страницу
-                    $next_page = '/../docs/drones/Training/drone1.php';
+                    $next_page = $root_path . 'docs/drones/Training/drone1.php';
                     
                     if ($next_page): ?>
                         <a href="<?php echo $next_page; ?>" class="nav-button next" data-ajax-load>
@@ -110,7 +110,7 @@ if ($isAjax) {
                     <div class="page-navigation" style="display: flex; justify-content: flex-end;">
                         <?php
                         // Определяем только следующую страницу
-                        $next_page = '/../docs/drones/Training/drone1.php';
+                        $next_page = $root_path . 'docs/drones/Training/drone1.php';
                         
                         if ($next_page): ?>
                             <a href="<?php echo $next_page; ?>" class="nav-button next" data-ajax-load>
