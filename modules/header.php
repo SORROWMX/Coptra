@@ -2,7 +2,7 @@
 // В начале файла добавьте:
 // Определяем базовый путь автоматически
 $root_path = '';
-$project_folder = 'main'; // Имя папки вашего проекта
+$project_folder = 'rework'; // Имя папки вашего проекта
 if(strpos($_SERVER['REQUEST_URI'], $project_folder) !== false) {
     $root_path = '/' . $project_folder . '/';
 }
