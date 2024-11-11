@@ -1,9 +1,31 @@
 <?php
-// В начале файла добавьте:
-// Определяем базовый путь автоматически
+// Определяем базовый путь с учетом вложенных директорий
 $root_path = '';
-$project_folder = 'rework'; // Имя папки вашего проекта
-if(isset($_SERVER['REQUEST_URI']) && strpos($_SERVER['REQUEST_URI'], $project_folder) !== false) {
+$project_folder = 'rework';
+$current_script = $_SERVER['SCRIPT_FILENAME'];
+$document_root = $_SERVER['DOCUMENT_ROOT'];
+$server_name = isset($_SERVER['SERVER_NAME']) ? $_SERVER['SERVER_NAME'] : '';
+
+// Определяем, работаем ли мы локально
+$is_local = (strpos($server_name, 'localhost') !== false || 
+             strpos($server_name, '127.0.0.1') !== false ||
+             empty($server_name));
+
+// Определяем относительный путь от текущего скрипта к корню сайта
+$relative_path = str_replace($document_root, '', dirname($current_script));
+$depth = substr_count($relative_path, DIRECTORY_SEPARATOR);
+
+// Генерируем путь наверх в зависимости от глубины вложенности
+$root_path = str_repeat('../', $depth);
+
+// Убираем лишний слеш в конце, если он есть
+$root_path = rtrim($root_path, '/');
+if (!empty($root_path)) {
+    $root_path .= '/';
+}
+
+// Если мы на продакшен сервере, добавляем папку проекта
+if (!$is_local) {
     $root_path = '/' . $project_folder . '/';
 }
 ?>
