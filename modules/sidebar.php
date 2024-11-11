@@ -1,3 +1,12 @@
+<?php
+// В начале файла добавьте:
+// Определяем базовый путь автоматически
+$root_path = '';
+$project_folder = 'main'; // Имя папки вашего проекта
+if(strpos($_SERVER['REQUEST_URI'], $project_folder) !== false) {
+    $root_path = '/' . $project_folder . '/';
+}
+?>
 <aside class="sidebar">
     <nav class="sidebar-nav">
         <div class="sidebar-section">
