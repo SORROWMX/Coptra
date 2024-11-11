@@ -51,4 +51,4 @@ if(strpos($_SERVER['REQUEST_URI'], $project_folder) !== false) {
             <p>&copy; <span id="current-year"></span> Коптра. Все права защищены.</p>
         </div>
     </footer>
-    <script type="module" src="/scripts/main.js"></script>
+    <script type="module" src="<?php echo $root_path; ?>scripts/main.js"></script>
