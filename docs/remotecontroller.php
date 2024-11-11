@@ -2,7 +2,7 @@
 $isAjax = isset($_SERVER['HTTP_X_REQUESTED_WITH']) && strtolower($_SERVER['HTTP_X_REQUESTED_WITH']) == 'xmlhttprequest';
 $root_path = '';
 $project_folder = 'rework'; // Имя папки вашего проекта
-if(strpos($_SERVER['REQUEST_URI'], $project_folder) !== false) {
+if(isset($_SERVER['REQUEST_URI']) && strpos($_SERVER['REQUEST_URI'], $project_folder) !== false) {
     $root_path = '/' . $project_folder . '/';
 }
 if ($isAjax) {
