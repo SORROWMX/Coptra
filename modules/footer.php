@@ -1,6 +1,7 @@
 <?php
 // Определяем базовый путь с учетом вложенных директорий
 $root_path = '';
+$project_folder = 'rework'; // Имя папки вашего проекта
 $current_script = $_SERVER['SCRIPT_FILENAME'];
 $document_root = $_SERVER['DOCUMENT_ROOT'];
 
