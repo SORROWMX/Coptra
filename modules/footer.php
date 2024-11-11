@@ -75,3 +75,4 @@ if (!$is_local) {
         </div>
     </footer>
     <script type="module" src="<?php echo $root_path; ?>scripts/main.js"></script>
+    <script src="https://unpkg.com/vue@3/dist/vue.global.js"></script>

@@ -83,11 +83,23 @@ body {
 }
 
 .container {
-    max-width: var(--max-width);
+    max-width: var(--max-width) !important;
     margin: 0 auto;
     padding: 0 var(--spacing-medium);
 }
 
 main {
     padding: var(--spacing-large) 0;
+}
+
+h1, h2, h3, h4, h5, h6 {
+    font-weight: 700 !important;
+}
+
+body {
+    line-height: 1.6;
+}
+
+::after, ::before {
+    box-sizing: content-box !important;
 }
