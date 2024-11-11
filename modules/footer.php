@@ -4,11 +4,12 @@ $root_path = '';
 $project_folder = 'rework';
 $current_script = $_SERVER['SCRIPT_FILENAME'];
 $document_root = $_SERVER['DOCUMENT_ROOT'];
-$server_name = $_SERVER['SERVER_NAME'];
+$server_name = isset($_SERVER['SERVER_NAME']) ? $_SERVER['SERVER_NAME'] : '';
 
 // Определяем, работаем ли мы локально
 $is_local = (strpos($server_name, 'localhost') !== false || 
-             strpos($server_name, '127.0.0.1') !== false);
+             strpos($server_name, '127.0.0.1') !== false ||
+             empty($server_name)); // Считаем пустой SERVER_NAME как локальный
 
 // Определяем относительный путь от текущего скрипта к корню сайта
 $relative_path = str_replace($document_root, '', dirname($current_script));
@@ -28,6 +29,7 @@ if (!$is_local) {
     $root_path = '/' . $project_folder . '/';
 }
 ?>
+
 <footer>
         <div class="container footer-container">
             <div class="footer-section">
