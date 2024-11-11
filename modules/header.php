@@ -20,8 +20,8 @@ if(strpos($_SERVER['REQUEST_URI'], $project_folder) !== false) {
         rel="stylesheet"
         href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/5.15.3/css/all.min.css"
     />
-    <link rel="stylesheet" href="/styles/main.css" />
-    <link rel="stylesheet" href="/styles/components/sidebar.css">
+    <link rel="stylesheet" href="<?php echo $root_path; ?>styles/main.css" />
+    <link rel="stylesheet" href="<?php echo $root_path; ?>styles/components/sidebar.css">
     <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/swiper@11/swiper-bundle.min.css"/>
     <script src="https://cdn.jsdelivr.net/npm/swiper@11/swiper-bundle.min.js"></script>
     <script src="https://unpkg.com/imask"></script>
