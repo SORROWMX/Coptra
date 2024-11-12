@@ -1,0 +1,170 @@
+footer {
+    background-color: var(--footer-bg);
+    color: var(--footer-text);
+    padding: var(--spacing-large) 0;
+    width: 100%;
+    min-height: 314px;
+    position: relative;
+}
+
+/* Добавляем тонкую линию сверху футера */
+footer::before {
+    content: '';
+    position: absolute;
+    top: 0;
+    left: 0;
+    right: 0;
+    height: 1px;
+    background: linear-gradient(to right, 
+        transparent, 
+        rgba(255, 255, 255, 0.1), 
+        transparent
+    );
+}
+
+.footer-container {
+    display: flex;
+    justify-content: space-between;
+    flex-wrap: wrap;
+}
+
+.footer-section {
+    flex: 1;
+    margin-right: var(--spacing-large);
+    margin-bottom: var(--spacing-large);
+    min-width: 200px;
+}
+
+.footer-section:last-child {
+    margin-right: 0;
+}
+
+.footer-section h3 {
+    font-size: var(--font-size-h3);
+    margin-bottom: var(--spacing-medium);
+}
+
+.footer-section ul {
+    list-style-type: none;
+}
+
+.footer-section ul li {
+    margin-bottom: var(--spacing-small);
+}
+
+/* Улучшаем анимацию ссылок */
+.footer-section ul li a {
+    color: var(--footer-link);
+    text-decoration: none;
+    transition: padding-left 0.3s ease;
+    padding-left: 0;
+}
+
+.footer-section ul li a:hover {
+    padding-left: 5px;
+    color: var(--footer-link-hover);
+}
+
+.social-icons {
+    margin-top: 15px;
+    display: flex;
+    gap: var(--spacing-medium);
+}
+
+.social-icons a {
+    color: var(--footer-link);
+    font-size: 1.8rem;
+    text-decoration: none;
+    transition: transform 0.3s cubic-bezier(0.175, 0.885, 0.32, 1.275);
+    margin-right: var(--spacing-small);
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    border-radius: 50%;
+    width: 2.5rem;
+    height: 2.5rem;
+    background-color: var(--color-background);
+    box-shadow: 0 2px 4px var(--footer-social-shadow);
+    transform-origin: center;
+}
+
+.social-icons a:hover {
+    transform: scale(1.1);
+}
+
+.social-icons a[aria-label="VKontakte"] {
+    background-color: var(--vk-color);
+    color: var(--color-text-light);
+}
+
+.social-icons a[aria-label="VKontakte"] i {
+    position: relative;
+    /* left: -1px; */
+}
+
+.social-icons a[aria-label="VKontakte"]:hover {
+    background-color: var(--vk-hover);
+}
+
+.social-icons a[aria-label="Telegram"] {
+    background-color: var(--telegram-color);
+    color: var(--color-text-light);
+}
+
+.social-icons a[aria-label="Telegram"] i {
+    position: relative;
+    left: -1px;
+}
+
+.social-icons a[aria-label="Telegram"]:hover {
+    background-color: var(--telegram-hover);
+}
+
+.social-icons a[aria-label="YouTube"] {
+    background-color: var(--youtube-color);
+    color: var(--color-text-light);
+}
+
+.social-icons a[aria-label="YouTube"] i {
+    position: relative;
+    top: -1px;
+}
+
+.social-icons a[aria-label="YouTube"]:hover {
+    background-color: var(--youtube-hover);
+}
+
+.social-icons i {
+    font-size: 1.4rem;
+}
+
+.copyright {
+    margin-top: var(--spacing-large);
+    text-align: center;
+    font-size: 0.9rem;
+    opacity: 0.8;
+}
+
+@media (max-width: 1024px) {
+    footer {
+        height: 100%;
+    }
+}
+
+@media (max-width: 768px) {
+    .footer-container {
+        flex-direction: column;
+        align-items: center;
+        text-align: center;
+    }
+    
+    .footer-section {
+        margin-right: 0;
+        width: 100%;
+        max-width: 300px;
+    }
+    
+    .social-icons {
+        justify-content: center;
+    }
+}

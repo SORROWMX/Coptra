@@ -1,0 +1,787 @@
+body {
+	display: flex;
+	flex-direction: column;
+	min-height: 100vh;
+    margin: 0;
+	padding: 0;
+	overflow-x: hidden; /* Предотвращаем горизонтальную прокрутку */
+	overflow-y: hidden;
+	padding-right: calc(100vw - 100%); /* Компенсация ширины скроллбара */
+}
+
+body.scroll-locked {
+    overflow: hidden;
+    /* Сохраняем ширину страницы при блокировке прокрутки */
+    padding-right: calc(100vw - 100%);
+}
+
+.content-docs {
+	display: grid;
+	justify-items: center;
+	overflow-x: hidden;
+    width: 100%;
+    min-height: calc(100vh - var(--header-height));
+    position: relative;
+}
+
+.main-container {
+	display: flex;
+	margin-top: 0px;
+	width: 100%; /* Устанавливаем ширину на 100% */
+}
+
+.content-wrapper {
+	display: flex; /* Для горизонтального расположения навигации и контента */
+}
+
+.sidebar {
+	width: var(--sidebar-width);
+	padding: var(--spacing-medium);
+	background-color: var(--color-background-light);
+	border-right: 1px solid var(--color-border);
+	box-shadow: 2px 0 10px rgba(0, 0, 0, 0.1);
+	position: fixed;
+	padding-top: 35px;
+	top: calc(var(--header-height-scrolled) - 10px); /* Поднимаем сайдбар на 20px выше */
+	bottom: 0;
+	height: calc(100vh - var(--header-height-scrolled) + 20px);
+	overflow-y: auto;
+	overflow-x: hidden;
+	z-index: 100;
+	transition: all 0.3s ease;
+}
+
+.sidebar-nav {
+	position: relative;
+	top: 0;
+	width: 100%;
+}
+
+/* Стили для Firefox */
+.sidebar {
+	scrollbar-width: thin; /* Меняем с thin на auto для более широкого скроллбара */
+	scrollbar-color: var(--color-primary) var(--color-background-light);
+}
+
+.sidebar-section h3 {
+	font-size: 1.3rem; /* Увеличиваем размер заголовков разделов */
+	color: var(--color-primary);
+	margin-bottom: var(--spacing-medium);
+	text-align: center;
+	padding-bottom: var(--spacing-small);
+	border-bottom: 2px solid var(--color-primary);
+	width: 100%;
+}
+
+.sidebar-item {
+	margin-bottom: var(--spacing-small);
+	width: 100%;
+	box-sizing: border-box;
+}
+
+.sidebar-link {
+	color: var(--color-text);
+	text-decoration: none;
+	font-size: 1.1rem;
+	display: block;
+	font-weight: 500;
+	padding: var(--spacing-small);
+	position: relative;
+	transition: color 0.3s ease, background-color 0.3s ease;
+	border-radius: var(--border-radius);
+	cursor: pointer;
+}
+
+.sidebar-link:hover,
+.sidebar-link:focus {
+	color: var(--color-primary);
+	background-color: rgba(var(--color-primary-rgb), 0.1);
+	box-shadow: 0 2px 4px rgba(0, 0, 0, 0.1);
+}
+
+.sidebar-link::after {
+	content: '';
+	position: absolute;
+	width: 100%;
+	height: 2px;
+	bottom: 0;
+	left: 0;
+	background-color: var(--color-primary);
+	transform: scaleX(0);
+	transform-origin: bottom left;
+	transition: transform var(--transition-speed) ease;
+}
+
+.sidebar-link:hover::after,
+.sidebar-link:focus::after {
+	transform: scaleX(1);
+	transform-origin: bottom left;
+}
+
+.sidebar-item.expandable {
+	position: relative;
+	width: 100%;
+}
+
+.sidebar-item.expandable .arrow {
+	width: 8px;
+	height: 8px;
+	border-top: 2px solid #2C2D34;
+	border-right: 2px solid #2C2D34;
+	transform: rotate(135deg);
+	transition: transform 0.3s ease, border-color 0.3s ease;
+	position: absolute;
+	right: 5px;
+	top: 50%;
+	margin-top: -6px;
+}
+
+.sidebar-item.expandable:hover .arrow {
+	border-color: var(--color-primary);
+}
+
+.sidebar-item.expandable.active .arrow {
+	transform: rotate(-45deg);
+	margin-top: -2px;
+}
+
+.sidebar-link:hover {
+	background-color: rgba(var(--color-primary-rgb), 0.1);
+	color: var(--color-primary);
+}
+
+.sidebar-item.expandable > .sidebar-link {
+	display: flex;
+	align-items: center;
+	justify-content: space-between;
+}
+
+.sidebar-item.expandable > .sidebar-link .arrow {
+	content: '';
+	width: 8px;
+	height: 8px;
+	border-top: 2px solid var(--color-text);
+	border-right: 2px solid var(--color-text);
+	transform: rotate(135deg);
+	/* Обновляем transition для плавности в обоих направлениях */
+	transition: all 0.3s cubic-bezier(0.4, 0, 0.2, 1);
+	flex-shrink: 0;
+	display: inline-block;
+	margin-left: 10px;
+}
+
+.sidebar-item.expandable.active > .sidebar-link .arrow {
+	transform: rotate(-45deg);
+	border-color: var(--color-primary);
+	/* Используем тот же transition для обратной анимации */
+	transition: all 0.3s cubic-bezier(0.4, 0, 0.2, 1);
+}
+
+/* Удаляем дублирующиеся правила и оставляем одно общее определение */
+.sub-menu {
+    max-height: 0;
+    overflow: hidden;
+    opacity: 0;
+    width: 100%;
+    /* Обновляем transition для большей плавности */
+    transition: max-height 0.3s cubic-bezier(0.4, 0, 0.2, 1),
+                opacity 0.3s cubic-bezier(0.4, 0, 0.2, 1),
+                transform 0.3s cubic-bezier(0.4, 0, 0.2, 1);
+    transform: translateY(-10px);
+}
+
+.sidebar-item.expandable.active > .sub-menu {
+    max-height: 1000px;
+    opacity: 1;
+    transform: translateY(0);
+    /* Используем те же значения transition */
+    transition: max-height 0.3s cubic-bezier(0.4, 0, 0.2, 1),
+                opacity 0.3s cubic-bezier(0.4, 0, 0.2, 1),
+                transform 0.3s cubic-bezier(0.4, 0, 0.2, 1);
+}
+
+/* Удаляем конфликтующие стили */
+.sidebar-item.expandable .sub-menu {
+    display: block; /* Меняем с none на block */
+}
+
+/* Удаляем ненужное правило */
+.sidebar-item.expandable.active .sub-menu {
+    display: block;
+}
+
+.sub-menu .sidebar-link {
+	padding-left: var(--spacing-large);
+	font-size: 1rem; /* Увеличиваем размер подпунктов меню */
+}
+
+.sub-menu .sidebar-link {
+	font-size: calc(var(--font-size-header) 0.9); /* Немного меньше для подменю */
+}
+
+@media (max-width: 1600px) {
+	.main-container {
+		margin-left: -160px;
+		width: calc(100% + 210px);
+
+	}
+}
+
+@media (max-width: 1400px) {
+	.main-container {
+		margin-left: -130px;
+		width: calc(100% + 180px);
+	}
+}
+
+@media (max-width: 1200px) {
+	.main-container {
+		margin-left: -100px;
+		width: calc(100% + 150px);
+	}
+}
+
+@media (max-width: 768px) {
+	.main-container {
+		flex-direction: column;
+		margin-left: -40px; /* Немного увеличиваем отрицательный отступ для мобильных */
+		width: calc(100% + 80px);
+	}
+
+	.sidebar {
+		width: 100%;
+		max-width: 100vw;
+		border-right: none;
+		border-bottom: 1px solid #e9ecef;
+		margin-bottom: 20px;
+	}
+}
+
+.documentation {
+    max-width: 1400px;
+    margin: 0 auto;
+    line-height: 1.6;
+    font-size: 18px;
+    padding-left: 10px;
+    width: 100%; /* Добавляем width: 100% */
+    box-sizing: border-box; /* Добавляем box-sizing */
+    user-select: text !important; /* Принудительно разрешаем выделение */
+    -webkit-user-select: text !important;
+    -moz-user-select: text !important;
+    -ms-user-select: text !important;
+}
+
+.documentation h1:first-child {
+    font-size: var(--font-size-h1);
+    text-align: center;
+    margin-bottom: 0px;
+    width: 100%;
+    padding-top: 0px;
+    color: var(--color-primary);
+    border-bottom: 2px solid var(--color-primary);
+    padding: 0px; /* Для изменения Документация дрона Коптра */
+}
+
+.documentation h2 {
+    font-size: var(--font-size-h2);
+    color: var(--color-primary);
+    margin-top: 0px;
+    margin-bottom: 0px;
+    padding-bottom: 0px;
+    border-bottom: 1px solid var(--color-border);
+	text-align: center;
+}
+
+.documentation h3 {
+    font-size: var(--font-size-h3);
+    margin-top: 0px;
+    margin-bottom: 0px;
+	text-align: center;
+	padding-top: 20px;
+	font-weight: var(--font-weight-bold);
+}
+
+.documentation h4 {
+	font-size: var(--font-size-h4);
+	font-weight: var(--font-weight-medium);
+}
+
+.documentation-grid {
+    display: grid;
+    gap: 20px;
+    width: 100%;
+}
+
+.sidebar-link:hover {
+	color: var(--color-primary);
+}
+
+.sidebar-item.expandable .sidebar-link {
+	display: flex;
+	align-items: center;
+	justify-content: space-between;
+	padding-right: 20px; /* Место для стрелочки */
+}
+
+/* Удаляем старые стили для псевдоэлемента :after */
+.sidebar-item.expandable:after,
+.sidebar-item.expandable:hover:after {
+	content: none;
+}
+
+.sub-menu a {
+	font-size: 13px;
+	color: #6c757d;
+	display: inline-block;
+	padding: 3px 0;
+	position: relative;
+	transition: color 0.3s ease, background-color 0.3s ease, padding 0.3s ease;
+}
+
+.sub-menu a:hover,
+.sub-menu a:focus {
+	color: var(--color-primary);
+	background-color: rgba(var(--color-primary-rgb), 0.05);
+	padding-left: 5px;
+}
+
+.extended-submenu li {
+    margin-top: 12px; /* Увеличиваем отступ между элеметами */
+}
+
+/* Update mobile menu styles */
+.mobile-menu-toggle {
+    display: none;
+    background: none;
+    border: none;
+    font-size: 1.5rem;
+    cursor: pointer;
+    position: fixed;
+    top: calc(var(--header-height-scrolled) + 10px);
+    left: 10px;
+    z-index: 1001;
+    padding: 10px;
+}
+
+@media (max-width: 768px) {
+    .mobile-menu-toggle {
+        display: block;
+    }
+    
+    .sidebar {
+        position: fixed;
+        left: -100%;
+        width: 100%;
+        height: 100vh;
+        top: 0;
+        background-color: var(--color-background);
+        z-index: 1000;
+        transition: left 0.3s ease;
+        padding-top: calc(var(--header-height-scrolled) + 20px);
+        overflow-y: auto;
+    }
+
+    .sidebar.active {
+        left: 0;
+    }
+
+    .page-container {
+        grid-template-columns: 1fr;
+    }
+}
+
+.page-container {
+    display: grid;
+    grid-template-columns: var(--sidebar-width) 1fr;
+    min-height: 100vh; /* Изменено с calc */
+    margin-top: var(--header-height);
+    position: relative;
+}
+
+/* Смещаем основной контент */
+.documentation-content {
+    padding: 0 15px;
+    margin: 0 auto;
+    width: 100%;
+    max-width: 1400px;
+    box-sizing: border-box;
+}
+
+/* Обновляем стили футера для страницы документации */
+.page-container + footer {
+    margin-left: var(--sidebar-width);
+    width: calc(100% - var(--sidebar-width));
+}
+
+/* Медиа-запросы для мобильных устройств */
+@media (max-width: 768px) {
+    .page-container {
+        grid-template-columns: 1fr;
+        margin-top: var(--header-height);
+    }
+
+    .sidebar {
+        right: -100%;
+        left: auto;
+        width: 100%;
+    }
+
+    .page-container + footer {
+        margin-left: 0;
+        width: 100%;
+    }
+
+    .documentation-content {
+        padding: 0 10px;
+        width: 100%;
+        min-width: 0; /* Убираем минимальную ширину если она была */
+        overflow-x: hidden; /* Предотвращаем горизонтальный скролл */
+    }
+
+    .documentation {
+        font-size: 16px;
+        padding: 0;
+        width: 100%;
+    }
+
+    .documentation h1:first-child {
+        font-size: var(--font-size-h3);
+        padding: 0;
+        width: 100%;
+    }
+
+    .documentation-grid {
+        width: 100%;
+        word-wrap: break-word; /* Для переноса длинных слов */
+    }
+
+    .content-docs {
+        width: 100%;
+        padding: 0 15px;
+        box-sizing: border-box;
+        overflow-x: hidden; /* Предотвращаем горизонтальный скролл */
+    }
+}
+
+.sub-menu {
+	max-height: 0;
+	overflow: hidden;
+	opacity: 0;
+	transition: max-height 0.3s ease, opacity 0.3s ease;
+}
+
+.sidebar-item.expandable.active > .sub-menu {
+	max-height: 1000px; /* Достаточно большое значение ля любого содержимого */
+	opacity: 1;
+}
+
+/* Обновляем стили для стрелочек в подменю */
+.sub-menu li {
+	position: relative;
+	padding-left: 20px; /* Место для стрелочки */
+	width: 100%; /* Занимает всю ширину .sub-menu */
+	margin-bottom: 5px;
+}
+
+.sub-menu li::before {
+	content: '';
+	position: absolute;
+	left: 0;
+	top: 50%;
+	width: 8px;
+	height: 8px;
+	border-top: 2px solid var(--color-text);
+	border-right: 2px solid var(--color-text);
+	transform: translateY(-50%) rotate(45deg); /* Стрелка вправо */
+	transition: border-color 0.3s ease, transform 0.3s ease;
+}
+
+/* Стили для стрелочки активного элемента */
+.sub-menu li a.active + ::before,
+.sub-menu li:has(> a.active)::before {
+	border-color: var(--color-primary);
+	transform: translateY(-50%) rotate(45deg) scale(1.2);
+}
+
+/* При наведении меняем цвет стрелочки */
+.sub-menu li:hover::before {
+	border-color: var(--color-primary);
+	transform: translateY(-50%) rotate(45deg) scale(1.2);
+}
+
+/* Обновляем стили для активного состояния */
+.sub-menu li.active::before {
+	border-color: var(--color-primary);
+}
+
+/* Обновляем стили для ссылок в подменю */
+.extended-submenu a {
+    font-size: 15px;
+    padding: 6px 10px; /* Добавляем отступ справа */
+    line-height: 1.4;
+	width: calc(100% - 30px); /* Учитываем место для стрелочки */
+    border-radius: var(--border-radius); /* Добавляем скругление */
+    transition: color 0.3s ease, background-color 0.3s ease, padding 0.3s ease;
+    display: block; /* Меняем на block для полного заполнения */
+}
+
+.extended-submenu a:hover,
+.extended-submenu a:focus {
+    color: var(--color-primary);
+    background-color: rgba(var(--color-primary-rgb), 0.1);
+    box-shadow: 0 2px 4px rgba(0, 0, 0, 0.1);
+}
+
+/* Добавляем стиль для предотвращения прокрутки body при открытом меню */
+body.sidebar-open {
+    overflow: hidden;
+}
+
+.sidebar-mobile-btn {
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+    align-items: center;
+    width: 40px;
+    height: 40px;
+    background: none;
+    border: none;
+    cursor: pointer;
+    padding: 0;
+    position: relative;
+}
+
+.sidebar-btn-line {
+    display: block;
+    width: 24px;
+    height: 2px;
+    background-color: var(--color-text);
+    transition: all 0.3s ease;
+    position: absolute;
+}
+
+.sidebar-btn-line:nth-child(1) {
+    transform: translateY(-8px);
+}
+
+.sidebar-btn-line:nth-child(3) {
+    transform: translateY(8px);
+}
+
+/* Анимация в крестик */
+.sidebar-mobile-btn.active .sidebar-btn-line:nth-child(1) {
+    transform: rotate(45deg);
+}
+
+.sidebar-mobile-btn.active .sidebar-btn-line:nth-child(2) {
+    opacity: 0;
+}
+
+.sidebar-mobile-btn.active .sidebar-btn-line:nth-child(3) {
+    transform: rotate(-45deg);
+}
+
+@media (max-width: 768px) {
+    .sidebar-mobile-btn {
+        display: flex;
+        flex-direction: column;
+        justify-content: center;
+        align-items: center;
+        width: 40px;
+        height: 40px;
+        background: none;
+        border: none;
+        cursor: pointer;
+        padding: 0;
+        z-index: 1000;
+        position: relative;
+    }
+
+    .sidebar-mobile-btn span {
+        display: block;
+        width: 24px;
+        height: 2px;
+        background-color: #333;
+        transition: all 0.3s ease;
+        position: absolute;
+    }
+
+    .sidebar-mobile-btn span:nth-child(1) {
+        transform: translateY(-8px);
+    }
+
+    .sidebar-mobile-btn span:nth-child(3) {
+        transform: translateY(8px);
+    }
+
+    .sidebar-mobile-btn.active span:nth-child(1) {
+        transform: rotate(45deg);
+    }
+
+    .sidebar-mobile-btn.active span:nth-child(2) {
+        opacity: 0;
+    }
+
+    .sidebar-mobile-btn.active span:nth-child(3) {
+        transform: rotate(-45deg);
+    }
+
+    .sidebar {
+        position: fixed;
+        top: 0;
+        left: -100%;
+        width: 100%;
+        height: 100vh;
+        background: #fff;
+        transition: all 0.3s ease;
+        z-index: 998;
+        overflow-y: auto;
+        padding: 80px 20px 20px;
+        box-shadow: none;
+    }
+
+    .sidebar.active {
+        left: 0;
+        box-shadow: 0 0 15px rgba(0, 0, 0, 0.1);
+    }
+
+    body.sidebar-open {
+        overflow: hidden;
+    }
+
+    /* Стили для кнопки закрытия */
+    .sidebar-close {
+        position: absolute;
+        top: 20px;
+        right: 20px;
+        width: 30px;
+        height: 30px;
+        background: none;
+        border: none;
+        cursor: pointer;
+        z-index: 999;
+        padding: 0;
+    }
+
+    .sidebar-close::before,
+    .sidebar-close::after {
+        content: '';
+        position: absolute;
+        top: 50%;
+        left: 50%;
+        width: 20px;
+        height: 2px;
+        background-color: var(--color-text);
+        transition: background-color 0.3s ease;
+    }
+
+    .sidebar-close::before {
+        transform: translate(-50%, -50%) rotate(45deg);
+    }
+
+    .sidebar-close::after {
+        transform: translate(-50%, -50%) rotate(-45deg);
+    }
+
+    .sidebar-close:hover::before,
+    .sidebar-close:hover::after {
+        background-color: var(--color-primary);
+    }
+}
+
+.documentation ul {
+    padding-left: 20px; /* Уменьшаем отступ слева для списков */
+    margin: 10px 0;
+    list-style-position: inside; /* Маркеры списка внутри */
+    width: 100%;
+    box-sizing: border-box;
+}
+
+.documentation ul li {
+    margin-bottom: 8px;
+    line-height: 1.4;
+    padding-left: 5px;
+}
+
+@media (max-width: 768px) {
+    .documentation ul {
+        padding-left: 15px; /* Ещё меньше отступ для мобильных */
+    }
+    
+    .documentation ul li {
+        padding-left: 0;
+        text-align: left;
+    }
+}
+
+/* Добавляем возможность выделения для всех элементов внутри документации */
+.documentation *,
+.documentation p,
+.documentation h1,
+.documentation h2,
+.documentation h3,
+.documentation h4,
+.documentation ul,
+.documentation li {
+    user-select: text !important;
+    -webkit-user-select: text !important;
+    -moz-user-select: text !important;
+    -ms-user-select: text !important;
+}
+
+/* Добавляем стили для активной ссылки */
+.sidebar-link.active,
+.sub-menu a.active {
+    color: var(--color-primary) !important;
+    background-color: rgba(var(--color-primary-rgb), 0.1);
+    font-weight: var(--font-weight-medium);
+}
+
+/* Стили для активного родительского пункта меню */
+.sidebar-item.expandable.active > .sidebar-link {
+    color: var(--color-primary);
+    background-color: rgba(var(--color-primary-rgb), 0.05);
+}
+
+/* Стили для активного элемента в поденю */
+.sub-menu a.active {
+    background-color: rgba(var(--color-primary-rgb), 0.15);
+    padding-left: calc(var(--spacing-small) + 5px);
+    border-left: 3px solid var(--color-primary);
+}
+
+/* Стили для стрелочки в основном меню */
+.sidebar-item.expandable > .sidebar-link .arrow {
+    content: '';
+    width: 8px;
+    height: 8px;
+    border-top: 2px solid var(--color-text);
+    border-right: 2px solid var(--color-text);
+    transform: rotate(135deg);
+    transition: all 0.3s cubic-bezier(0.4, 0, 0.2, 1);
+    flex-shrink: 0;
+    display: inline-block;
+    margin-left: 10px;
+}
+
+/* Стили для стрелочки активного родительского пункта */
+.sidebar-item.expandable.active > .sidebar-link .arrow {
+    transform: rotate(-45deg);
+    border-color: var(--color-primary);
+    transition: all 0.3s cubic-bezier(0.4, 0, 0.2, 1);
+}
+
+/* При наведении на родительский пункт */
+.sidebar-item.expandable:hover > .sidebar-link .arrow {
+    border-color: var(--color-primary);
+}
+
+[data-theme="dark"] .documentation a:not(.nav-button) {
+    color: var(--color-secondary);
+    transition: color var(--transition-speed) ease;
+}
+
+[data-theme="dark"] .documentation a:not(.nav-button):hover {
+    color: var(--color-secondary-light);
+}
+
