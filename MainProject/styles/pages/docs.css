@@ -1,0 +1,19 @@
+.download-button-container {
+    text-align: center;
+    margin: 2em 0;
+}
+
+.download-button {
+    display: inline-block;
+    padding: 12px 24px;
+    background-color: var(--color-primary);
+    color: var(--color-text-light);
+    text-decoration: none;
+    border-radius: var(--border-radius);
+    font-weight: var(--font-weight-bold);
+    transition: background-color var(--transition-speed) ease;
+}
+
+.download-button:hover {
+    background-color: var(--color-primary-light);
+}
