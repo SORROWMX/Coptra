@@ -17,3 +17,189 @@
 .download-button:hover {
     background-color: var(--color-primary-light);
 }
+
+body {
+	display: flex;
+	flex-direction: column;
+	min-height: 100vh;
+    margin: 0;
+	padding: 0;
+	overflow-x: hidden; /* Предотвращаем горизонтальную прокрутку */
+	overflow-y: hidden;
+	padding-right: calc(100vw - 100%); /* Компенсация ширины скроллбара */
+}
+
+body.scroll-locked {
+    overflow: hidden;
+    /* Сохраняем ширину страницы при блокировке прокрутки */
+    padding-right: calc(100vw - 100%);
+}
+
+.content-wrapper {
+	display: flex; /* Для горизонтального расположения навигации и контента */
+}
+
+.page-container {
+    display: grid;
+    grid-template-columns: var(--sidebar-width) 1fr;
+    min-height: 100vh; /* Изменено с calc */
+    margin-top: var(--header-height);
+    position: relative;
+}
+
+/* Обновляем стили футера для страницы документации */
+.page-container + footer {
+    margin-left: var(--sidebar-width);
+    width: calc(100% - var(--sidebar-width));
+}
+
+/* Документация */
+.content-docs {
+	display: grid;
+	justify-items: center;
+	overflow-x: hidden;
+    width: 100%;
+    min-height: calc(100vh - var(--header-height));
+    position: relative;
+}
+
+.documentation {
+    max-width: 1400px;
+    padding: 0 10px;
+    margin: 0 auto;
+    line-height: 1.6;
+    font-size: 18px;
+    padding-left: 10px;
+    width: 100%; /* Добавляем width: 100% */
+    box-sizing: border-box; /* Добавляем box-sizing */
+    user-select: text !important; /* Принудительно разрешаем выделение */
+    -webkit-user-select: text !important;
+    -moz-user-select: text !important;
+    -ms-user-select: text !important;
+}
+
+.documentation h1:first-child {
+    font-size: var(--font-size-h1);
+    text-align: center;
+    margin-bottom: 0px;
+    width: 100%;
+    padding-top: 0px;
+    color: var(--color-primary);
+    border-bottom: 2px solid var(--color-primary);
+    padding: 0px; /* Для изменения Документация дрона Коптра */
+}
+
+.documentation h2 {
+    font-size: var(--font-size-h2);
+    color: var(--color-primary);
+    margin-top: 0px;
+    margin-bottom: 0px;
+    padding-bottom: 0px;
+    border-bottom: 1px solid var(--color-border);
+	text-align: center;
+}
+
+.documentation h3 {
+    font-size: var(--font-size-h3);
+    margin-top: 0px;
+    margin-bottom: 0px;
+	text-align: center;
+	padding-top: 20px;
+	font-weight: var(--font-weight-bold);
+}
+
+.documentation h4 {
+	font-size: var(--font-size-h4);
+	font-weight: var(--font-weight-medium);
+}
+
+.documentation-grid {
+    display: grid;
+    gap: 20px;
+    width: 100%;
+}
+
+.documentation ul {
+    padding-left: 20px; /* Уменьшаем отступ слева для списков */
+    margin: 10px 0;
+    list-style-position: inside; /* Маркеры списка внутри */
+    width: 100%;
+    box-sizing: border-box;
+}
+
+.documentation ul li {
+    margin-bottom: 8px;
+    line-height: 1.4;
+    padding-left: 5px;
+}
+
+/* Добавляем возможность выделения для всех элементов внутри документации */
+.documentation *,
+.documentation p,
+.documentation h1,
+.documentation h2,
+.documentation h3,
+.documentation h4,
+.documentation ul,
+.documentation li {
+    user-select: text !important;
+    -webkit-user-select: text !important;
+    -moz-user-select: text !important;
+    -ms-user-select: text !important;
+}
+
+[data-theme="dark"] .documentation a:not(.nav-button) {
+    color: var(--color-secondary);
+    transition: color var(--transition-speed) ease;
+}
+
+[data-theme="dark"] .documentation a:not(.nav-button):hover {
+    color: var(--color-secondary-light);
+}
+
+@media (max-width: 768px) {
+
+    .content-docs {
+        width: 100%;
+        padding: 0 15px;
+        box-sizing: border-box;
+        overflow-x: hidden; /* Предотвращаем горизонтальный скролл */
+    }
+
+    .documentation {
+        font-size: 16px;
+        width: 100%;
+        min-width: 0; /* Убираем минимальную ширину если она была */
+        overflow-x: hidden; /* Предотвращаем горизонтальный скролл */
+    }
+
+    .documentation h1:first-child {
+        font-size: var(--font-size-h3);
+        padding: 0;
+        width: 100%;
+    }
+
+    .documentation-grid {
+        width: 100%;
+        word-wrap: break-word; /* Для переноса длинных слов */
+    }
+
+    .documentation ul {
+        padding-left: 15px; /* Ещё меньше отступ для мобильных */
+    }
+    
+    .documentation ul li {
+        padding-left: 0;
+        text-align: left;
+    }
+
+    .page-container {
+        grid-template-columns: 1fr;
+        margin-top: var(--header-height);
+    }
+
+    .page-container + footer {
+        margin-left: 0;
+        width: 100%;
+    }
+}
