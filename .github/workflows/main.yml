@@ -21,4 +21,4 @@ jobs:
           username: ${{ secrets.FTP_USERNAME }}
           password: ${{ secrets.FTP_PASSWORD }}
           local-dir: "./"
-          server-dir: "/domains/coptra.x10.mx/public_html/${{ github.ref_name }}/"
+          server-dir: "/domains/coptra.x10.mx/public_html/
