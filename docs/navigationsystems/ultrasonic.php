@@ -3,7 +3,7 @@ $isAjax = isset($_SERVER['HTTP_X_REQUESTED_WITH']) && strtolower($_SERVER['HTTP_
 $root_path = '';
 $project_folder = '';
 if(isset($_SERVER['REQUEST_URI']) && strpos($_SERVER['REQUEST_URI'], $project_folder) !== false) {
-    $root_path = '/';
+    $root_path = '/docs/';
 }
 if ($isAjax) {
     // Если это AJAX-запрос, возвращаем только содержимое документации
