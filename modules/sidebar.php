@@ -26,7 +26,7 @@ if (!empty($root_path)) {
 
 // Если мы на продакшен сервере, добавляем папку проекта
 if (!$is_local) {
-    $root_path = '/' . $project_folder . '/';
+    $root_path = '/';
 }
 ?>
 <aside class="sidebar">
