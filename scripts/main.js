@@ -34,97 +34,48 @@ import { GoalsAnimationModule } from './modules/animations/goals.js';
 // Импорт дополнительных модулей
 import { ParticlesModule } from './modules/particles.js';
 import { Error404Module } from './modules/error404.js';
-import { SearchModule } from './modules/search.js';
-
-// Функция для проверки и инициализации модуля
-const initializeModule = async (module, moduleName) => {
-    try {
-        if (module && typeof module.init === 'function') {
-            console.log(`Инициализация ${moduleName}...`);
-            await module.init();
-            console.log(`${moduleName} успешно инициализирован`);
-        } else {
-            console.warn(`${moduleName} не найден или не имеет метода init`);
-        }
-    } catch (error) {
-        console.error(`Ошибка при инициализации ${moduleName}:`, error);
-    }
-};
 
 // Инициализация при загрузке DOM
-document.addEventListener('DOMContentLoaded', async () => {
-    console.log('DOM загружен, начинаем инициализацию модулей...');
+document.addEventListener('DOMContentLoaded', () => {
+    // Инициализация утилит и базовых модулей
+    PreloaderModule.init();
+    LazyLoadingModule.init();
+    
+    // Инициализация основных модулей
+    ThemeModule.init();
+    HeaderModule.init();
+    MobileMenuModule.init();
+    NavigationModule.init();
+    ScrollProgressModule.init();
+    ScrollToTopModule.init();
+    AboutSectionModule.init();
+    TestimonialsModule.init();
+    FormModule.init();
+    MapModule.init();
+    SidebarModule.init();
+    ApplicationsModule.init();
+    HeroMapModule.init();
+    
+    // Инициализация модулей анимаций
+    HeroAnimationModule.init();
+    AboutAnimationModule.init();
+    ProductsAnimationModule.init();
+    AdvantagesAnimationModule.init();
+    NewsAnimationModule.init();
+    PartnersAnimationModule.init();
+    FAQAnimationModule.init();
+    TelegramAnimationModule.init();
+    ContactAnimationModule.init();
+    GoalsAnimationModule.init();
+    
+    // Инициализация дополнительных модулей
+    ParticlesModule.init();
+    Error404Module.init();
 
-    try {
-        // Инициализация утилит и базовых модулей
-        await initializeModule(PreloaderModule, 'PreloaderModule');
-        await initializeModule(LazyLoadingModule, 'LazyLoadingModule');
-        
-        // Инициализация поискового модуля первым
-        await initializeModule(SearchModule, 'SearchModule');
-        
-        // Инициализация основных модулей
-        const mainModules = [
-            [ThemeModule, 'ThemeModule'],
-            [HeaderModule, 'HeaderModule'],
-            [MobileMenuModule, 'MobileMenuModule'],
-            [NavigationModule, 'NavigationModule'],
-            [ScrollProgressModule, 'ScrollProgressModule'],
-            [ScrollToTopModule, 'ScrollToTopModule'],
-            [AboutSectionModule, 'AboutSectionModule'],
-            [TestimonialsModule, 'TestimonialsModule'],
-            [FormModule, 'FormModule'],
-            [MapModule, 'MapModule'],
-            [SidebarModule, 'SidebarModule'],
-            [ApplicationsModule, 'ApplicationsModule'],
-            [HeroMapModule, 'HeroMapModule']
-        ];
-
-        for (const [module, name] of mainModules) {
-            await initializeModule(module, name);
-        }
-        
-        // Инициализация модулей анимаций
-        const animationModules = [
-            [HeroAnimationModule, 'HeroAnimationModule'],
-            [AboutAnimationModule, 'AboutAnimationModule'],
-            [ProductsAnimationModule, 'ProductsAnimationModule'],
-            [AdvantagesAnimationModule, 'AdvantagesAnimationModule'],
-            [NewsAnimationModule, 'NewsAnimationModule'],
-            [PartnersAnimationModule, 'PartnersAnimationModule'],
-            [FAQAnimationModule, 'FAQAnimationModule'],
-            [TelegramAnimationModule, 'TelegramAnimationModule'],
-            [ContactAnimationModule, 'ContactAnimationModule'],
-            [GoalsAnimationModule, 'GoalsAnimationModule']
-        ];
-
-        for (const [module, name] of animationModules) {
-            await initializeModule(module, name);
-        }
-        
-        // Инициализация дополнительных модулей
-        await initializeModule(ParticlesModule, 'ParticlesModule');
-        await initializeModule(Error404Module, 'Error404Module');
-
-        // Установка текущего года
-        const currentYear = document.querySelector('#current-year');
-        if (currentYear) {
-            currentYear.textContent = new Date().getFullYear();
-            console.log('Текущий год успешно установлен');
-        }
-
-        console.log('Все модули успешно инициализированы');
-    } catch (error) {
-        console.error('Критическая ошибка при инициализации модулей:', error);
+    // Установка текущего года
+    const currentYear = document.querySelector('#current-year');
+    if (currentYear) {
+        currentYear.textContent = new Date().getFullYear();
     }
-});
-
-// Обработка ошибок
-window.addEventListener('error', (event) => {
-    console.error('Глобальная ошибка:', event.error);
-});
-
-window.addEventListener('unhandledrejection', (event) => {
-    console.error('Необработанное отклонение промиса:', event.reason);
 });
 
