@@ -43,10 +43,18 @@ export const SidebarModule = {
         });
 
         // Предотвращаем стандартное поведение браузера при навигации
-        window.addEventListener('popstate', (e) => {
-            if (this.isLoading || this.isScrolling) {
-                e.preventDefault();
-                return false;
+        window.addEventListener('popstate', async (e) => {
+            e.preventDefault();
+            
+            if (this.isLoading || this.isScrolling) return;
+
+            const currentPath = window.location.pathname;
+            if (currentPath) {
+                try {
+                    await this.loadContent(currentPath);
+                } catch (error) {
+                    console.error('Error handling popstate:', error);
+                }
             }
         });
 
@@ -58,7 +66,7 @@ export const SidebarModule = {
     },
 
     setupEventListeners() {
-        // Обработчик дл�� мобильной кнопки
+        // Обработчик дл мобильной кнопки
         this.mobileMenuBtn.addEventListener('click', () => {
             this.sidebar.classList.toggle('active');
             this.mobileMenuBtn.classList.toggle('active');
