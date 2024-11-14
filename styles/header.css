@@ -1253,6 +1253,7 @@ header.scrolled .theme-toggle i {
 }
 
 header.scrolled .login-button {
-    padding: 7px 12px;
+    width: 40px;
+    height: 40px;
     font-size: calc(var(--font-size-base) - 2px);
 }

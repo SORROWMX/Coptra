@@ -468,6 +468,7 @@
 
     .header-actions-mobile {
         display: flex;
+        align-items: center;
         gap: var(--spacing-small);
         position: absolute;
         right: 60px;
