@@ -226,7 +226,7 @@
     }
     
     .sidebar {
-        background-color: var(--color-background);
+        background-color: var(--color-background)!important;
         z-index: 1000;
         transition: left 0.3s ease;
         padding-top: calc(var(--header-height-scrolled) + 20px);
