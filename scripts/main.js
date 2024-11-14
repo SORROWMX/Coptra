@@ -110,7 +110,7 @@ document.addEventListener('DOMContentLoaded', async () => {
         const currentYear = document.querySelector('#current-year');
         if (currentYear) {
             currentYear.textContent = new Date().getFullYear();
-            console.log('Текущий год успешно установлен');
+            console.log('Текущий гойда успешно установлен');
         }
 
         console.log('Все модули успешно инициализированы');
