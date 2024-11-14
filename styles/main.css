@@ -19,6 +19,7 @@
 @import 'components/preloader.css';
 @import 'pages/contacts.css';
 @import 'pages/docs.css';
+@import 'components/search.css';
 
 
 /* Стили для скроллбара WebKit (Chrome, Safari, Opera) */
