@@ -55,8 +55,8 @@ if ($isAjax) {
                 <div class="page-navigation">
                     <?php
                     // Определяем предыдущую и следующую страницы
-                    $prev_page = $root_path . 'Programming/trik-studio.php'; // Путь к предыдущей странице
-                    $next_page = $root_path . 'additionalmaterials/database.php'; // Путь к следующей странице
+                    $prev_page = 'docs/Programming/trik-studio.php'; // Путь к предыдущей странице
+                    $next_page = 'docs/additionalmaterials/database.php'; // Путь к следующей странице
                     
                     if ($prev_page): ?>
                         <a href="<?php echo $prev_page; ?>" class="nav-button prev" data-ajax-load>
@@ -127,8 +127,8 @@ if ($isAjax) {
                     <div class="page-navigation">
                         <?php
                         // Определяем предыдущую и следующую страницы
-                        $prev_page = $root_path . 'Programming/trik-studio.php'; // Путь к предыдущей странице
-                        $next_page = $root_path . 'additionalmaterials/database.php'; // Путь к следующей странице
+                        $prev_page = 'docs/Programming/trik-studio.php'; // Путь к предыдущей странице
+                        $next_page = 'docs/additionalmaterials/database.php'; // Путь к следующей странице
                         
                         if ($prev_page): ?>
                             <a href="<?php echo $prev_page; ?>" class="nav-button prev" data-ajax-load>

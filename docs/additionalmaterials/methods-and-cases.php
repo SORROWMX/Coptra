@@ -47,7 +47,7 @@ if ($isAjax) {
                 <div class="page-navigation">
                     <?php
                     // Определяем только предыдущую страницу
-                    $prev_page = $root_path . 'additionalmaterials/downloads.php';
+                    $prev_page = 'docs/additionalmaterials/downloads.php';
                     
                     if ($prev_page): ?>
                         <a href="<?php echo $prev_page; ?>" class="nav-button prev" data-ajax-load>
@@ -104,7 +104,7 @@ if ($isAjax) {
                     <div class="page-navigation">
                         <?php
                         // Определяем только предыдущую страницу
-                        $prev_page = $root_path . 'additionalmaterials/downloads.php';
+                        $prev_page = 'docs/additionalmaterials/downloads.php';
                         
                         if ($prev_page): ?>
                             <a href="<?php echo $prev_page; ?>" class="nav-button prev" data-ajax-load>
