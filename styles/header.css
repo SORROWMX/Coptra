@@ -1253,7 +1253,36 @@ header.scrolled .theme-toggle i {
 }
 
 header.scrolled .login-button {
-    width: 40px;
+    padding: 8px 16px; /* Уменьшаем отступы, но сохраняем пропорции */
+    min-width: auto; /* Убираем минимальную ширину */
     height: 40px;
-    font-size: calc(var(--font-size-base) - 2px);
+    font-size: calc(var(--font-size-base) - 1px);
+    transition: all var(--transition-speed) ease;
+}
+
+/* Корректируем отображение иконки в кнопке при прокрутке */
+header.scrolled .login-button i {
+    font-size: 0.9em; /* Немного уменьшаем размер иконки */
+}
+
+/* Стили для мобильной версии */
+@media screen and (max-width: 768px) {
+    header.scrolled .login-button {
+        width: 40px; /* Фиксированная ширина для мобильной версии */
+        padding: 8px;
+    }
+
+    header.scrolled .login-button span {
+        display: none; /* Скрываем текст на мобильных устройствах */
+    }
+
+    header.scrolled .login-button i {
+        margin-right: 0; /* Убираем отступ у иконки */
+    }
+}
+
+/* Стили для темной темы */
+[data-theme="dark"] header.scrolled .login-button {
+    background-color: var(--color-background-dark);
+    color: var(--color-text-light);
 }
