@@ -141,9 +141,8 @@ export const SidebarModule = {
 
             e.preventDefault();
             e.stopPropagation();
-            e.stopImmediatePropagation(); // Добавляем остановку всех обработчиков
+            e.stopImmediatePropagation();
 
-            // Очищаем предыдущий таймаут
             if (navigationTimeout) {
                 clearTimeout(navigationTimeout);
             }
@@ -151,11 +150,12 @@ export const SidebarModule = {
             const url = link.getAttribute('href');
             if (!url) return;
 
-            // Устанавливаем новый таймаут для навигации
+            // Нормализуем URL перед загрузкой
+            const normalizedUrl = url.replace(/^\/+|\/+$/g, '').replace(/\/+/g, '/');
+            
             navigationTimeout = setTimeout(async () => {
                 try {
-                    await this.loadContent(url);
-                    window.history.pushState({ path: url }, '', url);
+                    await this.loadContent(normalizedUrl);
                 } catch (error) {
                     console.error('Error loading content:', error);
                 }
@@ -190,9 +190,13 @@ export const SidebarModule = {
         this.lastLoadTime = now;
 
         try {
+            // Нормализуем URL, убирая дублирующиеся пути
+            const normalizedUrl = url.replace(/^\/+|\/+$/g, '').replace(/\/+/g, '/');
+            const cleanUrl = '/' + normalizedUrl;
+            
             // Добавляем случайный параметр для предотвращения кэширования
             const cacheBuster = `?_=${Date.now()}`;
-            const response = await fetch(url + cacheBuster, {
+            const response = await fetch(cleanUrl + cacheBuster, {
                 headers: {
                     'X-Requested-With': 'XMLHttpRequest',
                     'Cache-Control': 'no-cache'
@@ -207,13 +211,16 @@ export const SidebarModule = {
 
             const newContent = tempDiv.querySelector('.documentation-content');
             if (newContent && this.contentArea) {
+                // Обновляем URL в истории браузера с нормализованным путём
+                window.history.pushState({ path: cleanUrl }, '', cleanUrl);
+                
                 // Блокируем прокрутку перед обновлением контента
                 document.body.style.overflow = 'hidden';
                 this.isScrolling = true;
 
                 // Обновляем контент и мгновенно прокручиваем вверх
                 this.contentArea.innerHTML = newContent.innerHTML;
-                this.updateActiveMenuItem(url);
+                this.updateActiveMenuItem(cleanUrl);
                 window.scrollTo(0, 0);
 
                 // Небольшая задержка перед разблокировкой прокрутки
