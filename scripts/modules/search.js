@@ -76,6 +76,25 @@ export const SearchModule = {
         }
 
         try {
+            // Прокручиваем страницу вверх
+            window.scrollTo({
+                top: 0,
+                behavior: 'smooth'
+            });
+
+            // Закрываем мобильное меню, если оно открыто
+            const sidebar = document.querySelector('.sidebar');
+            const mobileMenuBtn = document.querySelector('.mobile-menu-btn');
+            const body = document.body;
+
+            if (window.innerWidth <= 768) {
+                if (sidebar?.classList.contains('active')) {
+                    sidebar.classList.remove('active');
+                    mobileMenuBtn?.classList.remove('active');
+                    body.classList.remove('sidebar-open');
+                }
+            }
+
             const results = await this.searchInContent(query);
             console.log('Результаты поиска:', results);
             this.displayResults(results, query);
