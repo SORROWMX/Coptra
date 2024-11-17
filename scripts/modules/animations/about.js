@@ -3,28 +3,44 @@ export const AboutAnimationModule = {
         const aboutSection = document.querySelector('.about');
         if (!aboutSection) return;
 
+        // Удаляем все существующие классы animate и очищаем стили
+        aboutSection.querySelectorAll('.animate').forEach(el => {
+            el.classList.remove('animate');
+            el.style.animationDelay = '';
+        });
+
         const title = aboutSection.querySelector('h2');
         const description = aboutSection.querySelector('.company-description');
-        const otherElements = aboutSection.querySelectorAll('.timeline-item, .goals-section');
+        const timelineItems = aboutSection.querySelectorAll('.timeline-item:not(.animated)');
         
-        // Анимируем заголовок и описание сразу после hero секции
-        setTimeout(() => {
+        // Анимируем заголовок и описание
+        requestAnimationFrame(() => {
             if (title) title.classList.add('animate');
             
-            setTimeout(() => {
-                if (description) description.classList.add('animate');
-            }, 200);
-        }, 600); // Задержка после анимации hero секции
+            if (description) {
+                setTimeout(() => {
+                    description.classList.add('animate');
+                }, 200);
+            }
+        });
         
-        // Остальные элементы анимируем при скролле
+        // Один observer для timeline элементов
         const observer = new IntersectionObserver((entries) => {
             entries.forEach(entry => {
                 if (entry.isIntersecting) {
-                    entry.target.classList.add('animate');
+                    const element = entry.target;
                     
-                    if (entry.target.classList.contains('timeline-item')) {
-                        const index = Array.from(entry.target.parentNode.children).indexOf(entry.target);
-                        entry.target.style.animationDelay = `${0.1 * index}s`;
+                    // Проверяем, не была ли уже применена анимация
+                    if (!element.hasAttribute('data-animated')) {
+                        element.setAttribute('data-animated', 'true');
+                        element.classList.add('animate');
+                        
+                        if (element.classList.contains('timeline-item')) {
+                            const index = Array.from(timelineItems).indexOf(element);
+                            element.style.animationDelay = `${0.1 * index}s`;
+                        }
+                        
+                        observer.unobserve(element);
                     }
                 }
             });
@@ -33,6 +49,11 @@ export const AboutAnimationModule = {
             rootMargin: '0px 0px -50px 0px'
         });
 
-        otherElements.forEach(element => observer.observe(element));
+        // Наблюдаем только за элементами, которые еще не были анимированы
+        timelineItems.forEach(item => {
+            if (!item.hasAttribute('data-animated')) {
+                observer.observe(item);
+            }
+        });
     }
 };

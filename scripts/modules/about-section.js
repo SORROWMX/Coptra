@@ -4,7 +4,6 @@ import { CONSTANTS } from './constants.js';
 export const AboutSectionModule = {
     init() {
         this.initParallax();
-        this.initAnimations();
         this.initFactCounters();
         this.initImageZoom();
     },
@@ -16,21 +15,6 @@ export const AboutSectionModule = {
                 parallaxBg.style.transform = `translateY(${window.pageYOffset * 0.5}px)`;
             });
         }
-    },
-
-    initAnimations() {
-        const observer = utils.createIntersectionObserver(entries => {
-            entries.forEach(entry => {
-                if (entry.isIntersecting) {
-                    entry.target.classList.add('visible');
-                    observer.unobserve(entry.target);
-                }
-            });
-        });
-
-        document.querySelectorAll('.section-transition').forEach(section => {
-            observer.observe(section);
-        });
     },
 
     initFactCounters() {
