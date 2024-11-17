@@ -40,30 +40,20 @@ import { SearchModule } from './modules/search.js';
 const initializeModule = async (module, moduleName) => {
     try {
         if (module && typeof module.init === 'function') {
-            console.log(`Инициализация ${moduleName}...`);
             await module.init();
-            console.log(`${moduleName} успешно инициализирован`);
-        } else {
-            console.warn(`${moduleName} не найден или не имеет метода init`);
         }
     } catch (error) {
-        console.error(`Ошибка при инициализации ${moduleName}:`, error);
+        console.error(`Error in ${moduleName}:`, error);
     }
 };
 
 // Инициализация при загрузке DOM
 document.addEventListener('DOMContentLoaded', async () => {
-    console.log('DOM загружен, начинаем инициализацию модулей...');
-
     try {
-        // Инициализация утилит и базовых модулей
         await initializeModule(PreloaderModule, 'PreloaderModule');
         await initializeModule(LazyLoadingModule, 'LazyLoadingModule');
-        
-        // Инициализация поискового модуля первым
         await initializeModule(SearchModule, 'SearchModule');
         
-        // Инициализация основных модулей
         const mainModules = [
             [ThemeModule, 'ThemeModule'],
             [HeaderModule, 'HeaderModule'],
@@ -84,7 +74,6 @@ document.addEventListener('DOMContentLoaded', async () => {
             await initializeModule(module, name);
         }
         
-        // Инициализация модулей анимаций
         const animationModules = [
             [HeroAnimationModule, 'HeroAnimationModule'],
             [AboutAnimationModule, 'AboutAnimationModule'],
@@ -102,27 +91,18 @@ document.addEventListener('DOMContentLoaded', async () => {
             await initializeModule(module, name);
         }
         
-        // Инициализация дополнительных модулей
         await initializeModule(ParticlesModule, 'ParticlesModule');
         await initializeModule(Error404Module, 'Error404Module');
 
-        // Установка текущего года
         const currentYear = document.querySelector('#current-year');
         if (currentYear) {
             currentYear.textContent = new Date().getFullYear();
-            console.log('Текущий гойда успешно установлен');
         }
-
-        console.log('Все модули успешно инициализированы');
     } catch (error) {
-        console.error('Критическая ошибка при инициализации модулей:', error);
+        console.error('Critical initialization error:', error);
     }
 });
 
-// Обработка ошибок
-window.addEventListener('error', (event) => {
-    console.error('Глобальная ошибка:', event.error);
-});
 
 window.addEventListener('unhandledrejection', (event) => {
     console.error('Необработанное отклонение промиса:', event.reason);

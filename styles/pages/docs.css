@@ -26,13 +26,10 @@ body {
 	padding: 0;
 	overflow-x: hidden; /* Предотвращаем горизонтальную прокрутку */
 	overflow-y: hidden;
-	padding-right: calc(100vw - 100%); /* Компенсация ширины скроллбара */
 }
 
 body.scroll-locked {
     overflow: hidden;
-    /* Сохраняем ширину страницы при блокировке прокрутки */
-    padding-right: calc(100vw - 100%);
 }
 
 .content-wrapper {

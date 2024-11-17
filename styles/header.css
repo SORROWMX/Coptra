@@ -298,10 +298,6 @@ header.scrolled nav ul li a {
     animation: fadeInMenu 0.35s cubic-bezier(0.4, 0, 0.2, 1) forwards;
 }
 
-.dropdown-menu li {
-    background-color: transparent !important; /* Принудительно делаем фон прозрачным */
-}
-
 /* Для подменю первого уровня */
 .dropdown-submenu:hover > a {
     color: var(--color-primary);
@@ -633,6 +629,22 @@ header.scrolled nav ul li a {
     }
 }
 
+.dropdown-menu {
+    position: absolute;
+    top: 100%;
+    left: 0;
+    min-width: 200px;
+    background: var(--color-background);
+    box-shadow: 0 2px 5px rgba(0,0,0,0.1);
+    opacity: 0;
+    visibility: hidden;
+    transform: translateY(-5px);
+    transition: all 0.3s ease;
+    display: flex;
+    flex-direction: column; /* Принудительно устанавливаем вертикальное направление */
+    padding: var(--spacing-small) 0;
+}
+
 /* Стили для активного состояния */
 .dropdown.active .dropdown-menu {
     display: block !important; /* Принудительно показываем */
@@ -652,8 +664,8 @@ header.scrolled nav ul li a {
 /* Стили для пунктов меню */
 .dropdown-menu li {
     margin: 0;
-    width: 100%; /* Растягиваем на всю ширину */
-    background-color: var(--color-background);
+    width: 100%;
+    background-color: transparent;
 }
 
 /* Обновляем анимацию для выпадающего меню */

@@ -7,14 +7,22 @@ export const SearchModule = {
     keyPressHandler: null,
     isInitialized: false,
 
+    isDocumentationPage() {
+        return (
+            window.location.pathname.includes('/docs/') || 
+            document.querySelector('.documentation-content') !== null
+        );
+    },
+
     async init() {
-        console.log('Инициализация SearchModule начата');
-        
+        if (!this.isDocumentationPage()) {
+            return;
+        }
+
         this.searchInput = document.getElementById('docs-search');
         this.searchButton = document.getElementById('search-button');
         
         if (!this.searchInput || !this.searchButton) {
-            console.warn('Не найдены элементы поиска');
             return;
         }
 
@@ -32,42 +40,26 @@ export const SearchModule = {
         }
 
         this.isInitialized = true;
-        console.log('SearchModule успешно инициализирован');
     },
 
     addEventListeners() {
-        console.log('Добавление обработчиков событий');
-        
-        if (this.searchHandler) {
-            console.log('Удаление старого обработчика клика');
-            this.searchButton.removeEventListener('click', this.searchHandler);
-        }
-        if (this.keyPressHandler) {
-            console.log('Удаление старого обработчика клавиатуры');
-            this.searchInput.removeEventListener('keypress', this.keyPressHandler);
-        }
-
         this.searchHandler = (e) => {
             e.preventDefault();
-            console.log('Клик по кнопке поиска');
             this.performSearch();
         };
         
         this.keyPressHandler = (e) => {
             if (e.key === 'Enter') {
                 e.preventDefault();
-                console.log('Нажат Enter в поле поиска');
                 this.performSearch();
             }
         };
 
         this.searchButton.addEventListener('click', this.searchHandler);
         this.searchInput.addEventListener('keypress', this.keyPressHandler);
-        console.log('Обработчики событий добавлены');
     },
 
     async performSearch() {
-        console.log('Выполняется поиск');
         const query = this.searchInput.value.trim();
         
         if (query.length < 2) {
@@ -96,10 +88,8 @@ export const SearchModule = {
             }
 
             const results = await this.searchInContent(query);
-            console.log('Результаты поиска:', results);
             this.displayResults(results, query);
         } catch (error) {
-            console.error('Ошибка при выполнении поиска:', error);
             alert('Произошла ошибка при поиске');
         }
     },
@@ -107,49 +97,39 @@ export const SearchModule = {
     async loadSearchIndex() {
         try {
             const response = await fetch('/api/search-index.php');
-            console.log('Ответ от API:', response);
             
             if (!response.ok) {
                 throw new Error(`HTTP error! status: ${response.status}`);
             }
             
             const text = await response.text();
-            console.log('Полученные данные:', text);
             
             try {
                 const data = JSON.parse(text);
                 
                 if (data.error) {
-                    console.error('Ошибка API:', data.error);
                     console.log('Путь к docs:', data.path);
                     console.log('Document root:', data.root);
                     throw new Error(data.error);
                 }
                 
                 this.searchIndex = data;
-                console.log('Индекс поиска загружен:', this.searchIndex);
             } catch (e) {
                 console.error('Ошибка парсинга JSON:', e);
                 throw e;
             }
         } catch (error) {
-            console.error('Ошибка загрузки индекса поиска:', error);
             this.searchIndex = [];
         }
     },
 
     searchInContent(query) {
-        console.log('Поиск по запросу:', query);
-        console.log('Текущий индекс:', this.searchIndex);
-        
         if (!this.searchIndex || !Array.isArray(this.searchIndex)) {
-            console.warn('Индекс поиска пуст или некорректен');
             return [];
         }
 
         const results = this.searchIndex.filter(item => {
             if (!item || typeof item.title !== 'string' || typeof item.content !== 'string') {
-                console.warn('Некорректный элемент в индексе:', item);
                 return false;
             }
             
@@ -158,18 +138,14 @@ export const SearchModule = {
             return titleMatch || contentMatch;
         });
 
-        console.log('Найдено результатов:', results.length);
         return results;
     },
 
     displayResults(results, query) {
-        console.log('Отображение результатов поиска');
-        
         let contentArea = document.querySelector('.documentation-content');
         if (!contentArea) {
             contentArea = document.querySelector('.content-docs');
             if (!contentArea) {
-                console.error('Не найден контейнер для отображения результатов');
                 return;
             }
         }
@@ -370,15 +346,11 @@ export const SearchModule = {
             item.addEventListener('click', () => {
                 const url = item.dataset.url;
                 if (!url) {
-                    console.warn('URL не найден для элемента результата');
                     return;
                 }
 
-                console.log('Исходный URL:', url);
-                
                 // Убираем дублирование /docs/ если оно есть
                 const cleanPath = url.replace(/\/docs\/docs\//, '/docs/');
-                console.log('Очищенный путь:', cleanPath);
                 
                 // Ищем соответствующую ссылку в сайдбаре
                 const sidebarLinks = document.querySelectorAll('.sidebar a[data-ajax-load]');
@@ -389,42 +361,13 @@ export const SearchModule = {
                     });
 
                 if (matchingLink) {
-                    console.log('Найдена соответствующая ссылка в меню:', matchingLink);
                     matchingLink.click();
                 } else {
-                    console.log('Прямой переход по относительному пути');
                     const baseUrl = window.location.origin;
                     const fullUrl = baseUrl + cleanPath;
-                    console.log('Полный URL для перехода:', fullUrl);
                     window.location.href = fullUrl;
                 }
             });
         });
     }
-};
-
-// Инициализация
-document.addEventListener('DOMContentLoaded', () => {
-    console.log('DOMContentLoaded: Первичная инициализация SearchModule');
-    SearchModule.init();
-});
-
-// MutationObserver для отслеживания изменений в DOM
-const observer = new MutationObserver((mutations) => {
-    for (const mutation of mutations) {
-        if (mutation.type === 'childList' && mutation.addedNodes.length > 0) {
-            const searchInput = document.getElementById('docs-search');
-            const searchButton = document.getElementById('search-button');
-            if (searchInput && searchButton) {
-                console.log('Обнаружены элементы поиска, переинициализация...');
-                SearchModule.init();
-                break;
-            }
-        }
-    }
-});
-
-observer.observe(document.body, {
-    childList: true,
-    subtree: true
-}); 
+}; 
