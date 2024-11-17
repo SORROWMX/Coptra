@@ -184,21 +184,8 @@
 }
 
 .timeline-item.animate {
-    animation: none;
-}
-
-.timeline-item.animate:nth-child(odd) {
-    animation: slideInFromLeft 0.8s ease-out forwards;
-}
-
-.timeline-item.animate:nth-child(even) {
-    animation: slideInFromRight 0.8s ease-out forwards;
-}
-
-.timeline-item[data-animated="true"] {
-    animation: none !important;
     opacity: 1;
-    transform: none;
+    transform: translateX(0);
 }
 
 .timeline-item::before {
@@ -385,6 +372,14 @@
 
 .company-description.animate {
     transition-delay: 0.2s;
+}
+
+.timeline-item.animate:nth-child(odd) {
+    animation: slideInFromLeft 0.8s ease-out forwards;
+}
+
+.timeline-item.animate:nth-child(even) {
+    animation: slideInFromRight 0.8s ease-out forwards;
 }
 
 .about h2::after {
