@@ -3,6 +3,8 @@ import { CONSTANTS } from './constants.js';
 export const HeaderModule = {
     init() {
         const header = document.querySelector('header');
+        if (!header) return;
+
         const mobileMenuBtn = document.querySelector('.mobile-menu-btn');
         const mainNav = document.querySelector('.main-nav');
 
@@ -82,4 +84,7 @@ export const HeaderModule = {
     }
 }; 
 
-HeaderModule.init();
+// Инициализация только после загрузки DOM
+document.addEventListener('DOMContentLoaded', () => {
+    HeaderModule.init();
+});

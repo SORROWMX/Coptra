@@ -1,6 +1,9 @@
 export const Error404Module = {
     init() {
         if (typeof particlesJS === 'undefined') return;
+        
+        const particlesContainer = document.getElementById('particles-js');
+        if (!particlesContainer) return;
 
         try {
             particlesJS('particles-js', {

@@ -30,6 +30,6 @@
         import { Error404Module } from '/scripts/modules/error404.js';
         Error404Module.init();
     </script>
-    <script src="/scripts/main.js"></script>
+    <script type="module" src="/scripts/main.js"></script>
 </body>
 </html> 
