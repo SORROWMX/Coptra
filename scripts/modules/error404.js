@@ -53,6 +53,9 @@ export const Error404Module = {
                             enable: true,
                             mode: 'grab'
                         },
+                        onclick: {
+                            enable: false
+                        },
                         resize: true
                     },
                     modes: {
