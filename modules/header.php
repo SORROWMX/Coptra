@@ -52,24 +52,31 @@ if (!$is_local) {
     <script type="text/javascript">
     ymaps.ready(init);
     function init(){
-        // Создание карты.
-        var myMap = new ymaps.Map("map", {
-            // Координаты центра карты.
-            // Порядок по умолчанию: «широта, долгота».
-            center: [52.976048, 36.069789], // Координаты Наугорского шоссе, 29
-            // Уровень масштабирования
-            zoom: 16
-        });
+        // Проверяем существование элемента карты
+        const mapElement = document.getElementById('map');
+        if (!mapElement) return;
 
-        // Создаем метку
-        var myPlacemark = new ymaps.Placemark([52.976048, 36.069789], {
-            balloonContent: 'КОПТРА<br>Наугорское шоссе, 29'
-        }, {
-            preset: 'islands#redDotIcon'
-        });
+        try {
+            var myMap = new ymaps.Map("map", {
+                // Координаты центра карты.
+                // Порядок по умолчанию: «широта, долгота».
+                center: [52.976048, 36.069789],
+                // Уровень масштабирования
+                zoom: 16
+            });
 
-        // Добавляем метку на карту
-        myMap.geoObjects.add(myPlacemark);
+            // Создаем метку
+            var myPlacemark = new ymaps.Placemark([52.976048, 36.069789], {
+                balloonContent: 'КОПТРА<br>Наугорское шоссе, 29'
+            }, {
+                preset: 'islands#redDotIcon'
+            });
+
+            // Добавляем метку на карту
+            myMap.geoObjects.add(myPlacemark);
+        } catch (error) {
+            console.error('Ошибка инициализации карты:', error);
+        }
     }
     </script>
     <script src="https://cdn.jsdelivr.net/particles.js/2.0.0/particles.min.js"></script>
