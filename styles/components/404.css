@@ -30,42 +30,51 @@ body {
 }
 
 .error-title {
-    position: absolute;
-    top: 25%;
-    left: 50%;
-    transform: translateX(-50%);
-    font-size: 2.5rem;
+    font-size: clamp(1.5rem, 3vw, 2.5rem);
     font-weight: var(--font-weight-bold);
+    color: var(--color-primary);
     background: linear-gradient(135deg, var(--color-primary) 0%, var(--color-secondary) 100%);
     background-clip: text;
     -webkit-background-clip: text;
     color: transparent;
     -webkit-text-fill-color: transparent;
     animation: glowText 2s ease-in-out infinite alternate;
-    z-index: 2;
-    margin: 0;
+    
+    margin-bottom: var(--spacing-xlarge);
     text-align: center;
 }
 
 .error-container {
     position: relative;
     z-index: 2;
-    text-align: center;
-    color: var(--color-text-light);
-    padding: var(--spacing-large);
-    max-width: 800px;
+    width: 100%;
+    max-width: 1000px;
+    margin: 0 auto;
+    padding: 0 var(--spacing-medium);
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+}
+
+.content-wrapper {
+    width: 100%;
     display: flex;
     align-items: center;
-    gap: var(--spacing-xlarge);
-    margin-top: 80px;
+    gap: clamp(2rem, 5vw, var(--spacing-xlarge));
+    padding: var(--spacing-medium) 0;
 }
 
 .error-content {
     flex: 1;
+    min-width: 300px;
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    text-align: center;
 }
 
 h1 {
-    font-size: 8rem;
+    font-size: clamp(4rem, 8vw, 8rem);
     margin: 0 0 var(--spacing-medium);
     background: linear-gradient(135deg, var(--color-primary) 0%, var(--color-secondary) 100%);
     background-clip: text;
@@ -74,12 +83,15 @@ h1 {
     -webkit-text-fill-color: transparent;
     animation: glowText 2s ease-in-out infinite alternate;
     line-height: 1;
+    text-align: center;
 }
 
 .error-description {
-    font-size: 1.2rem;
+    font-size: clamp(0.9rem, 1.5vw, 1.2rem);
     margin-bottom: var(--spacing-large);
-    opacity: 0.8;
+    color: var(--color-text-light);
+    text-align: center;
+    max-width: 500px;
 }
 
 .back-home {
@@ -93,6 +105,7 @@ h1 {
     transition: all 0.3s ease;
     position: relative;
     overflow: hidden;
+    text-align: center;
 }
 
 .back-home:hover {
@@ -122,8 +135,9 @@ h1 {
 
 .drone-animation {
     flex: 1;
-    max-width: 600px;
-    margin-left: 20px;
+    min-width: 280px;
+    max-width: 500px;
+    margin: 0 auto;
 }
 
 .drone-animation img {
@@ -168,45 +182,50 @@ h1 {
     }
 }
 
-@media (max-width: 1024px) {
-    .error-container {
-        max-width: 700px;
+@media (max-width: 968px) {
+    body {
+        position: static;
+        height: auto;
+        min-height: 100vh;
+        overflow-y: auto;
+        overflow-x: hidden;
         padding: var(--spacing-medium);
+    }
+
+    .error-container {
+        height: auto;
+        min-height: unset;
+        padding: 0;
+    }
+
+    .content-wrapper {
+        flex-direction: column;
         gap: var(--spacing-large);
     }
 
-    h1 {
-        font-size: 7rem;
+    .error-content {
+        width: 100%;
+        max-width: 500px;
     }
 
     .drone-animation {
-        max-width: 500px;
+        width: 100%;
+        max-width: 350px;
+        margin-bottom: var(--spacing-xlarge);
+    }
+
+    .drone-animation img {
+        animation: none;
     }
 }
 
 @media (max-width: 768px) {
+    body {
+        padding: var(--spacing-small);
+    }
+
     .error-title {
         font-size: 1.8rem;
-        top: 15%;
-        width: 90%;
-        text-align: center;
-    }
-
-    .error-container {
-        flex-direction: column;
-        margin-top: 120px;
-        gap: var(--spacing-xlarge);
-        padding: var(--spacing-medium);
-    }
-
-    .error-content {
-        order: 2;
-    }
-
-    .drone-animation {
-        order: 1;
-        max-width: 400px;
-        margin: 0 auto;
     }
 
     h1 {
@@ -215,34 +234,20 @@ h1 {
 
     .error-description {
         font-size: 1rem;
-        margin-bottom: var(--spacing-medium);
     }
 
-    .back-home {
-        width: 100%;
-        text-align: center;
-        padding: calc(var(--spacing-medium) * 1.2);
-    }
-
-    @keyframes floatingDrone {
-        0%, 100% {
-            transform: translate(0, 0) rotate(0deg) scale(1);
-        }
-        50% {
-            transform: translate(0, -20px) rotate(-2deg) scale(1.02);
-        }
+    .drone-animation {
+        max-width: 280px;
     }
 }
 
 @media (max-width: 480px) {
-    .error-title {
-        font-size: 1.5rem;
-        top: 10%;
+    .error-container {
+        padding: var(--spacing-medium) var(--spacing-small);
     }
 
-    .error-container {
-        margin-top: 100px;
-        padding: var(--spacing-small);
+    .error-title {
+        font-size: 1.5rem;
     }
 
     h1 {
@@ -261,8 +266,26 @@ h1 {
         padding: var(--spacing-medium);
         font-size: 0.9rem;
     }
+}
 
-    #particles-js {
-        opacity: 0.5;
+@media (max-height: 585px) {
+    html, body {
+        overflow: visible;
+        height: auto;
+        overflow-x: hidden;
+    }
+    
+    body {
+        position: static;
+        min-height: 100vh;
+        overflow-y: auto;
+        overflow-x: hidden;
+    }
+
+    .error-container {
+        height: auto;
+        min-height: unset;
+        padding: var(--spacing-medium) 0;
+        overflow-x: hidden;
     }
 } 

@@ -11,19 +11,25 @@
 <body>
     <div id="particles-js"></div>
     
-    <p class="error-title">Упс! Страница не найдена</p>
-
     <div class="error-container">
-        <div class="error-content">
-            <h1>404</h1>
-            <p class="error-description">Похоже, что страница, которую вы ищете, не существует или была перемещена.</p>
-            <a href="/" class="back-home">Вернуться на главную</a>
-        </div>
-        <div class="drone-animation">
-            <img src="/assets/images/drone-404.png" alt="Дрон">
+        <p class="error-title">Упс! Страница не найдена</p>
+        
+        <div class="content-wrapper">
+            <div class="error-content">
+                <h1>404</h1>
+                <p class="error-description">Похоже, что страница, которую вы ищете, не существует или была перемещена.</p>
+                <a href="/" class="back-home">Вернуться на главную</a>
+            </div>
+            <div class="drone-animation">
+                <img src="/assets/images/drone-404.png" alt="Дрон">
+            </div>
         </div>
     </div>
 
+    <script type="module">
+        import { Error404Module } from '/scripts/modules/error404.js';
+        Error404Module.init();
+    </script>
     <script src="/scripts/main.js"></script>
 </body>
 </html> 
