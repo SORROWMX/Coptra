@@ -54,13 +54,19 @@ document.addEventListener('DOMContentLoaded', async () => {
         await initializeModule(LazyLoadingModule, 'LazyLoadingModule');
         await initializeModule(SearchModule, 'SearchModule');
         
+        // Проверяем, не находимся ли мы на странице логина
+        const isLoginPage = document.querySelector('.login-page') !== null;
+        
         const mainModules = [
             [ThemeModule, 'ThemeModule'],
             [HeaderModule, 'HeaderModule'],
             [MobileMenuModule, 'MobileMenuModule'],
             [NavigationModule, 'NavigationModule'],
-            [ScrollProgressModule, 'ScrollProgressModule'],
-            [ScrollToTopModule, 'ScrollToTopModule'],
+            // Инициализируем эти модули только если это не страница логина
+            ...(!isLoginPage ? [
+                [ScrollProgressModule, 'ScrollProgressModule'],
+                [ScrollToTopModule, 'ScrollToTopModule'],
+            ] : []),
             [AboutSectionModule, 'AboutSectionModule'],
             [TestimonialsModule, 'TestimonialsModule'],
             [FormModule, 'FormModule'],
