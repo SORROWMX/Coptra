@@ -417,3 +417,42 @@ input[type="password"] {
             0 0 25px rgba(102, 51, 204, 0.3);
     }
 }
+
+/* Стили для кнопки возврата */
+.back-button {
+    position: absolute;
+    top: 0;
+    left: 0;
+    width: 45px;
+    height: 45px;
+    border: none;
+    border-radius: 0 0 var(--border-radius) 0;
+    background: var(--input-bg);
+    color: var(--input-icon);
+    cursor: pointer;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    transition: all 0.3s ease;
+    z-index: 10;
+    text-decoration: none;
+}
+
+.back-button:hover {
+    background: var(--color-primary);
+    color: var(--color-text-light);
+    transform: translateX(-3px);
+}
+
+.back-button i {
+    font-size: 1.2rem;
+    transition: transform 0.3s ease;
+}
+
+/* Адаптив для мобильных устройств */
+@media (max-width: 480px) {
+    .back-button {
+        width: 40px;
+        height: 40px;
+    }
+}

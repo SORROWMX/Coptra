@@ -48,6 +48,10 @@ if (isset($_SERVER["REQUEST_METHOD"]) && $_SERVER["REQUEST_METHOD"] == "POST") {
         <?php include 'modules/header.php'; ?>
         
             <form>
+            <a href="/" class="back-button">
+                        <i class="fa fa-arrow-left"></i>
+                    </a>
+                    
                 <div id="particles-js" class="particles-container"></div>
                 
                 <div class="con">
