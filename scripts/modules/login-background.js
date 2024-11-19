@@ -26,7 +26,7 @@ document.addEventListener('DOMContentLoaded', function() {
                 }
             },
             color: {
-                value: '#ff6b6b'
+                value: '#ffffff'
             },
             shape: {
                 type: "circle",
@@ -57,7 +57,7 @@ document.addEventListener('DOMContentLoaded', function() {
             line_linked: {
                 enable: true,
                 distance: 150,
-                color: '#ff6b6b',
+                color: '#dadada',
                 opacity: 0.3,
                 width: 1.2
             },
@@ -75,7 +75,7 @@ document.addEventListener('DOMContentLoaded', function() {
             detect_on: "canvas",
             events: {
                 onhover: {
-                    enable: true,
+                    enable: false,
                     mode: "repulse"
                 },
                 onclick: {

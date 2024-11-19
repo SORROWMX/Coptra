@@ -52,7 +52,6 @@ if (isset($_SERVER["REQUEST_METHOD"]) && $_SERVER["REQUEST_METHOD"] == "POST") {
                         <i class="fa fa-arrow-left"></i>
                     </a>
                     
-                <div id="particles-js" class="particles-container"></div>
                 
                 <div class="con">
                     <div class="form-header">
