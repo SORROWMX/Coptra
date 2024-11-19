@@ -99,7 +99,6 @@ if (isset($_SERVER["REQUEST_METHOD"]) && $_SERVER["REQUEST_METHOD"] == "POST") {
             </form>
         </div>
         
-        <?php include 'modules/footer.php'; ?>
     </div>
 
     <script type="module" src="scripts/main.js"></script>
