@@ -37,6 +37,7 @@ if (isset($_SERVER["REQUEST_METHOD"]) && $_SERVER["REQUEST_METHOD"] == "POST") {
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>Вход в систему</title>
+    <link rel="stylesheet" href="styles/main.css">
     <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/4.7.0/css/font-awesome.min.css">
     <link rel="stylesheet" href="styles/pages/login.css">
 </head>
@@ -46,7 +47,6 @@ if (isset($_SERVER["REQUEST_METHOD"]) && $_SERVER["REQUEST_METHOD"] == "POST") {
     <div class="login-page">
         <?php include 'modules/header.php'; ?>
         
-        <div class="overlay">
             <form>
                 <div id="particles-js" class="particles-container"></div>
                 
@@ -98,8 +98,9 @@ if (isset($_SERVER["REQUEST_METHOD"]) && $_SERVER["REQUEST_METHOD"] == "POST") {
         <?php include 'modules/footer.php'; ?>
     </div>
 
+    <script type="module" src="scripts/main.js"></script>
     <script type="module" src="scripts/modules/particles.js"></script>
-    <script src="scripts/modules/login.js"></script>
+    <script type="module" src="scripts/modules/login.js"></script>
     <script src="scripts/modules/login-background.js"></script>
 </body>
 </html>

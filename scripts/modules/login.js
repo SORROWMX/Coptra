@@ -1,3 +1,5 @@
+import { ThemeModule } from './theme.js';
+
 // Показать/скрыть пароль при клике на кнопку
 function show() {
     var p = document.getElementById('pwd');

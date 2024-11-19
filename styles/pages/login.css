@@ -1,9 +1,62 @@
-/* Стили для body */
+/* Базовые стили для светлой темы */
+:root[data-theme="light"] {
+    --login-bg-gradient-start: #f0f7ff;
+    --login-bg-gradient-end: #e6e6fa;
+    --form-bg-gradient-start: #ffffff;
+    --form-bg-gradient-end: #f8f9fa;
+    --form-text-color: #333333;
+    --form-shadow: rgba(0, 0, 0, 0.1);
+    --input-bg: rgba(255, 255, 255, 0.9);
+    --input-text: #333333;
+    --input-icon: #666666;
+    --particle-color: #4299e1;
+}
+
+/* Обновляем стили для формы в светлой теме */
+:root[data-theme="light"] form {
+    background: linear-gradient(135deg, var(--form-bg-gradient-start) 0%, var(--form-bg-gradient-end) 100%);
+}
+
+/* Обновляем цвет текста для светлой темы */
+:root[data-theme="light"] .form-header h2 {
+    color: var(--form-text-color);
+    text-shadow: none;
+}
+
+:root[data-theme="light"] .form-header p {
+    color: var(--form-text-color);
+}
+
+:root[data-theme="light"] input[type="text"],
+:root[data-theme="light"] input[type="password"] {
+    background-color: var(--input-bg);
+    color: var(--input-text);
+}
+
+:root[data-theme="light"] .input-group i {
+    color: var(--input-icon);
+}
+
+/* Стили для тёмной темы */
+:root[data-theme="dark"] {
+    --login-bg-gradient-start: #0066cc;
+    --login-bg-gradient-end: #6633cc;
+    --form-bg-gradient-start: #27272a;
+    --form-bg-gradient-end: #18181b;
+    --form-text-color: #ffffff;
+    --form-shadow: rgba(0, 0, 0, 0.2);
+    --input-bg: rgba(255, 255, 255, 0.1);
+    --input-text: #ffffff;
+    --input-icon: #ffffff;
+    --particle-color: #ff6b6b;
+}
+
+/* Основные стили с использованием переменных */
 body {
     margin: 0;
     padding: 0;
     min-height: 100vh;
-    background: linear-gradient(135deg, #0066cc 0%, #6633cc 55%);
+    background: linear-gradient(135deg, var(--login-bg-gradient-start) 0%, var(--login-bg-gradient-end) 55%);
     display: flex;
     align-items: center;
     justify-content: center;
@@ -32,9 +85,9 @@ body {
 form {
     width: 100%;
     max-width: 450px;
-    background: linear-gradient(135deg, #27272a 0%, #18181b 100%);
+    background: linear-gradient(135deg, var(--form-bg-gradient-start) 0%, var(--form-bg-gradient-end) 100%);
     border-radius: var(--border-radius);
-    box-shadow: 0 8px 20px rgba(0, 0, 0, 0.1);
+    box-shadow: 0 8px 20px var(--form-shadow);
     padding: 40px;
     position: relative;
     overflow: hidden;
@@ -72,22 +125,16 @@ form {
 }
 
 .form-header h2 {
-    font-size: clamp(2rem, 4vw, 2.5rem);
-    background: linear-gradient(135deg, #4299e1 0%, #805ad5 100%);
+    font-size: clamp(1.8rem, 3vw, 2.2rem);
+    background: linear-gradient(135deg, #0066cc 0%, #6633cc 100%);
     background-clip: text;
     -webkit-background-clip: text;
     color: transparent;
     -webkit-text-fill-color: transparent;
-    animation: glowText 2s ease-in-out infinite alternate;
     margin-bottom: 15px;
-    font-weight: 700;
-    letter-spacing: 1px;
-    text-shadow: 
-        0 0 20px rgba(66, 153, 225, 0.5),
-        0 0 40px rgba(66, 153, 225, 0.3);
-    display: flex;
-    flex-direction: column;
-    gap: 5px;
+    font-weight: 600;
+    letter-spacing: 0.5px;
+    animation: glowTextLight 3s ease-in-out infinite alternate;
 }
 
 .form-header h2::after {
@@ -100,7 +147,7 @@ form {
 }
 
 .form-header p {
-    color: var(--color-text-light);
+    color: var(--form-text-color);
     font-size: 16px;
     margin: 0;
     opacity: 0.8;
@@ -125,7 +172,7 @@ form {
     left: 15px;
     top: 50%;
     transform: translateY(-50%);
-    color: var(--color-text-secondary);
+    color: #0066cc;
     z-index: 1;
 }
 
@@ -134,25 +181,26 @@ form {
     width: 100%;
     height: 50px;
     padding: 0 45px;
-    font-size: 16px;
     font-family: var(--font-family-main);
-    color: #333333;
-    background: #fff;
-    border: none;
+    color: var(--input-text);
+    background: #ffffff;
+    border: 1px solid rgba(0, 102, 204, 0.2);
+    box-shadow: 0 2px 6px rgba(0, 102, 204, 0.1);
     border-radius: var(--border-radius);
     transition: all 0.3s ease;
     letter-spacing: normal;
 }
 
 .form-input::placeholder {
-    color: #666666;
+    color: var(--input-icon);
     font-size: 16px;
     font-family: var(--font-family-main);
 }
 
 .form-input:focus {
     outline: none;
-    box-shadow: 0 0 0 2px rgba(var(--color-primary-rgb), 0.1);
+    border-color: #0066cc;
+    box-shadow: 0 0 0 3px rgba(0, 102, 204, 0.15);
 }
 
 /* Иконка глаза */
@@ -162,7 +210,7 @@ form {
     top: 50%;
     transform: translateY(-50%);
     cursor: pointer;
-    color: var(--color-text-secondary);
+    color: #0066cc;
     transition: color 0.3s ease;
 }
 
@@ -173,27 +221,13 @@ form {
 /* Стили для поля пароля */
 input[type="password"] {
     color: #333333;
-    font-size: 16px;
     letter-spacing: normal;
     font-family: var(--font-family-main);
-}
-
-/* Добавляем стили для точек пароля */
-input[type="password"]::placeholder {
-    font-size: 16px; /* Размер плейсхолдера остается как был */
 }
 
 input[type="password"] {
     /* Специальный шрифт для точек пароля */
     font-family: Verdana, var(--font-family-main);
-    /* Увеличиваем размер точек */
-    font-size: 20px;
-}
-
-/* Когда поле в фокусе или заполнено */
-input[type="password"]:not(:placeholder-shown) {
-    font-size: 20px; /* Увеличенный размер для точек */
-    line-height: normal; /* Чтобы высота строки не менялась */
 }
 
 /* Кнопка входа */
@@ -201,7 +235,7 @@ input[type="password"]:not(:placeholder-shown) {
     width: 100%;
     height: 50px;
     margin-top: 10px;
-    background: linear-gradient(135deg, #0066cc 0%, #6633cc 100%);
+    background: linear-gradient(135deg, #0066cc 0%, #6633cc 90%);   
     color: var(--color-text-light);
     border: none;
     border-radius: var(--border-radius);
@@ -257,15 +291,13 @@ input[type="password"]:not(:placeholder-shown) {
 @keyframes glowText {
     from {
         text-shadow: 
-            0 0 20px rgba(66, 153, 225, 0.5),
-            0 0 40px rgba(66, 153, 225, 0.3),
-            0 0 60px rgba(66, 153, 225, 0.1);
+            0 0 10px rgba(66, 153, 225, 0.3),
+            0 0 20px rgba(66, 153, 225, 0.2);
     }
     to {
         text-shadow: 
-            0 0 30px rgba(66, 153, 225, 0.8),
-            0 0 50px rgba(66, 153, 225, 0.5),
-            0 0 70px rgba(66, 153, 225, 0.3);
+            0 0 15px rgba(66, 153, 225, 0.4),
+            0 0 25px rgba(66, 153, 225, 0.3);
     }
 }
 
@@ -279,3 +311,109 @@ input[type="password"]:not(:placeholder-shown) {
     z-index: 0;
 }
 
+/* Добавляем стили для тёмной темы */
+@media (prefers-color-scheme: dark) {
+    body {
+        background: linear-gradient(135deg, #0066cc 0%, #6633cc 55%);
+    }
+
+    form {
+        background: linear-gradient(135deg, #27272a 0%, #18181b 100%);
+    }
+
+    .form-header h2 {
+        text-shadow: 
+            0 0 10px rgba(66, 153, 225, 0.3),
+            0 0 20px rgba(66, 153, 225, 0.2);
+    }
+
+    .form-header p {
+        color: var(--color-text-light);
+    }
+
+    input[type="text"],
+    input[type="password"] {
+        background-color: rgba(255, 255, 255, 0.1);
+        color: var(--color-text-light);
+    }
+
+    .input-group i {
+        color: var(--color-text-light);
+    }
+
+    @keyframes glowText {
+        from {
+            text-shadow: 
+                0 0 10px rgba(66, 153, 225, 0.3),
+                0 0 20px rgba(66, 153, 225, 0.2);
+        }
+        to {
+            text-shadow: 
+                0 0 15px rgba(66, 153, 225, 0.4),
+                0 0 25px rgba(66, 153, 225, 0.3);
+        }
+    }
+}
+
+/* Анимация свечения для тёмной темы */
+:root[data-theme="dark"] .form-header h2 {
+    animation: glowText 3s ease-in-out infinite alternate;
+}
+
+/* Стили для кнопки переключения темы */
+.theme-toggle {
+    position: absolute;
+    top: 20px;
+    right: 20px;
+    width: 40px;
+    height: 40px;
+    border: none;
+    border-radius: 50%;
+    background: var(--input-bg);
+    color: var(--input-icon);
+    cursor: pointer;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    transition: all 0.3s ease;
+    z-index: 10;
+    pointer-events: auto;
+}
+
+.theme-toggle:hover {
+    background: var(--color-primary);
+    color: var(--color-text-light);
+}
+
+.theme-toggle i {
+    font-size: 1.2rem;
+    transition: transform 0.3s ease;
+}
+
+.theme-toggle:hover i {
+    transform: rotate(180deg);
+}
+
+/* Адаптив для мобильных устройств */
+@media (max-width: 480px) {
+    .theme-toggle {
+        top: 10px;
+        right: 10px;
+        width: 35px;
+        height: 35px;
+    }
+}
+
+/* Добавляем анимацию свечения для светлой темы */
+@keyframes glowTextLight {
+    from {
+        text-shadow: 
+            0 0 10px rgba(0, 102, 204, 0.3),
+            0 0 20px rgba(102, 51, 204, 0.2);
+    }
+    to {
+        text-shadow: 
+            0 0 15px rgba(0, 102, 204, 0.4),
+            0 0 25px rgba(102, 51, 204, 0.3);
+    }
+}
