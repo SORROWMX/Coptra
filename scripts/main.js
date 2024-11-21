@@ -33,7 +33,6 @@ import { GoalsAnimationModule } from './modules/animations/goals.js';
 
 // Импорт дополнительных модулей
 import { ParticlesModule } from './modules/particles.js';
-import { Error404Module } from './modules/error404.js';
 import { SearchModule } from './modules/search.js';
 
 // Функция для проверки и инициализации модуля
@@ -98,7 +97,6 @@ document.addEventListener('DOMContentLoaded', async () => {
         }
         
         await initializeModule(ParticlesModule, 'ParticlesModule');
-        await initializeModule(Error404Module, 'Error404Module');
 
         const currentYear = document.querySelector('#current-year');
         if (currentYear) {

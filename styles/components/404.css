@@ -1,17 +1,16 @@
 html, body {
     margin: 0;
     padding: 0;
-    width: 100%;
-    height: 100%;
+    width: 100vw;
+    height: 100vh;
     overflow: hidden;
+    position: fixed;
 }
 
 body {
-    min-height: 100vh;
     display: flex;
     justify-content: center;
     align-items: center;
-    font-family: var(--font-family-main);
     background: linear-gradient(135deg, #27272a 0%, #18181b 100%);
     position: fixed;
     top: 0;
@@ -20,10 +19,10 @@ body {
     bottom: 0;
 }
 
-#particles-js {
-    position: absolute;
-    width: 100%;
-    height: 100%;
+#particles-js-404 {
+    position: fixed;
+    width: 100vw;
+    height: 100vh;
     top: 0;
     left: 0;
     z-index: 1;
@@ -148,6 +147,14 @@ h1 {
     filter: drop-shadow(0 0 30px rgba(var(--color-primary-rgb), 0.3));
 }
 
+.particles-js-canvas-el {
+    position: fixed !important;
+    top: 0 !important;
+    left: 0 !important;
+    width: 100vw !important;
+    height: 100vh !important;
+}
+
 @keyframes floatingDrone {
     0% {
         transform: translate(0, 0) rotate(0deg) scale(1);
@@ -179,6 +186,18 @@ h1 {
         text-shadow: 0 0 20px rgba(var(--color-primary-rgb), 0.8),
                      0 0 30px rgba(var(--color-primary-rgb), 0.5),
                      0 0 40px rgba(var(--color-primary-rgb), 0.3);
+    }
+}
+
+@media (max-width: 1200px) {
+    .drone-animation {
+        max-width: 350px;
+    }
+    
+    .content-wrapper {
+        gap: 0;
+        padding-right: 50px;
+
     }
 }
 
@@ -214,9 +233,6 @@ h1 {
         margin-bottom: var(--spacing-xlarge);
     }
 
-    .drone-animation img {
-        animation: none;
-    }
 }
 
 @media (max-width: 768px) {
@@ -259,7 +275,11 @@ h1 {
     }
 
     .drone-animation {
-        max-width: 280px;
+        max-width: 200px;
+    }
+
+    .drone-animation img {
+        animation: simpleDroneFloat 4s ease-in-out infinite;
     }
 
     .back-home {
@@ -273,19 +293,117 @@ h1 {
         overflow: visible;
         height: auto;
         overflow-x: hidden;
+        overflow-y: auto;
     }
     
     body {
         position: static;
         min-height: 100vh;
-        overflow-y: auto;
-        overflow-x: hidden;
+        padding: var(--spacing-medium);
     }
 
     .error-container {
         height: auto;
         min-height: unset;
         padding: var(--spacing-medium) 0;
+    }
+
+    .content-wrapper {
+        min-height: 450px;
+        position: relative;
+        overflow: visible;
+    }
+
+    .drone-animation {
+        position: relative;
+        z-index: 1;
+        max-width: 350px;
+    }
+
+    .drone-animation img {
+        max-width: 100%;
+        height: auto;
+        transform-origin: center center;
+    }
+}
+
+@media (max-height: 480px) {
+    .content-wrapper {
+        min-height: 400px;
+        gap: var(--spacing-medium);
+    }
+
+    .drone-animation {
+        max-width: 320px;
+    }
+}
+
+@media (max-height: 480px) and (max-width: 480px) {
+    .drone-animation {
+        max-width: 300px;
+    }
+}
+
+@keyframes simpleDroneFloat {
+    0% {
+        transform: translateY(0);
+    }
+    50% {
+        transform: translateY(-15px);
+    }
+    100% {
+        transform: translateY(0);
+    }
+}
+
+@media (max-height: 600px) {
+    html, body {
+        position: static;
+        height: auto;
+        min-height: 100vh;
+        overflow: visible;
         overflow-x: hidden;
+    }
+    
+    body {
+        padding: var(--spacing-medium);
+    }
+
+    #particles-js-404 {
+        position: fixed;
+        top: 0;
+        left: 0;
+        width: 100%;
+        height: 100%;
+        z-index: 1;
+    }
+
+    .error-container {
+        position: relative;
+        z-index: 2;
+        min-height: 100vh;
+        padding: var(--spacing-xlarge) 0;
+        justify-content: center;
+    }
+
+    .content-wrapper {
+        flex-direction: column;
+        gap: var(--spacing-xlarge);
+    }
+
+    .drone-animation {
+        position: relative;
+        max-width: 300px;
+        margin: 0 auto;
+    }
+}
+
+@media (max-height: 480px) {
+    .error-container {
+        padding: var(--spacing-large) 0;
+    }
+
+    .content-wrapper {
+        gap: var(--spacing-large);
     }
 } 
