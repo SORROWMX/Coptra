@@ -39,7 +39,7 @@ export const Error404Module = {
                             }
                         },
                         color: {
-                            value: '#ff6b6b'
+                            value: getComputedStyle(document.documentElement).getPropertyValue('--color-primary').trim()
                         },
                         shape: {
                             type: 'circle'
@@ -55,7 +55,7 @@ export const Error404Module = {
                         line_linked: {
                             enable: true,
                             distance: 150,
-                            color: '#ff6b6b',
+                            color: getComputedStyle(document.documentElement).getPropertyValue('--color-primary').trim(),
                             opacity: 0.2,
                             width: 1
                         },
@@ -112,3 +112,18 @@ export const Error404Module = {
         });
     }
 };
+
+// Добавляем обработчик изменения темы
+document.addEventListener('themeChanged', () => {
+    if (window.pJSDom && window.pJSDom[0]) {
+        const particles = window.pJSDom[0].pJS;
+        const newColor = getComputedStyle(document.documentElement).getPropertyValue('--color-primary').trim();
+        
+        particles.particles.color.value = newColor;
+        particles.particles.line_linked.color = newColor;
+        
+        particles.particles.array.forEach(particle => {
+            particle.color.value = newColor;
+        });
+    }
+});

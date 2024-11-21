@@ -6,6 +6,7 @@
     <title>404 - Страница не найдена | Коптра</title>
     <link rel="stylesheet" href="/styles/main.css">
     <link rel="stylesheet" href="/styles/components/404.css">
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/5.15.3/css/all.min.css" />
     <script src="https://cdn.jsdelivr.net/particles.js/2.0.0/particles.min.js"></script>
 </head>
 <body>
@@ -28,7 +29,10 @@
 
     <script type="module">
         document.addEventListener('DOMContentLoaded', async () => {
+            const { ThemeModule } = await import('/scripts/modules/theme.js');
             const { Error404Module } = await import('/scripts/modules/error404.js');
+            
+            ThemeModule.init();
             await Error404Module.init();
         });
     </script>

@@ -11,7 +11,7 @@ body {
     display: flex;
     justify-content: center;
     align-items: center;
-    background: linear-gradient(135deg, #27272a 0%, #18181b 100%);
+    background: var(--color-background);
     position: fixed;
     top: 0;
     left: 0;
@@ -31,14 +31,14 @@ body {
 .error-title {
     font-size: clamp(1.5rem, 3vw, 2.5rem);
     font-weight: var(--font-weight-bold);
-    color: var(--color-primary);
-    background: linear-gradient(135deg, var(--color-primary) 0%, var(--color-secondary) 100%);
+    background: linear-gradient(135deg, 
+        rgba(var(--color-primary-rgb), 0.8) 0%, 
+        rgba(var(--color-secondary-rgb), 0.8) 100%);
     background-clip: text;
     -webkit-background-clip: text;
     color: transparent;
     -webkit-text-fill-color: transparent;
     animation: glowText 2s ease-in-out infinite alternate;
-    
     margin-bottom: var(--spacing-xlarge);
     text-align: center;
 }
@@ -75,7 +75,9 @@ body {
 h1 {
     font-size: clamp(4rem, 8vw, 8rem);
     margin: 0 0 var(--spacing-medium);
-    background: linear-gradient(135deg, var(--color-primary) 0%, var(--color-secondary) 100%);
+    background: linear-gradient(135deg, 
+        rgba(var(--color-primary-rgb), 0.8) 0%, 
+        rgba(var(--color-secondary-rgb), 0.8) 100%);
     background-clip: text;
     -webkit-background-clip: text;
     color: transparent;
@@ -88,7 +90,8 @@ h1 {
 .error-description {
     font-size: clamp(0.9rem, 1.5vw, 1.2rem);
     margin-bottom: var(--spacing-large);
-    color: var(--color-text-light);
+    color: var(--color-text);
+    opacity: 0.8;
     text-align: center;
     max-width: 500px;
 }
@@ -96,7 +99,9 @@ h1 {
 .back-home {
     display: inline-block;
     padding: var(--spacing-medium) var(--spacing-large);
-    background: linear-gradient(135deg, var(--color-primary) 0%, var(--color-secondary) 100%);
+    background: linear-gradient(135deg, 
+        rgba(var(--color-primary-rgb), 0.9) 0%, 
+        rgba(var(--color-secondary-rgb), 0.9) 100%);
     color: var(--color-text-light);
     text-decoration: none;
     border-radius: var(--border-radius);
@@ -109,7 +114,7 @@ h1 {
 
 .back-home:hover {
     transform: translateY(-2px);
-    box-shadow: 0 5px 15px rgba(var(--color-primary-rgb), 0.3);
+    box-shadow: 0 5px 15px rgba(var(--color-primary-rgb), 0.2);
 }
 
 .back-home::before {
@@ -178,14 +183,14 @@ h1 {
 
 @keyframes glowText {
     from {
-        text-shadow: 0 0 10px rgba(var(--color-primary-rgb), 0.5),
-                     0 0 20px rgba(var(--color-primary-rgb), 0.3),
-                     0 0 30px rgba(var(--color-primary-rgb), 0.1);
+        text-shadow: 
+            0 0 5px rgba(var(--color-primary-rgb), 0.1),
+            0 0 10px rgba(var(--color-primary-rgb), 0.05);
     }
     to {
-        text-shadow: 0 0 20px rgba(var(--color-primary-rgb), 0.8),
-                     0 0 30px rgba(var(--color-primary-rgb), 0.5),
-                     0 0 40px rgba(var(--color-primary-rgb), 0.3);
+        text-shadow: 
+            0 0 8px rgba(var(--color-primary-rgb), 0.15),
+            0 0 12px rgba(var(--color-primary-rgb), 0.1);
     }
 }
 
@@ -405,5 +410,37 @@ h1 {
 
     .content-wrapper {
         gap: var(--spacing-large);
+    }
+}
+
+/* Обновляем стили для темной темы */
+[data-theme="dark"] .error-title {
+    text-shadow: 
+        0 0 10px rgba(var(--color-primary-rgb), 0.3),
+        0 0 20px rgba(var(--color-primary-rgb), 0.2);
+}
+
+[data-theme="dark"] h1 {
+    text-shadow: 
+        0 0 15px rgba(var(--color-primary-rgb), 0.4),
+        0 0 30px rgba(var(--color-primary-rgb), 0.3);
+}
+
+/* Обновляем анимацию свечения для темной темы */
+[data-theme="dark"] .error-title,
+[data-theme="dark"] h1 {
+    animation: glowTextDark 2s ease-in-out infinite alternate;
+}
+
+@keyframes glowTextDark {
+    from {
+        text-shadow: 
+            0 0 10px rgba(var(--color-primary-rgb), 0.3),
+            0 0 20px rgba(var(--color-primary-rgb), 0.2);
+    }
+    to {
+        text-shadow: 
+            0 0 15px rgba(var(--color-primary-rgb), 0.4),
+            0 0 30px rgba(var(--color-primary-rgb), 0.3);
     }
 } 
