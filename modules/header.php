@@ -145,7 +145,7 @@ if (!$is_local) {
                         </ul>
                     </li>
                     <li><a href="<?php echo $root_path; ?>docs/documentation.php">Документация</a></li>
-                    <li><a href="<?php echo $root_path; ?>blog.html">Блог</a></li>
+                    <li><a href="<?php echo $root_path; ?>blog.php">Блог</a></li>
                     <li><a href="<?php echo $root_path; ?>contacts.php">Контакты</a></li>
                 </ul>
             </nav>
@@ -231,7 +231,7 @@ if (!$is_local) {
                         </ul>
                     </li>
                     <li><a href="<?php echo $root_path; ?>docs/documentation.php">Документация</a></li>
-                    <li><a href="<?php echo $root_path; ?>blog.html">Блог</a></li>
+                    <li><a href="<?php echo $root_path; ?>blog.php">Блог</a></li>
                     <li><a href="<?php echo $root_path; ?>contacts.php">Контакты</a></li>
                 </ul>
             </nav>

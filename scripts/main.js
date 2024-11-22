@@ -18,6 +18,7 @@ import { ScrollToTopModule } from './modules/scroll-to-top.js';
 import { LazyLoadingModule } from './modules/lazy-loading.js';
 import { ApplicationsModule } from './modules/applications.js';
 import { HeroMapModule } from './modules/hero-map.js';
+import { BlogModule } from './modules/blog.js';
 
 // Импорт модулей анимаций
 import { HeroAnimationModule } from './modules/animations/hero.js';
@@ -72,7 +73,8 @@ document.addEventListener('DOMContentLoaded', async () => {
             [MapModule, 'MapModule'],
             [SidebarModule, 'SidebarModule'],
             [ApplicationsModule, 'ApplicationsModule'],
-            [HeroMapModule, 'HeroMapModule']
+            [HeroMapModule, 'HeroMapModule'],
+            [BlogModule, 'BlogModule']
         ];
 
         for (const [module, name] of mainModules) {

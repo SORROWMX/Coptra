@@ -1,0 +1,470 @@
+.blog-section {
+    position: relative;
+    overflow: hidden;
+    padding-top: var(--header-height);
+    margin-top: calc(var(--header-height) * -1);
+}
+
+.blog-decorations {
+    position: absolute;
+    width: 100%;
+    height: 100%;
+    pointer-events: none;
+    z-index: 0;
+}
+
+.decoration-circle {
+    position: absolute;
+    width: 300px;
+    height: 300px;
+    border-radius: 50%;
+    background: linear-gradient(135deg, 
+        rgba(var(--color-primary-rgb), 0.1), 
+        rgba(var(--color-secondary-rgb), 0.1));
+    top: -100px;
+    right: -100px;
+    animation: float 8s ease-in-out infinite;
+}
+
+.decoration-square {
+    position: absolute;
+    width: 200px;
+    height: 200px;
+    border: 2px solid rgba(var(--color-primary-rgb), 0.1);
+    transform: rotate(45deg);
+    left: -100px;
+    bottom: 20%;
+    animation: rotate 15s linear infinite;
+}
+
+.decoration-dots {
+    position: absolute;
+    width: 200px;
+    height: 200px;
+    background-image: radial-gradient(
+        rgba(var(--color-primary-rgb), 0.2) 2px, 
+        transparent 2px
+    );
+    background-size: 20px 20px;
+    top: 30%;
+    right: 5%;
+    animation: fade 3s ease-in-out infinite;
+}
+
+.wave-decoration {
+    position: absolute;
+    bottom: -1px; /* Изменим с -2px на -1px */
+    left: 0;
+    width: 100%;
+    height: 40px; /* Уменьшим высоту */
+    overflow: hidden;
+    z-index: 1; /* Изменим с 0 на 1 */
+}
+
+.wave-decoration svg {
+    width: 100%;
+    height: 100%;
+}
+
+.wave-decoration svg path {
+    fill: var(--color-background);
+    filter: drop-shadow(0 -2px 2px rgba(var(--color-primary-rgb), 0.1));
+}
+
+.blog-title,
+.blog-subtitle,
+.blog-filters,
+.blog-grid,
+.blog-pagination {
+    position: relative;
+    z-index: 1;
+}
+
+.blog-header {
+    text-align: center;
+    margin-bottom: var(--spacing-xlarge);
+    padding: calc(var(--spacing-small) + var(--header-height)) 0 var(--spacing-xlarge);
+    background: linear-gradient(180deg, 
+        var(--color-background) 0%, 
+        rgba(var(--color-primary-rgb), 0.1) 100%);
+    border-radius: var(--border-radius);
+    position: relative;
+}
+
+.blog-title {
+    font-size: 3rem;
+    margin-bottom: var(--spacing-medium);
+    color: var(--color-text);
+    position: relative;
+    z-index: 1;
+}
+
+.blog-subtitle {
+    color: var(--color-text);
+    opacity: 0.8;
+    font-size: 1.2rem;
+    position: relative;
+    z-index: 1;
+}
+
+.blog-filters {
+    margin-bottom: var(--spacing-xlarge);
+}
+
+.search-container {
+    position: relative;
+    max-width: 600px;
+    margin: 0 auto var(--spacing-large);
+}
+
+.blog-search {
+    width: 100%;
+    padding: 15px 20px;
+    padding-right: 50px;
+    border: 2px solid var(--color-border);
+    border-radius: var(--border-radius);
+    font-size: 1rem;
+    background-color: var(--color-background);
+    color: var(--color-text);
+    transition: all 0.3s ease;
+}
+
+.blog-search:focus {
+    border-color: var(--color-primary);
+    outline: none;
+    box-shadow: 0 0 0 3px rgba(var(--color-primary-rgb), 0.1);
+}
+
+.search-container i {
+    position: absolute;
+    right: 25px;
+    top: 50%;
+    transform: translateY(-50%);
+    color: var(--color-text);
+    opacity: 0.5;
+}
+
+.tags-filter {
+    display: flex;
+    flex-wrap: wrap;
+    gap: var(--spacing-small);
+    justify-content: center;
+    margin-bottom: var(--spacing-large);
+}
+
+.tag-btn {
+    padding: 8px 16px;
+    background: var(--color-background);
+    color: var(--color-text);
+    border: 1px solid var(--color-border);
+    border-radius: var(--border-radius);
+    font-size: 0.9rem;
+    font-weight: var(--font-weight-medium);
+    cursor: pointer;
+    transition: all 0.3s ease;
+}
+
+.tag-btn:hover,
+.tag-btn.active {
+    background: var(--color-primary);
+    color: var(--color-text-light);
+    border-color: var(--color-primary);
+    transform: translateY(-2px);
+    box-shadow: 0 4px 12px rgba(var(--color-primary-rgb), 0.2);
+}
+
+.blog-grid {
+    display: grid;
+    grid-template-columns: repeat(auto-fill, minmax(300px, 1fr));
+    gap: var(--spacing-large);
+    margin-bottom: var(--spacing-xlarge);
+}
+
+.blog-card {
+    position: relative;
+    background: var(--color-background);
+    border: 1px solid var(--color-border);
+    border-radius: var(--border-radius);
+    overflow: hidden;
+    transition: all 0.3s ease;
+}
+
+/* Анимация при наведении */
+.blog-card:hover {
+    transform: translateY(-5px);
+    box-shadow: 0 5px 15px rgba(var(--color-primary-rgb), 0.1);
+}
+
+/* Обновляем только стили для блика */
+.blog-card::before {
+    content: '';
+    position: absolute;
+    top: -50%;
+    left: -50%;
+    width: 200%;
+    height: 200%;
+    background: linear-gradient(
+        45deg,
+        transparent 45%,
+        rgba(255, 255, 255, 0.1) 50%,
+        transparent 55%
+    );
+    transform: translate(-100%, -100%);
+    transition: none;
+    pointer-events: none;
+}
+
+.blog-card:hover::before {
+    transform: translate(100%, 100%);
+    transition: transform 0.8s ease; /* Фиксированная скорость для всех тем */
+}
+
+.blog-card::after {
+    content: '';
+    position: absolute;
+    top: 0;
+    left: -100%;
+    width: 50%;
+    height: 100%;
+    background: linear-gradient(
+        to right,
+        transparent,
+        rgba(255, 255, 255, 0.3),
+        transparent
+    );
+    transform: skewX(-25deg);
+    z-index: 2;
+    pointer-events: none;
+}
+
+.blog-card:hover::after {
+    animation: shine 0.75s ease-out;
+}
+
+.blog-card::before {
+    display: none;
+}
+
+.blog-card .nav-button {
+    margin-top: var(--spacing-medium);
+    padding: 8px 16px;
+    font-size: 0.9rem;
+}
+
+@keyframes shine {
+    100% {
+        left: 200%;
+    }
+}
+
+.blog-card-image {
+    position: relative;
+    width: 100%;
+    height: 200px;
+    overflow: hidden;
+    user-select: none;
+    -webkit-user-select: none;
+    -webkit-touch-callout: none;
+    cursor: pointer;
+}
+
+.blog-card-image img {
+    width: 100%;
+    height: 100%;
+    object-fit: cover;
+    pointer-events: none;
+    -webkit-user-drag: none;
+    -khtml-user-drag: none;
+    -moz-user-drag: none;
+    -o-user-drag: none;
+    transition: transform 0.5s ease;
+}
+
+/* Увеличение изображения при наведении */
+.blog-card:hover .blog-card-image img {
+    transform: scale(1.05);
+}
+
+.blog-card-date {
+    position: absolute;
+    top: var(--spacing-small);
+    right: var(--spacing-small);
+    background: transparent;
+    color: var(--color-text);
+    padding: 4px 8px;
+    font-size: 0.75rem;
+    font-weight: var(--font-weight-normal);
+    opacity: 0.8;
+    transition: opacity 0.3s ease;
+}
+
+/* Стили для темной темы */
+[data-theme="dark"] .blog-card-date {
+    color: rgba(255, 255, 255, 0.9);
+    text-shadow: 0 1px 3px rgba(0, 0, 0, 0.5);
+}
+
+/* Стили для светлой темы */
+[data-theme="light"] .blog-card-date {
+    color: var(--color-primary);
+    text-shadow: 0 1px 3px rgba(255, 255, 255, 0.5);
+}
+
+/* При наведении на карточку дата становится чуть заметнее */
+.blog-card:hover .blog-card-date {
+    opacity: 1;
+}
+
+.blog-card-content {
+    padding: var(--spacing-medium);
+}
+
+.blog-card-tags {
+    display: flex;
+    flex-wrap: wrap;
+    gap: var(--spacing-xsmall);
+    margin-bottom: var(--spacing-small);
+}
+
+.tag {
+    display: inline-flex;
+    align-items: center;
+    padding: 4px 12px;
+    background: rgba(var(--color-primary-rgb), 0.1);
+    color: var(--color-primary);
+    border-radius: var(--border-radius-small);
+    font-size: 0.8rem;
+    font-weight: var(--font-weight-medium);
+    transition: all 0.3s ease;
+    border: 1px solid transparent;
+    cursor: pointer;
+    user-select: none;
+}
+
+.tag:hover {
+    background: rgba(var(--color-primary-rgb), 0.15);
+    transform: translateY(-1px);
+    border-color: rgba(var(--color-primary-rgb), 0.2);
+}
+
+.tag:active {
+    transform: translateY(0);
+}
+
+.blog-pagination {
+    display: flex;
+    justify-content: center;
+    gap: var(--spacing-small);
+    margin-top: var(--spacing-xlarge);
+}
+
+.pagination-btn {
+    min-width: 40px;
+    height: 40px;
+    padding: 0 var(--spacing-small);
+    border: 1px solid var(--color-border);
+    border-radius: var(--border-radius);
+    background-color: var(--color-background);
+    color: var(--color-text);
+    font-weight: var(--font-weight-medium);
+    transition: all 0.3s ease;
+    cursor: pointer;
+}
+
+.pagination-btn:hover,
+.pagination-btn.active {
+    background-color: var(--color-primary);
+    color: var(--color-text-light);
+    border-color: var(--color-primary);
+}
+
+@media (max-width: 768px) {
+    .blog-grid {
+        grid-template-columns: 1fr;
+    }
+    
+    .tags-filter {
+        gap: var(--spacing-xsmall);
+    }
+    
+    .tag-btn {
+        padding: 6px 12px;
+        font-size: 0.85rem;
+    }
+}
+
+.no-results-message {
+    grid-column: 1 / -1;
+    text-align: center;
+    padding: var(--spacing-xlarge);
+    color: var(--color-text);
+    font-size: 1.2rem;
+    background: rgba(var(--color-primary-rgb), 0.1);
+    border-radius: var(--border-radius);
+    margin: var(--spacing-large) 0;
+}
+
+.nav-button {
+    position: relative;
+    padding: 8px 16px;
+    font-size: 0.9rem;
+    background: transparent;
+    border: none;
+    color: var(--color-primary);
+    cursor: pointer;
+    transition: all 0.3s ease;
+    font-weight: var(--font-weight-medium);
+}
+
+/* Подчеркивание */
+.nav-button::after {
+    content: '';
+    position: absolute;
+    bottom: 0;
+    left: 0;
+    width: 0;
+    height: 2px;
+    background: var(--color-primary);
+    transition: width 0.3s ease;
+}
+
+/* Эффект свечения */
+.nav-button::before {
+    content: '';
+    position: absolute;
+    top: 0;
+    left: 0;
+    width: 100%;
+    height: 100%;
+    background: rgba(var(--color-primary-rgb), 0.1);
+    border-radius: var(--border-radius);
+    opacity: 0;
+    transform: scale(0.8);
+    transition: all 0.3s ease;
+}
+
+/* Анимация при наведении */
+.nav-button:hover {
+    transform: translateY(-2px);
+    color: var(--color-primary);
+}
+
+.nav-button:hover::before {
+    opacity: 1;
+    transform: scale(1);
+}
+
+.nav-button:hover::after {
+    width: 100%;
+}
+
+/* Эффект при активном состоянии */
+.nav-button:active {
+    transform: translateY(0);
+}
+
+/* Специальные стили для кнопки в карточке блога */
+.blog-card .nav-button {
+    margin-top: var(--spacing-medium);
+}
+
