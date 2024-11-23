@@ -7,7 +7,7 @@
     background-color: var(--color-background-light);
     width: 100vw;
     margin-left: calc(50% - 50vw);
-    padding-bottom: 0;
+    padding-bottom: 40px;
 }
 
 .news h2 {
