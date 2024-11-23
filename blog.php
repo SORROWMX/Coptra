@@ -1,7 +1,7 @@
 <?php include 'modules/header.php'; ?>
 
 <main class="content">
-    <section class="blog-section">
+    <section class="blog-section news">
         <div class="blog-decorations">
             <div class="decoration-circle"></div>
             <div class="decoration-square"></div>
@@ -34,130 +34,161 @@
                 </div>
             </div>
 
-            <div class="blog-grid">
-                <!-- Карточки блога -->
-                <article class="blog-card" data-tags="technology,education">
-                    <div class="blog-card-image">
-                        <img src="assets/images/drone-education.png" alt="Дроны в образовании">
-                        <div class="blog-card-date">15 мая 2024</div>
-                    </div>
-                    <div class="blog-card-content">
-                        <div class="blog-card-tags">
-                            <span class="tag">Технологии</span>
-                            <span class="tag">Образование</span>
+                <div class="news-grid">
+                    <article class="news-item animate" data-tags="technology,education">
+                        <div class="news-image-container">
+                            <div class="news-image">
+                                <img src="assets/images/drone-education.png" alt="Дроны в образовании">
+                            </div>
+                            <div class="news-tags">
+                                <button class="news-tag" data-tag="technology">Технологии</button>
+                                <button class="news-tag" data-tag="education">Образование</button>
+                            </div>
                         </div>
-                        <h2>Как дроны меняют систему образования</h2>
-                        <p>Исследуем инновационные подходы к обучению с использованием дронов и их влияние на образовательный процесс.</p>
-                        <button class="nav-button">Подробнее</button>
-                    </div>
-                </article>
-                <article class="blog-card" data-tags="technology,education">
-                    <div class="blog-card-image">
-                        <img src="assets/images/drone-education.png" alt="Дроны в образовании">
-                        <div class="blog-card-date">15 мая 2024</div>
-                    </div>
-                    <div class="blog-card-content">
-                        <div class="blog-card-tags">
-                            <span class="tag">Технологии</span>
-                            <span class="tag">Образование</span>
+                        <div class="news-content">
+                            <h3>Как дроны меняют систему образования</h3>
+                            <p class="news-date">15 мая 2024</p>
+                            <p class="news-excerpt">Исследуем инновационные подходы к обучению с использованием дронов и их влияние на образовательный процесс.</p>
+                            <a href="#" class="read-more">Читать далее</a>
                         </div>
-                        <h2>Как дроны меняют систему образования</h2>
-                        <p>Исследуем инновационные подходы к обучению с использованием дронов и их влияние на образовательный процесс.</p>
-                        <button class="nav-button">Подробнее</button>
-                    </div>
-                </article>
-                <article class="blog-card" data-tags="technology,education">
-                    <div class="blog-card-image">
-                        <img src="assets/images/drone-education.png" alt="Дроны в образовании">
-                        <div class="blog-card-date">15 мая 2024</div>
-                    </div>
-                    <div class="blog-card-content">
-                        <div class="blog-card-tags">
-                            <span class="tag">Технологии</span>
-                            <span class="tag">Образование</span>
+                    </article>
+                    <article class="news-item animate" data-tags="technology,education">
+                        <div class="news-image-container">
+                            <div class="news-image">
+                                <img src="assets/images/drone-education.png" alt="Дроны в образовании">
+                            </div>
+                            <div class="news-tags">
+                                <button class="news-tag" data-tag="technology">Технологии</button>
+                                <button class="news-tag" data-tag="education">Образование</button>
+                            </div>
                         </div>
-                        <h2>Как дроны меняют систему образования</h2>
-                        <p>Исследуем инновационные подходы к обучению с использованием дронов и их влияние на образовательный процесс.</p>
-                        <button class="nav-button">Подробнее</button>
-                    </div>
-                </article>
-                <article class="blog-card" data-tags="technology,education">
-                    <div class="blog-card-image">
-                        <img src="assets/images/drone-education.png" alt="Дроны в образовании">
-                        <div class="blog-card-date">15 мая 2024</div>
-                    </div>
-                    <div class="blog-card-content">
-                        <div class="blog-card-tags">
-                            <span class="tag">Технологии</span>
-                            <span class="tag">Образование</span>
+                        <div class="news-content">
+                            <h3>Как дроны меняют систему образования</h3>
+                            <p class="news-date">15 мая 2024</p>
+                            <p class="news-excerpt">Исследуем инновационные подходы к обучению с использованием дронов и их влияние на образовательный процесс.</p>
+                            <a href="#" class="read-more">Читать далее</a>
                         </div>
-                        <h2>Как дроны меняют систему образования</h2>
-                        <p>Исследуем инновационные подходы к обучению с использованием дронов и их влияние на образовательный процесс.</p>
-                        <button class="nav-button">Подробнее</button>
-                    </div>
-                </article>
-                <article class="blog-card" data-tags="technology,education">
-                    <div class="blog-card-image">
-                        <img src="assets/images/drone-education.png" alt="Дроны в образовании">
-                        <div class="blog-card-date">15 мая 2024</div>
-                    </div>
-                    <div class="blog-card-content">
-                        <div class="blog-card-tags">
-                            <span class="tag">Технологии</span>
-                            <span class="tag">Образование</span>
+                    </article>
+                    <article class="news-item animate" data-tags="technology,education">
+                        <div class="news-image-container">
+                            <div class="news-image">
+                                <img src="assets/images/drone-education.png" alt="Дроны в образовании">
+                            </div>
+                            <div class="news-tags">
+                                <button class="news-tag" data-tag="technology">Технологии</button>
+                                <button class="news-tag" data-tag="education">Образование</button>
+                            </div>
                         </div>
-                        <h2>Как дроны меняют систему образования</h2>
-                        <p>Исследуем инновационные подходы к обучению с использованием дронов и их влияние на образовательный процесс.</p>
-                        <button class="nav-button">Подробнее</button>
-                    </div>
-                </article>
-                <article class="blog-card" data-tags="technology,education">
-                    <div class="blog-card-image">
-                        <img src="assets/images/drone-education.png" alt="Дроны в образовании">
-                        <div class="blog-card-date">15 мая 2024</div>
-                    </div>
-                    <div class="blog-card-content">
-                        <div class="blog-card-tags">
-                            <span class="tag">Технологии</span>
-                            <span class="tag">Образование</span>
+                        <div class="news-content">
+                            <h3>Как дроны меняют систему образования</h3>
+                            <p class="news-date">15 мая 2024</p>
+                            <p class="news-excerpt">Исследуем инновационные подходы к обучению с использованием дронов и их влияние на образовательный процесс.</p>
+                            <a href="#" class="read-more">Читать далее</a>
                         </div>
-                        <h2>Как дроны меняют систему образования</h2>
-                        <p>Исследуем инновационные подходы к обучению с использованием дронов и их влияние на образовательный процесс.</p>
-                        <button class="nav-button">Подробнее</button>
-                    </div>
-                </article>
-                <article class="blog-card" data-tags="technology,education">
-                    <div class="blog-card-image">
-                        <img src="assets/images/drone-education.png" alt="Дроны в образовании">
-                        <div class="blog-card-date">15 мая 2024</div>
-                    </div>
-                    <div class="blog-card-content">
-                        <div class="blog-card-tags">
-                            <span class="tag">Технологии</span>
-                            <span class="tag">Образование</span>
+                    </article>
+                    <article class="news-item animate" data-tags="technology,education">
+                        <div class="news-image-container">
+                            <div class="news-image">
+                                <img src="assets/images/drone-education.png" alt="Дроны в образовании">
+                            </div>
+                            <div class="news-tags">
+                                <button class="news-tag" data-tag="technology">Технологии</button>
+                                <button class="news-tag" data-tag="education">Образование</button>
+                            </div>
                         </div>
-                        <h2>Как дроны меняют систему образования</h2>
-                        <p>Исследуем инновационные подходы к обучению с использованием дронов и их влияние на образовательный процесс.</p>
-                        <button class="nav-button">Подробнее</button>
-                    </div>
-                </article>
-                <article class="blog-card" data-tags="technology,education">
-                    <div class="blog-card-image">
-                        <img src="assets/images/drone-education.png" alt="Дроны в образовании">
-                        <div class="blog-card-date">15 мая 2024</div>
-                    </div>
-                    <div class="blog-card-content">
-                        <div class="blog-card-tags">
-                            <span class="tag">Технологии</span>
-                            <span class="tag">Образование</span>
+                        <div class="news-content">
+                            <h3>Как дроны меняют систему образования</h3>
+                            <p class="news-date">15 мая 2024</p>
+                            <p class="news-excerpt">Исследуем инновационные подходы к обучению с использованием дронов и их влияние на образовательный процесс.</p>
+                            <a href="#" class="read-more">Читать далее</a>
                         </div>
-                        <h2>Как дроны меняют систему образования</h2>
-                        <p>Исследуем КАРТОШКА подходы к обучению с использованием дронов и их влияние на образовательный процесс.</p>
-                        <button class="nav-button">Подробнее</button>
-                    </div>
-                </article>
-                <!-- Добавьте больше карточек блога по аналогии -->
-            </div>
+                    </article>
+                    <article class="news-item animate" data-tags="technology,education">
+                        <div class="news-image-container">
+                            <div class="news-image">
+                                <img src="assets/images/drone-education.png" alt="Дроны в образовании">
+                            </div>
+                            <div class="news-tags">
+                                <button class="news-tag" data-tag="technology">Технологии</button>
+                                <button class="news-tag" data-tag="education">Образование</button>
+                            </div>
+                        </div>
+                        <div class="news-content">
+                            <h3>Как дроны меняют систему образования</h3>
+                            <p class="news-date">15 мая 2024</p>
+                            <p class="news-excerpt">Исследуем инновационные подходы к обучению с использованием дронов и их влияние на образовательный процесс.</p>
+                            <a href="#" class="read-more">Читать далее</a>
+                        </div>
+                    </article>
+                    <article class="news-item animate" data-tags="technology,education">
+                        <div class="news-image-container">
+                            <div class="news-image">
+                                <img src="assets/images/drone-education.png" alt="Дроны в образовании">
+                            </div>
+                            <div class="news-tags">
+                                <button class="news-tag" data-tag="technology">Технологии</button>
+                                <button class="news-tag" data-tag="education">Образование</button>
+                            </div>
+                        </div>
+                        <div class="news-content">
+                            <h3>Как дроны меняют систему образования</h3>
+                            <p class="news-date">15 мая 2024</p>
+                            <p class="news-excerpt">Исследуем инновационные подходы к обучению с использованием дронов и их влияние на образовательный процесс.</p>
+                            <a href="#" class="read-more">Читать далее</a>
+                        </div>
+                    </article>
+                                        <article class="news-item animate" data-tags="technology,education">
+                        <div class="news-image-container">
+                            <div class="news-image">
+                                <img src="assets/images/drone-education.png" alt="Дроны в образовании">
+                            </div>
+                            <div class="news-tags">
+                                <button class="news-tag" data-tag="technology">Технологии</button>
+                                <button class="news-tag" data-tag="education">Образование</button>
+                            </div>
+                        </div>
+                        <div class="news-content">
+                            <h3>Как дроны меняют систему образования</h3>
+                            <p class="news-date">15 мая 2024</p>
+                            <p class="news-excerpt">Исследуем инновационные подходы к обучению с использованием дронов и их влияние на образовательный процесс.</p>
+                            <a href="#" class="read-more">Читать далее</a>
+                        </div>
+                    </article>
+                    <article class="news-item animate" data-tags="technology,news">
+                        <div class="news-image-container">
+                            <div class="news-image">
+                                <img src="assets/images/drone-education.png" alt="Дроны в образовании">
+                            </div>
+                            <div class="news-tags">
+                                <button class="news-tag" data-tag="technology">Технологии</button>
+                                <button class="news-tag" data-tag="news">Новости</button>
+                            </div>
+                        </div>
+                        <div class="news-content">
+                            <h3>Как дроны меняют систему образования</h3>
+                            <p class="news-date">15 мая 2024</p>
+                            <p class="news-excerpt">Исследуем инновационные подходы к картошке с использованием дронов и их влияние на образовательный процесс.</p>
+                            <a href="#" class="read-more">Читать далее</a>
+                        </div>
+                    </article>
+                    <article class="news-item animate" data-tags="agriculture,education">
+                        <div class="news-image-container">
+                            <div class="news-image">
+                                <img src="assets/images/drone-education.png" alt="Дроны в образовании">
+                            </div>
+                            <div class="news-tags">
+                                <button class="news-tag" data-tag="agriculture">Сельское хозяйство</button>
+                                <button class="news-tag" data-tag="education">Образование</button>
+                            </div>
+                        </div>
+                        <div class="news-content">
+                            <h3>Как дроны меняют систему картошки</h3>
+                            <p class="news-date">15 мая 2024</p>
+                            <p class="news-excerpt">Исследуем инновационные подходы к обучению с использованием дронов и их влияние на образовательный процесс.</p>
+                            <a href="#" class="read-more">Читать далее</a>
+                        </div>
+                    </article>
+                </div>
 
             <div class="blog-pagination">
                 <button class="pagination-btn active">1</button>
