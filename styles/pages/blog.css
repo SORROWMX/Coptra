@@ -210,6 +210,10 @@
     margin: var(--spacing-large) 0;
 }
 
+.blog-section .news-grid {
+    grid-template-columns: repeat(3, minmax(300px, 1fr));
+}
+
 .news-item.fade-in {
     opacity: 1;
     transform: translateY(0);
