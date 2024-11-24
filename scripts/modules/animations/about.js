@@ -24,7 +24,7 @@ export const AboutAnimationModule = {
                     
                     if (entry.target.classList.contains('timeline-item')) {
                         const index = Array.from(entry.target.parentNode.children).indexOf(entry.target);
-                        entry.target.style.animationDelay = `${0.1 * index}s`;
+                        entry.target.style.animationDelay = `0s`;
                     }
                 }
             });

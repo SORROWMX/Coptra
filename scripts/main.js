@@ -18,6 +18,7 @@ import { ScrollToTopModule } from './modules/scroll-to-top.js';
 import { LazyLoadingModule } from './modules/lazy-loading.js';
 import { ApplicationsModule } from './modules/applications.js';
 import { HeroMapModule } from './modules/hero-map.js';
+import { ProductModal } from './modules/product-modal.js';
 import { BlogModule } from './modules/blog.js';
 
 // Импорт модулей анимаций
@@ -34,6 +35,7 @@ import { GoalsAnimationModule } from './modules/animations/goals.js';
 
 // Импорт дополнительных модулей
 import { ParticlesModule } from './modules/particles.js';
+import { Error404Module } from './modules/error404.js';
 import { SearchModule } from './modules/search.js';
 
 // Функция для проверки и инициализации модуля
@@ -56,6 +58,8 @@ document.addEventListener('DOMContentLoaded', async () => {
         
         // Проверяем, не находимся ли мы на странице логина
         const isLoginPage = document.querySelector('.login-page') !== null;
+        // Проверяем, не находимся ли мы на странице 404
+        const is404Page = document.querySelector('.error-404') !== null;
         
         const mainModules = [
             [ThemeModule, 'ThemeModule'],
@@ -74,6 +78,7 @@ document.addEventListener('DOMContentLoaded', async () => {
             [SidebarModule, 'SidebarModule'],
             [ApplicationsModule, 'ApplicationsModule'],
             [HeroMapModule, 'HeroMapModule'],
+            [ProductModal, 'ProductModal'],
             [BlogModule, 'BlogModule']
         ];
 
@@ -99,6 +104,10 @@ document.addEventListener('DOMContentLoaded', async () => {
         }
         
         await initializeModule(ParticlesModule, 'ParticlesModule');
+        // Инициализируем Error404Module только на странице 404
+        if (is404Page) {
+            await initializeModule(Error404Module, 'Error404Module');
+        }
 
         const currentYear = document.querySelector('#current-year');
         if (currentYear) {
@@ -113,4 +122,3 @@ document.addEventListener('DOMContentLoaded', async () => {
 window.addEventListener('unhandledrejection', (event) => {
     console.error('Необработанное отклонение промиса:', event.reason);
 });
-

@@ -941,6 +941,23 @@ header.scrolled nav ul li a {
         border-top: 2px solid var(--color-primary);
         border-right: 2px solid var(--color-primary);
     }
+
+    /* Стили для "Все продукты" */
+    .dropdown-menu .view-all-products {
+        border-bottom: 1px solid var(--color-border);
+        background-color: var(--color-background-light);
+        color: var(--color-primary);
+        font-weight: 500;
+    }
+
+    .dropdown-menu .view-all-products:hover {
+        background-color: var(--color-border);
+    }
+
+    /* Убираем подчеркивание у ссылки "Все продукты" */
+    .dropdown-menu .view-all-products::before {
+        display: none;
+    }
 }
 
 /* Стили для мобильной кнопки меню */

@@ -18,13 +18,17 @@ export const BlogModule = {
     },
 
     init() {
+        // Проверяем, находимся ли мы на странице блога
+        const isBlogPage = document.querySelector('.blog-section');
         const newsGrid = document.querySelector('.news-grid');
+        
+        // Если это не страница блога или нет сетки новостей, выходим
+        if (!isBlogPage || !newsGrid) return;
+
         const searchInput = document.querySelector('.blog-search');
         const tagButtons = document.querySelectorAll('.tag-btn');
         const paginationContainer = document.querySelector('.blog-pagination');
         
-        if (!newsGrid) return;
-
         // Инициализация начального состояния
         this.state.filteredArticles = Array.from(newsGrid.querySelectorAll('.news-item'));
         this.updatePagination();
@@ -166,18 +170,26 @@ export const BlogModule = {
     },
 
     showPage(page) {
+        // Проверяем, находимся ли мы на странице блога
+        const isBlogPage = document.querySelector('.blog-section');
+        if (!isBlogPage) return;
+
         const startIndex = (page - 1) * this.state.itemsPerPage;
         const endIndex = startIndex + this.state.itemsPerPage;
 
-        // Сначала скрываем ВСЕ статьи на странице, а не только отфильтрованные
+        // Сначала скрываем ВСЕ статьи на странице
         const allArticles = document.querySelectorAll('.news-item');
         allArticles.forEach(article => {
-            article.style.display = 'none';
+            if (article.closest('.blog-section')) { // Добавляем проверку на принадлежность к блогу
+                article.style.display = 'none';
+            }
         });
 
         // Показываем только отфильтрованные статьи для текущей страницы
         this.state.filteredArticles.slice(startIndex, endIndex).forEach(article => {
-            article.style.display = 'block';
+            if (article.closest('.blog-section')) { // Добавляем проверку на принадлежность к блогу
+                article.style.display = 'block';
+            }
         });
 
         // Обновляем текущую страницу и пагинацию
@@ -196,9 +208,16 @@ export const BlogModule = {
 
     // Новый метод для применения обоих фильтров
     applyFilters(newsGrid) {
+        // Проверяем, находимся ли мы на странице блога
+        const isBlogPage = document.querySelector('.blog-section');
+        if (!isBlogPage) return;
+
         const allArticles = Array.from(newsGrid.querySelectorAll('.news-item'));
         
         this.state.filteredArticles = allArticles.filter(article => {
+            // Проверяем, что статья находится в секции блога
+            if (!article.closest('.blog-section')) return false;
+
             const matchesTag = this.state.selectedTag === 'all' || 
                 article.dataset.tags.split(',').map(tag => tag.trim()).includes(this.state.selectedTag);
             

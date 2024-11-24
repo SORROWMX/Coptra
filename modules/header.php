@@ -106,7 +106,7 @@ if (!$is_local) {
                 <ul>
                     <li><a href="<?php echo $root_path; ?>index.php">Главная</a></li>
                     <li class="dropdown">
-                        <a href="#" class="dropdown-toggle">Продукты</a>
+                        <a href="<?php echo $root_path; ?>products.php">Продукты</a>
                         <ul class="dropdown-menu">
                             <li class="dropdown-submenu">
                                 <a href="<?php echo $root_path; ?>products.php#agriculture">Сельское хозяйство</a>
@@ -192,7 +192,7 @@ if (!$is_local) {
                 <ul>
                     <li><a href="<?php echo $root_path; ?>index.php">Главная</a></li>
                     <li class="dropdown">
-                        <a href="#" class="dropdown-toggle">Продукты</a>
+                        <a href="<?php echo $root_path; ?>products.php">Продукты</a>
                         <ul class="dropdown-menu">
                             <li class="dropdown-submenu">
                                 <a href="<?php echo $root_path; ?>products.php#agriculture">Сельское хозяйство</a>

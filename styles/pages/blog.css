@@ -210,13 +210,6 @@
     margin: var(--spacing-large) 0;
 }
 
-/* Стили для адаптивности */
-@media (max-width: 1200px) {
-    .news-grid {
-        grid-template-columns: repeat(2, minmax(300px, 1fr));
-    }
-}
-
 .news-item.fade-in {
     opacity: 1;
     transform: translateY(0);

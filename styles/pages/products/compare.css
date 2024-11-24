@@ -1,0 +1,333 @@
+.product-compare {
+    padding: var(--spacing-xxlarge) 0;
+    background: var(--color-background);
+}
+
+.product-compare__title {
+    position: relative;
+    overflow: hidden;
+    padding: 10px 0;
+    text-align: center;
+    margin-bottom: var(--spacing-medium);
+    color: var(--color-text);
+    font-size: var(--font-size-h2);
+    font-weight: var(--font-weight-bold);
+}
+
+.product-compare__title::after {
+    content: '';
+    position: absolute;
+    bottom: 0;
+    left: 50%;
+    width: 100px;
+    height: 2px;
+    background: var(--color-primary);
+    transform: translateX(-50%);
+}
+
+.product-compare__description {
+    font-size: var(--font-size-base);
+    color: var(--color-text-secondary);
+    margin-bottom: var(--spacing-xlarge);
+    text-align: center;
+}
+
+/* Селектор продуктов */
+.product-compare__selector {
+    margin-bottom: var(--spacing-large);
+    text-align: right;
+}
+
+.product-compare__add-btn {
+    display: inline-flex;
+    align-items: center;
+    gap: var(--spacing-small);
+    padding: var(--spacing-small) var(--spacing-medium);
+    background: var(--color-background-light);
+    border: 2px solid var(--color-primary);
+    border-radius: var(--border-radius);
+    color: var(--color-primary);
+    cursor: pointer;
+    transition: all 0.3s ease;
+}
+
+.product-compare__add-btn:hover {
+    background: var(--color-primary);
+    color: var(--color-text-light);
+}
+
+/* Таблица сравнения */
+.product-compare__table-wrapper {
+    overflow-x: auto;
+    margin: 0 -20px;
+    padding: 0 20px;
+}
+
+.product-compare__table {
+    width: 100%;
+    border-collapse: separate;
+    border-spacing: 0;
+    background: var(--color-background-light);
+    border-radius: var(--border-radius);
+    overflow: hidden;
+}
+
+.product-compare__header {
+    position: relative;
+    padding: var(--spacing-medium);
+    background: var(--color-background);
+    border-bottom: 2px solid var(--color-primary);
+    text-align: center;
+    min-width: 200px;
+}
+
+.product-compare__header:first-child {
+    min-width: 150px;
+}
+
+.product-compare__product {
+    position: relative;
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    gap: var(--spacing-small);
+}
+
+.product-compare__product img {
+    width: 100px;
+    height: auto;
+}
+
+.product-compare__section td {
+    background: var(--color-background);
+    font-weight: var(--font-weight-bold);
+    text-align: left;
+    padding: var(--spacing-medium) var(--spacing-medium);
+    color: var(--color-primary);
+    border-top: 2px solid var(--color-primary);
+    text-transform: uppercase;
+    font-size: 0.9em;
+    letter-spacing: 0.05em;
+}
+
+.product-compare__table td {
+    padding: var(--spacing-small) var(--spacing-medium);
+    border-bottom: 1px solid var(--color-border);
+    text-align: center;
+}
+
+.product-compare__table td:first-child {
+    text-align: left;
+    font-weight: var(--font-weight-medium);
+    background: var(--color-background);
+}
+
+.product-compare__section td {
+    font-weight: var(--font-weight-bold) !important;
+}
+
+/* Hover эффекты */
+.product-compare__table tbody tr:hover td {
+    background: rgba(var(--color-primary-rgb), 0.03);
+}
+
+.product-compare__table tbody tr:hover td:first-child {
+    background: var(--color-background);
+}
+
+/* Оверлей с кнопками */
+.product-compare__product-overlay {
+    position: absolute;
+    top: 0;
+    left: 0;
+    right: 0;
+    bottom: 0;
+    background: rgba(var(--color-background-rgb), 0.9);
+    display: flex;
+    gap: var(--spacing-small);
+    justify-content: center;
+    align-items: center;
+    opacity: 0;
+    transition: opacity 0.3s ease;
+    border-radius: var(--border-radius);
+}
+
+.product-compare__product:hover .product-compare__product-overlay {
+    opacity: 1;
+}
+
+/* Кнопки управления */
+.product-compare__action-btn {
+    width: 36px;
+    height: 36px;
+    border-radius: 50%;
+    border: 2px solid var(--color-primary);
+    background: var(--color-background-light);
+    color: var(--color-primary);
+    cursor: pointer;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    transition: all 0.3s ease;
+}
+
+.product-compare__action-btn:hover {
+    background: var(--color-primary);
+    color: var(--color-text-light);
+    transform: scale(1.1);
+}
+
+.product-compare__action-btn--change:hover {
+    background: var(--color-secondary);
+    border-color: var(--color-secondary);
+}
+
+.product-compare__action-btn--delete:hover {
+    background: var(--color-error);
+    border-color: var(--color-error);
+}
+
+/* Контейнер для кнопки и подсказки */
+.product-compare__action-wrapper {
+    position: relative;
+}
+
+/* Подсказка */
+.product-compare__action-tooltip {
+    position: absolute;
+    top: calc(-100% - 10%);
+    left: 50%;
+    transform: translateX(-50%);
+    background: var(--color-background);
+    color: var(--color-text);
+    padding: calc(var(--spacing-small) - 10%) var(--spacing-small);
+    border-radius: var(--border-radius);
+    font-size: 0.85em;
+    white-space: nowrap;
+    box-shadow: 0 2px 4px rgba(0, 0, 0, 0.1);
+    opacity: 0;
+    visibility: hidden;
+    transition: all 0.2s ease;
+}
+
+/* Стрелочка подсказки */
+.product-compare__action-tooltip::before {
+    content: '';
+    position: absolute;
+    top: -4px;
+    left: 50%;
+    transform: translateX(-50%) rotate(45deg);
+    width: 8px;
+    height: 8px;
+    background: var(--color-background);
+}
+
+/* Показываем подсказку при наведении на кнопку */
+.product-compare__action-wrapper:hover .product-compare__action-tooltip {
+    opacity: 1;
+    visibility: visible;
+}
+
+/* Адаптивная верстка */
+@media (max-width: 1024px) {
+    .product-compare__table-wrapper {
+        margin: 0 -15px;
+        padding: 0 15px;
+    }
+
+    .product-compare__header {
+        min-width: 180px;
+    }
+
+    .product-compare__product img {
+        width: 90px;
+    }
+}
+
+@media (max-width: 768px) {
+    .product-compare__selector {
+        text-align: center;
+    }
+
+    .product-compare__add-btn {
+        width: 100%;
+        justify-content: center;
+        white-space: nowrap;
+    }
+
+    .product-compare__add-btn i {
+        flex-shrink: 0;
+    }
+
+    .product-compare__table {
+        /* Делаем таблицу скроллируемой по горизонтали */
+        display: block;
+        overflow-x: auto;
+        white-space: nowrap;
+        -webkit-overflow-scrolling: touch;
+        background: none;
+    }
+
+    .product-compare__header {
+        min-width: 140px;
+        padding: var(--spacing-small);
+    }
+
+    .product-compare__product {
+        padding: var(--spacing-small);
+    }
+
+    .product-compare__product img {
+        width: 70px;
+    }
+
+    .product-compare__product span {
+        font-size: 0.9em;
+    }
+
+    /* Уменьшаем размер кнопок в оверлее */
+    .product-compare__action-btn {
+        width: 30px;
+        height: 30px;
+        font-size: 0.9em;
+    }
+
+    /* Скрываем тултипы на мобильных */
+    .product-compare__action-tooltip {
+        display: none;
+    }
+
+    /* Уменьшаем отступы в ячейках */
+    .product-compare__table td {
+        padding: var(--spacing-small);
+        font-size: 0.9em;
+    }
+
+    .product-compare__section td {
+        padding: var(--spacing-small);
+        font-size: 0.8em;
+    }
+}
+
+@media (max-width: 480px) {
+    .product-compare {
+        padding: var(--spacing-large) 0;
+    }
+
+    .product-compare__title {
+        font-size: var(--font-size-h3);
+    }
+
+    .product-compare__description {
+        font-size: var(--font-size-small);
+    }
+
+    /* Еще меньше размеры для мобильных */
+    .product-compare__header {
+        min-width: 120px;
+    }
+
+    .product-compare__product img {
+        width: 60px;
+    }
+}

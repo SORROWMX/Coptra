@@ -1,7 +1,7 @@
 document.addEventListener('DOMContentLoaded', function() {
     const updateParticlesColor = () => {
         const isDark = document.documentElement.getAttribute('data-theme') === 'dark';
-        const color = '#ff6b6b';
+        const color = '#ffffff';
         
         if (window.pJSDom && window.pJSDom[0]) {
             const particles = window.pJSDom[0].pJS;
@@ -12,7 +12,7 @@ document.addEventListener('DOMContentLoaded', function() {
                 particle.color.value = color;
             });
             
-            particles.particles.line_linked.color_rgb_line = { r: 255, g: 107, b: 107 };
+            particles.fn.particlesRefresh();
         }
     };
 
@@ -57,7 +57,7 @@ document.addEventListener('DOMContentLoaded', function() {
             line_linked: {
                 enable: true,
                 distance: 150,
-                color: '#dadada',
+                color: '#ffffff',
                 opacity: 0.3,
                 width: 1.2
             },
@@ -75,8 +75,8 @@ document.addEventListener('DOMContentLoaded', function() {
             detect_on: "canvas",
             events: {
                 onhover: {
-                    enable: true,
-                    mode: "grab"
+                    enable: false,
+                    mode: "repulse"
                 },
                 onclick: {
                     enable: false

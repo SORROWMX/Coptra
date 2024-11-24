@@ -264,50 +264,121 @@
 		<!-- Наши продукты -->
 		<section id="products" class="products">
 			<h2>Наши продукты</h2>
-			<div class="product-grid">
-				<div class="product-card">
-					<img src="assets/images/product1.png" alt="Коптра Мини" />
-					<div class="product-card-content">
-						<h3>Коптра Мини</h3>
-						<p>
-							Идеальный дрон для начинающих. Легкий, компактный и простой в
-							управлении.
-						</p>
-						<div class="product-card-buttons">
-							<a href="#" class="product-button secondary"><span class="button-text">Заказать</span></a>
-							<a href="products.html#coptra-mini" class="product-button"><span class="button-text">Подробнее</span></a>
+			<div class="product-category__grid">
+					<!-- Агроскаут X1 -->
+					<article class="product-card">
+						<div class="product-card__inner">
+							<div class="product-card__image-wrapper">
+								<img src="assets/images/drone.png" alt="Агроскаут X1" class="product-card__image" />
+								<div class="product-card__image-overlay"></div>
+							</div>
+							<div class="product-card__content">
+								<h3 class="product-card__title">Агроскаут X1</h3>
+								<div class="product-card__specs">
+									<span class="product-card__spec">
+										<i class="fas fa-camera"></i>
+										<span>4K Ultra HD</span>
+									</span>
+									<span class="product-card__spec">
+										<i class="fas fa-clock"></i>
+										<span>45 мин</span>
+									</span>
+									<span class="product-card__spec">
+										<i class="fas fa-wind"></i>
+										<span>12 м/с</span>
+									</span>
+								</div>
+								<p class="product-card__description">Профессиональный дрон для мониторинга посевов и создания карт вегетации</p>
+								<div class="product-card__footer">
+									<div class="product-card__price">
+										<span class="product-card__price-label">Цена:</span>
+										<span class="product-card__price-value">по запросу</span>
+									</div>
+									<div class="product-card__buttons">
+										<a href="#order" class="product-card__button product-card__button--secondary">Заказать</a>
+										<a href="products/agro-scout-x1" class="product-card__button product-card__button--primary">Подробнее</a>
+									</div>
+								</div>
+							</div>
 						</div>
-					</div>
-				</div>
-				<div class="product-card">
-					<img src="assets/images/product2.png" alt="Коптра Базовый" />
-					<div class="product-card-content">
-						<h3>Коптра Базовый</h3>
-						<p>
-							Профессиональный дрон для образования и бизнеса. Надежный и
-							функциональный.
-						</p>
-						<div class="product-card-buttons">
-							<a href="#" class="product-button secondary"><span class="button-text">Заказать</span></a>
-							<a href="products.html#coptra-basic" class="product-button"><span class="button-text">Подробнее</span></a>
+					</article>
+
+					<!-- Агроскаут X1 Pro -->
+					<article class="product-card">
+						<div class="product-card__inner">
+							<div class="product-card__image-wrapper">
+								<img src="assets/images/drone.png" alt="Агроскаут X1 Pro" class="product-card__image" />
+								<div class="product-card__image-overlay"></div>
+							</div>
+							<div class="product-card__content">
+								<h3 class="product-card__title">Агроскаут X1 Pro</h3>
+								<div class="product-card__specs">
+									<span class="product-card__spec">
+										<i class="fas fa-camera"></i>
+										<span>6K Pro</span>
+									</span>
+									<span class="product-card__spec">
+										<i class="fas fa-clock"></i>
+										<span>60 мин</span>
+									</span>
+									<span class="product-card__spec">
+										<i class="fas fa-wind"></i>
+										<span>15 м/с</span>
+									</span>
+								</div>
+								<p class="product-card__description">Усовершенствованная версия с мультиспектральной камерой для точного земледелия</p>
+								<div class="product-card__footer">
+									<div class="product-card__price">
+										<span class="product-card__price-label">Цена:</span>
+										<span class="product-card__price-value">по запросу</span>
+									</div>
+									<div class="product-card__buttons">
+										<a href="#order" class="product-card__button product-card__button--secondary">Заказать</a>
+										<a href="products/agro-scout-pro" class="product-card__button product-card__button--primary">Подробнее</a>
+									</div>
+								</div>
+							</div>
 						</div>
-					</div>
-				</div>
-				<div class="product-card">
-					<img src="assets/images/product3.png" alt="Коптра Про" />
-					<div class="product-card-content">
-						<h3>Коптра Про</h3>
-						<p>
-							Высокопроизводительный дрон для сложных задач. Максимальная
-							мощность и точность.
-						</p>
-						<div class="product-card-buttons">
-							<a href="#" class="product-button secondary"><span class="button-text">Заказать</span></a>
-							<a href="products.html#coptra-pro" class="product-button"><span class="button-text">Подробнее</span></a>
+					</article>
+
+					<!-- Агроскаут Картограф -->
+					<article class="product-card">
+						<div class="product-card__inner">
+							<div class="product-card__image-wrapper">
+								<img src="assets/images/drone.png" alt="Агроскаут Картограф" class="product-card__image" />
+								<div class="product-card__image-overlay"></div>
+							</div>
+							<div class="product-card__content">
+								<h3 class="product-card__title">Агроскаут Картограф</h3>
+								<div class="product-card__specs">
+									<span class="product-card__spec">
+										<i class="fas fa-camera"></i>
+										<span>8K Pro</span>
+									</span>
+									<span class="product-card__spec">
+										<i class="fas fa-clock"></i>
+										<span>50 мин</span>
+									</span>
+									<span class="product-card__spec">
+										<i class="fas fa-wind"></i>
+										<span>18 м/с</span>
+									</span>
+								</div>
+								<p class="product-card__description">Специализированный дрон для создания точных карт полей и планирования работ</p>
+								<div class="product-card__footer">
+									<div class="product-card__price">
+										<span class="product-card__price-label">Цена:</span>
+										<span class="product-card__price-value">по запросу</span>
+									</div>
+									<div class="product-card__buttons">
+										<a href="#order" class="product-card__button product-card__button--secondary">Заказать</a>
+										<a href="products/agro-mapper" class="product-card__button product-card__button--primary">Подробнее</a>
+									</div>
+								</div>
+							</div>
 						</div>
-					</div>
+					</article>
 				</div>
-			</div>
 		</section>
 
 		<!-- Преимущества дронов -->
@@ -473,7 +544,7 @@
 						</div>
 						<div class="swiper-slide">
 							<div class="testimonial-card">
-								<p class="testimonial-text">Как режиссер документальных фильмов о природе, я нашел в дронах Коптра идеального помощника. Они позволяют снимать потрясающие кадры, не беспокоя животных.</p>
+								<p class="testimonial-text">Как режиссер документальных фильмов о природе, я нашел в дронах Коптра идеального помощника. Они позволяют снимать потрясающие кадры, н�� беспокоя животных.</p>
 								<div class="testimonial-author">
 									<span class="client-name">Сергей Природин</span>
 									<span class="client-position">Режиссер-документалист</span>
@@ -543,7 +614,7 @@
 							<h3>Коптра заключила партнерство с ведущим университетом</h3>
 							<p class="news-date">20 июня 2023</p>
 							<p class="news-excerpt">
-								Мы рады объявить о начале сотрудничества с Московским государственным университетом. Это партнерство направлено на развитие инновационных технологий в области беспилотных летательных аппаратов. Dачале сотрудничества с Московским государственным университетом.
+								Мы рады объявить о начале сотрудничества с Московским государственным университетом. Это партнерство направлено на развитие инновационных технологий в области беспилотных летательных аппаратов.
 							</p>
 							<a href="#" class="read-more">Читать далее</a>
 						</div>
