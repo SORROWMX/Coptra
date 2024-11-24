@@ -210,39 +210,11 @@
     margin: var(--spacing-large) 0;
 }
 
-/* Добавляем стили для сетки новостей */
-.news-grid {
-    display: grid;
-    grid-template-columns: repeat(3, minmax(300px, 1fr)); /* Фиксированные 3 колонки */
-    gap: var(--spacing-large);
-    margin-bottom: var(--spacing-xlarge);
-}
-
 /* Стили для адаптивности */
 @media (max-width: 1200px) {
     .news-grid {
         grid-template-columns: repeat(2, minmax(300px, 1fr));
     }
-}
-
-@media (max-width: 768px) {
-    .news-grid {
-        grid-template-columns: minmax(300px, 1fr);
-    }
-}
-
-/* Стили для карточек новостей */
-.news-item {
-    display: flex;
-    flex-direction: column;
-    background-color: var(--color-background);
-    border-radius: var(--border-radius);
-    overflow: hidden;
-    box-shadow: 0 4px 12px rgba(0, 0, 0, 0.1);
-    transition: all 0.3s ease;
-    opacity: 0;
-    transform: translateY(20px);
-    transition: opacity 0.5s ease, transform 0.5s ease;
 }
 
 .news-item.fade-in {
@@ -275,49 +247,9 @@
     transform: scale(1.05);
 }
 
-/* Стили для контента */
-.news-content {
-    display: flex;
-    flex-direction: column;
-    padding: var(--spacing-medium);
-    min-height: 320px;
-    flex-grow: 1;
-}
-
 .news-content-text {
     flex-grow: 1;
     overflow: hidden;
-}
-
-.news-content h3 {
-    margin-bottom: var(--spacing-small);
-    font-size: 1.2rem;
-    line-height: 1.4;
-    display: -webkit-box;
-    -webkit-line-clamp: 3;
-    -webkit-box-orient: vertical;
-    overflow: hidden;
-    text-overflow: ellipsis;
-    max-height: 4.2em;
-    font-weight: var(--font-weight-medium);
-}
-
-.news-excerpt {
-    color: var(--color-text);
-    opacity: 0.8;
-    margin-bottom: var(--spacing-medium);
-    font-size: 0.95rem;
-    line-height: 1.5;
-    display: -webkit-box;
-    -webkit-line-clamp: 5;
-    -webkit-box-orient: vertical;
-    overflow: hidden;
-    text-overflow: ellipsis;
-    max-height: 7.5em;
-}
-
-.news-footer {
-    margin-top: auto;
 }
 
 /* В блоге */
