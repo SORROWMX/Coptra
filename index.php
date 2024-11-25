@@ -544,7 +544,7 @@
 						</div>
 						<div class="swiper-slide">
 							<div class="testimonial-card">
-								<p class="testimonial-text">Как режиссер документальных фильмов о природе, я нашел в дронах Коптра идеального помощника. Они позволяют снимать потрясающие кадры, н�� беспокоя животных.</p>
+								<p class="testimonial-text">Как режиссер документальных фильмов о природе, я нашел в дронах Коптра идеального помощника. Они позволяют снимать потрясающие кадры, н беспокоя животных.</p>
 								<div class="testimonial-author">
 									<span class="client-name">Сергей Природин</span>
 									<span class="client-position">Режиссер-документалист</span>
@@ -562,61 +562,123 @@
 			<div class="container">
 				<h2>Новости и события</h2>
 				<div class="news-grid">
+					<!-- Карточка 1 -->
 					<article class="news-item">
-						<div class="news-image-container">
-							<div class="news-image">
-								<img src="assets/images/drone.png" alt="Запуск новой модели дрона">
-							</div>
-							<div class="news-tags">
-								<span class="news-tag">Новинка</span>
-								<span class="news-tag">Технологии</span>
+						<div class="news-item__media">
+							<img src="assets/images/drone.png" alt="Запуск новой модели дрона">
+							<div class="news-item__read-time">
+								<i class="far fa-clock"></i>
+								<span>5 мин</span>
 							</div>
 						</div>
-						<div class="news-content">
-							<h3>Запуск новой модели дрона для картографии</h3>
-							<p class="news-date">15 мая 2023</p>
-							<p class="news-excerpt">
+						<div class="news-item__content">
+							<div class="news-item__meta">
+								<div class="news-item__tags">
+									<span class="tag">Технологии</span>
+									<span class="tag">Инновации</span>
+								</div>
+								<div class="news-item__date">
+									<i class="far fa-calendar-alt"></i>
+									<time datetime="2024-05-15">15.05.2024</time>
+								</div>
+							</div>
+							<h3 class="news-item__title">Запуск новой модели дрона для картографии</h3>
+							<p class="news-item__excerpt">
 								Мы рады представить нашу новейшую разработку - дрон "Картограф-1". Эта модель предназначена для высокоточной картографии и 3D-моделирования местности.
 							</p>
-							<a href="#" class="read-more">Читать далее</a>
+							<div class="news-item__footer">
+								<a href="#" class="news-item__link">
+									<span>Читать далее</span>
+									<svg viewBox="0 0 24 24">
+										<path d="M13.025 1l-2.847 2.828 6.176 6.176h-16.354v3.992h16.354l-6.176 6.176 2.847 2.828 10.975-11z"/>
+									</svg>
+								</a>
+								<div class="news-item__share">
+									<button class="share-button">
+										<i class="fas fa-share-alt"></i>
+									</button>
+								</div>
+							</div>
 						</div>
 					</article>
+
+					<!-- Карточка 2 -->
 					<article class="news-item">
-						<div class="news-image-container">
-							<div class="news-image">
-								<img src="assets/images/drone.png" alt="Международная выставка дронов">
-							</div>
-							<div class="news-tags">
-								<span class="news-tag">Событие</span>
-								<span class="news-tag">Выставка</span>
+						<div class="news-item__media">
+							<img src="assets/images/drone.png" alt="Международная выставка дронов">
+							<div class="news-item__read-time">
+								<i class="far fa-clock"></i>
+								<span>15 мин</span>
 							</div>
 						</div>
-						<div class="news-content">
-							<h3>Участие в международной выставке дронов</h3>
-							<p class="news-date">1-5 июня 2023</p>
-							<p class="news-excerpt">
+						<div class="news-item__content">
+							<div class="news-item__meta">
+								<div class="news-item__tags">
+									<span class="tag">Событие</span>
+									<span class="tag">Выставка</span>
+								</div>
+								<div class="news-item__date">
+									<i class="far fa-calendar-alt"></i>
+									<time datetime="2024-05-15">01.06.2023</time>
+								</div>
+							</div>
+							<h3 class="news-item__title">Участие в международной выставке дронов</h3>
+							<p class="news-item__excerpt">
 								Приглашаем посетить наш стенд на выставке DroneExpo 2023. Мы представим наши последние разработки и проведем демонстрационные полеты.
 							</p>
-							<a href="#" class="read-more">Читать далее</a>
+							<div class="news-item__footer">
+								<a href="#" class="news-item__link">
+									<span>Читать далее</span>
+									<svg viewBox="0 0 24 24">
+										<path d="M13.025 1l-2.847 2.828 6.176 6.176h-16.354v3.992h16.354l-6.176 6.176 2.847 2.828 10.975-11z"/>
+									</svg>
+								</a>
+								<div class="news-item__share">
+									<button class="share-button">
+										<i class="fas fa-share-alt"></i>
+									</button>
+								</div>
+							</div>
 						</div>
 					</article>
+
+					<!-- Карточка 3 -->
 					<article class="news-item">
-						<div class="news-image-container">
-							<div class="news-image">
-								<img src="assets/images/drone.png" alt="Новое партнерство">
-							</div>
-							<div class="news-tags">
-								<span class="news-tag">Партнерство</span>
-								<span class="news-tag">Образование</span>
+						<div class="news-item__media">
+							<img src="assets/images/drone.png" alt="Новое партнерство">
+							<div class="news-item__read-time">
+								<i class="far fa-clock"></i>
+								<span>10 мин</span>
 							</div>
 						</div>
-						<div class="news-content">
-							<h3>Коптра заключила партнерство с ведущим университетом</h3>
-							<p class="news-date">20 июня 2023</p>
-							<p class="news-excerpt">
+						<div class="news-item__content">
+							<div class="news-item__meta">
+								<div class="news-item__tags">
+									<span class="tag">Партнерство</span>
+									<span class="tag">Образование</span>
+								</div>
+								<div class="news-item__date">
+									<i class="far fa-calendar-alt"></i>
+									<time datetime="2024-05-15">15.05.2024</time>
+								</div>
+							</div>
+							<h3 class="news-item__title">Коптра заключила партнерство с ведущим университетом</h3>
+							<p class="news-item__excerpt">
 								Мы рады объявить о начале сотрудничества с Московским государственным университетом. Это партнерство направлено на развитие инновационных технологий в области беспилотных летательных аппаратов.
 							</p>
-							<a href="#" class="read-more">Читать далее</a>
+							<div class="news-item__footer">
+								<a href="#" class="news-item__link">
+									<span>Читать далее</span>
+									<svg viewBox="0 0 24 24">
+										<path d="M13.025 1l-2.847 2.828 6.176 6.176h-16.354v3.992h16.354l-6.176 6.176 2.847 2.828 10.975-11z"/>
+									</svg>
+								</a>
+								<div class="news-item__share">
+									<button class="share-button">
+										<i class="fas fa-share-alt"></i>
+									</button>
+								</div>
+							</div>
 						</div>
 					</article>
 				</div>
