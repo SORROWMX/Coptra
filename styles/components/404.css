@@ -1,18 +1,17 @@
 html, body {
     margin: 0;
     padding: 0;
-    width: 100%;
-    height: 100%;
+    width: 100vw;
+    height: 100vh;
     overflow: hidden;
+    position: fixed;
 }
 
 body {
-    min-height: 100vh;
     display: flex;
     justify-content: center;
     align-items: center;
-    font-family: var(--font-family-main);
-    background: linear-gradient(135deg, #27272a 0%, #18181b 100%);
+    background: var(--color-background);
     position: fixed;
     top: 0;
     left: 0;
@@ -20,10 +19,10 @@ body {
     bottom: 0;
 }
 
-#particles-js {
-    position: absolute;
-    width: 100%;
-    height: 100%;
+#particles-js-404 {
+    position: fixed;
+    width: 100vw;
+    height: 100vh;
     top: 0;
     left: 0;
     z-index: 1;
@@ -32,14 +31,14 @@ body {
 .error-title {
     font-size: clamp(1.5rem, 3vw, 2.5rem);
     font-weight: var(--font-weight-bold);
-    color: var(--color-primary);
-    background: linear-gradient(135deg, var(--color-primary) 0%, var(--color-secondary) 100%);
+    background: linear-gradient(135deg, 
+        rgba(var(--color-primary-rgb), 0.8) 0%, 
+        rgba(var(--color-secondary-rgb), 0.8) 100%);
     background-clip: text;
     -webkit-background-clip: text;
     color: transparent;
     -webkit-text-fill-color: transparent;
     animation: glowText 2s ease-in-out infinite alternate;
-    
     margin-bottom: var(--spacing-xlarge);
     text-align: center;
 }
@@ -60,11 +59,12 @@ body {
     width: 100%;
     display: flex;
     align-items: center;
-    gap: clamp(2rem, 5vw, var(--spacing-xlarge));
+    gap: clamp(2rem, 5vw, var(--spacing-xxlarge));
     padding: var(--spacing-medium) 0;
 }
 
 .error-content {
+    padding: 0 var(--spacing-large);
     flex: 1;
     min-width: 300px;
     display: flex;
@@ -76,7 +76,9 @@ body {
 h1 {
     font-size: clamp(4rem, 8vw, 8rem);
     margin: 0 0 var(--spacing-medium);
-    background: linear-gradient(135deg, var(--color-primary) 0%, var(--color-secondary) 100%);
+    background: linear-gradient(135deg, 
+        rgba(var(--color-primary-rgb), 0.8) 0%, 
+        rgba(var(--color-secondary-rgb), 0.8) 100%);
     background-clip: text;
     -webkit-background-clip: text;
     color: transparent;
@@ -89,7 +91,8 @@ h1 {
 .error-description {
     font-size: clamp(0.9rem, 1.5vw, 1.2rem);
     margin-bottom: var(--spacing-large);
-    color: var(--color-text-light);
+    color: var(--color-text);
+    opacity: 0.8;
     text-align: center;
     max-width: 500px;
 }
@@ -97,7 +100,9 @@ h1 {
 .back-home {
     display: inline-block;
     padding: var(--spacing-medium) var(--spacing-large);
-    background: linear-gradient(135deg, var(--color-primary) 0%, var(--color-secondary) 100%);
+    background: linear-gradient(135deg, 
+        rgba(var(--color-primary-rgb), 0.9) 0%, 
+        rgba(var(--color-secondary-rgb), 0.9) 100%);
     color: var(--color-text-light);
     text-decoration: none;
     border-radius: var(--border-radius);
@@ -110,7 +115,7 @@ h1 {
 
 .back-home:hover {
     transform: translateY(-2px);
-    box-shadow: 0 5px 15px rgba(var(--color-primary-rgb), 0.3);
+    box-shadow: 0 5px 15px rgba(var(--color-primary-rgb), 0.2);
 }
 
 .back-home::before {
@@ -148,6 +153,14 @@ h1 {
     filter: drop-shadow(0 0 30px rgba(var(--color-primary-rgb), 0.3));
 }
 
+.particles-js-canvas-el {
+    position: fixed !important;
+    top: 0 !important;
+    left: 0 !important;
+    width: 100vw !important;
+    height: 100vh !important;
+}
+
 @keyframes floatingDrone {
     0% {
         transform: translate(0, 0) rotate(0deg) scale(1);
@@ -171,14 +184,34 @@ h1 {
 
 @keyframes glowText {
     from {
-        text-shadow: 0 0 10px rgba(var(--color-primary-rgb), 0.5),
-                     0 0 20px rgba(var(--color-primary-rgb), 0.3),
-                     0 0 30px rgba(var(--color-primary-rgb), 0.1);
+        text-shadow: 
+            0 0 5px rgba(var(--color-primary-rgb), 0.1),
+            0 0 10px rgba(var(--color-primary-rgb), 0.05);
     }
     to {
-        text-shadow: 0 0 20px rgba(var(--color-primary-rgb), 0.8),
-                     0 0 30px rgba(var(--color-primary-rgb), 0.5),
-                     0 0 40px rgba(var(--color-primary-rgb), 0.3);
+        text-shadow: 
+            0 0 8px rgba(var(--color-primary-rgb), 0.15),
+            0 0 12px rgba(var(--color-primary-rgb), 0.1);
+    }
+}
+
+@media (max-width: 1200px) {
+    .drone-animation {
+        max-width: 350px;
+        flex: 0 0 350px;
+    }
+    
+    .error-content {
+        flex: 0 0 50%;
+    }
+    
+    .content-wrapper {
+        gap: 0;
+        justify-content: space-between;
+    }
+
+    .error-description {
+        font-size: 1rem;
     }
 }
 
@@ -192,10 +225,14 @@ h1 {
         padding: var(--spacing-medium);
     }
 
+    .error-title {
+        font-size: 2rem;
+    }
+
     .error-container {
         height: auto;
         min-height: unset;
-        padding: 0;
+        padding: var(--spacing-xxxlarge) 0;
     }
 
     .content-wrapper {
@@ -214,8 +251,8 @@ h1 {
         margin-bottom: var(--spacing-xlarge);
     }
 
-    .drone-animation img {
-        animation: none;
+    .error-description {
+        font-size: 1rem;
     }
 }
 
@@ -228,17 +265,13 @@ h1 {
         font-size: 1.8rem;
     }
 
-    h1 {
-        font-size: 5rem;
-    }
+
 
     .error-description {
         font-size: 1rem;
     }
 
-    .drone-animation {
-        max-width: 280px;
-    }
+
 }
 
 @media (max-width: 480px) {
@@ -259,7 +292,11 @@ h1 {
     }
 
     .drone-animation {
-        max-width: 280px;
+        max-width: 200px;
+    }
+
+    .drone-animation img {
+        animation: simpleDroneFloat 4s ease-in-out infinite;
     }
 
     .back-home {
@@ -268,24 +305,147 @@ h1 {
     }
 }
 
-@media (max-height: 585px) {
+@media (max-width: 1200px) and (max-height: 600px) {
+    .content-wrapper {
+        flex-direction: column;
+        gap: var(--spacing-large);
+        min-height: unset; /* Убираем минимальную высоту */
+    }
+
+    .drone-animation {
+        max-width: 250px;
+        max-height: 150px;
+        flex: 0 0 250px;
+    }
+}
+
+@media (max-height: 600px) {
     html, body {
-        overflow: visible;
+        position: static;
         height: auto;
+        min-height: 100vh;
+        overflow: visible;
         overflow-x: hidden;
     }
     
     body {
-        position: static;
-        min-height: 100vh;
-        overflow-y: auto;
-        overflow-x: hidden;
+        padding: var(--spacing-medium);
+    }
+
+    #particles-js-404 {
+        position: fixed;
+        top: 0;
+        left: 0;
+        width: 100%;
+        height: 100%;
+        z-index: 1;
     }
 
     .error-container {
+        position: relative;
+        z-index: 2;
+        min-height: 100vh;
         height: auto;
-        min-height: unset;
-        padding: var(--spacing-medium) 0;
-        overflow-x: hidden;
+        padding: var(--spacing-xlarge) 0;
+        justify-content: center;
+    }
+
+    .content-wrapper {
+        min-height: 450px;
+        position: relative;
+        overflow: visible;
+        gap: 10px;
+    }
+
+    .drone-animation {
+        position: relative;
+        z-index: 1;
+    }
+
+    .drone-animation img {
+        max-width: 100%;
+        height: auto;
+        transform-origin: center center;
+    }
+
+    .error-title {
+        margin-bottom: 0;
+    }
+}
+
+@media (max-height: 480px) {
+    .content-wrapper {
+        min-height: 400px; /* Уменьшаем минимальную высоту */
+        gap: var(--spacing-small); /* Уменьшаем отступ между элементами */
+    }
+
+    .drone-animation {
+        max-width: 320px; /* Уменьшаем размер дрона */
+        flex: 0 0 auto;
+    }
+
+    .error-content {
+        flex: 0 0 auto;
+    }
+
+    h1 {
+        font-size: 3.5rem; /* Уменьшаем размер заголовка */
+        margin-bottom: var(--spacing-small);
+    }
+
+    .error-description {
+        font-size: 0.9rem;
+        margin-bottom: var(--spacing-medium);
+    }
+
+}
+
+@media (max-height: 480px) and (max-width: 480px) {
+    .drone-animation {
+        max-width: 300px;
+    }
+}
+
+@keyframes simpleDroneFloat {
+    0% {
+        transform: translateY(0);
+    }
+    50% {
+        transform: translateY(-15px);
+    }
+    100% {
+        transform: translateY(0);
+    }
+}
+
+/* Обновляем стили для темной темы */
+[data-theme="dark"] .error-title {
+    text-shadow: 
+        0 0 10px rgba(var(--color-primary-rgb), 0.3),
+        0 0 20px rgba(var(--color-primary-rgb), 0.2);
+}
+
+[data-theme="dark"] h1 {
+    text-shadow: 
+        0 0 15px rgba(var(--color-primary-rgb), 0.4),
+        0 0 30px rgba(var(--color-primary-rgb), 0.3);
+}
+
+/* Обновляем анимацию свечения для темной темы */
+[data-theme="dark"] .error-title,
+[data-theme="dark"] h1 {
+    animation: glowTextDark 2s ease-in-out infinite alternate;
+}
+
+@keyframes glowTextDark {
+    from {
+        text-shadow: 
+            0 0 10px rgba(var(--color-primary-rgb), 0.3),
+            0 0 20px rgba(var(--color-primary-rgb), 0.2);
+    }
+    to {
+        text-shadow: 
+            0 0 15px rgba(var(--color-primary-rgb), 0.4),
+            0 0 30px rgba(var(--color-primary-rgb), 0.3);
     }
 } 

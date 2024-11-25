@@ -12,7 +12,7 @@ document.addEventListener('DOMContentLoaded', function() {
                 particle.color.value = color;
             });
             
-            particles.fn.particlesRefresh();
+            particles.particles.line_linked.color_rgb_line = { r: 255, g: 107, b: 107 };
         }
     };
 
@@ -75,8 +75,8 @@ document.addEventListener('DOMContentLoaded', function() {
             detect_on: "canvas",
             events: {
                 onhover: {
-                    enable: false,
-                    mode: "repulse"
+                    enable: true,
+                    mode: "grab"
                 },
                 onclick: {
                     enable: false
