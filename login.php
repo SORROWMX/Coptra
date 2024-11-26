@@ -1,34 +1,6 @@
 <?php
 session_start();
 
-// Временные учетные данные для тестирования
-$test_username = "admin";
-$test_password = "password123";
-
-// Проверка, если пользователь уже авторизован
-if(isset($_SESSION['user_id'])) {
-    header("Location: dashboard.php");
-    exit();
-}
-
-// Обработка отправки формы
-if (isset($_SERVER["REQUEST_METHOD"]) && $_SERVER["REQUEST_METHOD"] == "POST") {
-    $username = trim($_POST['username']);
-    $password = $_POST['password'];
-    
-    // Простая проверка логина и пароля
-    if ($username === $test_username && $password === $test_password) {
-        $_SESSION['user_id'] = 1;
-        $_SESSION['username'] = $username;
-        $success = "Добро пожаловать, " . htmlspecialchars($username) . "!";
-    } else {
-        if ($username !== $test_username) {
-            $error = "Неверное имя пользователя";
-        } else {
-            $error = "Неверный пароль";
-        }
-    }
-}
 ?>
 
 <!DOCTYPE html>
@@ -47,7 +19,7 @@ if (isset($_SERVER["REQUEST_METHOD"]) && $_SERVER["REQUEST_METHOD"] == "POST") {
     <div class="login-page">
         <?php include 'modules/header.php'; ?>
         
-            <form>
+            <form action="login.php" method="post">
             <a href="/" class="back-button">
                         <i class="fa fa-arrow-left"></i>
                     </a>
