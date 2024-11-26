@@ -1,8 +1,13 @@
 .blog-section {
     position: relative;
     overflow: hidden;
-    padding-top: var(--header-height);
+    padding-top: calc(var(--header-height) + var(--spacing-large));
     margin-top: calc(var(--header-height) * -1);
+    min-height: 100vh;
+    display: flex;
+    flex-direction: column;
+    background: var(--color-background-light);
+    padding-bottom: var(--spacing-xxlarge);
 }
 
 .blog-decorations {
@@ -109,11 +114,17 @@
 
 .blog-filters {
     margin-bottom: var(--spacing-large);
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    gap: var(--spacing-small);
+    flex-wrap: wrap;
 }
 
 .search-container {
     position: relative;
     max-width: 600px;
+    width: 100%;
     margin: 0 auto var(--spacing-large);
 }
 
@@ -177,6 +188,7 @@
     justify-content: center;
     gap: var(--spacing-small);
     margin: var(--spacing-xlarge) 0;
+    margin-bottom: 0;
 }
 
 .pagination-btn {
@@ -211,7 +223,10 @@
 }
 
 .blog-section .news-grid {
+    display: grid;
     grid-template-columns: repeat(3, minmax(300px, 1fr));
+    gap: var(--spacing-large);
+    margin-bottom: 0;
 }
 
 .news-item.fade-in {
@@ -269,4 +284,82 @@
         font-size: 0.7rem;
         padding: 4px 8px !important;
     }
+    
+    .search-container {
+        max-width: 100%;
+        padding: 0 var(--spacing-medium);
+        background: transparent;
+    }
+    
+    .blog-search {
+        border-radius: 100px;
+        padding: 12px 40px 12px 20px;
+        background-clip: padding-box;
+        -webkit-background-clip: padding-box;
+    }
+    
+    .search-container i {
+        right: 35px;
+    }
+}
+
+/* Базовые стили для сетки новостей */
+.news-grid {
+    display: grid;
+    grid-template-columns: repeat(3, minmax(300px, 1fr));
+    gap: var(--spacing-large);
+    margin-bottom: var(--spacing-xlarge);
+}
+
+/* Сбрасываем конфликтующие стили */
+.blog-section .news-grid {
+    grid-template-rows: unset;
+    margin: unset;
+    margin-bottom: var(--spacing-xlarge);
+}
+
+/* Планшеты */
+@media (max-width: 1024px) {
+    .blog-section .news-grid {
+        grid-template-columns: repeat(2, 1fr);
+        gap: var(--spacing-medium);
+    }
+}
+
+/* Мобильные устройства */
+@media (max-width: 768px) {
+    .blog-section .news-grid {
+        grid-template-columns: 1fr;
+        gap: var(--spacing-medium);
+    }
+}
+
+/* Контейнер с контентом должен растягиваться */
+.blog-section .container {
+    flex: 1;
+    display: flex;
+    flex-direction: column;
+    padding-bottom: 0;
+}
+
+/* Убираем лишние отступы у последней карточки */
+.blog-section .news-item:last-child {
+    margin-bottom: 0;
+}
+
+/* Убираем отступ у пагинации */
+.blog-pagination {
+    margin-bottom: 0;
+}
+
+/* Если blog-section находится внутри content */
+.content .blog-section {
+    margin-bottom: 0;
+    min-height: 100vh;
+}
+
+/* Убираем стандартные отступы у content, когда внутри есть blog-section */
+.content:has(.blog-section) {
+    padding-bottom: 0;
+    min-height: unset;
 }

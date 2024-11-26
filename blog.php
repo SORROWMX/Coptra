@@ -25,167 +25,356 @@
                     <input type="text" placeholder="Поиск по статьям..." class="blog-search">
                     <i class="fas fa-search"></i>
                 </div>
-                <div class="tags-filter">
+                <div class="blog-filters">
                     <button class="tag-btn active" data-tag="all">Все статьи</button>
-                    <button class="tag-btn" data-tag="technology">Технологии</button>
-                    <button class="tag-btn" data-tag="education">Образование</button>
-                    <button class="tag-btn" data-tag="agriculture">Сельское хозяйство</button>
-                    <button class="tag-btn" data-tag="news">Новости</button>
+                    <button class="tag-btn" data-tag="Технологии">Технологии</button>
+                    <button class="tag-btn" data-tag="Образование">Образование</button>
+                    <button class="tag-btn" data-tag="Сельское хозяйство">Сельское хозяйство</button>
+                    <button class="tag-btn" data-tag="Новости">Новости</button>
                 </div>
             </div>
 
                 <div class="news-grid">
-                    <article class="news-item animate" data-tags="technology,education">
-                        <div class="news-image-container">
-                            <div class="news-image">
-                                <img src="assets/images/drone-education.png" alt="Дроны в образовании">
-                            </div>
-                            <div class="news-tags">
-                                <button class="news-tag" data-tag="technology">Технологии</button>
-                                <button class="news-tag" data-tag="education">Образование</button>
+                    <article class="news-item">
+                        <div class="news-item__media">
+                            <img src="assets/images/drone-education.png" alt="Дроны в образовании">
+                            <div class="news-item__read-time">
+                                <i class="far fa-clock"></i>
+                                <span>5 мин</span>
                             </div>
                         </div>
-                        <div class="news-content">
-                            <h3>Как дроны меняют систему образования</h3>
-                            <p class="news-date">15 мая 2024</p>
-                            <p class="news-excerpt">Исследуем инновационные подходы к обучению с использованием дронов и их влияние на образовательный процесс.</p>
-                            <a href="#" class="read-more">Читать далее</a>
-                        </div>
-                    </article>
-                    <article class="news-item animate" data-tags="technology,education">
-                        <div class="news-image-container">
-                            <div class="news-image">
-                                <img src="assets/images/drone-education.png" alt="Дроны в образовании">
+                        <div class="news-item__content">
+                            <div class="news-item__meta">
+                                <div class="news-item__tags">
+                                    <span class="tag" data-tag="Технологии">Технологии</span>
+                                    <span class="tag" data-tag="Образование">Образование</span>
+                                </div>
+                                <div class="news-item__date">
+                                    <i class="far fa-calendar-alt"></i>
+                                    <time datetime="2024-05-15">15.05.2024</time>
+                                </div>
                             </div>
-                            <div class="news-tags">
-                                <button class="news-tag" data-tag="technology">Технологии</button>
-                                <button class="news-tag" data-tag="education">Образование</button>
+                            <h3 class="news-item__title" data-searchable>Как дроны меняют систему образования</h3>
+                            <p class="news-item__excerpt" data-searchable>
+                                Исследуем инновационные подходы к обучению с использованием дронов и их влияние на образовательный процесс.
+                            </p>
+                            <div class="news-item__footer">
+                                <a href="#" class="news-item__link">
+                                    <span>Читать далее</span>
+                                    <svg viewBox="0 0 24 24">
+                                        <path d="M13.025 1l-2.847 2.828 6.176 6.176h-16.354v3.992h16.354l-6.176 6.176 2.847 2.828 10.975-11z"/>
+                                    </svg>
+                                </a>
+                                <div class="news-item__share">
+                                    <button class="share-button">
+                                        <i class="fas fa-share-alt"></i>
+                                    </button>
+                                </div>
                             </div>
-                        </div>
-                        <div class="news-content">
-                            <h3>Как дроны меняют систему образования</h3>
-                            <p class="news-date">15 мая 2024</p>
-                            <p class="news-excerpt">Исследуем инновационные подходы к обучению с использованием дронов и их влияние на образовательный процесс.</p>
-                            <a href="#" class="read-more">Читать далее</a>
-                        </div>
-                    </article>
-                    <article class="news-item animate" data-tags="technology,education">
-                        <div class="news-image-container">
-                            <div class="news-image">
-                                <img src="assets/images/drone-education.png" alt="Дроны в образовании">
-                            </div>
-                            <div class="news-tags">
-                                <button class="news-tag" data-tag="technology">Технологии</button>
-                                <button class="news-tag" data-tag="education">Образование</button>
-                            </div>
-                        </div>
-                        <div class="news-content">
-                            <h3>Как дроны меняют систему образования</h3>
-                            <p class="news-date">15 мая 2024</p>
-                            <p class="news-excerpt">Исследуем инновационные подходы к обучению с использованием дронов и их влияние на образовательный процесс.</p>
-                            <a href="#" class="read-more">Читать далее</a>
                         </div>
                     </article>
-                    <article class="news-item animate" data-tags="technology,education">
-                        <div class="news-image-container">
-                            <div class="news-image">
-                                <img src="assets/images/drone-education.png" alt="Дроны в образовании">
-                            </div>
-                            <div class="news-tags">
-                                <button class="news-tag" data-tag="technology">Технологии</button>
-                                <button class="news-tag" data-tag="education">Образование</button>
+                    <article class="news-item">
+                        <div class="news-item__media">
+                            <img src="assets/images/drone-education.png" alt="Дроны в образовании">
+                            <div class="news-item__read-time">
+                                <i class="far fa-clock"></i>
+                                <span>5 мин</span>
                             </div>
                         </div>
-                        <div class="news-content">
-                            <h3>Как дроны меняют систему образования</h3>
-                            <p class="news-date">15 мая 2024</p>
-                            <p class="news-excerpt">Исследуем инновационные подходы к обучению с использованием дронов и их влияние на образовательный процесс.</p>
-                            <a href="#" class="read-more">Читать далее</a>
-                        </div>
-                    </article>
-                    <article class="news-item animate" data-tags="technology,education">
-                        <div class="news-image-container">
-                            <div class="news-image">
-                                <img src="assets/images/drone-education.png" alt="Дроны в образовании">
+                        <div class="news-item__content">
+                            <div class="news-item__meta">
+                                <div class="news-item__tags">
+                                    <span class="tag" data-tag="Технологии">Технологии</span>
+                                    <span class="tag" data-tag="Образование">Образование</span>
+                                </div>
+                                <div class="news-item__date">
+                                    <i class="far fa-calendar-alt"></i>
+                                    <time datetime="2024-05-15">15.05.2024</time>
+                                </div>
                             </div>
-                            <div class="news-tags">
-                                <button class="news-tag" data-tag="technology">Технологии</button>
-                                <button class="news-tag" data-tag="education">Образование</button>
+                            <h3 class="news-item__title" data-searchable>Как дроны меняют систему образования</h3>
+                            <p class="news-item__excerpt" data-searchable>
+                                Исследуем инновационные подходы к обучению с использованием дронов и их влияние на образовательный процесс.
+                            </p>
+                            <div class="news-item__footer">
+                                <a href="#" class="news-item__link">
+                                    <span>Читать далее</span>
+                                    <svg viewBox="0 0 24 24">
+                                        <path d="M13.025 1l-2.847 2.828 6.176 6.176h-16.354v3.992h16.354l-6.176 6.176 2.847 2.828 10.975-11z"/>
+                                    </svg>
+                                </a>
+                                <div class="news-item__share">
+                                    <button class="share-button">
+                                        <i class="fas fa-share-alt"></i>
+                                    </button>
+                                </div>
                             </div>
-                        </div>
-                        <div class="news-content">
-                            <h3>Как дроны меняют систему образования</h3>
-                            <p class="news-date">15 мая 2024</p>
-                            <p class="news-excerpt">Исследуем инновационные подходы к обучению с использованием дронов и их влияние на образовательный процесс.</p>
-                            <a href="#" class="read-more">Читать далее</a>
-                        </div>
-                    </article>
-                    <article class="news-item animate" data-tags="technology,education">
-                        <div class="news-image-container">
-                            <div class="news-image">
-                                <img src="assets/images/drone-education.png" alt="Дроны в образовании">
-                            </div>
-                            <div class="news-tags">
-                                <button class="news-tag" data-tag="technology">Технологии</button>
-                                <button class="news-tag" data-tag="education">Образование</button>
-                            </div>
-                        </div>
-                        <div class="news-content">
-                            <h3>Как дроны меняют систему образования</h3>
-                            <p class="news-date">15 мая 2024</p>
-                            <p class="news-excerpt">Исследуем инновационные подходы к обучению с использованием дронов и их влияние на образовательный процесс.</p>
-                            <a href="#" class="read-more">Читать далее</a>
                         </div>
                     </article>
-                                        <article class="news-item animate" data-tags="technology,education">
-                        <div class="news-image-container">
-                            <div class="news-image">
-                                <img src="assets/images/drone-education.png" alt="Дроны в образовании">
-                            </div>
-                            <div class="news-tags">
-                                <button class="news-tag" data-tag="technology">Технологии</button>
-                                <button class="news-tag" data-tag="education">Образование</button>
+                    <article class="news-item">
+                        <div class="news-item__media">
+                            <img src="assets/images/drone-education.png" alt="Дроны в образовании">
+                            <div class="news-item__read-time">
+                                <i class="far fa-clock"></i>
+                                <span>5 мин</span>
                             </div>
                         </div>
-                        <div class="news-content">
-                            <h3>Как дроны меняют систему образования</h3>
-                            <p class="news-date">15 мая 2024</p>
-                            <p class="news-excerpt">Исследуем инновационные подходы к обучению с использованием дронов и их влияние на образовательный процесс.</p>
-                            <a href="#" class="read-more">Читать далее</a>
+                        <div class="news-item__content">
+                            <div class="news-item__meta">
+                                <div class="news-item__tags">
+                                    <span class="tag" data-tag="Технологии">Технологии</span>
+                                    <span class="tag" data-tag="Образование">Образование</span>
+                                </div>
+                                <div class="news-item__date">
+                                    <i class="far fa-calendar-alt"></i>
+                                    <time datetime="2024-05-15">15.05.2024</time>
+                                </div>
+                            </div>
+                            <h3 class="news-item__title" data-searchable>Как дроны меняют систему образования</h3>
+                            <p class="news-item__excerpt" data-searchable>
+                                Исследуем инновационные подходы к обучению с использованием дронов и их влияние на образовательный процесс.
+                            </p>
+                            <div class="news-item__footer">
+                                <a href="#" class="news-item__link">
+                                    <span>Читать далее</span>
+                                    <svg viewBox="0 0 24 24">
+                                        <path d="M13.025 1l-2.847 2.828 6.176 6.176h-16.354v3.992h16.354l-6.176 6.176 2.847 2.828 10.975-11z"/>
+                                    </svg>
+                                </a>
+                                <div class="news-item__share">
+                                    <button class="share-button">
+                                        <i class="fas fa-share-alt"></i>
+                                    </button>
+                                </div>
+                            </div>
                         </div>
                     </article>
-                    <article class="news-item animate" data-tags="technology,news">
-                        <div class="news-image-container">
-                            <div class="news-image">
-                                <img src="assets/images/drone-education.png" alt="Дроны в образовании">
-                            </div>
-                            <div class="news-tags">
-                                <button class="news-tag" data-tag="technology">Технологии</button>
-                                <button class="news-tag" data-tag="news">Новости</button>
+                    <article class="news-item">
+                        <div class="news-item__media">
+                            <img src="assets/images/drone-education.png" alt="Дроны в образовании">
+                            <div class="news-item__read-time">
+                                <i class="far fa-clock"></i>
+                                <span>5 мин</span>
                             </div>
                         </div>
-                        <div class="news-content">
-                            <h3>Как дроны меняют систему образования</h3>
-                            <p class="news-date">15 мая 2024</p>
-                            <p class="news-excerpt">Исследуем инновационные подходы к картошке с использованием дронов и их влияние на образовательный процесс.</p>
-                            <a href="#" class="read-more">Читать далее</a>
+                        <div class="news-item__content">
+                            <div class="news-item__meta">
+                                <div class="news-item__tags">
+                                    <span class="tag" data-tag="Технологии">Технологии</span>
+                                    <span class="tag" data-tag="Образование">Образование</span>
+                                </div>
+                                <div class="news-item__date">
+                                    <i class="far fa-calendar-alt"></i>
+                                    <time datetime="2024-05-15">15.05.2024</time>
+                                </div>
+                            </div>
+                            <h3 class="news-item__title" data-searchable>Как дроны меняют систему образования</h3>
+                            <p class="news-item__excerpt" data-searchable>
+                                Исследуем инновационные подходы к обучению с использованием дронов и их влияние на образовательный процесс.
+                            </p>
+                            <div class="news-item__footer">
+                                <a href="#" class="news-item__link">
+                                    <span>Читать далее</span>
+                                    <svg viewBox="0 0 24 24">
+                                        <path d="M13.025 1l-2.847 2.828 6.176 6.176h-16.354v3.992h16.354l-6.176 6.176 2.847 2.828 10.975-11z"/>
+                                    </svg>
+                                </a>
+                                <div class="news-item__share">
+                                    <button class="share-button">
+                                        <i class="fas fa-share-alt"></i>
+                                    </button>
+                                </div>
+                            </div>
                         </div>
                     </article>
-                    <article class="news-item animate" data-tags="agriculture,education">
-                        <div class="news-image-container">
-                            <div class="news-image">
-                                <img src="assets/images/drone-education.png" alt="Дроны в образовании">
-                            </div>
-                            <div class="news-tags">
-                                <button class="news-tag" data-tag="agriculture">Сельское хозяйство</button>
-                                <button class="news-tag" data-tag="education">Образование</button>
+                    <article class="news-item">
+                        <div class="news-item__media">
+                            <img src="assets/images/drone-education.png" alt="Дроны в образовании">
+                            <div class="news-item__read-time">
+                                <i class="far fa-clock"></i>
+                                <span>5 мин</span>
                             </div>
                         </div>
-                        <div class="news-content">
-                            <h3>Как дроны меняют систему картошки</h3>
-                            <p class="news-date">15 мая 2024</p>
-                            <p class="news-excerpt">Исследуем инновационные подходы к обучению с использованием дронов и их влияние на образовательный процесс.</p>
-                            <a href="#" class="read-more">Читать далее</a>
+                        <div class="news-item__content">
+                            <div class="news-item__meta">
+                                <div class="news-item__tags">
+                                    <span class="tag" data-tag="Технологии">Технологии</span>
+                                    <span class="tag" data-tag="Образование">Образование</span>
+                                </div>
+                                <div class="news-item__date">
+                                    <i class="far fa-calendar-alt"></i>
+                                    <time datetime="2024-05-15">15.05.2024</time>
+                                </div>
+                            </div>
+                            <h3 class="news-item__title" data-searchable>Как дроны меняют систему образования</h3>
+                            <p class="news-item__excerpt" data-searchable>
+                                Исследуем инновационные подходы к обучению с использованием дронов и их влияние на образовательный процесс.
+                            </p>
+                            <div class="news-item__footer">
+                                <a href="#" class="news-item__link">
+                                    <span>Читать далее</span>
+                                    <svg viewBox="0 0 24 24">
+                                        <path d="M13.025 1l-2.847 2.828 6.176 6.176h-16.354v3.992h16.354l-6.176 6.176 2.847 2.828 10.975-11z"/>
+                                    </svg>
+                                </a>
+                                <div class="news-item__share">
+                                    <button class="share-button">
+                                        <i class="fas fa-share-alt"></i>
+                                    </button>
+                                </div>
+                            </div>
+                        </div>
+                    </article>
+                    <article class="news-item">
+                        <div class="news-item__media">
+                            <img src="assets/images/drone-education.png" alt="Дроны в образовании">
+                            <div class="news-item__read-time">
+                                <i class="far fa-clock"></i>
+                                <span>5 мин</span>
+                            </div>
+                        </div>
+                        <div class="news-item__content">
+                            <div class="news-item__meta">
+                                <div class="news-item__tags">
+                                    <span class="tag" data-tag="Технологии">Технологии</span>
+                                    <span class="tag" data-tag="Образование">Образование</span>
+                                </div>
+                                <div class="news-item__date">
+                                    <i class="far fa-calendar-alt"></i>
+                                    <time datetime="2024-05-15">15.05.2024</time>
+                                </div>
+                            </div>
+                            <h3 class="news-item__title" data-searchable>Как дроны меняют систему образования</h3>
+                            <p class="news-item__excerpt" data-searchable>
+                                Исследуем инновационные подходы к обучению с использованием дронов и их влияние на образовательный процесс.
+                            </p>
+                            <div class="news-item__footer">
+                                <a href="#" class="news-item__link">
+                                    <span>Читать далее</span>
+                                    <svg viewBox="0 0 24 24">
+                                        <path d="M13.025 1l-2.847 2.828 6.176 6.176h-16.354v3.992h16.354l-6.176 6.176 2.847 2.828 10.975-11z"/>
+                                    </svg>
+                                </a>
+                                <div class="news-item__share">
+                                    <button class="share-button">
+                                        <i class="fas fa-share-alt"></i>
+                                    </button>
+                                </div>
+                            </div>
+                        </div>
+                    </article>
+                    <article class="news-item">
+                        <div class="news-item__media">
+                            <img src="assets/images/drone-education.png" alt="Дроны в образовании">
+                            <div class="news-item__read-time">
+                                <i class="far fa-clock"></i>
+                                <span>5 мин</span>
+                            </div>
+                        </div>
+                        <div class="news-item__content">
+                            <div class="news-item__meta">
+                                <div class="news-item__tags">
+                                    <span class="tag" data-tag="Технологии">Технологии</span>
+                                    <span class="tag" data-tag="Образование">Образование</span>
+                                </div>
+                                <div class="news-item__date">
+                                    <i class="far fa-calendar-alt"></i>
+                                    <time datetime="2024-05-15">15.05.2024</time>
+                                </div>
+                            </div>
+                            <h3 class="news-item__title" data-searchable>Как дроны меняют систему образования</h3>
+                            <p class="news-item__excerpt" data-searchable>
+                                Исследуем инновационные подходы к обучению с использованием дронов и их влияние на образовательный процесс.
+                            </p>
+                            <div class="news-item__footer">
+                                <a href="#" class="news-item__link">
+                                    <span>Читать далее</span>
+                                    <svg viewBox="0 0 24 24">
+                                        <path d="M13.025 1l-2.847 2.828 6.176 6.176h-16.354v3.992h16.354l-6.176 6.176 2.847 2.828 10.975-11z"/>
+                                    </svg>
+                                </a>
+                                <div class="news-item__share">
+                                    <button class="share-button">
+                                        <i class="fas fa-share-alt"></i>
+                                    </button>
+                                </div>
+                            </div>
+                        </div>
+                    </article>
+                    <article class="news-item">
+                        <div class="news-item__media">
+                            <img src="assets/images/drone-education.png" alt="Дроны в образовании">
+                            <div class="news-item__read-time">
+                                <i class="far fa-clock"></i>
+                                <span>5 мин</span>
+                            </div>
+                        </div>
+                        <div class="news-item__content">
+                            <div class="news-item__meta">
+                                <div class="news-item__tags">
+                                    <span class="tag" data-tag="Технологии">Технологии</span>
+                                    <span class="tag" data-tag="Сельское хозяйство">Сельское хозяйство</span>
+                                </div>
+                                <div class="news-item__date">
+                                    <i class="far fa-calendar-alt"></i>
+                                    <time datetime="2024-05-15">15.05.2024</time>
+                                </div>
+                            </div>
+                            <h3 class="news-item__title" data-searchable>Как дроны меняют систему картошки</h3>
+                            <p class="news-item__excerpt" data-searchable>
+                                Исследуем инновационные подходы к обучению с использованием дронов и их влияние на образовательный процесс.
+                            </p>
+                            <div class="news-item__footer">
+                                <a href="#" class="news-item__link">
+                                    <span>Читать далее</span>
+                                    <svg viewBox="0 0 24 24">
+                                        <path d="M13.025 1l-2.847 2.828 6.176 6.176h-16.354v3.992h16.354l-6.176 6.176 2.847 2.828 10.975-11z"/>
+                                    </svg>
+                                </a>
+                                <div class="news-item__share">
+                                    <button class="share-button">
+                                        <i class="fas fa-share-alt"></i>
+                                    </button>
+                                </div>
+                            </div>
+                        </div>
+                    </article>
+                    <article class="news-item">
+                        <div class="news-item__media">
+                            <img src="assets/images/drone-education.png" alt="Дроны в образовании">
+                            <div class="news-item__read-time">
+                                <i class="far fa-clock"></i>
+                                <span>5 мин</span>
+                            </div>
+                        </div>
+                        <div class="news-item__content">
+                            <div class="news-item__meta">
+                                <div class="news-item__tags">
+                                    <span class="tag" data-tag="Сельское хозяйство">Сельское хозяйство</span>
+                                    <span class="tag" data-tag="Образование">Образование</span>
+                                </div>
+                                <div class="news-item__date">
+                                    <i class="far fa-calendar-alt"></i>
+                                    <time datetime="2024-05-15">15.05.2024</time>
+                                </div>
+                            </div>
+                            <h3 class="news-item__title" data-searchable>Как дроны меняют систему образования</h3>
+                            <p class="news-item__excerpt" data-searchable>
+                                Исследуем инновационные подходы к картошке с использованием дронов и их влияние на образовательный процесс.
+                            </p>
+                            <div class="news-item__footer">
+                                <a href="#" class="news-item__link">
+                                    <span>Читать далее</span>
+                                    <svg viewBox="0 0 24 24">
+                                        <path d="M13.025 1l-2.847 2.828 6.176 6.176h-16.354v3.992h16.354l-6.176 6.176 2.847 2.828 10.975-11z"/>
+                                    </svg>
+                                </a>
+                                <div class="news-item__share">
+                                    <button class="share-button">
+                                        <i class="fas fa-share-alt"></i>
+                                    </button>
+                                </div>
+                            </div>
                         </div>
                     </article>
                 </div>
