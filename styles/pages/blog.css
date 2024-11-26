@@ -303,13 +303,6 @@
     }
 }
 
-/* Базовые стили для сетки новостей */
-.news-grid {
-    display: grid;
-    grid-template-columns: repeat(3, minmax(300px, 1fr));
-    gap: var(--spacing-large);
-    margin-bottom: var(--spacing-xlarge);
-}
 
 /* Сбрасываем конфликтующие стили */
 .blog-section .news-grid {
