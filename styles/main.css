@@ -21,7 +21,7 @@
 @import 'pages/docs.css';
 @import 'components/search.css';
 @import 'pages/blog.css';
-
+@import 'pages/blog-post.css';
 /* Products */
 @import 'pages/products/hero.css';
 @import 'pages/products/categories.css';
