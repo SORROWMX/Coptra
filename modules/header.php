@@ -108,38 +108,40 @@ if (!$is_local) {
                     <li><a href="<?php echo $root_path; ?>index.php">Главная</a></li>
                     <li class="dropdown">
                         <a href="<?php echo $root_path; ?>products.php">Продукты</a>
+                        <span class="dropdown-toggle-arrow"></span>
                         <ul class="dropdown-menu">
+                            <li><a class="mobile-only" href="<?php echo $root_path; ?>products.php">Все продукты</a></li>
                             <li class="dropdown-submenu">
                                 <a href="<?php echo $root_path; ?>products.php#agriculture">Сельское хозяйство</a>
                                 <div class="submenu">
-                                    <a href="<?php echo $root_path; ?>products.php#agro-scout">Агроскаут X1</a>
-                                    <a href="<?php echo $root_path; ?>products.php#agro-scout-pro">Агроскаут X1 Pro</a>
-                                    <a href="<?php echo $root_path; ?>products.php#agro-mapper">Агроскаут Картограф</a>
-                                    <a href="<?php echo $root_path; ?>products.php#agro-sprayer">Агроскаут Опрыскиватель</a>
+                                    <a href="<?php echo $root_path; ?>products.php#agriculture">Агроскаут X1</a>
+                                    <a href="<?php echo $root_path; ?>products.php#agriculture">Агроскаут X1 Pro</a>
+                                    <a href="<?php echo $root_path; ?>products.php#agriculture">Агроскаут Картограф</a>
+                                    <a href="<?php echo $root_path; ?>products.php#agriculture">Агроскаут Опрыскиватель</a>
                                 </div>
                             </li>
                             <li class="dropdown-submenu">
                                 <a href="<?php echo $root_path; ?>products.php#education">Образование</a>
                                 <div class="submenu">
-                                    <a href="<?php echo $root_path; ?>products.php#edu-basic">Коптра Пионер</a>
-                                    <a href="<?php echo $root_path; ?>products.php#edu-advanced">Коптра Пионер Pro</a>
-                                    <a href="<?php echo $root_path; ?>products.php#edu-kit">Образовательный набор</a>
+                                    <a href="<?php echo $root_path; ?>products.php#education">Коптра Пионер</a>
+                                    <a href="<?php echo $root_path; ?>products.php#education">Коптра Пионер Pro</a>
+                                    <a href="<?php echo $root_path; ?>products.php#education">Образовательный набор</a>
                                 </div>
                             </li>
                             <li class="dropdown-submenu">
                                 <a href="<?php echo $root_path; ?>products.php#fpv">FPV</a>
                                 <div class="submenu">
-                                    <a href="<?php echo $root_path; ?>products.php#fpv-racer">FPV Racer 5"</a>
-                                    <a href="<?php echo $root_path; ?>products.php#fpv-freestyle">FPV Freestyle</a>
-                                    <a href="<?php echo $root_path; ?>products.php#fpv-cinewhoop">Cinewhoop 3"</a>
+                                    <a href="<?php echo $root_path; ?>products.php#fpv">FPV Racer 5"</a>
+                                    <a href="<?php echo $root_path; ?>products.php#fpv">FPV Freestyle</a>
+                                    <a href="<?php echo $root_path; ?>products.php#fpv">Cinewhoop 3"</a>
                                 </div>
                             </li>
                             <li class="dropdown-submenu">
                                 <a href="<?php echo $root_path; ?>products.php#cargo">Грузовые</a>
                                 <div class="submenu">
-                                    <a href="<?php echo $root_path; ?>products.php#cargo-light">Грузовой X4</a>
-                                    <a href="<?php echo $root_path; ?>products.php#cargo-medium">Грузовой X6</a>
-                                    <a href="<?php echo $root_path; ?>products.php#cargo-heavy">Грузовой X8</a>
+                                    <a href="<?php echo $root_path; ?>products.php#cargo">Грузовой X4</a>
+                                    <a href="<?php echo $root_path; ?>products.php#cargo">Грузовой X6</a>
+                                    <a href="<?php echo $root_path; ?>products.php#cargo">Грузовой X8</a>
                                 </div>
                             </li>
                             <li><a href="<?php echo $root_path; ?>products.php#flight-controller">Полётный контроллер</a></li>
@@ -188,44 +190,47 @@ if (!$is_local) {
                 <span></span>
                 <span></span>
             </button>
-            <!-- ГЛАВНАЯ СТРАНИЦА ДЛЯ ДЕСКТОПА И МОБИЛКИ -->
+            <!-- ОСНОВНЫЕ СТРАНИЦЫ ДЛЯ ДЕСКТОПА И МОБИЛКИ -->
             <nav class="main-nav">
                 <ul>
                     <li><a href="<?php echo $root_path; ?>index.php">Главная</a></li>
                     <li class="dropdown">
                         <a href="<?php echo $root_path; ?>products.php">Продукты</a>
+                        <a href="<?php echo $root_path; ?>products.php" class="dropdown-toggle mobile-only">Продукты</a>
+                        <span class="dropdown-toggle-arrow"></span>
                         <ul class="dropdown-menu">
+                            <li class="mobile-only"><a href="<?php echo $root_path; ?>products.php">Все продукты</a></li>
                             <li class="dropdown-submenu">
                                 <a href="<?php echo $root_path; ?>products.php#agriculture">Сельское хозяйство</a>
                                 <div class="submenu">
-                                    <a href="<?php echo $root_path; ?>products.php#agro-scout">Агроскаут X1</a>
-                                    <a href="<?php echo $root_path; ?>products.php#agro-scout-pro">Агроскаут X1 Pro</a>
-                                    <a href="<?php echo $root_path; ?>products.php#agro-mapper">Агроскаут Картограф</a>
-                                    <a href="<?php echo $root_path; ?>products.php#agro-sprayer">Агроскаут Опрыскиватель</a>
+                                    <a href="<?php echo $root_path; ?>products.php#agriculture">Агроскаут X1</a>
+                                    <a href="<?php echo $root_path; ?>products.php#agriculture">Агроскаут X1 Pro</a>
+                                    <a href="<?php echo $root_path; ?>products.php#agriculture">Агроскаут Картограф</a>
+                                    <a href="<?php echo $root_path; ?>products.php#agriculture">Агроскаут Опрыскиватель</a>
                                 </div>
                             </li>
                             <li class="dropdown-submenu">
                                 <a href="<?php echo $root_path; ?>products.php#education">Образование</a>
                                 <div class="submenu">
-                                    <a href="<?php echo $root_path; ?>products.php#edu-basic">Коптра Пионер</a>
-                                    <a href="<?php echo $root_path; ?>products.php#edu-advanced">Коптра Пионер Pro</a>
-                                    <a href="<?php echo $root_path; ?>products.php#edu-kit">Образовательный набор</a>
+                                    <a href="<?php echo $root_path; ?>products.php#education">Коптра Пионер</a>
+                                    <a href="<?php echo $root_path; ?>products.php#education">Коптра Пионер Pro</a>
+                                    <a href="<?php echo $root_path; ?>products.php#education">Образовательный набор</a>
                                 </div>
                             </li>
                             <li class="dropdown-submenu">
                                 <a href="<?php echo $root_path; ?>products.php#fpv">FPV</a>
                                 <div class="submenu">
-                                    <a href="<?php echo $root_path; ?>products.php#fpv-racer">FPV Racer 5"</a>
-                                    <a href="<?php echo $root_path; ?>products.php#fpv-freestyle">FPV Freestyle</a>
-                                    <a href="<?php echo $root_path; ?>products.php#fpv-cinewhoop">Cinewhoop 3"</a>
+                                    <a href="<?php echo $root_path; ?>products.php#fpv">FPV Racer 5"</a>
+                                    <a href="<?php echo $root_path; ?>products.php#fpv">FPV Freestyle</a>
+                                    <a href="<?php echo $root_path; ?>products.php#fpv">Cinewhoop 3"</a>
                                 </div>
                             </li>
                             <li class="dropdown-submenu">
                                 <a href="<?php echo $root_path; ?>products.php#cargo">Грузовые</a>
                                 <div class="submenu">
-                                    <a href="<?php echo $root_path; ?>products.php#cargo-light">Грузовой X4</a>
-                                    <a href="<?php echo $root_path; ?>products.php#cargo-medium">Грузовой X6</a>
-                                    <a href="<?php echo $root_path; ?>products.php#cargo-heavy">Грузовой X8</a>
+                                    <a href="<?php echo $root_path; ?>products.php#cargo">Грузовой X4</a>
+                                    <a href="<?php echo $root_path; ?>products.php#cargo">Грузовой X6</a>
+                                    <a href="<?php echo $root_path; ?>products.php#cargo">Грузовой X8</a>
                                 </div>
                             </li>
                             <li><a href="<?php echo $root_path; ?>products.php#flight-controller">Полётный контроллер</a></li>

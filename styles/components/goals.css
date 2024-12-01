@@ -336,6 +336,16 @@
     .goal-card:nth-child(even) .goal-image {
         transform: translateX(0);
     }
+
+    .step-marker {
+        min-width: 12px;
+        min-height: 12px;
+    }
+
+    .step-marker::before {
+        min-width: 20px;
+        min-height: 20px;
+    }
 }
 
 @media (max-width: 480px) {

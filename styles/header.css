@@ -123,6 +123,7 @@ nav ul li a::after {
     border-right: 2px solid #2C2D34;
     transform: rotate(135deg);
     transition: all 0.3s ease;
+    z-index: 1;
 }
 
 .dropdown:hover > a:before,
@@ -1043,7 +1044,7 @@ header.scrolled nav ul li a {
         display: flex;
         justify-content: space-between;
         align-items: center;
-        padding: 15px 10px;
+        padding: 15px 5px;
         width: 100%;
         border-bottom: 1px solid var(--color-border);
         position: relative;
@@ -1082,7 +1083,7 @@ header.scrolled nav ul li a {
     }
 }
 
-/* Стили для десктопного меню */
+/* Стили для десктопной версии */
 @media screen and (min-width: 769px) {
     .dropdown-menu {
         position: absolute;
@@ -1314,4 +1315,93 @@ header.scrolled .login-button i {
 [data-theme="dark"] header.scrolled .login-button {
     background-color: var(--color-background-dark);
     color: var(--color-text-light);
+}
+
+/* Скрываем элементы с классом mobile-only на десктопе */
+@media screen and (min-width: 769px) {
+    .mobile-only {
+        display: none !important;
+    }
+}
+
+/* Показываем элементы с классом mobile-only только на мобильных устройствах */
+@media screen and (max-width: 768px) {
+    .mobile-only {
+        display: block !important;
+    }
+}
+
+/* Стили для стрелки выпадающего меню */
+.dropdown > a {
+    position: relative;
+}
+
+.dropdown-toggle-arrow {
+    position: absolute;
+    right: -5px;
+    top: 50%;
+    transform: translateY(-50%);
+    width: 30px;
+    height: 30px;
+    cursor: pointer;
+    display: none; /* По умолчанию скрыта */
+    padding-left: 10px;
+    z-index: 2; /* Верхний слой */
+}
+
+/* Показываем стрелку только на десктопе */
+@media screen and (min-width: 769px) {
+    .dropdown-toggle-arrow {
+        display: block;
+    }
+}
+
+/* Обновляем стили для мобильной версии */
+@media screen and (max-width: 768px) {
+    /* Скрываем обычную ссылку на мобильных */
+    .dropdown > a:not(.dropdown-toggle) {
+        display: none;
+    }
+
+    /* Показываем мобильную версию ссылки */
+    .dropdown > a.dropdown-toggle {
+        display: flex;
+    }
+}
+
+/* Стили для десктопной версии */
+@media screen and (min-width: 769px) {
+    /* Скрываем мобильную версию ссылки */
+    .dropdown > a.dropdown-toggle {
+        display: none;
+    }
+
+    /* Показываем обычную ссылку */
+    .dropdown > a:not(.dropdown-toggle) {
+        display: flex;
+    }
+}
+
+@media screen and (max-width: 768px) {
+    /* Отключаем hover эффекты на мобильных устройствах */
+    .dropdown:hover .dropdown-menu,
+    .dropdown-submenu:hover .submenu {
+        display: none;
+        opacity: 1;
+        visibility: visible;
+    }
+
+    /* Показываем меню только при активном состоянии */
+    .dropdown.active .dropdown-menu,
+    .dropdown-submenu.active .submenu {
+        display: block !important;
+        opacity: 1;
+        visibility: visible;
+    }
+
+    /* Отключаем все hover-эффекты для текста */
+    .dropdown:hover > a,
+    .dropdown-submenu:hover > a {
+        color: inherit;
+    }
 }
