@@ -38,12 +38,11 @@ export const BlogPostModule = {
 
     initRelatedPostsSlider() {
         try {
-            const slider = document.querySelector('.related-posts-slider');
-            if (!slider) {
-                console.warn('Slider element not found');
-                return;
-            }
+            // Проверяем, что мы на странице блога
+            const isBlogPost = document.querySelector('.blog-post-section');
+            if (!isBlogPost) return;
 
+            const slider = document.querySelector('.related-posts-slider');
             const swiper = new Swiper(slider, {
                 slidesPerView: 1,
                 spaceBetween: 30,
